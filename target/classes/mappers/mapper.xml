@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.ex.mapper">
+<!-- 회원정보 select문 -->
+<select id="id" resultType="MemberDto">SELECT * from member</select>
+<!--mybatis-confix.xml에서 긴 링크글 MemberDto 로 id는 id라고 지정  -->
+
+<!-- 회원가입 insert문 -->
+<insert id="register">INSERT INTO member( mId , mPw , mName, mGender, mPhone, mBirth, mEmail, mAddr, mGrade, mNote, mList, mMile, mCumulmile, mMaster)
+	                  VALUES(#{mId} , #{mPw}, #{mName}, #{mGender}, #{mPhone}, #{mBirth}, #{mEmail}, #{mAddr}, "브론즈", null, null, 0, 0, 0)</insert>
+
+<!-- 로그인 select문 -->
+<select id="login" parameterType="MemberDto" resultType="MemberDto">
+	select * from member where mId = #{mId} and mPw = #{mPw}
+</select>
+
+<!-- 상품정보 select문 -->
+<select id="product" resultType="ProductDto">SELECT * from product</select>
+
+</mapper>
+
