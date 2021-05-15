@@ -17,5 +17,7 @@
 <!-- 상품정보 select문 -->
 <select id="product" resultType="ProductDto">SELECT * from product</select>
 
+<!-- 게시판작성 -->
+<insert id="boardWrite">insert into board(bName, bNum, bTitle, bNote, bCate, bAnswer) values(null, 0, #{bTitle}, #{bNote}, #{bCate}, "미확인")</insert>
 </mapper>
 

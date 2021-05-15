@@ -98,7 +98,7 @@
 	<div class="container">
 		<div class="col-lg-12">
 			<div class="row">
-				<form method="post" action="writeAction.jsp">
+				<form method="post" action="writeAction">
 					<div class="" style="text-align:center;">
 					<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd; width: 1000px;">
 						<thead>
@@ -109,10 +109,10 @@
 						<tbody style="width:100%;">
 							<tr>
 								<td colspan="4">
-									<input type="text" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50" style="width:800px;" />
+									<input type="text" class="form-control" placeholder="글 제목" id="bTitle" name="bTitle" maxlength="50" style="width:800px;" />
 								</td>
 								<td>
-									<select class="form-control" name="userGender" style="width:200px;">
+									<select class="form-control" id="bCate" name="bCate" style="width:200px;">
 										<option>상품관련</option>
 										<option>배송관련</option>
 										<option>기타</option>
@@ -121,7 +121,7 @@
 							</tr>
 							<tr>
 								<td colspan="5">
-									<textarea class="form-control" placeholder="글 내용" name="bbsContent" maxlength="2048px;" style="height: 350px; resize: none;"></textarea>
+									<textarea class="form-control" placeholder="글 내용" id="bNote" name="bNote" maxlength="2048px;" style="height: 350px; resize: none;"></textarea>
 								</td>
 							</tr>
 						</tbody>

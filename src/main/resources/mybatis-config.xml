@@ -9,5 +9,7 @@
 <!-- 상품정보 Dto -->
 <typeAlias type="com.spring.ex.dto.ProductDto" alias="ProductDto"/> 
 
+<!-- 게시판작성 Dto -->
+<typeAlias type="com.spring.ex.dto.BoardDTO" alias="BoardDTO"/>
 </typeAliases>
 </configuration> 
