@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MemberDao;
+import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
 
@@ -47,5 +48,14 @@ public class ServiceTurtle implements TurtleService{
 	public List<ProductDto> productList() throws Exception {
 	
 		return productDao.productList();
+	}
+	
+	@Inject MemberDao bdao;
+	
+	@Override
+	public void boardWrite(BoardDTO bdto) throws Exception {
+		
+		bdao.board(bdto);
+		
 	}
 }

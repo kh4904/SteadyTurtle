@@ -17,7 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
-import com.spring.ex.service.BoardService;
 import com.spring.ex.service.ServiceTurtle;
 import com.spring.ex.service.TurtleService;
 
@@ -28,12 +27,8 @@ public class MyController {
 	TurtleService service;
 	
 	@Inject
-	BoardService service2;
-	
-	@Inject
-	public MyController(TurtleService service, BoardService service2) {
+	public MyController(TurtleService service) {
 		this.service = service;
-		this.service2 = service2;
 	}
 	
 	// 로그인시 필요
@@ -270,7 +265,7 @@ public class MyController {
 	@RequestMapping(value = "/writeAction", method = RequestMethod.POST)
 	public String boardPOST(BoardDTO bdto, RedirectAttributes redirectAttributes) throws Exception {
 
-		service2.boardWrite(bdto);
+		service.boardWrite(bdto);
 
 		return "redirect:/CustomerWriteView";
 	}

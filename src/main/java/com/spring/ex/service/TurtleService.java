@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
 
@@ -21,5 +22,8 @@ public interface TurtleService {
 	
 	/* 상품정보 list ProductDto를 productList()로 선언*/
 	public List<ProductDto> productList() throws Exception;
+	
+	// 게시판 BoardDTO를 bdto로 선언
+	public void boardWrite(BoardDTO bdto) throws Exception;
 	
 }
