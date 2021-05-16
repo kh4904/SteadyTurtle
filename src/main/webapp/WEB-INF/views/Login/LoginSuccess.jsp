@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,72 +52,7 @@
     <!-- 로그인성공페이지 -->
     <body id="page-top">
         <!-- Navigation 맨위 로고-->
-        <nav class="navbar " id="mainNav" style="width:100%; height:300px; background-color:#000000;">
-            <div class="container-fluid">
-                 <div class="col-lg-4">
-                   <a class="navbar-brand js-scroll-trigger" href="main"><img src = "resources/assets/img/SteadyTurtle.png" style = "width: 500px; height:190px; position:relative; top:-40px; left:80px;"></a>
-                </div> 
-                 <!-- 검색창 -->
-                <div class ="col-lg-5">
-               <form class="navbar-form navbar-left" role="search">
-                  <div class="row">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="검색창" style="width:500px; height:50px;">
-                     </div>
-                      <button type="submit" class="btn btn-default"><i class ="fas fa-search" style="width:30px; height:30px; color:#fff;"></i></button>
-                    </div>
-                 </form>
-                    
-                 <!-- 헬스기구, 요가상품, 운동식품, 상품랭킹 문구 -->
-                     <ul class="nav nav-pills" style="position:relative; top:30px; left:-50px;">
-                     <li role="presentation" style="position:relative; "><a href="Health" style="color:#ffff8d; text-decoration:none; font-size:30px;">헬스기구</a></li>
-                     <li role="presentation" style="position:relative; left:30px;"><a href="Yoga" style="color:#ffff8d; text-decoration:none; font-size:30px;">요가상품</a></li>
-                     <li role="presentation" style="position:relative; left:60px;"><a href="Food" style="color:#ffff8d; text-decoration:none; font-size:30px;">운동식품</a></li>
-                     <li role="presentation" style="position:relative; left:90px;"><a href="#" style="color:#fff; text-decoration:none; font-size:30px;" data-toggle="dropdown"> <label style="color:#ffff8d;">상품랭킹</label> <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                           <li><a href="ManRanking" style="color:#000000;">남여랭킹</a></li>
-                           <li><a href="HealthRanking" style="color:#000000;">헬스기구 랭킹</a></li>
-                           <li><a href="YogaRanking" style="color:#000000;">요가용품 랭킹</a></li>
-                           <li><a href="FoodRanking" style="color:#000000;">건강식품 랭킹</a></li>
-                        </ul>
-                         </li>
-                   </ul>
-              </div> 
-                
-                <!-- 로그인창 -->
-                <div class = "col-lg-3">
-                       <!-- 장바구니, 상품환불, 고객문의 -->
-                       <ul class="nav nav-pills">
-  						 <li role="presentation" style="position:relative; left:40px;"><a href="basket" style="color:#fff;">장바구니</a></li>
-  						 <li role="presentation" style="position:relative; left:60px;"><a href="refund" style="color:#fff;">상품환불</a></li>
-  						 <li role="presentation" style="position:relative; left:80px;"><a href="CustomerWriteView" style="color:#fff;">고객문의</a></li>
- 					   </ul>
- 					   
- 					   <!-- 로그인성공된 창 -->
- 					   <div class="jumbotron" style="padding-top: 20px; width: 400px; height: 190px; position: relative; top: 10px; left: -100px;">
-							<ul class="nav nav-tabs">
-								<li role="presentation" class="active" style="position: relative; left: 60px; color:#000000;">회원</li>
-							</ul>
-							<ul class="nav nav-pills" style="position: relative; top: 30px; left: 20px;">
-								<li role="presentation" class="active">
-									<p>사용기능/누적 <br /> 마일리지<br /> <label>3000/6000 p</label></p>
-								</li>
-								<li role="presentation" style="position: relative; left: 80px;">
-									<p style="position: relative;">나의 등급: 플래티넘 <br /> 원태연 님</p>
-								</li>
-							</ul>
-							<hr>
-							<!-- 회원정보수정 주문조회 로그아웃-->
-							<ul class="nav nav-pills" style="position: relative; top: -15px; left: 30px;">
-								<li role="presentation" class="active"><a href="MyPage" style="color:black; text-decoration:none;">회원정보수정</a> /</li>
-								<li role="presentation"><a href="JumunSearch" style="color:black; text-decoration:none;"> 주문조회</a></li>
-								<li role="presentation" style="position: relative; left: 60px;">
-								<a href="main" style="color:black; text-decoration:none;">로그아웃</a>
-								</li>
-							</ul>
-						</div>
-			     </div>
-      </nav>
+        <%@ include file="/WEB-INF/views/menu.jsp" %>
             
         <!-- 슬라이드 이미지  -->
         <header class="bg-white text-white text-center" style="height:500px;">

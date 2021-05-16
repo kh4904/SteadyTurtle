@@ -97,7 +97,13 @@ public class MyController {
 	    }
 
 	    return path;
-
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logout(HttpSession session) throws Exception {
+		session.invalidate();
+		
+		return "redirect:/main";
 	}
 	
 	// 헬스기구 페이지
