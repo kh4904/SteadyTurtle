@@ -37,6 +37,7 @@
 		<div class="col-lg-12">
 			<div class="row">
 				<form method="post" action="writeAction">
+					<input type="hidden" id = "mName" name="mName" value="${member.mName }">
 					<div class="" style="text-align:center;">
 					<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd; width: 1000px;">
 						<thead>

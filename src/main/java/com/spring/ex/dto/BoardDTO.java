@@ -2,9 +2,17 @@ package com.spring.ex.dto;
 
 public class BoardDTO {
 
+	private String mName;
 	private String bTitle;
 	private String bCate;
 	private String bNote;
+	
+	public String getmName() {
+		return mName;
+	}
+	public void setmName(String mName) {
+		this.mName = mName;
+	}
 	public String getbTitle() {
 		return bTitle;
 	}
@@ -27,6 +35,6 @@ public class BoardDTO {
 	
 	@Override
 	public String toString() {
-		return "BoardDTO [bTitle=" + bTitle + ", bCate=" + bCate + ", bNote=" + bNote + "]";
+		return "BoardDTO [mName=" + mName + ", bTitle=" + bTitle + ", bCate=" + bCate + ", bNote=" + bNote + "]";
 	}
 }
