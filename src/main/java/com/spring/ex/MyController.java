@@ -92,13 +92,14 @@ public class MyController {
 	       path = "redirect:/main";
 	    } else {
 	       session.setAttribute("member", login);
-	        
+	       rttr.addFlashAttribute("msg3", false);
 	       path = "redirect:/LoginSuccess";
 	    }
 
 	    return path;
 	}
 	
+	//로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public String logout(HttpSession session, RedirectAttributes rttr) throws Exception {
 		session.invalidate();

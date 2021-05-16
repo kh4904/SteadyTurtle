@@ -154,10 +154,12 @@
 						</div>
 					</div>
 				</c:if>
-				<c:if test="${member != null }">
-					<script>
+				<c:if test="${msg3 == false }">
+						<script>
 						alert("${member.mName} 님 환영합니다.")
-					</script>
+						</script>
+				</c:if>
+				<c:if test="${member != null }">
 					<ul class="nav nav-tabs">
 						<li role="presentation" class="active"
 							style="position: relative; left: 60px; color: #000000;">회원</li>
@@ -193,7 +195,6 @@
 						</li>
 					</ul>
 				</c:if>
-
 			</div>
 		</div>
 	</div>
