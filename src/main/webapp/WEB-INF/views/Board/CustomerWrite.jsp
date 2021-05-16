@@ -37,6 +37,7 @@
 		<div class="col-lg-12">
 			<div class="row">
 				<form method="post" action="writeAction">
+				<c:if test ="${member.mId != null }">
 					<input type="hidden" id = "mName" name="mName" value="${member.mName }">
 					<div class="" style="text-align:center;">
 					<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd; width: 1000px;">
@@ -70,6 +71,13 @@
 					    <a href="CustomerWriteView" class="btn btn-primary">뒤로가기</a>
 						<input type="submit" class="btn btn-primary pull-right" value="글쓰기" />
 					</div>
+					</c:if>
+					<c:if test ="${member.mId == null }">
+					<script>
+						alert("로그인후 사용가능")
+						location.href="main";
+					</script>
+					</c:if>
 				</form>
 			</div>
 		</div>

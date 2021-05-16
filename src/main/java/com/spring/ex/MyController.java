@@ -100,9 +100,9 @@ public class MyController {
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
-	public String logout(HttpSession session) throws Exception {
+	public String logout(HttpSession session, RedirectAttributes rttr) throws Exception {
 		session.invalidate();
-		
+		rttr.addFlashAttribute("msg2",false);
 		return "redirect:/main";
 	}
 	
