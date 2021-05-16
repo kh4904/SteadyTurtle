@@ -16,7 +16,7 @@
 		<property name="driverClassName" value="org.mariadb.jdbc.Driver" />
 		<property name="url" value="jdbc:mariadb://Localhost:3307/turtle" />
 		<property name="username" value="root" />
-		<property name="password" value="1111" />
+		<property name="password" value="1234" />
 	</bean>
 	<!-- sqlSessoinTemplate -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">

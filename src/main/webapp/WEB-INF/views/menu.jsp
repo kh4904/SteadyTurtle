@@ -154,10 +154,12 @@
 						</div>
 					</div>
 				</c:if>
-				<c:if test="${member != null }">
-					<script>
+				<c:if test="${msg3 == false }">
+						<script>
 						alert("${member.mName} 님 환영합니다.")
-					</script>
+						</script>
+				</c:if>
+				<c:if test="${member != null }">
 					<ul class="nav nav-tabs">
 						<li role="presentation" class="active"
 							style="position: relative; left: 60px; color: #000000;">회원</li>
@@ -188,12 +190,11 @@
 							<form method="post" action="logout">
 								<input type="submit" class="btn btn-link" id="logoutbtn"
 									value="로그아웃"
-									style="font-size: 15px; color: black; text-decoration: none;">
+									style="font-size: 15px; font-family:여린굴림; color: black; text-decoration: none; position:relative; top:-10px;">
 							</form>
 						</li>
 					</ul>
 				</c:if>
-
 			</div>
 		</div>
 	</div>

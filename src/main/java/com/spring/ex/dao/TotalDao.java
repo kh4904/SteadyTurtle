@@ -19,9 +19,7 @@ public class TotalDao implements MemberDao{
 	// 회원정보 select문
 	@Override
 	public List<MemberDto> memberList() throws Exception {
-		
 		return sqlSessionTemplate.selectList(namespace+".id");
-		
 	}
 	
 	// 회원가입 insert문
