@@ -9,17 +9,12 @@ var myLineChart = new Chart(ctx, {
   data: {
     labels: ["January", "February", "March", "April", "May", "June"],
     datasets: [
-    /*{
-      label: "Health",
-      backgroundColor: "rgba(2,117,216,1)",
-      borderColor: "rgba(2,117,216,1)",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
-    },*/
+   
     {
       label: "Health",
       backgroundColor: "rgba(103,153,255,1)",
       borderColor: "rgba(103,153,255,1)",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [6015, 5312, 6251, 7841, 9821, 14984],
     },{
       label: "Yoga",
       backgroundColor: "rgba(140,140,140, 1)",
@@ -27,8 +22,8 @@ var myLineChart = new Chart(ctx, {
       data: [5215, 6312, 7251, 5841, 7821, 10984],
     },{
         label: "Food",
-        backgroundColor: "rgba(255,94,0, 1)",
-        borderColor: "rgba(255,94,0,1)",
+        backgroundColor: "rgba(255,158,128,1)",
+        borderColor: "rgba(255,158,128,1)",
         data: [6111, 2457, 6471, 4467, 5214, 7851],
       }
     ],
