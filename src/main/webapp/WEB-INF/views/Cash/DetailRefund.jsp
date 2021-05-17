@@ -51,43 +51,46 @@
 				<div class="divider-custom" style="display: block;">
 					<hr style="background-color: black;">
 				</div>
-				<table style="width: 100%;">
-					<tr>
-						<th colspan="6" style="text-align: left;">
-							<h5>결제 정보</h6>
-						</th>
-					</tr>
-					<tr>
-						<th colspan="5">
-							<h6 style="text-align: left;">상품금액</h6>
-						</th>
-						<th style="text-align: right;"><h6>8,000원</h6>
-					</tr>
-					<tr>
-						<th colspan="5">
-							<h6 style="text-align: left;">배송비</h6>
-						</th>
-						<th style="text-align: right;"><h6>3,000원</h6>
-					</tr>
-					<tr>
-						<th colspan="5">
-							<h6 style="text-align: left;">사용한 마일리지</h6>
-						</th>
-						<th style="text-align: right;"><h6 style="color:red;">1,000원</h6>
-					</tr>
-					<tr>
-						<th colspan="5">
-							<h6 style="text-align: left;">결제금액</h6>
-						</th>
-						<th style="text-align: right;"><h3>10,000원</h3>
-					</tr>
-				</table>
-					<div class="divider-custom" style="display: block;">
-						<hr style="background-color: black;">
-					</div>
-
-					<table>
+				<!-- 상품금액 배송비 사용한마일리지 결제금액 DB들어가야함 -->
+						<table style="width: 100%;">
+							<tr>
+								<th colspan="6" style="text-align: left;">
+									<h5>결제 정보</h6>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="5">
+									<h6 style="text-align: left;">상품금액</h6>
+								</th>
+								<th style="text-align: right;"><h6>5,000원</h6>
+							</tr>
+							<tr>
+								<th colspan="5">
+									<h6 style="text-align: left;">배송비</h6>
+								</th>
+								<th style="text-align: right;"><h6>3,000원</h6>
+							</tr>
+							<tr>
+								<th colspan="5">
+									<h6 style="text-align: left;">사용한 마일리지</h6>
+								</th>
+								<th style="text-align: right;"><h6 style="color:red;">1,000원</h6>
+							</tr>
+							<tr>
+								<th colspan="5">
+									<h6 style="text-align: left;">결제금액</h6>
+								</th>
+								<th style="text-align: right;"><h3>10,000원</h3>
+							</tr>
+						</table>
+						<div class="divider-custom" style="display: block;">
+							<hr style="background-color: black;">
+						</div>
+						<table>
 						<tr style="width: 100%;">
+						<% int i = 0;%>
+						<c:forEach items="${productList}" var="product">
+							<c:if test="${product.getpName() eq '맛있닭(닭가슴살)' }">
 						<tr>
 							<th colspan="4">
 								<h6 style="text-align: left;">상품 정보</h6>
@@ -96,13 +99,15 @@
 						</tr>
 						<tr>
 							<th style="width: 200px;"><a href="#"> <img
-									class="img-fluid" src="resources/assets/FoodImg/f2.jpg"
+									class="img-fluid" src="${product.getpUrl() }"
 									style="width: 110px; height: 100px;" /></a></th>
-							<th style="width: 300px;">프로틴(초코맛)</th>
-							<th style="width: 250px;">8,000원</th>
+							<th style="width: 300px;">${product.getpName() }</th>
+							<th style="width: 250px;">${product.getpPrice() }원</th>
 							<th style="width: 250px;">1 개</th>
 							<th style="width: 150px;"><h style="color:orange;">2021.04.02</h></th>
 						</tr>
+						</c:if>
+						</c:forEach>
 					</table>
 					<!-- 밑줄  -->
 					<div class="divider-custom" style="display: block;">
@@ -116,23 +121,27 @@
 								<h5>배송지 정보</h4>
 							</th>
 						</tr>
+						
+						<c:forEach items="${memberList}" var="member">
+							<c:if test="${member.getmName() eq '장혁수' }">
 						<tr>
 							<th colspan="5"><h style="text-align: left;">수령자</h></th>
-							<th style="text-align: right;"><h>장혁수</h>
+							<th style="text-align: right;"><h>${member.getmName() }</h>
 						</tr>
 						<tr>
 							<th colspan="5"><h style="text-align: left;">배송지</h></th>
-							<th style="text-align: right;"><h>서울 노원구 꾸준로82길 6(거북동,
-								주식아너스빌) 102동 802호</h>
+							<th style="text-align: right;"><h>${member.getmAddr() }</h>
 						</tr>
 						<tr>
 							<th colspan="5"><h style="text-align: left;">연락처</h></th>
-							<th style="text-align: right;"><h>010-8282-8947</h>
+							<th style="text-align: right;"><h>${member.getmPhone() }</h>
 						</tr>
 						<tr>
 							<th colspan="5"><h style="text-align: left;">배송메세지</h></th>
 							<th style="text-align: right;"><h>부재시 문앞에 놔주세요</h>
 						</tr>
+							</c:if>
+						</c:forEach>
 					</table>
 				</div>
 			</div>

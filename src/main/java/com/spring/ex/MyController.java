@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.dto.BoardDTO;
+import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.service.ServiceTurtle;
@@ -208,14 +209,26 @@ public class MyController {
 	}
 	
 	// 주문조회 페이지
-	@RequestMapping("/JumunSearch")
-	public String JumunSearch() {
+	@RequestMapping(value = "/JumunSearch", method = RequestMethod.GET)
+	public String JumunSearch(Model model) throws Exception {
+		
+		List<ProductDto> list = service.productList();
+		
+		model.addAttribute("productList", list);
+		
 		return "Login/JumunSearch";
 	}
 	
 	// 주문상품 상세보기 페이지
-	@RequestMapping("/DetailOrder")
-	public String DetailOrder() {
+	@RequestMapping(value = "/DetailOrder", method = RequestMethod.GET)
+	public String DetailOrder(Model model) throws Exception {
+		
+		List<ProductDto> list = service.productList();
+		List<MemberDto> list2 = service.memberList();
+		
+		model.addAttribute("productList", list);
+		model.addAttribute("memberList", list2);
+		
 		return "Cash/DetailOrder";
 	}
 	
@@ -232,8 +245,15 @@ public class MyController {
 	}
 	
 	// 환불상품 상세보기 페이지
-	@RequestMapping("DetailRefund")
-	public String DetailRefund() {
+	@RequestMapping(value = "DetailRefund", method = RequestMethod.GET)
+	public String DetailRefund(Model model) throws Exception {
+		
+		List<ProductDto> list = service.productList();
+		List<MemberDto> list2 = service.memberList();
+		
+		model.addAttribute("productList", list);
+		model.addAttribute("memberList",list2);
+		
 		return "Cash/DetailRefund";
 	}
 	
@@ -244,16 +264,15 @@ public class MyController {
 	}
 	
 	// 고객문의게시판
-	@RequestMapping("CustomerWriteView")
-	public String CustomerWriteView() {
+	@RequestMapping(value = "CustomerWriteView", method = RequestMethod.GET)
+	public String CustomerWriteView(Model model) throws Exception {
+		
+		List<BoardDTO> list = service.boardList();
+		
+		model.addAttribute("boardList",list);
+		
 		return "Board/CustomerWriteView";
 	}
-	
-	// 고객문의 글쓰기 페이지
-	/*
-	 * @RequestMapping("CustomerWrite") public String CustomerWrite() { return
-	 * "Board/CustomerWrite"; }
-	 */
 	
 	// 고객문의 글쓰기 페이지
 	@RequestMapping(value = "/CustomerWrite", method = RequestMethod.GET)
@@ -295,8 +314,13 @@ public class MyController {
 	}
 	
 	// 주문요청 내역
-	@RequestMapping("/OrderHistory")
-	public String OrderHistory() {
+	@RequestMapping(value = "/OrderHistory", method = RequestMethod.GET)
+	public String OrderHistory(Model model) throws Exception {
+		
+		List<JumunDto> list = service.jumunList();
+		
+		model.addAttribute("jumunList", list);
+		
 		return "Master/Manage/OrderHistory";
 	}
 	
@@ -324,8 +348,13 @@ public class MyController {
 	}
 	
 	// 재고관리
-	@RequestMapping("/InventoryManage")
-	public String InventoryManage() {
+	@RequestMapping(value = "/InventoryManage", method = RequestMethod.GET)
+	public String InventoryManage(Model model) throws Exception {
+		
+		List<ProductDto> list = service.productList();
+		
+		model.addAttribute("productList", list);
+		
 		return "Master/Manage/InventoryManage";
 	}
 	
@@ -342,14 +371,24 @@ public class MyController {
 	}
 	
 	// 고객문의 목록
-	@RequestMapping("MCustomerWriteView")
-	public String MCustomerWriteView() {
+	@RequestMapping(value = "MCustomerWriteView", method = RequestMethod.GET)
+	public String MCustomerWriteView(Model model) throws Exception {
+		
+		List<BoardDTO> list = service.boardList();
+		
+		model.addAttribute("boardList", list);
+		
 		return "Master/Customer/MCustomerWriteView";
 	}
 	
 	// 고객문의 상세내용 보기
-	@RequestMapping("/ComplainView")
-	public String ComplainView() {
+	@RequestMapping(value = "/ComplainView", method = RequestMethod.GET)
+	public String ComplainView(Model model) throws Exception {
+		
+		List<BoardDTO> list = service.boardList();
+		
+		model.addAttribute("boardList", list);
+		
 		return "Master/Customer/ComplainView";
 	}
 	

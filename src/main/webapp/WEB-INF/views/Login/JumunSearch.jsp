@@ -84,15 +84,19 @@
                       <hr class="divider-custom" style="background-color:black;">
                    </div>
                    <!-- 주문내역 출력 -->
+                   <c:forEach items="${productList}" var="product">
+					 <c:if test="${product.getpName() eq '프로틴(초콜릿맛)' }">
                    <table style="width:100%;">
                      <tr style="height:100px;">
-                        <th style="width:200px; height:35px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/FoodImg/f2.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
-                        <th style="width:300px; height:35px;"><center><h4>프로틴(초코맛)</h4></center>
-                        <th style="width:250px; height:35px;"><center><h4>8,000원</h4></center>
+                        <th style="width:200px; height:35px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
+                        <th style="width:300px; height:35px;"><center><h4>${product.getpName() }</h4></center>
+                        <th style="width:250px; height:35px;"><center><h4>${product.getpPrice()}원</h4></center>
                         <th style="width:250px; height:35px;"><center><h4>1 개</h4></center>
                         <th style="width:150px; height:35px;"><center><h4 style="color:orange;">배송준비</h4></center></th> 
                      </tr>
-                   </table>    
+                   </table> 
+                  	 </c:if>
+                   </c:forEach>   
                </div>
              </div>
         </section>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,28 +107,20 @@
 							<td></td>
 							
 						</tr>
+					<% int i = 0; %>
+					<c:forEach items="${jumunList}" var="jumun">
 						<tr>
-							<td>2</td>
-							<td style="width: 20%;">스쿼트머신</td>
-							<td>2021.04.04</td>
-							<td>박남일</td>
-							<td>JavaIsMyLife</td>
-							<td style>2</td>
-							<td style>1.000,000</td>
-							<td style="color:red;">미등록</td>
+							<td>${jumun.getjNum() }</td>
+							<td style="width: 20%;">${jumun.getjName() }</td>
+							<td>${jumun.getjJumunDate() }</td>
+							<td>${jumun.getjCustomer() }</td>
+							<td>${jumun.getjId() }</td>
+							<td>${jumun.getjCount() }</td>
+							<td>${jumun.getjPrice() }</td>
+							<td style="color:red;">${jumun.getjState() }</td>
 							<td ><input type="submit" class="btn btn-primary pull-right" value="승인" /></td>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td style="width: 20%;">프로틴</td>
-							<td>2021.04.01</td>
-							<td>김규헌</td>
-							<td>Sexy~Kuehun</td>
-							<td>1</td>
-							<td >50,000</td>
-							<td style="color:blue;">등록</td>
-							<td ><input type="submit" class="btn btn-primary pull-right" value="승인" /></td>
-						</tr>
+				    </c:forEach>
 					</tbody>
 				</table>
 				

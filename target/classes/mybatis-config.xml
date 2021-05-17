@@ -7,7 +7,10 @@
 <!--MemberDto를 써야하는데 기니까 MemberDto라고 alias라고 선언 --><!--그후 Mappers에 mapper.xml-->
 
 <!-- 상품정보 Dto -->
-<typeAlias type="com.spring.ex.dto.ProductDto" alias="ProductDto"/> 
+<typeAlias type="com.spring.ex.dto.ProductDto" alias="ProductDto"/>
+
+<!-- 상품주문내역  Dto -->
+<typeAlias type="com.spring.ex.dto.JumunDto" alias="JumunDto"/> 
 
 <!-- 게시판작성 Dto -->
 <typeAlias type="com.spring.ex.dto.BoardDTO" alias="BoardDTO"/>

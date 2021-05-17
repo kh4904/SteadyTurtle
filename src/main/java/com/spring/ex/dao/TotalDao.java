@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.spring.ex.dto.BoardDTO;
+import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
 
@@ -41,7 +42,19 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectList(namespace+".product");
 	}
 	
-	// 게시판 글쓰기 insert문
+	// 주문내역 select문
+	@Override
+	public List<JumunDto> jumunList() throws Exception {
+		return sqlSessionTemplate.selectList(namespace+".jumun");
+	}
+
+	// 고객문의 게시판 목록 select문
+	@Override
+	public List<BoardDTO> boardList() throws Exception{
+		return sqlSessionTemplate.selectList(namespace+".board");
+	}
+	
+	// 고객문의 게시판 글쓰기 insert문
 	@Override
 	public void board(BoardDTO bdto) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".boardWrite", bdto);

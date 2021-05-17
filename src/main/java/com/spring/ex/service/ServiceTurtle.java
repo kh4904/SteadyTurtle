@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MemberDao;
 import com.spring.ex.dto.BoardDTO;
+import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
 
@@ -50,6 +51,28 @@ public class ServiceTurtle implements TurtleService{
 		return productDao.productList();
 	}
 	
+	// 상품정보
+	@Inject
+	private MemberDao JumunDao;
+		
+	@Override
+	public List<JumunDto> jumunList() throws Exception {
+	
+		return JumunDao.jumunList();
+	}
+	
+	// 고객문의 목록
+	@Inject
+	private MemberDao boardDao;
+		
+	@Override
+	public List<BoardDTO> boardList() throws Exception {
+		
+		return boardDao.boardList();
+	}
+	
+	
+	// 고객문의 글쓰기
 	@Inject MemberDao bdao;
 	
 	@Override

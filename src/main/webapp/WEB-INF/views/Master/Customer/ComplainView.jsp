@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,17 +107,22 @@
                  
                  <!-- 고객문의 내용 -->
                  <tbody>
+                 <% int i = 0; %>
+				 <c:forEach items="${boardList}" var="board">
+				  	<c:if test="${board.getbTitle() eq '제품에 이상이많아요' }">
                      <tr>
-                         <td colspan="2">기구가 파손되었어요.</td>
-                         <td>상품문의</td>
-                         <td>2021.05.06</td>
-                         <td>장혁수</td>
+                         <td colspan="2">${board.getbTitle() }</td>
+                         <td>${board.getbCate() }</td>
+                         <td>${board.getbDate() }</td>
+                         <td>${board.getmName() }</td>
                      </tr>
                      <tr>
                          <td colspan="6" style="height: 300px; text-align: left;">
-                         	택배를 받았는데 기구가 파손되어서 왔네요. 교환가능한가요?
+                         	${board.getbNote() }
                          </td>
                      </tr>
+                     </c:if>
+                  </c:forEach>
                      
                      <!-- 관리자가 답변달아주는곳 -->
                      <tr>

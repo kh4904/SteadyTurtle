@@ -17,7 +17,13 @@
 <!-- 상품정보 select문 -->
 <select id="product" resultType="ProductDto">SELECT * from product</select>
 
+<!-- 주문내역 select문 -->
+<select id="jumun" resultType="JumunDto">SELECT * from jumun</select>
+
+<!-- 게시판 목록 select문 -->
+<select id="board" resultType="BoardDTO">SELECT * from board</select>
+
 <!-- 게시판작성 -->
-<insert id="boardWrite">insert into board(mName, bNum, bTitle, bNote, bCate, bAnswer) values(#{mName}, 0, #{bTitle}, #{bNote}, #{bCate}, "미확인")</insert>
+<insert id="boardWrite">insert into board(mName, bNum, bTitle, bNote, bCate, bAnswer) values(#{mName}, 0, #{bTitle}, #{bNote}, #{bCate}, "미등록")</insert>
 </mapper>
 

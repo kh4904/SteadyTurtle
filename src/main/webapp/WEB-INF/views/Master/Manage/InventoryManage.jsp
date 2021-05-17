@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,22 +148,22 @@
                    <br />
                 <table style="width:100%;">
                    <tr>
-                      <td>
+                      <td style = "position:relative; left:50px;">
                          <h6>상품명</h6>
                       </td>
-                      <td>
+                      <td style = "position:relative; left:30px;">
                          <h6>수량</h6>
                       </td>
-                      <td>
+                      <td style = "position:relative; left:50px;">
                          <h6>상품명</h6>
                       </td>
-                      <td>
+                      <td style = "position:relative; left:30px;">
                          <h6>수량</h6>
                       </td>
-                      <td>
+                      <td style = "position:relative; left:50px;">
                          <h6>상품명</h6>
                       </td>
-                      <td>
+                      <td style = "position:relative; left:30px;">
                          <h6>수량</h6>
                       </td>
                    </tr>
@@ -172,57 +173,23 @@
                    <div class="divider-custom" style="display:block;">
                        <hr style="background-color:black;">
                    </div>
-                   <div class="col-lg-4">
+                   <% int i = 0; %>
+				<c:forEach items="${productList}" var="product">
+                   <div class="col-md-6 col-lg-4 mb-5">
                       <table style="width:100%">
                          <tr>
-                            <td rowspan="2">
-                               <img class="img-fluid" src="resources/assets/FoodImg/f2.jpg" style="width:110px; height: 100px;">
+                            <td>
+                               <img class="img-fluid" src="${product.getpUrl() }" style="width:110px; height: 100px;">
+                               <p style="font-size:20px;">${product.getpName() }</p>
                             </td>
                             <td>
-                               <h5>9개</h5>
-                            </td>   
-                         </tr>
-                         <tr>
-                            <td>
+                               <h5>${product.getpCount() }개</h5>
                                <a class="btn" href="#" style="background-color:#e0e0e0;">추가하기</a>
-                            </td>
+                            </td>   
                          </tr>
                       </table>
                    </div>
-                   <div class="col-lg-4">
-                      <table style="width:100%">
-                         <tr>
-                            <td rowspan="2">
-                               <img class="img-fluid" src="resources/assets/FoodImg/f3.jpg" style="width:110px; height: 100px;">
-                            </td>
-                            <td>
-                               <h5>9개</h5>
-                            </td>   
-                         </tr>
-                         <tr>
-                            <td>
-                               <a class="btn" href="#" style="background-color:#e0e0e0;">추가하기</a>
-                            </td>
-                         </tr>
-                      </table>
-                   </div>
-                   <div class="col-lg-4">
-                      <table style="width:100%">
-                         <tr>
-                            <td rowspan="2">
-                               <img class="img-fluid" src="resources/assets/FoodImg/f1.jpg" style="width:110px; height: 100px;">
-                            </td>
-                            <td>
-                               <h5>9개</h5>
-                            </td>   
-                         </tr>
-                         <tr>
-                            <td>
-                               <a class="btn" href="#" style="background-color:#e0e0e0;">추가하기</a>
-                            </td>
-                         </tr>
-                      </table>
-                   </div>
+                  </c:forEach>
              </div>
           </div>
        </div>

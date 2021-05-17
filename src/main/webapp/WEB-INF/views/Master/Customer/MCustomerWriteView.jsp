@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,28 +101,23 @@
 					<tbody>
 						<tr>
 							<td>글번호</td>
-							<td style="width: 20%;">글 제목</td>
-							<td>내용</td>
+							<td style="width: 20%;">카테고리</td>
+							<td>글 제목</td>
 							<td>작성자</td>
 							<td>작성일</td>
 							<td>답변현황</td>
 						</tr>
+						<% int i = 0; %>
+						<c:forEach items="${boardList}" var="board">
 						<tr>
-							<td>2</td>
-							<td style="width: 20%;">상품문의</a></td>
-							<td><a href="ComplainView">기구가파손되었어요</a></td>
-							<td>박남일</td>
-							<td>2021.04.04</td>
-							<td style="color:red;">미등록</td>
+							<td>${board.getbNum() }</td>
+							<td style="width: 20%;">${board.getbCate() }</a></td>
+							<td><a href="ComplainView">${board.getbTitle() }</a></td>
+							<td>${board.getmName() }</td>
+							<td>${board.getbDate() }</td>
+							<td style="color:red;">${board.getbAnswer() }</td>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td style="width: 20%;">결제문의</td>
-							<td><a href="ComplainView">국민카드결제오류</a></td>
-							<td>이동진</td>
-							<td>2021.04.01</td>
-							<td style="color:blue;">등록</td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 				

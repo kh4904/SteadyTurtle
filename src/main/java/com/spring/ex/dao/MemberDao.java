@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.spring.ex.dto.BoardDTO;
+import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
 
@@ -21,6 +22,12 @@ public interface MemberDao {
 	
 	// 상품정보 dto
 	public List<ProductDto> productList() throws Exception;
+	
+	// 주문내역 dto
+	public List<JumunDto> jumunList() throws Exception;
+	
+	// 게시판 목록 dto
+	public List<BoardDTO> boardList() throws Exception;
 	
 	// 게시판 dto
 	public void board(BoardDTO bdto) throws Exception;
