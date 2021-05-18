@@ -28,102 +28,108 @@
 <!-- 회원정보수정 마이페이지 -->
 <body id="page-top">
    <!-- Navigation 맨위 로고-->
-        <%@ include file="/WEB-INF/views/menu.jsp" %>
-      
+   <%@ include file="/WEB-INF/views/menu.jsp"%>
+
    <!-- 주문 -->
    <!-- 마이페이지 -->
    <section class="page-section portfolio">
       <div class="container">
          <div class="col-lg-12">
-            <h2>마이페이지</h2>
-            <table style="width: 100%;">
+            <c:if test="${member.mId != null }">
+               <h2>마이페이지</h2>
+               <table style="width: 100%;">
+                  <div class="divider-custom" style="display: block;">
+                     <hr style="background-color: black;">
+                  </div>
+                  <tr>
+                     <th colspan="2">
+                        <h6 style="text-align: left;">아이디(Email)</h6>
+                     </th>
+                     <th>
+                        <p style="margin-right: 300px;">
+                           ${member.mEmail } <input type="button" value="Email 변경">
+                        </p>
+                     </th>
+                  </tr>
+
+
+               </table>
+               <div class="divider-custom" style="display: block;">
+                  <hr size="1px">
+               </div>
+
+               <table>
+                  <tr>
+                     <th>
+                        <h6 style="text-align: left;">이름</h6>
+                     </th>
+
+                     <th>
+                        <p style="margin-left: 130px;">
+                           ${member.mName } <input type="button" value="개명하셨다면? 이름변경>">
+                        </p>
+                     </th>
+
+                  </tr>
+               </table>
+               <div class="divider-custom" style="display: block;">
+                  <hr size="1px">
+               </div>
+
+               </table>
+
+               <table>
+                  <tr>
+                     <th>
+                        <h6 style="text-align: left;">휴대폰 번호</h6>
+                     </th>
+
+                     <th>
+                        <p style="margin-left: 75px;">
+                           ${member.mPhone } <input type="button" value="휴대폰 번호 변경">
+                        </p>
+                     </th>
+
+                  </tr>
+               </table>
+               <div class="divider-custom" style="display: block;">
+                  <hr size="1px">
+               </div>
+               </table>
+
+               <table>
+                  <tr>
+                     <th>
+                        <h6 style="text-align: left;">배송지</h6>
+                     </th>
+
+                     <th>
+                        <p style="margin-left: 110px;">${member.mAddr }</p>
+                     </th>
+
+                  </tr>
+               </table>
+               <div class="divider-custom" style="display: block;">
+                  <hr size="1px">
+               </div>
+
+               <table>
+                  <br />
+                  <br />
+                  <div style="text-align: right;">
+                     <input type="button" class="btn btn-primary" value="회원탈퇴">
+                  </div>
+               </table>
                <div class="divider-custom" style="display: block;">
                   <hr style="background-color: black;">
                </div>
-               <tr>
-                  <th colspan="2">
-                     <h6 style="text-align: left;">아이디(Email)</h6>
-                  </th>
-                  <th>
-                     <p style="margin-right: 300px;">
-                        tosem2234@naver.com <input type="button" value="Email 변경">
-                     </p>
-                  </th>
-               </tr>
-
-
-            </table>
-            <div class="divider-custom" style="display: block;">
-               <hr size="1px">
-            </div>
-
-            <table>
-               <tr>
-                  <th>
-                     <h6 style="text-align: left;">이름</h6>
-                  </th>
-
-                  <th>
-                     <p style="margin-left: 130px;">
-                        원태연 <input type="button" value="개명하셨다면? 이름변경>">
-                     </p>
-                  </th>
-
-               </tr>
-            </table>
-            <div class="divider-custom" style="display: block;">
-               <hr size="1px">
-            </div>
-
-            </table>
-
-            <table>
-               <tr>
-                  <th>
-                     <h6 style="text-align: left;">휴대폰 번호</h6>
-                  </th>
-
-                  <th>
-                     <p style="margin-left: 75px;">
-                        010-7217-0511 <input type="button" value="휴대폰 번호 변경">
-                     </p>
-                  </th>
-
-               </tr>
-            </table>
-            <div class="divider-custom" style="display: block;">
-               <hr size="1px">
-            </div>
-            </table>
-
-            <table>
-               <tr>
-                  <th>
-                     <h6 style="text-align: left;">배송지</h6>
-                  </th>
-
-                  <th>
-                     <p style="margin-left: 110px;">
-                        서울 노원구 꾸준로82길 6(거북동, 주식아너스빌) 102동 802호
-                     </p>
-                  </th>
-
-               </tr>
-            </table>
-            <div class="divider-custom" style="display: block;">
-               <hr size="1px">
-            </div>
-
-            <table>
-               <br />
-               <br />
-               <div style="text-align: right;">
-                  <input type="button" class="btn btn-primary" value="회원탈퇴">
-               </div>
-            </table>
-            <div class="divider-custom" style="display: block;">
-               <hr style="background-color: black;">
-            </div>
+            </c:if>
+            <c:if test="${member.mId == null }">
+               <script>
+                  alert("로그인후 사용가능")
+                  location.href = "main";
+               </script>
+            </c:if>
          </div>
       </div>
    </section>

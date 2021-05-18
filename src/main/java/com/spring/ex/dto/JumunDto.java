@@ -13,6 +13,8 @@ public class JumunDto {
 	private String jCustomer;
 	// 상품 구매자 아이디
 	private String jId;
+	// 상품 이미지 저장경로
+	private String jUrl;	
 	// 상품 배송여부
 	private String jShip;
 	// 주문상품 주문일
@@ -57,6 +59,12 @@ public class JumunDto {
 	}
 	public void setjId(String jId) {
 		this.jId = jId;
+	}
+	public String getjUrl() {
+		return jUrl;
+	}
+	public void setjUrl(String jUrl) {
+		this.jUrl = jUrl;
 	}
 	public String getjShip() {
 		return jShip;

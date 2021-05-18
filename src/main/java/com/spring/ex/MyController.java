@@ -213,8 +213,12 @@ public class MyController {
 	public String JumunSearch(Model model) throws Exception {
 		
 		List<ProductDto> list = service.productList();
+		List<MemberDto> list2 = service.memberList();
+		List<JumunDto> list3 = service.jumunList();
 		
 		model.addAttribute("productList", list);
+		model.addAttribute("memberList", list2);
+		model.addAttribute("jumunList", list3);
 		
 		return "Login/JumunSearch";
 	}

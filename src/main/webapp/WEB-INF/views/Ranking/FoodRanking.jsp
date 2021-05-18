@@ -34,12 +34,13 @@
               </div>
               <!-- 판매랭킹,남여랭킹 선택부분 -->
               <div class="btn-group" role="group" aria-label="...">
-                  <button type="button" class="btn btn-default" style="background-color:#00e676;"><a href = "HealthRanking" style="text-decoration:none; color:black;">판매랭킹</a></button>
-                  <button type="button" class="btn btn-default" style ="background-color:#b9f6ca;"><a href = "ManRanking" style="text-decoration:none; color:black;">남여랭킹</a></button>
+                  <button type="button" class="btn btn-default" style="background-color:#ffff8d;"><a href = "HealthRanking" style="text-decoration:none; color:black;">판매랭킹</a></button>
+                  <button type="button" class="btn btn-default" style ="background-color:#999957;"><a href = "ManRanking" style="text-decoration:none; color:black;">남여랭킹</a></button>
               </div>
+               <br />
               <!-- 음식,헬스,요가 이미지 및 클릭시 이동  -->
               <div class="btn-group" role="group" aria-label="...">
-                <a href="FoodRanking"><img src = "resources/assets/RankingImg/Food.png" style="width:70px; height:50px;"></a>
+                <a href="FoodRanking"><img src = "resources/assets/RankingImg/Food.jpg" style="width:70px; height:50px;"></a>
                 <a href="HealthRanking"><img src = "resources/assets/RankingImg/Health.png" style="width:70px; height:50px;"></a>
                 <a href="YogaRanking"><img src = "resources/assets/RankingImg/Yoga.png" style="width:70px; height:50px;"></a>
               </div>

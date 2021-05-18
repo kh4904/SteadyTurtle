@@ -86,108 +86,128 @@
 			</div>
 
 
-			<%int i=0;%>
-                <!-- 상품 랭킹 1~5위 -->
-                <!-- 상품랭킹1위-->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '핸들링봉'}">
-                		<table style="width:100%">
-                   			<tr style="height:100px;">
-                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/first.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
-                   			</tr>
-                		</table>
-                		<!-- 밑줄  -->
-               			<div class="divider-custom" style="display:block;">
-                    		<hr style="background-color:black;">
-                		</div>
-                  </c:if>
-                </c:forEach>
-                
-                
-                <!-- 상품랭킹2위 -->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '요가복(여성)'}">
-                		<table style="width:100%">
-                   			<tr style="height:100px;">
-                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/second.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
-                   			</tr>
-                		</table>
-                		<!-- 밑줄  -->
-               			<div class="divider-custom" style="display:block;">
-                    		<hr style="background-color:black;">
-                		</div>
-                  </c:if>
-                </c:forEach>
-                
-                <!-- 상품랭킹3위 -->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '요가매트'}">
-                		<table style="width:100%">
-                   			<tr style="height:100px;">
-                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/third.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
-                   			</tr>
-                		</table>
-                		<!-- 밑줄  -->
-               			<div class="divider-custom" style="display:block;">
-                    		<hr style="background-color:black;">
-                		</div>
-                  </c:if>
-                </c:forEach>
-                
-                <!-- 상품랭킹4위 -->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '돌기마사지봉'}">
-                		<table style="width:100%">
-                   			<tr style="height:100px;">
-                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/forth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
-                   			</tr>
-                		</table>
-                		<!-- 밑줄  -->
-               			<div class="divider-custom" style="display:block;">
-                    		<hr style="background-color:black;">
-                		</div>
-                  </c:if>
-                </c:forEach>
-                
-                <!-- 상품랭킹5위 -->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '요가매트(칼라)'}">
-                		<table style="width:100%">
-                   			<tr style="height:100px;">
-                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/fifth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
-                   			</tr>
-                		</table>
-                		<!-- 밑줄  -->
-               			<div class="divider-custom" style="display:block;">
-                    		<hr style="background-color:black;">
-                		</div>
-                  </c:if>
-                </c:forEach>
+			<!-- 상품 랭킹 1~5위 -->
+			<!-- 상품랭킹1위-->
+			<table style="width: 100%">
+				<tr style="height: 100px;">
+					<th style="width: 150px; height: 43px;"><img class="img-fluid"
+						src="resources/assets/RankingImg/first.png"
+						style="width: 70px; height: 50px; text-align: center" alt="" /></th>
+					<th style="width: 150px; height: 43px;"><a href="#"><img
+							class="img-fluid" src="resources/assets/FoodImg/f2.jpg"
+							style="width: 120px; height: 100px; text-align: center" alt="" /></a>
+					<th style="width: 200px; height: 43px;"><h3
+							style="text-align: center">상품명</h3>
+					<th style="width: 150px; height: 43px;"><h3
+							style="text-align: center">가격</h3>
+					<th style="width: 200px; height: 43px;"><h3
+							style="text-align: center">1%</h3>
+					<th style="width: 200px; height: 43px;"><h3
+							style="text-align: center">무료배송</h3></th>
+				</tr>
+			</table>
+			<!-- 밑줄  -->
+			<div class="divider-custom" style="display: block;">
+				<hr style="background-color: black;">
+			</div>
+
+			<!-- 상품랭킹2위 -->
+			<table style="width: 100%">
+				<tr style="height: 100px;">
+					<th style="width: 150px; height: 43px;"><img class="img-fluid"
+						src="resources/assets/RankingImg/second.png"
+						style="width: 70px; height: 50px; text-align: center" alt="" /></th>
+					<th style="width: 150px; height: 43px;"><a href="#"><img
+							class="img-fluid" src="resources/assets/YogaImg/y1.jpg"
+							style="width: 120px; height: 100px; text-align: center" alt="" /></a>
+					<th style="width: 200px; height: 43px;"><h3
+							style="text-align: center">상품명</h3>
+					<th style="width: 150px; height: 43px;"><h3
+							style="text-align: center">가격</h3>
+					<th style="width: 200px; height: 43px;"><h3
+							style="text-align: center">1%</h3>
+					<th style="width: 200px; height: 43px;"><h3
+							style="text-align: center">무료배송</h3></th>
+				</tr>
+			</table>
+			<!-- 밑줄 -->
+			<div class="divider-custom" style="display: block;">
+				<hr style="background-color: black;">
+			</div>
+
+			<!-- 상품랭킹3위 -->
+			<table style="width: 100%">
+				<tr style="height: 100px;">
+					<th style="width: 150px; height: 43px;"><img class="img-fluid"
+						src="resources/assets/RankingImg/third.png"
+						style="width: 70px; height: 50px; text-align: center" alt="" /></th>
+					<th style="width: 150px; height: 43px;"><a href="#"><img
+							class="img-fluid" src="resources/assets/YogaImg/y2.jpg"
+							style="width: 120px; height: 100px; text-align: center" alt="" /></a>
+					<th style="width: 200px; height: 43px;"><h3
+							style="text-align: center">상품명</h3>
+					<th style="width: 150px; height: 43px;"><h3
+							style="text-align: center">가격</h3>
+					<th style="width: 200px; height: 43px;"><h3
+							style="text-align: center">1%</h3>
+					<th style="width: 200px; height: 43px;"><h3
+							style="text-align: center">무료배송</h3></th>
+				</tr>
+			</table>
+			<!-- 밑줄 -->
+			<div class="divider-custom" style="display: block;">
+				<hr style="background-color: black;">
+			</div>
+
+			<!-- 상품랭킹4위 -->
+			<table style="width: 100%">
+				<tr style="height: 100px;">
+					<th style="width: 150px; height: 43px;"><img class="img-fluid"
+						src="resources/assets/RankingImg/forth.png"
+						style="width: 70px; height: 50px; text-align: center" alt="" /></th>
+					<th style="width: 150px; height: 43px;"><a href="#"><img
+							class="img-fluid" src="resources/assets/FoodImg/f1.jpg"
+							style="width: 120px; height: 100px; text-align: center" alt="" /></a>
+					<th style="width: 200px; height: 43px;">
+						<h3 style="text-align: center">상품명</h3>
+					<th style="width: 150px; height: 43px;">
+						<h3 style="text-align: center">가격</h3>
+					<th style="width: 200px; height: 43px;">
+						<h3 style="text-align: center">1%</h3>
+					<th style="width: 200px; height: 43px;">
+						<h3 style="text-align: center">무료배송</h3>
+					</th>
+				</tr>
+			</table>
+			<!-- 밑줄 -->
+			<div class="divider-custom" style="display: block;">
+				<hr style="background-color: black;">
+			</div>
+
+			<!-- 상품랭킹5위 -->
+			<table style="width: 100%">
+				<tr style="height: 100px;">
+					<th style="width: 150px; height: 43px;"><img class="img-fluid"
+						src="resources/assets/RankingImg/fifth.png"
+						style="width: 70px; height: 50px; text-align: center" alt="" /></th>
+					<th style="width: 150px; height: 43px;"><a href="#"><img
+							class="img-fluid" src="resources/assets/FoodImg/f3.jpg"
+							style="width: 120px; height: 100px; text-align: center" alt="" /></a>
+					<th style="width: 200px; height: 43px;">
+						<h3 style="text-align: center">상품명</h3>
+					<th style="width: 150px; height: 43px;">
+						<h3 style="text-align: center">가격</h3>
+					<th style="width: 200px; height: 43px;">
+						<h3 style="text-align: center">1%</h3>
+					<th style="width: 200px; height: 43px;">
+						<h3 style="text-align: center">무료배송</h3>
+					</th>
+				</tr>
+			</table>
+			<!-- 밑줄 -->
+			<div class="divider-custom" style="display: block;">
+				<hr style="background-color: black;">
+			</div>
 		</div>
 	</section>
 

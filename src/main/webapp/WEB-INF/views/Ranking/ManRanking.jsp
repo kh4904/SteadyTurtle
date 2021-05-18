@@ -34,13 +34,14 @@
               </div>
               <!-- 판매랭킹,남여랭킹 선택부분 -->
               <div class="btn-group" role="group" aria-label="...">
-                  <button type="button" class="btn btn-default" style="background-color:#b9f6ca;"><a href = "HealthRanking" style="text-decoration:none; color:black;">판매랭킹</a></button>
-                  <button type="button" class="btn btn-default" style ="background-color:#00e676;"><a href = "ManRanking" style="text-decoration:none; color:black;">남여랭킹</a></button>
+                  <button type="button" class="btn btn-default" style="background-color:#999957;"><a href = "HealthRanking" style="text-decoration:none; color:black;">판매랭킹</a></button>
+                  <button type="button" class="btn btn-default" style ="background-color:#ffff8d;"><a href = "ManRanking" style="text-decoration:none; color:black;">남여랭킹</a></button>
               </div>
+              <br />
               <!-- 남성회원 여성회원 이미지 및 클릭시 이동  -->
               <div class="btn-group" role="group" aria-label="...">
-                <a href="ManRanking"><img src = "resources/assets/RankingImg/man.png" style="width:70px; height:50px;"></a>
-                <a href="WomanRanking"><img src = "resources/assets/RankingImg/woman.png" style="width:70px; height:50px;"></a>
+                <a href="ManRanking"><img src = "resources/assets/RankingImg/man.jpg" style="width:80px; height:70px;"></a>
+                <a href="WomanRanking"><img src = "resources/assets/RankingImg/woman.jpg" style="width:80px; height:70px;"></a>
               </div>
               <p style = "color:black; font-size:12px;">남성회원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;여성회원</p>
            </div>
@@ -69,108 +70,86 @@
                 </div>
                 
                 
-                <%int i=0;%>
                 <!-- 상품 랭킹 1~5위 -->
                 <!-- 상품랭킹1위-->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '런닝머신'}">
-                		<table style="width:100%">
-                   			<tr style="height:100px;">
-                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/first.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
-                   			</tr>
-                		</table>
-                		<!-- 밑줄  -->
-               			<div class="divider-custom" style="display:block;">
-                    		<hr style="background-color:black;">
-                		</div>
-                  </c:if>
-                </c:forEach>
-                
+                <table style="width:100%">
+                   <tr style="height:100px;">
+                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/first.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/FoodImg/f1.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
+                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th> 
+                   </tr>
+                </table>
+                <!-- 밑줄  -->
+                <div class="divider-custom" style="display:block;">
+                    <hr style="background-color:black;">
+                </div>
                 
                 <!-- 상품랭킹2위 -->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '하체튼튼철봉'}">
-                		<table style="width:100%">
-                   			<tr style="height:100px;">
-                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/second.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
-                   			</tr>
-                		</table>
-                		<!-- 밑줄  -->
-               			<div class="divider-custom" style="display:block;">
-                    		<hr style="background-color:black;">
-                		</div>
-                  </c:if>
-                </c:forEach>
+                <table style="width:100%">
+                   <tr style="height:100px;">
+                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/second.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/YogaImg/y2.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
+                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th> 
+                   </tr>
+                </table>
+                <!-- 밑줄 -->
+                <div class="divider-custom" style="display:block;">
+                    <hr style="background-color:black;">
+                </div>
                 
                 <!-- 상품랭킹3위 -->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '스쿼트기구'}">
-                		<table style="width:100%">
-                   			<tr style="height:100px;">
-                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/third.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
-                   			</tr>
-                		</table>
-                		<!-- 밑줄  -->
-               			<div class="divider-custom" style="display:block;">
-                    		<hr style="background-color:black;">
-                		</div>
-                  </c:if>
-                </c:forEach>
+                <table style="width:100%">
+                   <tr style="height:100px;">
+                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/third.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/YogaImg/y1.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
+                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th>
+                   </tr>
+                </table>
+                <!-- 밑줄 -->
+                <div class="divider-custom" style="display:block;">
+                    <hr style="background-color:black;">
+                </div>
                 
                 <!-- 상품랭킹4위 -->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '덤벨'}">
-                		<table style="width:100%">
-                   			<tr style="height:100px;">
-                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/forth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
-                   			</tr>
-                		</table>
-                		<!-- 밑줄  -->
-               			<div class="divider-custom" style="display:block;">
-                    		<hr style="background-color:black;">
-                		</div>
-                  </c:if>
-                </c:forEach>
+                <table style="width:100%">
+                   <tr style="height:100px;">
+                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/forth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/HealthImg/h1.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
+                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th>
+                   </tr>
+                </table>
+                <!-- 밑줄 -->
+                <div class="divider-custom" style="display:block;">
+                    <hr style="background-color:black;">
+                </div>
                 
                 <!-- 상품랭킹5위 -->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '어깨당겨기구'}">
-                		<table style="width:100%">
-                   			<tr style="height:100px;">
-                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/fifth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
-                   			</tr>
-                		</table>
-                		<!-- 밑줄  -->
-               			<div class="divider-custom" style="display:block;">
-                    		<hr style="background-color:black;">
-                		</div>
-                  </c:if>
-                </c:forEach>
+                <table style="width:100%">
+                   <tr style="height:100px;">
+                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/fifth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/FoodImg/f2.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
+                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th>
+                   </tr>
+                </table>
+                <!-- 밑줄 -->
+                <div class="divider-custom" style="display:block;">
+                    <hr style="background-color:black;">
+                </div>
             </div>  
         </section>
         
