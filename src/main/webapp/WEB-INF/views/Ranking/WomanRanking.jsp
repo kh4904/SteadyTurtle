@@ -40,21 +40,19 @@
 			</div>
 			<!-- 판매랭킹,남여랭킹 선택부분 -->
 			<div class="btn-group" role="group" aria-label="...">
-				<a type="button" class="btn btn-default" href="HealthRanking"
-					style="text-decoration: none; color: black; background-color: #b9f6ca;">판매랭킹</a>
-				<a type="button" class="btn btn-default" href="ManRanking"
-					style="background-color: #00e676; text-decoration: none; color: black;">남여랭킹</a>
-			</div>
-			<!-- 남성회원 여성회원 이미지 및 클릭시 이동  -->
-			<div class="btn-group" role="group" aria-label="...">
-				<a href="ManRanking"><img
-					src="resources/assets/RankingImg/man.png"
-					style="width: 70px; height: 50px;"></a> <a href="WomanRanking"><img
-					src="resources/assets/RankingImg/woman.png"
-					style="width: 70px; height: 50px;"></a>
-			</div>
-			<p style="color: black; font-size: 12px;">남성회원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;여성회원</p>
-		</div>
+                  <div class="btn-group" role="group" aria-label="...">
+                  <button type="button" class="btn btn-default" style="background-color:#ffff8d;"><a href = "HealthRanking" style="text-decoration:none; color:black;">판매랭킹</a></button>
+                  <button type="button" class="btn btn-default" style ="background-color:#999957;"><a href = "ManRanking" style="text-decoration:none; color:black;">남여랭킹</a></button>
+             	  </div>
+            </div>
+              <br />
+              <!-- 남성회원 여성회원 이미지 및 클릭시 이동  -->
+              <div class="btn-group" role="group" aria-label="...">
+                <a href="ManRanking"><img src = "resources/assets/RankingImg/man1.png" style="width:60px; height:50px;"></a>
+                <a href="WomanRanking"><img src = "resources/assets/RankingImg/woman1.png" style="width:60px; height:50px;"></a>
+              </div>
+              <p style = "color:black; font-size:12px;">남성회원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;여성회원</p>
+        </div>
 	</header>
 	<!-- 여성회원순위 라벨 -->
 	<br>
@@ -87,128 +85,86 @@
 
 
 			<!-- 상품 랭킹 1~5위 -->
-			<!-- 상품랭킹1위-->
-			<table style="width: 100%">
-				<tr style="height: 100px;">
-					<th style="width: 150px; height: 43px;"><img class="img-fluid"
-						src="resources/assets/RankingImg/first.png"
-						style="width: 70px; height: 50px; text-align: center" alt="" /></th>
-					<th style="width: 150px; height: 43px;"><a href="#"><img
-							class="img-fluid" src="resources/assets/FoodImg/f2.jpg"
-							style="width: 120px; height: 100px; text-align: center" alt="" /></a>
-					<th style="width: 200px; height: 43px;"><h3
-							style="text-align: center">상품명</h3>
-					<th style="width: 150px; height: 43px;"><h3
-							style="text-align: center">가격</h3>
-					<th style="width: 200px; height: 43px;"><h3
-							style="text-align: center">1%</h3>
-					<th style="width: 200px; height: 43px;"><h3
-							style="text-align: center">무료배송</h3></th>
-				</tr>
-			</table>
-			<!-- 밑줄  -->
-			<div class="divider-custom" style="display: block;">
-				<hr style="background-color: black;">
-			</div>
-
-			<!-- 상품랭킹2위 -->
-			<table style="width: 100%">
-				<tr style="height: 100px;">
-					<th style="width: 150px; height: 43px;"><img class="img-fluid"
-						src="resources/assets/RankingImg/second.png"
-						style="width: 70px; height: 50px; text-align: center" alt="" /></th>
-					<th style="width: 150px; height: 43px;"><a href="#"><img
-							class="img-fluid" src="resources/assets/YogaImg/y1.jpg"
-							style="width: 120px; height: 100px; text-align: center" alt="" /></a>
-					<th style="width: 200px; height: 43px;"><h3
-							style="text-align: center">상품명</h3>
-					<th style="width: 150px; height: 43px;"><h3
-							style="text-align: center">가격</h3>
-					<th style="width: 200px; height: 43px;"><h3
-							style="text-align: center">1%</h3>
-					<th style="width: 200px; height: 43px;"><h3
-							style="text-align: center">무료배송</h3></th>
-				</tr>
-			</table>
-			<!-- 밑줄 -->
-			<div class="divider-custom" style="display: block;">
-				<hr style="background-color: black;">
-			</div>
-
-			<!-- 상품랭킹3위 -->
-			<table style="width: 100%">
-				<tr style="height: 100px;">
-					<th style="width: 150px; height: 43px;"><img class="img-fluid"
-						src="resources/assets/RankingImg/third.png"
-						style="width: 70px; height: 50px; text-align: center" alt="" /></th>
-					<th style="width: 150px; height: 43px;"><a href="#"><img
-							class="img-fluid" src="resources/assets/YogaImg/y2.jpg"
-							style="width: 120px; height: 100px; text-align: center" alt="" /></a>
-					<th style="width: 200px; height: 43px;"><h3
-							style="text-align: center">상품명</h3>
-					<th style="width: 150px; height: 43px;"><h3
-							style="text-align: center">가격</h3>
-					<th style="width: 200px; height: 43px;"><h3
-							style="text-align: center">1%</h3>
-					<th style="width: 200px; height: 43px;"><h3
-							style="text-align: center">무료배송</h3></th>
-				</tr>
-			</table>
-			<!-- 밑줄 -->
-			<div class="divider-custom" style="display: block;">
-				<hr style="background-color: black;">
-			</div>
-
-			<!-- 상품랭킹4위 -->
-			<table style="width: 100%">
-				<tr style="height: 100px;">
-					<th style="width: 150px; height: 43px;"><img class="img-fluid"
-						src="resources/assets/RankingImg/forth.png"
-						style="width: 70px; height: 50px; text-align: center" alt="" /></th>
-					<th style="width: 150px; height: 43px;"><a href="#"><img
-							class="img-fluid" src="resources/assets/FoodImg/f1.jpg"
-							style="width: 120px; height: 100px; text-align: center" alt="" /></a>
-					<th style="width: 200px; height: 43px;">
-						<h3 style="text-align: center">상품명</h3>
-					<th style="width: 150px; height: 43px;">
-						<h3 style="text-align: center">가격</h3>
-					<th style="width: 200px; height: 43px;">
-						<h3 style="text-align: center">1%</h3>
-					<th style="width: 200px; height: 43px;">
-						<h3 style="text-align: center">무료배송</h3>
-					</th>
-				</tr>
-			</table>
-			<!-- 밑줄 -->
-			<div class="divider-custom" style="display: block;">
-				<hr style="background-color: black;">
-			</div>
-
-			<!-- 상품랭킹5위 -->
-			<table style="width: 100%">
-				<tr style="height: 100px;">
-					<th style="width: 150px; height: 43px;"><img class="img-fluid"
-						src="resources/assets/RankingImg/fifth.png"
-						style="width: 70px; height: 50px; text-align: center" alt="" /></th>
-					<th style="width: 150px; height: 43px;"><a href="#"><img
-							class="img-fluid" src="resources/assets/FoodImg/f3.jpg"
-							style="width: 120px; height: 100px; text-align: center" alt="" /></a>
-					<th style="width: 200px; height: 43px;">
-						<h3 style="text-align: center">상품명</h3>
-					<th style="width: 150px; height: 43px;">
-						<h3 style="text-align: center">가격</h3>
-					<th style="width: 200px; height: 43px;">
-						<h3 style="text-align: center">1%</h3>
-					<th style="width: 200px; height: 43px;">
-						<h3 style="text-align: center">무료배송</h3>
-					</th>
-				</tr>
-			</table>
-			<!-- 밑줄 -->
-			<div class="divider-custom" style="display: block;">
-				<hr style="background-color: black;">
-			</div>
-		</div>
+                <!-- 상품랭킹1위-->
+                <table style="width:100%">
+                   <tr style="height:100px;">
+                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/first.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/FoodImg/f1.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
+                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th> 
+                   </tr>
+                </table>
+                <!-- 밑줄  -->
+                <div class="divider-custom" style="display:block;">
+                    <hr style="background-color:black;">
+                </div>
+                
+                <!-- 상품랭킹2위 -->
+                <table style="width:100%">
+                   <tr style="height:100px;">
+                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/second.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/YogaImg/y2.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
+                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th> 
+                   </tr>
+                </table>
+                <!-- 밑줄 -->
+                <div class="divider-custom" style="display:block;">
+                    <hr style="background-color:black;">
+                </div>
+                
+                <!-- 상품랭킹3위 -->
+                <table style="width:100%">
+                   <tr style="height:100px;">
+                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/third.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/YogaImg/y1.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
+                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th>
+                   </tr>
+                </table>
+                <!-- 밑줄 -->
+                <div class="divider-custom" style="display:block;">
+                    <hr style="background-color:black;">
+                </div>
+                
+                <!-- 상품랭킹4위 -->
+                <table style="width:100%">
+                   <tr style="height:100px;">
+                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/forth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/HealthImg/h1.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
+                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th>
+                   </tr>
+                </table>
+                <!-- 밑줄 -->
+                <div class="divider-custom" style="display:block;">
+                    <hr style="background-color:black;">
+                </div>
+                
+                <!-- 상품랭킹5위 -->
+                <table style="width:100%">
+                   <tr style="height:100px;">
+                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/fifth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/FoodImg/f2.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
+                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
+                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th>
+                   </tr>
+                </table>
+                <!-- 밑줄 -->
+                <div class="divider-custom" style="display:block;">
+                    <hr style="background-color:black;">
+                </div>
+            </div>
 	</section>
 
 	<!-- Copyright Section(맨밑 하단)-->

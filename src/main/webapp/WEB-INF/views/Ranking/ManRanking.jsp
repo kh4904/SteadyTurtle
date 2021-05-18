@@ -42,10 +42,10 @@
               <br />
               <!-- 남성회원 여성회원 이미지 및 클릭시 이동  -->
               <div class="btn-group" role="group" aria-label="...">
-                <a href="ManRanking"><img src = "resources/assets/RankingImg/man.png" style="width:80px; height:70px;"></a>
-                <a href="WomanRanking"><img src = "resources/assets/RankingImg/woman.png" style="width:80px; height:70px;"></a>
+                <a href="ManRanking"><img src = "resources/assets/RankingImg/man1.png" style="width:60px; height:50px;"></a>
+                <a href="WomanRanking"><img src = "resources/assets/RankingImg/woman1.png" style="width:60px; height:50px;"></a>
               </div>
-              <p style = "color:black; font-size:12px;">남성회원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;여성회원</p>
+              <p style = "color:black; font-size:12px;">남성회원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;여성회원</p>
            </div>
         </header>
         <!-- 남성회원순위 라벨 -->
