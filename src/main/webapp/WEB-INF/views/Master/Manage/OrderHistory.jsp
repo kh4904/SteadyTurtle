@@ -37,7 +37,7 @@
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<tbody>
 						<tr>
-						    <td></td>
+						    <td>주문번호</td>
 							<td>상품명</td>
 							<td style="width: 20%;">주문날짜</td>
 							<td>구매자</td>

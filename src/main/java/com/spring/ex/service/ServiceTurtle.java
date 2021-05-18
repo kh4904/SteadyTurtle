@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MemberDao;
+import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
@@ -51,7 +52,7 @@ public class ServiceTurtle implements TurtleService{
 		return productDao.productList();
 	}
 	
-	// 상품정보
+	// 주문내역 리스트
 	@Inject
 	private MemberDao JumunDao;
 		
@@ -59,6 +60,16 @@ public class ServiceTurtle implements TurtleService{
 	public List<JumunDto> jumunList() throws Exception {
 	
 		return JumunDao.jumunList();
+	}
+	
+	// 장바구니 리스트
+	@Inject
+	private MemberDao BasketDao;
+			
+	@Override
+	public List<BasketDto> basketList() throws Exception {
+		
+		return BasketDao.basketList();
 	}
 	
 	// 고객문의 목록

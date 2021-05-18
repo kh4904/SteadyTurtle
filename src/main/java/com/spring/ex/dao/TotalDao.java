@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
@@ -46,6 +47,12 @@ public class TotalDao implements MemberDao{
 	@Override
 	public List<JumunDto> jumunList() throws Exception {
 		return sqlSessionTemplate.selectList(namespace+".jumun");
+	}
+	
+	// 장바구니 select문
+	@Override
+	public List<BasketDto> basketList() throws Exception {
+		return sqlSessionTemplate.selectList(namespace+".basket");
 	}
 
 	// 고객문의 게시판 목록 select문

@@ -33,6 +33,7 @@
         <!-- 상품환불 조회 --> 
         <section class="page-section portfolio" style="height:1000px;">
             <div class="container">
+             <c:if test="${member.mId != null }">
                 <table style="width:100%">
                    <tr style="height:10px;">
 				   		<h3>상품환불</h3>
@@ -51,35 +52,33 @@
                     		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;주문상태
                 		</h5>
                 	</tr>
+                	<!-- 밑줄 -->
+                	<div class="divider-custom" style="display:block;">
+                    	<hr style="background-color:black;">
+                	</div>
                 	
-                	<!-- 상품정보 -->
+                <!-- 상품정보 -->
+                <c:forEach items="${jumunList}" var="jumun">
+                  <c:if test="${jumun.getjId() eq sessionScope.member.getmId()}">
                		<tr>
-                	<th style="width:300px;"><a href = "#"><img class="img-fluid" src="resources/assets/FoodImg/f2.jpg"  style="width:110px; height: 100px;"/></a></th>
-               		<th style="width:300px;">프로틴(초코맛)</th>
-                    <th style="width:300px;">2021.05.04</th>
-                    <th style="width:290px;">11145784</th>
-                    <th style="width:250px;">8,000원<br>1개</th>
-                    <th style="width:150px;"><h style="color:orange;">배송준비</h></th>
+                	<th style="width:250px;"><a href = "#"><img class="img-fluid" src="${jumun.getjUrl() }"  style="width:110px; height: 100px;"/></a></th>
+               		<th style="width:300px;">${jumun.getjName() }</th>
+                    <th style="width:350px;">${jumun.getjJumunDate() }</th>
+                    <th style="width:300px;">${jumun.getjNum() }</th>
+                    <th style="width:200px;">${jumun.getjPrice()}원<br>${jumun.getjCount() }개</th>
+                    <th style="width:150px;"><h style="color:orange;">${jumun.getjShip() }</h></th>
                     <th style="width:150px; height:100px;">
                         <!-- 주문취소 버튼 -->
                     	<input type="submit" class="btn btn-primary form-control" value="주문취소" style=" position:relative; top:-10px; height:40px; width: 100px;"></input>
                     	<!-- 상품환불 버튼 -->
                     	<a class ="btn" href = "DetailRefund" style="height:40px; width: 100px; background-color:#e0e0e0;">상품환불</a>
                     </th>
-                </tr>
-                
-                <!-- 밑줄 -->
-                <div class="divider-custom" style="display:block;">
-                    <hr style="background-color:black;">
-                </div>
-                
+                	</tr>
+                  </c:if>
+                </c:forEach>
                 </table>
-                <!-- 밑줄 -->
-                <div class="divider-custom" style="display:block;">
-                    <hr style="background-color:black;">
-                </div>
-        </div>
-				   
+             </c:if>
+        </div>   
         </section>
         
         <!-- Copyright Section(맨밑 하단)-->

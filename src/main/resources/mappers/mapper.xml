@@ -20,6 +20,9 @@
 <!-- 주문내역 select문 -->
 <select id="jumun" resultType="JumunDto">SELECT * from jumun</select>
 
+<!-- 장바구니 select문 -->
+<select id="basket" resultType="BasketDto">SELECT * from basket</select>
+
 <!-- 게시판 목록 select문 -->
 <select id="board" resultType="BoardDTO">SELECT * from board</select>
 

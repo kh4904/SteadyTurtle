@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
@@ -203,8 +204,13 @@ public class MyController {
 	}
 	
 	// 장바구니 페이지
-	@RequestMapping("/basket")
-	public String basket() {
+	@RequestMapping(value = "/basket", method = RequestMethod.GET)
+	public String basket(Model model) throws Exception {
+		
+		List<BasketDto> list = service.basketList();
+		
+		model.addAttribute("basketList", list);
+		
 		return "Login/basket";
 	}
 	
@@ -243,8 +249,13 @@ public class MyController {
 	}
 	
 	// 환불조회 페이지
-	@RequestMapping("refund")
-	public String refund() {
+	@RequestMapping(value = "refund", method = RequestMethod.GET)
+	public String refund(Model model) throws Exception {
+		
+		List<JumunDto> list = service.jumunList();
+		
+		model.addAttribute("jumunList", list);
+		
 		return "Cash/refund";
 	}
 	

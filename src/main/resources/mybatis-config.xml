@@ -10,7 +10,10 @@
 <typeAlias type="com.spring.ex.dto.ProductDto" alias="ProductDto"/>
 
 <!-- 상품주문내역  Dto -->
-<typeAlias type="com.spring.ex.dto.JumunDto" alias="JumunDto"/> 
+<typeAlias type="com.spring.ex.dto.JumunDto" alias="JumunDto"/>
+
+<!-- 장바구니  Dto -->
+<typeAlias type="com.spring.ex.dto.BasketDto" alias="BasketDto"/> 
 
 <!-- 게시판작성 Dto -->
 <typeAlias type="com.spring.ex.dto.BoardDTO" alias="BoardDTO"/>

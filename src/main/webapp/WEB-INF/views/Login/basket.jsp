@@ -33,31 +33,34 @@
 	<!-- 장바구니-->
 	<section class="page-section portfolio">
 		<div class="container" style="width: 1431px; height: 650px;">
-			<!-- 장바구니 문구 및 밑줄표시-->
+		<!-- 장바구니 문구 및 밑줄표시-->
 			<h2 class="page-section-heading text-uppercase text-secondary mb-0">장바구니</h2>
 			<!-- 밑줄 -->
 			<div class="divider-custom" style="display: block;">
 				<hr style="background-color: black;">
 			</div>
+			<c:if test="${member.mId != null }">
 
 			<!-- 장바구니에 담긴 상품 -->
 			<div class="row">
+			<c:forEach items="${basketList}" var="basket">
+                  <c:if test="${basket.getBsId() eq sessionScope.member.getmId()}">
 				<table style="width: 100%">
 					<tr style="height: 100px;">
 						<th style="width: 200px; height: 43px;"><center>
 								<a href="#"><img class="img-fluid"
-									src="resources/assets/FoodImg/f2.jpg"
+									src="${basket.getBsUrl()} "
 									style="width: 120px; height: 100px;" alt="" /></a>
 							</center>
 						<th style="width: 300px; height: 43px;"><center>
-								<h3>프로틴(초코맛)</h3>
+								<h3>${basket.getBsName() }</h3>
 							</center>
 						<th style="width: 250px; height: 43px;"><center>
 								<input type="number" class="input"
 									style="width: 60px; height: 30px;" value="1">
 							</center>
 						<th style="width: 250px; height: 43px;"><center>
-								<h3>8,000원</h3>
+								<h3>${basket.getBsPrice() }원</h3>
 							</center>
 						<th style="width: 150px; height: 43px;"><center>
 								<input type="checkbox" id="chkbox"
@@ -65,7 +68,10 @@
 							</center></th>
 					</tr>
 				</table>
+				</c:if>
+			</c:forEach>
 			</div>
+			</c:if>
 		</div>
 	</section>
 	<div class="container">
