@@ -40,19 +40,16 @@
 			</div>
 			<!-- 판매랭킹,남여랭킹 선택부분 -->
 			<div class="btn-group" role="group" aria-label="...">
-				<a type="button" class="btn btn-default" href="HealthRanking"
-					style="text-decoration: none; color: black; background-color: #b9f6ca;">판매랭킹</a>
-				<a type="button" class="btn btn-default" href="ManRanking"
-					style="background-color: #00e676; text-decoration: none; color: black;">남여랭킹</a>
-			</div>
-			<!-- 남성회원 여성회원 이미지 및 클릭시 이동  -->
-			<div class="btn-group" role="group" aria-label="...">
-				<a href="ManRanking"><img
-					src="resources/assets/RankingImg/man.png"
-					style="width: 70px; height: 50px;"></a> <a href="WomanRanking"><img
-					src="resources/assets/RankingImg/woman.png"
-					style="width: 70px; height: 50px;"></a>
-			</div>
+                  <button type="button" class="btn btn-default" style="background-color:#999957;"><a href = "HealthRanking" style="text-decoration:none; color:black;">판매랭킹</a></button>
+                  <button type="button" class="btn btn-default" style ="background-color:#ffff8d;"><a href = "ManRanking" style="text-decoration:none; color:black;">남여랭킹</a></button>
+              </div>
+              <!-- 밑줄 -->
+		      <br />
+			 <!-- 남성회원 여성회원 이미지 및 클릭시 이동  -->
+              <div class="btn-group" role="group" aria-label="...">
+                <a href="ManRanking"><img src = "resources/assets/RankingImg/man.png" style="width:80px; height:70px;"></a>
+                <a href="WomanRanking"><img src = "resources/assets/RankingImg/woman.png" style="width:80px; height:70px;"></a>
+              </div>
 			<p style="color: black; font-size: 12px;">남성회원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;여성회원</p>
 		</div>
 	</header>

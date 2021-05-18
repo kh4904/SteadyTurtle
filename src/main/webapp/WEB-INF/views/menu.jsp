@@ -5,8 +5,8 @@
 	<div class="container-fluid">
 		<div class="col-lg-4">
 			<a class="navbar-brand js-scroll-trigger" href="main"><img
-				src="resources/assets/img/SteadyTurtle.png"
-				style="width: 500px; height: 190px; position: relative; top: -40px; left: 80px;"></a>
+				src="resources/assets/img/TurtleIcon.png"
+				style="width: 300px; height: 200px; position: relative; top: -20px; left: 80px;"></a>
 		</div>
 		<!-- 검색창 -->
 		<div class="col-lg-5">
