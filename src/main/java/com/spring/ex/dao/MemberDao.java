@@ -20,4 +20,9 @@ public interface MemberDao {
 	
 	// 상품정보 dto
 	public List<ProductDto> productList() throws Exception;
+
+	//회원 수정 dto
+	public void MemberUpdate(MemberDto Mdto) throws Exception;
+	
+	
 }

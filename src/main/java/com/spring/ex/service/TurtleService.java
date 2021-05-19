@@ -22,4 +22,7 @@ public interface TurtleService {
 	/* 상품정보 list ProductDto를 productList()로 선언*/
 	public List<ProductDto> productList() throws Exception;
 	
+	/*수정하기위해 회원dto를 Mdto로 선언*/ 
+	void MemberUpdate(MemberDto mDto) throws Exception;
+	
 }
