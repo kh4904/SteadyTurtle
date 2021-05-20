@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,27 +43,21 @@
                   <tr>
                      <td>글번호</td>
                      <td style="width: 20%;">상품명</td>
-                     <td>게시날짜</td>
+                     <td>작성일</td>
                      <td>등급</td>
                      <td>작성자</td>
                      <td>환불현황</td>
                   </tr>
+                  <c:forEach items="${refundList}" var="refund">
                   <tr>
-                     <td>2</td>
-                     <td style="width: 20%;"><a href="#">상품7</a></td>
-                     <td><a href="#">2021.04.04</a></td>
-                     <td>플래티넘</td>
-                     <td>박남일</td>
-                     <td style="color:red;"><a href="MDetailRefund">환불신청</a></td>
+                     <td>${refund.getrNum() }</td>
+                     <td style="width: 20%;">${refund.getrProduct() }</td>
+                     <td>${refund.getrDate() }</td>
+                     <td>${refund.getrGrade() }</td>
+                     <td>${refund.getrName() }</td>
+                     <td style="color:red;"><a href="MDetailRefund">${refund.getrCheck() }</a></td>
                   </tr>
-                  <tr>
-                     <td>1</td>
-                     <td style="width: 20%;"><a href="#">상품2</a></td>
-                     <td><a href="#">2021.03.26</a></td>
-                     <td>플래티넘</td>
-                     <td>이동진</td>
-                     <td style="color:blue;">환불완료</td>
-                  </tr>
+                  </c:forEach>
                </tbody>
             </table>
             

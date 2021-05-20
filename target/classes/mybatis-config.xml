@@ -15,7 +15,10 @@
 <!-- 장바구니  Dto -->
 <typeAlias type="com.spring.ex.dto.BasketDto" alias="BasketDto"/> 
 
-<!-- 게시판작성 Dto -->
+<!-- 고객문의 Dto -->
 <typeAlias type="com.spring.ex.dto.BoardDTO" alias="BoardDTO"/>
+
+<!-- 환불요청 Dto -->
+<typeAlias type="com.spring.ex.dto.RefundDto" alias="RefundDto"/>
 </typeAliases>
 </configuration> 

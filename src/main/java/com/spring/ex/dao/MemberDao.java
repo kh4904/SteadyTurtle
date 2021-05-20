@@ -9,11 +9,15 @@ import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
+import com.spring.ex.dto.RefundDto;
 
 @Repository
 public interface MemberDao {
 	// 회원정보 dto
 	public List<MemberDto> memberList() throws Exception;
+	
+	//회원 수정 dto
+	public void MemberUpdate(MemberDto Mdto) throws Exception;
 	
 	// 회원가입 dto
 	public void register(MemberDto dto) throws Exception;
@@ -30,9 +34,12 @@ public interface MemberDao {
 	// 장바구니 dto
 	public List<BasketDto> basketList() throws Exception;
 	
-	// 게시판 목록 dto
+	// 고객문의 게시판 목록 dto
 	public List<BoardDTO> boardList() throws Exception;
 	
-	// 게시판 dto
+	// 고객문의 게시판 글쓰기 dto
 	public void board(BoardDTO bdto) throws Exception;
+	
+	// 환불요청 게시판 목록 dto
+	public List<RefundDto> refundList() throws Exception;
 }

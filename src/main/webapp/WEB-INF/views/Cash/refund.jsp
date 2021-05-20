@@ -33,8 +33,7 @@
         <!-- 상품환불 조회 --> 
         <section class="page-section portfolio" style="height:1000px;">
             <div class="container">
-             <c:if test="${member.mId != null }">
-                <table style="width:100%">
+            <table style="width:100%">
                    <tr style="height:10px;">
 				   		<h3>상품환불</h3>
 				   </tr>
@@ -56,6 +55,8 @@
                 	<div class="divider-custom" style="display:block;">
                     	<hr style="background-color:black;">
                 	</div>
+             <c:if test="${member.mId != null }">
+                
                 	
                 <!-- 상품정보 -->
                 <c:forEach items="${jumunList}" var="jumun">
@@ -76,8 +77,8 @@
                 	</tr>
                   </c:if>
                 </c:forEach>
-                </table>
              </c:if>
+             </table>
         </div>   
         </section>
         

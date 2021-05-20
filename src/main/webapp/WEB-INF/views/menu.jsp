@@ -163,6 +163,9 @@
 					<ul class="nav nav-tabs">
 						<li role="presentation" class="active"
 							style="position: relative; left: 60px; color: #000000;">회원</li>
+					    <c:if test ="${member.mMaster == 1 }">
+					       <li role="presentation" class="active" style="position: relative; left: 180px;"><a href="mainMaster" style="text-decoration:none; color:#bdbdbd;">관리자모드</a></li>
+					    </c:if>
 					</ul>
 					<ul class="nav nav-pills"
 						style="position: relative; top: 30px; left: 20px;">

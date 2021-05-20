@@ -9,6 +9,12 @@
 <insert id="register">INSERT INTO member( mId , mPw , mName, mGender, mPhone, mBirth, mEmail, mAddr, mGrade, mNote, mList, mMile, mCumulmile, mMaster)
 	                  VALUES(#{mId} , #{mPw}, #{mName}, #{mGender}, #{mPhone}, #{mBirth}, #{mEmail}, #{mAddr}, "브론즈", null, null, 0, 0, 0)</insert>
 
+<!--회원수정 update문 -->
+<update id="MemberUpdate">UPDATE member SET mEmail = #{mEmail} ,mName =#{mName},
+		mPhone =#{mPhone},mAddr=#{mAddr},mPw=#{mPw}
+		 WHERE mId = #{mId} 
+</update>
+
 <!-- 로그인 select문 -->
 <select id="login" parameterType="MemberDto" resultType="MemberDto">
 	select * from member where mId = #{mId} and mPw = #{mPw}
@@ -23,10 +29,13 @@
 <!-- 장바구니 select문 -->
 <select id="basket" resultType="BasketDto">SELECT * from basket</select>
 
-<!-- 게시판 목록 select문 -->
+<!-- 고객문의 게시판 목록 select문 -->
 <select id="board" resultType="BoardDTO">SELECT * from board</select>
 
-<!-- 게시판작성 -->
+<!-- 고객문의 게시판작성 -->
 <insert id="boardWrite">insert into board(mName, bNum, bTitle, bNote, bCate, bAnswer) values(#{mName}, 0, #{bTitle}, #{bNote}, #{bCate}, "미등록")</insert>
+
+<!-- 환불요청 게시판 목록 select문 -->
+<select id="refund" resultType="RefundDto">SELECT * from refundboard</select>
 </mapper>
 

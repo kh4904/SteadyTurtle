@@ -12,6 +12,7 @@ import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
+import com.spring.ex.dto.RefundDto;
 
 
 @Service
@@ -34,6 +35,12 @@ public class ServiceTurtle implements TurtleService{
 		
 		dao.register(dto);
 
+	}
+	
+	//회원수정
+	@Override
+	public void MemberUpdate(MemberDto mdto) throws Exception {
+		dao.MemberUpdate(mdto);
 	}
 	
 	//로그인
@@ -91,5 +98,15 @@ public class ServiceTurtle implements TurtleService{
 		
 		bdao.board(bdto);
 		
+	}
+	
+	// 환불요청 목록
+	@Inject
+	private MemberDao RefundDao;
+			
+	@Override
+	public List<RefundDto> refundList() throws Exception {
+			
+		return RefundDao.refundList();
 	}
 }

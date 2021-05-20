@@ -19,6 +19,7 @@ import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
+import com.spring.ex.dto.RefundDto;
 import com.spring.ex.service.ServiceTurtle;
 import com.spring.ex.service.TurtleService;
 
@@ -310,6 +311,17 @@ public class MyController {
 		return "Login/MyPage";
 	}
 	
+	// 회원정보 수정
+	@RequestMapping(value="MyPage",method = RequestMethod.POST)
+	public String MyPageUpdate(MemberDto mDto,HttpSession session) throws Exception{
+		
+		service.MemberUpdate(mDto);
+
+		session.invalidate(); 
+		
+		return "redirect:/MyPage";
+	}
+	
 	// 관리자모드 
 	// 메인페이지
 	@RequestMapping(value = "/mainMaster", method = RequestMethod.GET)
@@ -374,8 +386,13 @@ public class MyController {
 	}
 	
 	// 환불요청 목록
-	@RequestMapping("/MRefund")
-	public String MRefund() {
+	@RequestMapping(value = "/MRefund", method = RequestMethod.GET)
+	public String MRefund(Model model) throws Exception {
+		
+		List<RefundDto> list = service.refundList();
+		
+		model.addAttribute("refundList", list);
+		
 		return "Master/Customer/MRefund";
 	}
 	

@@ -46,7 +46,7 @@
                            <h3>관리자</h3>
                         </li>
                         <li role="presentation" style="position: relative; left: 70px;">
-                           <h3>원태연 님</h3>
+                           <h3>${member.mName } 님</h3>
                         </li>
                      </ul>
                      <br><br>

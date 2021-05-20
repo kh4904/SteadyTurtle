@@ -9,6 +9,7 @@ import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
+import com.spring.ex.dto.RefundDto;
 
 @Service
 public interface TurtleService {
@@ -18,6 +19,9 @@ public interface TurtleService {
 	
 	/* 회원가입 MemberDto를 dto로 선언 */
 	public void register(MemberDto dto) throws Exception;
+	
+	/* 회원수정 MemberUpdate 회원dto를 mDto로 선언*/ 
+	public void MemberUpdate(MemberDto mDto) throws Exception;
 	
 	//로그인 MemberDto를 ldto로 선언
 	public MemberDto login(MemberDto ldto) throws Exception;
@@ -31,10 +35,13 @@ public interface TurtleService {
 	/* 장바구니  list BasketDto를 basketList()로 선언*/
 	public List<BasketDto> basketList() throws Exception;
 	
-	// 게시판 list BoardDTO를 boardList로 선언
+	// 고객문의 게시판 list BoardDTO를 boardList로 선언
 	public List<BoardDTO> boardList() throws Exception;
 	
-	// 게시판 BoardDTO를 bdto로 선언
+	// 고객문의 글쓰기 BoardDTO를 bdto로 선언
 	public void boardWrite(BoardDTO bdto) throws Exception;
+	
+	// 환불요청 게시판 list RefundDto를 refundList로 선언
+	public List<RefundDto> refundList() throws Exception;
 	
 }

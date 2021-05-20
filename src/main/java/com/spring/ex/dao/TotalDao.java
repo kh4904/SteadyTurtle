@@ -12,6 +12,7 @@ import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
+import com.spring.ex.dto.RefundDto;
 
 @Repository
 public class TotalDao implements MemberDao{
@@ -29,6 +30,12 @@ public class TotalDao implements MemberDao{
 	@Override
 	public void register(MemberDto dto) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".register", dto);
+	}
+	
+	//회원 정보 update문 수정 
+	@Override
+	public void MemberUpdate(MemberDto Mdto) throws Exception {
+		sqlSessionTemplate.update(namespace + ".MemberUpdate", Mdto);
 	}
 	
 	// 로그인
@@ -65,5 +72,11 @@ public class TotalDao implements MemberDao{
 	@Override
 	public void board(BoardDTO bdto) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".boardWrite", bdto);
+	}
+	
+	// 환불요청 게시판 목록 select문
+	@Override
+	public List<RefundDto> refundList() throws Exception{
+		return sqlSessionTemplate.selectList(namespace+".refund");
 	}
 }
