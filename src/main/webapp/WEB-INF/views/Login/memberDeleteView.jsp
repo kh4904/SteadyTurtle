@@ -29,8 +29,8 @@
 <body id="page-top">
 	<!-- Navigation 맨위 로고-->
 	<%@ include file="/WEB-INF/views/menu.jsp"%>
-	
-	<c:if test ="${member.mId == null }">
+
+     <c:if test ="${member.mId == null }">
 		<script>
 			alert("로그인후 사용가능")
 			location.href="main";
@@ -39,79 +39,38 @@
 	
 	<!-- 주문 -->
 	<!-- 마이페이지 -->
-	<section class="page-section portfolio">
+	
+	<section class="page-section portfolio" style="height:600px;">
 		<div class="container">
 			<div class="col-lg-12">
-				<h2>마이페이지</h2>
+				<h2>회원탈퇴</h2>
 				<table style="width: 100%;">
 					<div class="divider-custom" style="display: block;">
 						<hr style="background-color: black;">
 					</div>
-
-					<form action="MyPage" method="POST">
-						<input type="hidden" id="mId" name="mId" value="${member.mId}">
-						<h1 style="position: relative; top: -20px; left: 400px;">회원수정</h1>
-						<br />
-
-						<!-- Email변경  -->
-						<div class="list-group"
-							style="position: relative; top: -20px; left: 200px;">
-							Email <input type="text" class="form-control"
-								placeholder="변경할 Email" id="mEmail" name="mEmail" maxlength="20"
-								value="${member.mEmail}"
-								style="width: 300px; height: 40px; position: relative; left: 130px; top: -30px;">
+					<!-- 회원탈퇴 버튼 -->
+					<form action="memberdelete" method="post">
+						<div>
+							<label class="control-Label" for="mId">ID</label> <input
+								class="form-control" type="text" id="mId" name="mId"
+								value="${member.mId }" redonly="redonly" />
+						</div>
+						<div>
+							<label class="control-Label" for="mPw">PW</label> <input
+								class="form-control" type="password" id="mPw" name="mPw" />
 						</div>
 
-						<!--  이름 변경 -->
-						<div class="list-group"
-							style="position: relative; top: -20px; left: 200px;">
-							이름 <input type="text" class="form-control" placeholder="변경할 이름 "
-								id="mName" name="mName" maxlength="20" value="${member.mName}"
-								style="width: 300px; height: 40px; position: relative; left: 130px; top: -30px;">
-						</div>
+						<div class="row" style="text-align: right;">
+							<input type="button" onclick="location.href='MyPage'"
+								class="btn btn-primary form-control" value="취소"
+								style="width: 150px; height: 40px; position: relative; top: 10px; left: 750px; background: #F15F5F">
 
-						<!-- 비밀번호 변경 -->
-						<div class="list-group"
-							style="position: relative; top: -20px; left: 200px;">
-							비밀번호 <input type="text" class="form-control"
-								placeholder="변경할 비밀번호" id="mPw" name="mPw" maxlength="20"
-								value="${member.mPw}"
-								style="width: 300px; height: 40px; position: relative; left: 130px; top: -30px;">
-						</div>
-
-						<!-- 휴대폰 번호 변경 -->
-						<div class="list-group"
-							style="position: relative; top: -20px; left: 200px;">
-							휴대폰 번호 <input type="text" class="form-control"
-								placeholder="변경할 휴대폰번호" id="mPhone" name="mPhone" maxlength="20"
-								value="${member.mPhone}"
-								style="width: 300px; height: 40px; position: relative; left: 130px; top: -30px;">
-						</div>
-
-						<!-- 배송지 변경 -->
-						<div class="list-group"
-							style="position: relative; top: -20px; left: 200px;">
-							배송지 <input type="text" class="form-control" placeholder="변경할 배송지"
-								id="mAddr" name="mAddr" maxlength="20" value="${member.mAddr}"
-								style="width: 300px; height: 40px; position: relative; left: 130px; top: -30px;">
-
-
-						</div>
-						<br>
-						<!-- 회원수정 버튼 -->
-						<div class="list-group" style="text-align: right;">
 							<input type="submit" class="btn btn-primary form-control"
-								value="회원수정"
-								style="width: 150px; height: 40px; position: relative; top: -50px; left: 480px;">
+								value="회원탈퇴"
+								style="width: 150px; height: 40px; position: relative; top: 10px; left: 768px; background: #F15F5F">
 						</div>
 					</form>
-					<!-- 회원탈퇴 버튼 -->
-					<div class="list-group" style="text-align: right;">
-							<a type="submit" href="memberDeleteView" class="btn btn-primary form-control"
-								
-								style="width: 150px; height: 40px; position: relative; top: 10px; left: 870px; background: #F15F5F">회원탈퇴</a>
 
-					</div>
 
 				</table>
 				<div class="divider-custom" style="display: block;">

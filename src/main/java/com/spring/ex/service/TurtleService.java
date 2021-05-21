@@ -26,6 +26,9 @@ public interface TurtleService {
 	//로그인 MemberDto를 ldto로 선언
 	public MemberDto login(MemberDto ldto) throws Exception;
 	
+	//회원탈퇴
+	public void memberdelete(MemberDto ddto) throws Exception;
+	
 	/* 상품정보 list ProductDto를 productList()로 선언*/
 	public List<ProductDto> productList() throws Exception;
 	

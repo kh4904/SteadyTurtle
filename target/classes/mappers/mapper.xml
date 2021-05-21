@@ -20,6 +20,9 @@
 	select * from member where mId = #{mId} and mPw = #{mPw}
 </select>
 
+<!-- 회원탈퇴 delete -->
+<delete id="memberdelete"> delete from member where mId = #{mId} and mPw = #{mPw} </delete>
+
 <!-- 상품정보 select문 -->
 <select id="product" resultType="ProductDto">SELECT * from product</select>
 

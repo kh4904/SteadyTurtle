@@ -49,6 +49,12 @@ public class ServiceTurtle implements TurtleService{
 		return dao.login(ldto);
 	}
 	
+	//회원탈퇴
+	@Override
+	public void memberdelete(MemberDto ddto) throws Exception{
+		dao.memberdelete(ddto);
+	}
+	
 	// 상품정보
 	@Inject
 	private MemberDao productDao;

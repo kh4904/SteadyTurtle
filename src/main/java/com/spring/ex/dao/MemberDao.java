@@ -25,6 +25,9 @@ public interface MemberDao {
 	// 로그인 dto
 	public MemberDto login(MemberDto ldto) throws Exception;
 	
+	// 회원탈퇴
+	public void memberdelete(MemberDto ddto) throws Exception;
+	
 	// 상품정보 dto
 	public List<ProductDto> productList() throws Exception;
 	

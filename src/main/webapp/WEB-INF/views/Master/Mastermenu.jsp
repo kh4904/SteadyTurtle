@@ -54,9 +54,11 @@
                      <!-- 회원정보수정,로그아웃 -->
                      <ul class="nav nav-pills" style="position: relative; top: -15px; left: 30px;">
                         <li role="presentation" class="active"><a href="MyPage" style="color:black; text-decoration:none;">회원정보수정</a></li>
-                        <li role="presentation" style="position: relative; left: 120px;">
-                           <a href="main" style="color:black; text-decoration:none;">로그아웃</a>
-                        </li>
+                        <form method="post" action="logout">
+								<input type="submit" class="btn btn-link" id="logoutbtn"
+									value="로그아웃"
+									style="font-size: 15px; font-family:여린굴림; color: black; text-decoration: none; position:relative; top:-8px; left: 120px;">
+							</form>
                      </ul>
                   </div>
                 </div>

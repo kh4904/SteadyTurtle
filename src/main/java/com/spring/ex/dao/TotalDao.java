@@ -44,6 +44,13 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectOne(namespace + ".login", ldto);
 	}
 	
+	// 회원탈퇴
+	@Override
+	public void memberdelete(MemberDto ddto) throws Exception {
+		sqlSessionTemplate.delete(namespace + ".memberdelete", ddto);
+		
+	}
+	
 	// 상품정보 select문
 	@Override
 	public List<ProductDto> productList() throws Exception {
