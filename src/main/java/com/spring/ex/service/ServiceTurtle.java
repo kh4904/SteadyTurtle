@@ -48,6 +48,14 @@ public class ServiceTurtle implements TurtleService{
 	public MemberDto login(MemberDto ldto) throws Exception{
 		return dao.login(ldto);
 	}
+	//회원수정
+	@Override
+	public void MemberUpdate(MemberDto mdto) throws Exception {
+		dao.MemberUpdate(mdto);
+
+	}
+	
+	
 	
 	// 상품정보
 	@Inject

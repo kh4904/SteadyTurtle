@@ -28,6 +28,7 @@ public interface TurtleService {
 
 	/* 상품정보 list ProductDto를 productList()로 선언 */
 	public List<ProductDto> productList() throws Exception;
+<<<<<<< HEAD
 
 	// 상품 수정 ProductDto 를 Pdto로 선언
 	void ProductUpdate(ProductDto Pdto) throws Exception;
@@ -47,4 +48,10 @@ public interface TurtleService {
 	// 환불요청 게시판 list RefundDto를 refundList로 선언
 	public List<RefundDto> refundList() throws Exception;
 
+=======
+	
+	/*수정하기위해 회원dto를 Mdto로 선언*/ 
+	void MemberUpdate(MemberDto mDto) throws Exception;
+	
+>>>>>>> refs/remotes/origin/Kuehun
 }

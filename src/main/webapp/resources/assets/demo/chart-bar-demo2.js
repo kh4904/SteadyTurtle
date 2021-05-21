@@ -17,8 +17,13 @@ var myLineChart = new Chart(ctx, {
       data: [4215, 5312, 6251, 7841, 9821, 14984],
     },{
       label: "Female",
+<<<<<<< HEAD
       backgroundColor: "rgba(255,94,0, 1)",
       borderColor: "rgba(255,94,0,1)",
+=======
+       backgroundColor: "rgba(255,158,128,1)",
+      borderColor: "rgba(255,158,128,1)",
+>>>>>>> refs/remotes/origin/Kuehun
       data: [5215, 6312, 7251, 5841, 7821, 10984],
     }
     ],

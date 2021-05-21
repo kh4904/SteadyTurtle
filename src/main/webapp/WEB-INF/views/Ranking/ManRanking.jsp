@@ -34,16 +34,29 @@
               </div>
               <!-- 판매랭킹,남여랭킹 선택부분 -->
               <div class="btn-group" role="group" aria-label="...">
+<<<<<<< HEAD
                   <div class="btn-group" role="group" aria-label="...">
                   <button type="button" class="btn btn-default" style="background-color:#ffff8d;"><a href = "HealthRanking" style="text-decoration:none; color:black;">판매랭킹</a></button>
                   <button type="button" class="btn btn-default" style ="background-color:#999957;"><a href = "ManRanking" style="text-decoration:none; color:black;">남여랭킹</a></button>
+=======
+                  <button type="button" class="btn btn-default" style="background-color:#999957;"><a href = "HealthRanking" style="text-decoration:none; color:black;">판매랭킹</a></button>
+                  <button type="button" class="btn btn-default" style ="background-color:#ffff8d;"><a href = "ManRanking" style="text-decoration:none; color:black;">남여랭킹</a></button>
+>>>>>>> refs/remotes/origin/Kuehun
               </div>
+<<<<<<< HEAD
               </div>
+=======
+>>>>>>> refs/remotes/origin/Kuehun
               <br />
               <!-- 남성회원 여성회원 이미지 및 클릭시 이동  -->
               <div class="btn-group" role="group" aria-label="...">
+<<<<<<< HEAD
                 <a href="ManRanking"><img src = "resources/assets/RankingImg/man1.png" style="width:60px; height:50px;"></a>
                 <a href="WomanRanking"><img src = "resources/assets/RankingImg/woman1.png" style="width:60px; height:50px;"></a>
+=======
+                <a href="ManRanking"><img src = "resources/assets/RankingImg/man.png" style="width:80px; height:70px;"></a>
+                <a href="WomanRanking"><img src = "resources/assets/RankingImg/woman.png" style="width:80px; height:70px;"></a>
+>>>>>>> refs/remotes/origin/Kuehun
               </div>
               <p style = "color:black; font-size:12px;">남성회원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;여성회원</p>
            </div>

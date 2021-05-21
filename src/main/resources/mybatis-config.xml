@@ -4,7 +4,7 @@
 <typeAliases> 
 <!-- 회원정보 및 회원가입 Dto -->
 <typeAlias type="com.spring.ex.dto.MemberDto" alias="MemberDto"/> 
-<!--MemberDto를 써야하는데 기니까 MemberDto라고 alias라고 선언 --><!--그후 Mappers에 mapper.xml-->
+<!--MemberDto를 써야하는데 기니까 MemberDto라고 alias라고 별명 --> <!--그후 Mappers에 mapper.xml-->
 
 <!-- 상품정보 Dto -->
 <typeAlias type="com.spring.ex.dto.ProductDto" alias="ProductDto"/>

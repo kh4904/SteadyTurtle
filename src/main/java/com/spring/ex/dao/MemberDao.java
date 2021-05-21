@@ -27,6 +27,7 @@ public interface MemberDao {
 	
 	// 상품정보 dto
 	public List<ProductDto> productList() throws Exception;
+<<<<<<< HEAD
 	
 	//상품 수정 dto
 	public void ProductUpdate(ProductDto Pdto) throws Exception;
@@ -45,4 +46,11 @@ public interface MemberDao {
 	
 	// 환불요청 게시판 목록 dto
 	public List<RefundDto> refundList() throws Exception;
+=======
+
+	//회원 수정 dto
+	public void MemberUpdate(MemberDto Mdto) throws Exception;
+	
+	
+>>>>>>> refs/remotes/origin/Kuehun
 }

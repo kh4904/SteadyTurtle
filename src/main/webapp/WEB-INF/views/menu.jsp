@@ -6,7 +6,11 @@
 		<div class="col-lg-4">
 			<a class="navbar-brand js-scroll-trigger" href="main"><img
 				src="resources/assets/img/TurtleIcon.png"
+<<<<<<< HEAD
 				style="width: 300px; height: 200px; position: relative; top: -20px; left: 120px;"></a>
+=======
+				style="width: 300px; height: 200px; position: relative; top: -20px; left: 80px;"></a>
+>>>>>>> refs/remotes/origin/Kuehun
 		</div>
 		<!-- 검색창 -->
 		<div class="col-lg-5">

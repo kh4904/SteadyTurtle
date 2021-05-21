@@ -102,7 +102,11 @@
 						<div class="list-group" style="text-align: right;">
 							<input type="submit" class="btn btn-primary form-control"
 								value="회원탈퇴"
+<<<<<<< HEAD
 								style="width: 150px; height: 40px; position: relative; top: 10px; left: 870px; background: #F15F5F">
+=======
+								style="width: 150px; height: 40px; position: relative; top: -50px; left: 480px; background: #F15F5F">
+>>>>>>> refs/remotes/origin/Kuehun
 						</div>
 					</form>
 

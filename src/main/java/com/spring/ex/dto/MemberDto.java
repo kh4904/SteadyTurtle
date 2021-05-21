@@ -126,5 +126,6 @@ public class MemberDto {
 		return "MemberDto[mId=" + mId + ", mPw=" + mPw + "]";
 	}
 	
+	
 }
 
