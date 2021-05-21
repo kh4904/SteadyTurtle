@@ -39,6 +39,9 @@
        				<c:forEach items="${productList}" var="product">
 						<div class="col-lg-6 mb-5">
 						<form action="mREproduct" method="post">
+						<input type="hidden" id="pName" name="pName" value="${product.pName}">
+						
+						
 							<table style="width: 100%;">
 							<tr>
 								<td rowspan="6" style="width: 200px;"><a href="#"> 
@@ -47,7 +50,8 @@
 								<th><a style="text-align: center;">상품명: ${product.getpName() }</a></th>
 								<td rowspan="6">
 									
-										<input type="submit" value="수정하기">
+								<input type="submit" value="수정하기">	
+										
 									
 								</td>
 							</tr>
