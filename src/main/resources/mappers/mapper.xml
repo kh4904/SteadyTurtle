@@ -9,11 +9,18 @@
 <insert id="register">INSERT INTO member( mId , mPw , mName, mGender, mPhone, mBirth, mEmail, mAddr, mGrade, mNote, mList, mMile, mCumulmile, mMaster)
 	                  VALUES(#{mId} , #{mPw}, #{mName}, #{mGender}, #{mPhone}, #{mBirth}, #{mEmail}, #{mAddr}, "브론즈", null, null, 0, 0, 0)</insert>
 
-<!--회원수정 update문 -->
+<!--회원 수정 update문 -->
 <update id="MemberUpdate">UPDATE member SET mEmail = #{mEmail} ,mName =#{mName},
 		mPhone =#{mPhone},mAddr=#{mAddr},mPw=#{mPw}
 		 WHERE mId = #{mId} 
 </update>
+<!--상품 수정 update문 -->
+<update id="ProductUpdate">UPDATE product SET pName = #{pName}, pPrice = #{pPrice},pCount = #{pCount},
+		pShip = #{pShip},pMile = #{pMile}, pCate = #{pCate}
+		 WHERE pName = #{pName} 
+</update>
+
+
 
 <!-- 로그인 select문 -->
 <select id="login" parameterType="MemberDto" resultType="MemberDto">

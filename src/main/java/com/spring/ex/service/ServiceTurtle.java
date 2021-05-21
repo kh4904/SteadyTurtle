@@ -58,6 +58,11 @@ public class ServiceTurtle implements TurtleService{
 	
 		return productDao.productList();
 	}
+	//상품수정
+	@Override
+	public void ProductUpdate(ProductDto Pdto)throws Exception {
+		dao.ProductUpdate(Pdto);
+	}
 	
 	// 주문내역 리스트
 	@Inject

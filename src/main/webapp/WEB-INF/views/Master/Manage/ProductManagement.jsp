@@ -36,17 +36,19 @@
 		<div class="container">
 			<div class="col-lg-12">
 				<div class="row">
-    				<%int i=0;%>
        				<c:forEach items="${productList}" var="product">
 						<div class="col-lg-6 mb-5">
+						<form action="mREproduct" method="post">
 							<table style="width: 100%;">
 							<tr>
 								<td rowspan="6" style="width: 200px;"><a href="#"> 
-									<img class="img-fluid" src="${product.getpUrl() }" style="width: 150px; height: 150px;" /></a>
+									<img class="img-fluid" src="${product.getpUrl()}" style="width: 150px; height: 150px;" /></a>
 								</td>
 								<th><a style="text-align: center;">상품명: ${product.getpName() }</a></th>
 								<td rowspan="6">
-									<a href="mREproduct" class="btn btn-primary" style="width: 100px; height: 40px; background-color: #ffdb4d; color: #004d99;">수정하기</a>
+									
+										<input type="submit" value="수정하기">
+									
 								</td>
 							</tr>
 							<tr>
@@ -61,6 +63,7 @@
 								<th><a style="text-align: center;">${product.getpCate() }</a></th>
 							</tr>
 							</table>
+							</form>
 						</div>
 					</c:forEach>
 				</div>

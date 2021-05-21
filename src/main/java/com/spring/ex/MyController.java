@@ -362,12 +362,26 @@ public class MyController {
 		return "Master/Manage/ProductManagement";
 	}
 	
+	
+	
 	// 상품관리 수정 페이지
 	@RequestMapping("/mREproduct")
 	public String mREproduct() {
 		return "Master/Manage/mREproduct";
 	}
-	
+
+	/*
+	 * //상품 관리 수정 적용
+	 * 
+	 * @RequestMapping(value="mREproduct",method = RequestMethod.POST) public String
+	 * mREproduct(ProductDto Pdto,HttpSession session) throws Exception{
+	 * 
+	 * service.ProductUpdate(Pdto);
+	 * 
+	 * session.invalidate();
+	 * 
+	 * return "redirect:/mREproduct"; }
+	 */
 	// 상품관리 추가 페이지
 	@RequestMapping("/Addproduct")
 	public String Addproduct() {
