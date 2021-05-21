@@ -50,6 +50,14 @@ public class ServiceTurtle implements TurtleService{
 		return dao.login(ldto);
 	}
 	
+	//회원상세
+	@Inject MemberDao mddao;
+		
+	@Override
+	public MemberDto memberDetail(MemberDto mddto) throws Exception{
+		return mddao.memberDetail(mddto);
+	}
+	
 	//회원탈퇴
 	@Override
 	public void memberdelete(MemberDto ddto) throws Exception{
@@ -64,6 +72,14 @@ public class ServiceTurtle implements TurtleService{
 	public List<ProductDto> productList() throws Exception {
 	
 		return productDao.productList();
+	}
+	
+	//상품 상세
+	@Inject MemberDao pdao;
+		
+	@Override
+	public ProductDto product(ProductDto pdto) throws Exception {
+		return pdao.product(pdto);
 	}
 	
 	// 주문내역 리스트

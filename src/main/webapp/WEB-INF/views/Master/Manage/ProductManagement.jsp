@@ -28,39 +28,46 @@
 </head>
 <!-- 상품관리 상품보기 페이지 -->
 <body id="page-top">
-        <!-- Navigation 맨위 로고-->
-        <%@ include file="/WEB-INF/views/Master/Mastermenu.jsp" %>
-	
+	<!-- Navigation 맨위 로고-->
+	<%@ include file="/WEB-INF/views/Master/Mastermenu.jsp"%>
+
 	<!-- 상품목록 -->
 	<section class="page-section portfolio">
 		<div class="container">
 			<div class="col-lg-12">
 				<div class="row">
-    				<%int i=0;%>
-       				<c:forEach items="${productList}" var="product">
+					<%
+						int i = 0;
+					%>
+					<c:forEach items="${productList}" var="product">
 						<div class="col-lg-6 mb-5">
-							<table style="width: 100%;">
-							<tr>
-								<td rowspan="6" style="width: 200px;"><a href="#"> 
-									<img class="img-fluid" src="${product.getpUrl() }" style="width: 150px; height: 150px;" /></a>
-								</td>
-								<th><a style="text-align: center;">상품명: ${product.getpName() }</a></th>
-								<td rowspan="6">
-									<a href="mREproduct" class="btn btn-primary" style="width: 100px; height: 40px; background-color: #ffdb4d; color: #004d99;">수정하기</a>
-								</td>
-							</tr>
-							<tr>
-								<th><a style="text-align: center;">가격:${product.getpPrice() }원</a></th>
-							</tr>
-							<tr>
-								<th><a style="text-align: center;">${product.getpShip() }</a></th>
-							<tr>
-								<th><a style="text-align: center;">${product.getpMile() }%적립</a></th>
-							</tr>
-							<tr>
-								<th><a style="text-align: center;">${product.getpCate() }</a></th>
-							</tr>
-							</table>
+							<form action="mREproduct" method="post">
+								<input type="hidden" id="pName" name="pName" value="${product.getpName() }">
+								<table style="width: 100%;">
+									<tr>
+										<td rowspan="6" style="width: 200px;"><a href="#"> <img
+												class="img-fluid" src="${product.getpUrl() }"
+												style="width: 150px; height: 150px;" /></a></td>
+										<th><a style="text-align: center;">상품명:
+												${product.getpName() }</a></th>
+										<td rowspan="6"><input type="submit" value="수정하기"
+											class="btn btn-primary"
+											style="width: 100px; height: 40px; background-color: #ffdb4d; color: #004d99;"></a>
+										</td>
+									</tr>
+									<tr>
+										<th><a style="text-align: center;">가격:${product.getpPrice() }원</a></th>
+									</tr>
+									<tr>
+										<th><a style="text-align: center;">${product.getpShip() }</a></th>
+									<tr>
+										<th><a style="text-align: center;">${product.getpMile() }%적립</a></th>
+									</tr>
+									<tr>
+										<th><a style="text-align: center;">${product.getpCate() }</a></th>
+									</tr>
+								</table>
+							</form>
 						</div>
 					</c:forEach>
 				</div>
@@ -84,14 +91,15 @@
 			</div>
 		</div>
 		</div>
-		
+
 		<!-- 밑줄  -->
-		<div class ="container">
+		<div class="container">
 			<div class="divider-custom" style="display: block;">
 				<hr style="background-color: black;">
 			</div>
 		</div>
-		<a href="Addproduct" class="btn btn-primary" style="position: relative; left: 1400px; width: 100px; height: 40px; background-color: #ffdb4d; color: #004d99;">추가하기</a>
+		<a href="Addproduct" class="btn btn-primary"
+			style="position: relative; left: 1400px; width: 100px; height: 40px; background-color: #ffdb4d; color: #004d99;">추가하기</a>
 	</section>
 
 

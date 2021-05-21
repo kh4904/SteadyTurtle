@@ -6,8 +6,14 @@
 <typeAlias type="com.spring.ex.dto.MemberDto" alias="MemberDto"/> 
 <!--MemberDto를 써야하는데 기니까 MemberDto라고 alias라고 선언 --><!--그후 Mappers에 mapper.xml-->
 
+<!-- 회원정보 상세보기 Dto -->
+<typeAlias type="com.spring.ex.dto.MemberDto" alias="mddto"/>
+
 <!-- 상품정보 Dto -->
 <typeAlias type="com.spring.ex.dto.ProductDto" alias="ProductDto"/>
+
+<!-- 상품 상세보기 Dto -->
+<typeAlias type="com.spring.ex.dto.ProductDto" alias="ProductDto2"/>
 
 <!-- 상품주문내역  Dto -->
 <typeAlias type="com.spring.ex.dto.JumunDto" alias="JumunDto"/>

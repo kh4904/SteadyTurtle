@@ -392,6 +392,24 @@ public class MyController {
 		return "Master/Manage/ProductManagement";
 	}
 	
+	//상품상세보기
+	@RequestMapping(value="mREproduct", method=RequestMethod.POST)
+	public String REproduct(ProductDto pdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+			
+		String path="";
+		HttpSession session2 = req.getSession();
+		ProductDto product2 = ServiceTurtle.product(pdto);
+		if(product2 == null) {
+			session2.setAttribute("product", null);
+			rttr.addFlashAttribute("msg", false);
+			path = "redirect:/main";
+		} else {
+			session2.setAttribute("product", product2);
+			path = "redirect:/mREproduct";
+		}
+		return path;
+	}
+	
 	// 상품관리 수정 페이지
 	@RequestMapping("/mREproduct")
 	public String mREproduct() {
@@ -463,6 +481,22 @@ public class MyController {
 		model.addAttribute("memberList",list);
 		
 		return "Master/Customer/CustomerManage";
+	}
+	
+	//회원상세
+	@RequestMapping(value = "DetailCustomerManage", method=RequestMethod.POST)
+	public String DCustomerManage(MemberDto mddto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+		String path="";
+		HttpSession session3 = req.getSession();
+		MemberDto memberD =ServiceTurtle.memberDetail(mddto);
+		if(memberD == null) {
+			session3.setAttribute("member2", null);
+			path = "redirect:/mainMaster";
+		}else {
+			session3.setAttribute("member2", memberD);
+			path = "redirect:/DetailCustomerManage";
+		}
+		return path;
 	}
 	
 	// 회원관리 상세보기 보기

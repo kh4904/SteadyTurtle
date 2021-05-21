@@ -38,13 +38,13 @@
 						<table style="width:100%;">
 							<tr>
 								<td rowspan="6">
-								 	<img class="img-fluid" src="resources/assets/FoodImg/f2.jpg" style="width: 180px; height: 200px;" />
+								 	<img class="img-fluid" src="${product.getpUrl() }" style="width: 180px; height: 200px;" />
 								</td>
 								<td>
 									<b style="margin-left: 9px;">상품명</b>
 								</td>
 								<td>
-									<input type="text" style="margin-left:6px; text-align:center;" value="프로틴(초코맛)"/>
+									<input type="text" style="margin-left:6px; text-align:center;" value="${product.getpName() }"/>
 								</td>
 								
 							</tr>
@@ -53,14 +53,14 @@
 									<b style="margin-left: 8px;">판매가</b>
 								</td>
 								<td>
-									<input type="text" style="margin-left: 6px; text-align:right;" value="8,000" />
+									<input type="text" style="margin-left: 6px; text-align:right;" value="${product.getpPrice() }" />
 								</td>
 								<th><b style="margin-left: 2px;">원</b></th>
 							</tr>
 							<tr>
 								<th><b style="margin-left: 8px;">잔여량</b></th>
 								<td>
-									<input type="text" style="margin-left: 6px; text-align:right;" value="4444" />
+									<input type="text" style="margin-left: 6px; text-align:right;" value="${product.getpCount() }" />
 								</td>
 								<th><b style="margin-left: 2px;">개</b></th>
 							</tr>
@@ -68,7 +68,8 @@
 								<th><b style="margin-left: 8px;">배송방법</b></th>
 								<th>
 									<div class="list-group" style="margin-left: 8px;">
-										<select class="form-control" name="userGender">
+										<select class="form-control"  name="userGender">
+											<option selected disabled hidden>${product.getpShip() }</option>
 											<option>무료배송</option>
 											<option>일반배송</option>
 										</select>
@@ -77,13 +78,14 @@
 							</tr>
 							<tr>
 								<th><b style="margin-left: 8px;">추가혜택</b></th>
-								<th><input type="text" style="margin-left: 6px; width: 50px; height: 35px; position:relative; left:120px; text-align:center;" value="1" /></th>
+								<th><input type="text" style="margin-left: 6px; width: 50px; height: 35px; position:relative; left:120px; text-align:center;" value="${product.getpMile() }" /></th>
 								<th><b style="margin-left: 2px;">% 적립</b></th>
 							</tr>
 							<tr>
 								<th><b style="margin-left: 8px;">카테고리</b></th>
 								<th><div class="list-group" style="margin-left: 8px;">
 										<select class="form-control" name="userGender">
+											<option selected disabled hidden>${product.getpCate() }</option>
 											<option>헬스기구</option>
 											<option>요가상품</option>
 											<option>건강식품</option>

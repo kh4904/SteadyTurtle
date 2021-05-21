@@ -27,11 +27,17 @@ public interface TurtleService {
 	//로그인 MemberDto를 ldto로 선언
 	public MemberDto login(MemberDto ldto) throws Exception;
 	
+	//회원상세 MemberDto를 mddto로 선언
+	public MemberDto memberDetail(MemberDto mddto) throws Exception;
+	
 	//회원탈퇴
 	public void memberdelete(MemberDto ddto) throws Exception;
 	
 	/* 상품정보 list ProductDto를 productList()로 선언*/
 	public List<ProductDto> productList() throws Exception;
+	
+	/* 상품정보 상세 ProductDto를 pdto()로 선언*/
+	public ProductDto product(ProductDto pdto) throws Exception;
 	
 	/* 주문내역 상품 list JumunDto를 jumunList()로 선언*/
 	public List<JumunDto> jumunList() throws Exception;

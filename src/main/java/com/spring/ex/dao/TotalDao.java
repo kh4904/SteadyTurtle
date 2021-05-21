@@ -45,6 +45,12 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectOne(namespace + ".login", ldto);
 	}
 	
+	//회원상세
+	@Override
+	public MemberDto memberDetail(MemberDto mddto) throws Exception{
+		return sqlSessionTemplate.selectOne(namespace + ".memberDetail", mddto);
+	}
+	
 	// 회원탈퇴
 	@Override
 	public void memberdelete(MemberDto ddto) throws Exception {
@@ -56,6 +62,12 @@ public class TotalDao implements MemberDao{
 	@Override
 	public List<ProductDto> productList() throws Exception {
 		return sqlSessionTemplate.selectList(namespace+".product");
+	}
+	
+	// 상품상세 select문
+	@Override
+	public ProductDto product(ProductDto pdto) throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".product2", pdto); 
 	}
 	
 	// 주문내역 select문

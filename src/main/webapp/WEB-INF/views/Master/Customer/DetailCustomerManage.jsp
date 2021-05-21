@@ -26,140 +26,142 @@
 <link href="resources/css/styles.css" rel="stylesheet" />
 
 </head>
-    <!-- 회원관리 상세보기 페이지 -->
-	<body id="page-top">
-        <!-- Navigation 맨위 로고-->
-        <%@ include file="/WEB-INF/views/Master/Mastermenu.jsp" %>  
-	
+<!-- 회원관리 상세보기 페이지 -->
+<body id="page-top">
+	<!-- Navigation 맨위 로고-->
+	<%@ include file="/WEB-INF/views/Master/Mastermenu.jsp"%>
+
 	<!-- 회원정보 상세보기 -->
 	<section class="page-section portfolio" id="portfolio">
-	     <div class="container">
+		<div class="container">
 			<div class="row">
-			<%int i = 0; %>
-			<c:forEach items="${memberList}" var="member">
-			<c:if test = "${member.getmName() == '장혁수' }"> 
-			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-				<thead>
-					<tr>
-						<th colspan="3" style="background-color: #81d4fa; text-align: center;">
-						    회원정보 상세보기
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr style="background-color:#e1f5fe;">
-						<td style="width: 20%;"><b>이름</b></td>
-						<td colspan="2">${member.getmName() }</td>
-					</tr>
-					<tr style="background-color:#e1f5fe;">
-						<td><b>아이디</b></td>
-						<td colspan="2">${member.getmId() }</td>
-					</tr>
-					<tr style="background-color:#e1f5fe;">
-						<td><b>비밀번호</b></td>
-						<td colspan="2">${member.getmPw() }</td>
-					</tr>
-					<tr style="background-color:#e1f5fe;">
-						<td><b>전화번호</b></td>
-						<td colspan="2">${member.getmPhone() }</td>
-					</tr>
-					<tr style="background-color:#e1f5fe;">
-						<td><b>성별</b></td>
-						<td colspan="2">${member.getmGender() }</td>
-					</tr>
-					<tr style="background-color:#e1f5fe;">
-						<td><b>주소</b></td>
-						<td colspan="2">${member.getmAddr() }</td>
-					</tr>
-					<tr style="background-color:#e1f5fe;">
-						<td><b>등급</b></td>
-						<td colspan="2">${member.getmGrade() }</td>
-					</tr>
-					<tr style="background-color:#e1f5fe;">
-						<td><b>생년월일</b></td>
-						<td colspan="2">${member.getmBirth() }</td>
-					</tr>
-					<tr style="background-color:#e1f5fe;">
-						<td><b>이메일</b></td>
-						<td colspan="2">${member.getmEmail() }</td>
-					</tr>
-					<tr style="background-color:#e1f5fe;">
-						<td><b>마일리지</b></td>
-						<td colspan="2">${member.getmMile() } / ${member.getmCumulmile() } P</td>
-					</tr>
-				</tbody>
-			</table>
-			</c:if>
-			</c:forEach>
-			
-			<div class="container">
-        	<div class="row">
-            <table class="table table-striped" style="text-align: center; border:1px solid #dddddd">
-                  <!-- 글제목,카테고리,작성일,작성자 라벨 -->
-                 <thead>
-                 	 <tr>
-						<th colspan="7" style="background-color: #81d4fa; text-align: center;">
-						    구매리스트
-						</th>
-					</tr>
-                     <tr>
-                         <th style="background-color: #b2dfdb;">상품명</th>
-                         <th style="background-color: #b2dfdb;">구매일</th>
-                         <th style="background-color: #b2dfdb;">수량</th>
-                         <th style="background-color: #b2dfdb;">결제금액</th>
-                         <th style="background-color: #b2dfdb;">마일리지</th>
-                         <th style="background-color: #b2dfdb;">배송완료일</th>
-                         <th style="background-color: #b2dfdb;">배송여부</th>
-                     </tr>
-                 </thead>
-                 
-                 <!-- 고객문의 내용 -->
-                 <tbody>
-                     <tr>
-                         <th style="background-color: #eeeeee;">프로틴(초코맛)</th>
-                         <th style="background-color: #eeeeee;">2021.03.30</th>
-                         <th style="background-color: #eeeeee;">1</th>
-                         <th style="background-color: #eeeeee;">40,000</th>
-                         <th style="background-color: #eeeeee;">400</th>
-                         <th style="background-color: #eeeeee;">2021.04.02</th>
-                         <th style="background-color: #eeeeee; color:blue;">배송완료</th>
-                     </tr>
-                     <tr>
-                         <th style="background-color: #eeeeee;">벤치프레스기구</th>
-                         <th style="background-color: #eeeeee;">2021.03.26</th>
-                         <th style="background-color: #eeeeee;">5</th>
-                         <th style="background-color: #eeeeee;">7,500,000</th>
-                         <th style="background-color: #eeeeee;">75,000</th>
-                         <th style="background-color: #eeeeee;">2021.03.29</th>
-                         <th style="background-color: #eeeeee; color:blue;">배송완료</th>
-                     </tr>
-                     <tr>
-                         <th style="background-color: #eeeeee;">요가세트</th>
-                         <th style="background-color: #eeeeee;">2021.03.24</th>
-                         <th style="background-color: #eeeeee;">10</th>
-                         <th style="background-color: #eeeeee;">300,000</th>
-                         <th style="background-color: #eeeeee;">3,000</th>
-                         <th style="background-color: #eeeeee;">2021.03.27</th>
-                         <th style="background-color: #eeeeee; color:red;">환불처리</th>
-                     </tr>
-                 </tbody>
-            </table>
-            
-            
-            <!-- 밑줄  -->
-			<div class="divider-custom" style="display: block;">
-				<hr style="background-color: black;">
+				<table class="table table-striped"
+					style="text-align: center; border: 1px solid #dddddd">
+					<thead>
+						<tr>
+							<th colspan="3"
+								style="background-color: #81d4fa; text-align: center;">
+								회원정보 상세보기</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr style="background-color: #e1f5fe;">
+							<td style="width: 20%;"><b>이름</b></td>
+							<td colspan="2">${member2.getmName() }</td>
+						</tr>
+						<tr style="background-color: #e1f5fe;">
+							<td><b>아이디</b></td>
+							<td colspan="2">${member2.getmId() }</td>
+						</tr>
+						<tr style="background-color: #e1f5fe;">
+							<td><b>비밀번호</b></td>
+							<td colspan="2">${member2.getmPw() }</td>
+						</tr>
+						<tr style="background-color: #e1f5fe;">
+							<td><b>전화번호</b></td>
+							<td colspan="2">${member2.getmPhone() }</td>
+						</tr>
+						<tr style="background-color: #e1f5fe;">
+							<td><b>성별</b></td>
+							<td colspan="2">${member2.getmGender() }</td>
+						</tr>
+						<tr style="background-color: #e1f5fe;">
+							<td><b>주소</b></td>
+							<td colspan="2">${member2.getmAddr() }</td>
+						</tr>
+						<tr style="background-color: #e1f5fe;">
+							<td><b>등급</b></td>
+							<td colspan="2">${member2.getmGrade() }</td>
+						</tr>
+						<tr style="background-color: #e1f5fe;">
+							<td><b>생년월일</b></td>
+							<td colspan="2">${member2.getmBirth() }</td>
+						</tr>
+						<tr style="background-color: #e1f5fe;">
+							<td><b>이메일</b></td>
+							<td colspan="2">${member2.getmEmail() }</td>
+						</tr>
+						<tr style="background-color: #e1f5fe;">
+							<td><b>마일리지</b></td>
+							<td colspan="2">${member2.getmMile() }/
+								${member.getmCumulmile() } P</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="container">
+					<div class="row">
+						<table class="table table-striped"
+							style="text-align: center; border: 1px solid #dddddd">
+							<!-- 글제목,카테고리,작성일,작성자 라벨 -->
+							<thead>
+								<tr>
+									<th colspan="7"
+										style="background-color: #81d4fa; text-align: center;">
+										구매리스트</th>
+								</tr>
+								<tr>
+									<th style="background-color: #b2dfdb;">상품명</th>
+									<th style="background-color: #b2dfdb;">구매일</th>
+									<th style="background-color: #b2dfdb;">수량</th>
+									<th style="background-color: #b2dfdb;">결제금액</th>
+									<th style="background-color: #b2dfdb;">마일리지</th>
+									<th style="background-color: #b2dfdb;">배송완료일</th>
+									<th style="background-color: #b2dfdb;">배송여부</th>
+								</tr>
+							</thead>
+
+							<!-- 고객문의 내용 -->
+							<tbody>
+								<tr>
+									<th style="background-color: #eeeeee;">프로틴(초코맛)</th>
+									<th style="background-color: #eeeeee;">2021.03.30</th>
+									<th style="background-color: #eeeeee;">1</th>
+									<th style="background-color: #eeeeee;">40,000</th>
+									<th style="background-color: #eeeeee;">400</th>
+									<th style="background-color: #eeeeee;">2021.04.02</th>
+									<th style="background-color: #eeeeee; color: blue;">배송완료</th>
+								</tr>
+								<tr>
+									<th style="background-color: #eeeeee;">벤치프레스기구</th>
+									<th style="background-color: #eeeeee;">2021.03.26</th>
+									<th style="background-color: #eeeeee;">5</th>
+									<th style="background-color: #eeeeee;">7,500,000</th>
+									<th style="background-color: #eeeeee;">75,000</th>
+									<th style="background-color: #eeeeee;">2021.03.29</th>
+									<th style="background-color: #eeeeee; color: blue;">배송완료</th>
+								</tr>
+								<tr>
+									<th style="background-color: #eeeeee;">요가세트</th>
+									<th style="background-color: #eeeeee;">2021.03.24</th>
+									<th style="background-color: #eeeeee;">10</th>
+									<th style="background-color: #eeeeee;">300,000</th>
+									<th style="background-color: #eeeeee;">3,000</th>
+									<th style="background-color: #eeeeee;">2021.03.27</th>
+									<th style="background-color: #eeeeee; color: red;">환불처리</th>
+								</tr>
+							</tbody>
+						</table>
+
+
+						<!-- 밑줄  -->
+						<div class="divider-custom" style="display: block;">
+							<hr style="background-color: black;">
+						</div>
+						<!-- 회원삭제 버튼 -->
+						<div class="contanier"
+							style="position: relative; top: -20px; left: 980px;">
+							<a href="CustomerManage" class="btn btn-primary">목록</a> <a
+								href="#" class="btn btn-primary" style="">회원삭제</a>
+						</div>
+					</div>
+				</div>
 			</div>
-            <!-- 회원삭제 버튼 -->
-            <div class ="contanier" style="position:relative; top:-20px;left:980px;">
-            	<a href="CustomerManage" class="btn btn-primary">목록</a>
-            	<a href="#" class="btn btn-primary" style="">회원삭제</a>
-            </div>
-        </div>
-    </div>
+
+		</div>
 	</section>
 
-    <!-- Copyright Section(맨밑 하단)-->
+	<!-- Copyright Section(맨밑 하단)-->
 	<div class="copyright py-4 text-center text-white">
 		<div class="container">
 			<small><a href="#" style="text-decoration: none;">회사소개</a>｜ <a
@@ -190,15 +192,18 @@
 	<script src="resources/assets/mail/contact_me.js"></script>
 	<!-- Core theme JS-->
 	<script src="js/scripts.js"></script>
-	
+
 	<!-- 여기서부터 관리자페이지 부트스트랩 추가 -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script src="resources/js/scripts.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 	<script src="resources/assets/demo/chart-area-demo.js"></script>
 	<script src="resources/assets/demo/chart-bar-demo.js"></script>
-	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 	<script src="resources/assets/demo/datatables-demo.js"></script>
 
 </body>
