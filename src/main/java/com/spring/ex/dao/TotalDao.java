@@ -13,6 +13,7 @@ import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
+import com.spring.ex.dto.SellDto;
 
 @Repository
 public class TotalDao implements MemberDao{
@@ -85,5 +86,11 @@ public class TotalDao implements MemberDao{
 	@Override
 	public List<RefundDto> refundList() throws Exception{
 		return sqlSessionTemplate.selectList(namespace+".refund");
+	}
+	
+	// 판매상품목록 select문
+	@Override
+	public List<SellDto> sellList() throws Exception{
+		return sqlSessionTemplate.selectList(namespace+".sell");
 	}
 }

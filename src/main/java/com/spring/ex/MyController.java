@@ -20,6 +20,7 @@ import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
+import com.spring.ex.dto.SellDto;
 import com.spring.ex.service.ServiceTurtle;
 import com.spring.ex.service.TurtleService;
 
@@ -355,8 +356,10 @@ public class MyController {
 	public String mainMaster(Model model) throws Exception {
 		
 		List<MemberDto> list = service.memberList();
+		List<SellDto> list2 = service.sellList();
 		
 		model.addAttribute("memberList", list);
+		model.addAttribute("sellList", list2);
 		
 		return "Master/mainMaster";
 	}

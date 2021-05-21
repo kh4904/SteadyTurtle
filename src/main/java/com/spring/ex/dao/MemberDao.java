@@ -10,6 +10,7 @@ import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
+import com.spring.ex.dto.SellDto;
 
 @Repository
 public interface MemberDao {
@@ -45,4 +46,7 @@ public interface MemberDao {
 	
 	// 환불요청 게시판 목록 dto
 	public List<RefundDto> refundList() throws Exception;
+	
+	// 판매상품 목록 dto
+	public List<SellDto> sellList() throws Exception;
 }

@@ -20,5 +20,8 @@
 
 <!-- 환불요청 Dto -->
 <typeAlias type="com.spring.ex.dto.RefundDto" alias="RefundDto"/>
+
+<!-- 판매상품 Dto -->
+<typeAlias type="com.spring.ex.dto.SellDto" alias="SellDto"/>
 </typeAliases>
 </configuration> 

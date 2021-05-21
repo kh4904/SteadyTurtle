@@ -13,6 +13,7 @@ import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
+import com.spring.ex.dto.SellDto;
 
 
 @Service
@@ -114,5 +115,15 @@ public class ServiceTurtle implements TurtleService{
 	public List<RefundDto> refundList() throws Exception {
 			
 		return RefundDao.refundList();
+	}
+	
+	// 판매상품 목록
+	@Inject
+	private MemberDao SellDao;
+				
+	@Override
+	public List<SellDto> sellList() throws Exception {
+			
+		return SellDao.sellList();
 	}
 }

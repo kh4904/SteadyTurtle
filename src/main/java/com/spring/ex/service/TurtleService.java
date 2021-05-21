@@ -10,6 +10,7 @@ import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
+import com.spring.ex.dto.SellDto;
 
 @Service
 public interface TurtleService {
@@ -46,5 +47,8 @@ public interface TurtleService {
 	
 	// 환불요청 게시판 list RefundDto를 refundList로 선언
 	public List<RefundDto> refundList() throws Exception;
+	
+	// 환불요청 게시판 list RefundDto를 refundList로 선언
+	public List<SellDto> sellList() throws Exception;
 	
 }

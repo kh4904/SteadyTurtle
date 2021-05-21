@@ -48,9 +48,9 @@ aside ul li{clear:both;float:left;margin-top:10px}
                   <tr>
                      <th style="width:200px; height:23px;">
                      <select style = "width:150px; height:30px; position:relative; top:-5px; left:40px;">
-                        <option value = "">2021.05.02</option>
-                        <option value = "">2021.05.01</option>
-                        <option value = "">2021.04.30</option>
+                        <c:forEach items="${sellList}" var="sell">
+                        <option value = "">${sell.getsDate() }</option>
+                        </c:forEach>
                      </select>
                      </th>
                      <th style="width:170px; height:23px;"><center><h5>헬스기구</h5></center></th>

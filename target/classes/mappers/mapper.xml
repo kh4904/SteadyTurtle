@@ -40,5 +40,8 @@
 
 <!-- 환불요청 게시판 목록 select문 -->
 <select id="refund" resultType="RefundDto">SELECT * from refundboard</select>
+
+<!-- 판매상품 목록 select문 -->
+<select id="sell" resultType="SellDto">SELECT * from sell</select>
 </mapper>
 
