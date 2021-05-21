@@ -21,7 +21,7 @@
 </select>
 
 <!-- 회원상세 select문 -->
-<select id="memberDetail" resultType="mddto">SELECT * from member where mId = #{mId} </select>
+<select id="memberDetail" resultType="MemberDto">SELECT * from member where mId = #{mId} </select>
 
 <!-- 회원탈퇴 delete -->
 <delete id="memberdelete"> delete from member where mId = #{mId} and mPw = #{mPw} </delete>
@@ -30,7 +30,7 @@
 <select id="product" resultType="ProductDto">SELECT * from product</select>
 
 <!-- 상품정보 select문 -->
-<select id="product2" resultType="ProductDto2">SELECT * from product where pName = #{pName} </select>
+<select id="product2" resultType="ProductDto">SELECT * from product where pName = #{pName} </select>
 
 <!-- 주문내역 select문 -->
 <select id="jumun" resultType="JumunDto">SELECT * from jumun</select>
