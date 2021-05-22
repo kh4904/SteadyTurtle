@@ -114,7 +114,7 @@
                        	<select class="form-control" name="userGender" style="width:120px; position:relative; left:350px; top:-30px;">
 						   <option>헬스기구</option>
 						   <option>요가상품</option>
-						   <option>건강식품</option>
+						   <option>운동식품</option>
 						</select>
 				    </b>
                      </p>

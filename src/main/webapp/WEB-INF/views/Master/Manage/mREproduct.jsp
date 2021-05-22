@@ -88,7 +88,7 @@
 											<option selected disabled hidden>${product.getpCate() }</option>
 											<option>헬스기구</option>
 											<option>요가상품</option>
-											<option>건강식품</option>
+											<option>운동식품</option>
 										</select>
 									</div>
 							   </th>

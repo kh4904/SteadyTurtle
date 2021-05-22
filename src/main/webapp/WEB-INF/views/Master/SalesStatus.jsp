@@ -54,13 +54,29 @@
                 <div class="divider-custom" style="display:block;">
                     <hr style="background-color:black;">
                 </div>
+                
+                <c:forEach var = "sell" items = "${sellList }">
+                   <!-- 헬스기구끼리만 합계 -->
+                   <c:if test = "${sell.getsCate()  eq '헬스기구'}">
+                       <c:set var = "health" value = "${health + sell.getsPrice() }" />
+                   </c:if>
+                   <!-- 요가상품끼리만 합계 -->
+                   <c:if test = "${sell.getsCate()  eq '요가상품'}">
+                       <c:set var = "yoga" value = "${yoga + sell.getsPrice() }" />
+                   </c:if>
+                   <!-- 운동식품끼리만 합계 -->
+                   <c:if test = "${sell.getsCate()  eq '운동식품'}">
+                       <c:set var = "food" value = "${food + sell.getsPrice() }" />
+                   </c:if>
+                </c:forEach>
+                
                 <table style="width:100%">
                   <tr>
                      <th style="width:200px; height:23px;"><center><h5>판매금액(원)</h5></center></th>
-                     <th style="width:170px; height:23px;"><center><h5>1,587,200</h5></center></th>
-                     <th style="width:200px; height:23px;"><center><h5>944,200</h5></center></th> 
-                     <th style="width:200px; height:23px;"><center><h5>1,214,200</h5></center></th>
-                     <th style="width:200px; height:23px;"><center><h5>3,745,600</h5></center></th>
+                     <th style="width:170px; height:23px;"><center><h5><c:out value="${health}" /></h5></center></th>
+                     <th style="width:200px; height:23px;"><center><h5><c:out value="${yoga}" /></h5></center></th> 
+                     <th style="width:200px; height:23px;"><center><h5><c:out value="${food}" /></h5></center></th>
+                     <th style="width:200px; height:23px;"><center><h5><c:out value="${health + yoga + food}" /></h5></center></th>
                    </tr>
                 </table>
         </div>
@@ -109,7 +125,7 @@
 				<div class="card-header">
 				      <h1>
 					<i class="fas fa-chart-area mr-1"></i>
-					헬스기구
+					운동식품
 					  </h1>
 
 				</div>

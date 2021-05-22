@@ -73,7 +73,7 @@
 			</div>
 
 			<!-- 회원 정보 출력 -->
-			<table style="width: 100%">
+			<table style="width: 100%;" >
 				<%
 					int i = 0;
 				%>

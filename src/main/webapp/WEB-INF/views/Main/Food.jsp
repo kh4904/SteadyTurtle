@@ -49,7 +49,7 @@
 					int i = 0;
 				%>
 				<c:forEach items="${productList}" var="product">
-					<c:if test="${product.getpCate() eq '건강식품' }">
+					<c:if test="${product.getpCate() eq '운동식품' }">
 						<div class="col-md-6 col-lg-4 mb-5">
 							<a href="#"> <img class="img-fluid"
 								src="${product.getpUrl() }" style="width: 270px; height: 200px;" />

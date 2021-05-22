@@ -50,7 +50,7 @@
         
         <!-- 건강식품순위 라벨 -->
         <br><br>
-        <center><h1>건강식품순위</h1></center>
+        <center><h1>운동식품순위</h1></center>
         
         <!-- 상품랭킹 -->
         <section class="page-section portfolio">

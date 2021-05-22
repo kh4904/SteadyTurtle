@@ -245,13 +245,13 @@ public class MyController {
 	}
 	
 	// 결제창 페이지
-	@RequestMapping("CashOn")
+	@RequestMapping("/CashOn")
 	public String CashOn() {
 		return "Cash/CashOn";
 	}
 	
 	// 환불조회 페이지
-	@RequestMapping(value = "refund", method = RequestMethod.GET)
+	@RequestMapping(value = "/refund", method = RequestMethod.GET)
 	public String refund(Model model) throws Exception {
 		
 		List<JumunDto> list = service.jumunList();
@@ -262,7 +262,7 @@ public class MyController {
 	}
 	
 	// 환불상품 상세보기 페이지
-	@RequestMapping(value = "DetailRefund", method = RequestMethod.GET)
+	@RequestMapping(value = "/DetailRefund", method = RequestMethod.GET)
 	public String DetailRefund(Model model) throws Exception {
 		
 		List<ProductDto> list = service.productList();
@@ -275,13 +275,13 @@ public class MyController {
 	}
 	
 	// 환불요청 게시판작성 페이지
-	@RequestMapping("RefundWrite")
+	@RequestMapping("/RefundWrite")
 	public String RefundWrite() {
 		return "Board/RefundWrite";
 	}
 	
 	// 고객문의게시판
-	@RequestMapping(value = "CustomerWriteView", method = RequestMethod.GET)
+	@RequestMapping(value = "/CustomerWriteView", method = RequestMethod.GET)
 	public String CustomerWriteView(Model model) throws Exception {
 		
 		List<BoardDTO> list = service.boardList();
@@ -307,13 +307,13 @@ public class MyController {
 	}
 	
 	// 회원정보 수정 페이지
-	@RequestMapping("MyPage")
+	@RequestMapping("/MyPage")
 	public String MyPage() {
 		return "Login/MyPage";
 	}
 	
 	// 회원정보 수정
-	@RequestMapping(value="MyPage",method = RequestMethod.POST)
+	@RequestMapping(value="/MyPage",method = RequestMethod.POST)
 	public String MyPageUpdate(MemberDto mDto,HttpSession session) throws Exception{
 		
 		service.MemberUpdate(mDto);
@@ -330,7 +330,7 @@ public class MyController {
 	}
 		
 	// 회원 탈퇴 post
-	@RequestMapping(value = "memberdelete", method = RequestMethod.POST)
+	@RequestMapping(value = "/memberdelete", method = RequestMethod.POST)
 	public String memberDelete(MemberDto ddto, HttpSession session, RedirectAttributes rttr) throws Exception {
 
 		// 세션에 있는 member를 가져와 member변수에 넣어줍니다.
@@ -365,8 +365,13 @@ public class MyController {
 	}
 	
 	// 판매현황 상세
-	@RequestMapping("/SalesStatus")
-	public String SalesStatus() {
+	@RequestMapping(value = "/SalesStatus", method = RequestMethod.GET)
+	public String SalesStatus(Model model) throws Exception {
+		
+		List<SellDto> list = service.sellList();
+		
+		model.addAttribute("sellList", list);
+		
 		return "Master/SalesStatus";
 	}
 	
@@ -393,7 +398,7 @@ public class MyController {
 	}
 	
 	//상품상세보기
-	@RequestMapping(value="mREproduct", method=RequestMethod.POST)
+	@RequestMapping(value="/mREproduct", method=RequestMethod.POST)
 	public String REproduct(ProductDto pdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 			
 		String path="";
@@ -445,13 +450,13 @@ public class MyController {
 	}
 	
 	// 환불요청 상세내용 보기
-	@RequestMapping("MDetailRefund")
+	@RequestMapping("/MDetailRefund")
 	public String MDetailRefund() {
 		return "Master/Customer/MDetailRefund";
 	}
 	
 	// 고객문의 목록
-	@RequestMapping(value = "MCustomerWriteView", method = RequestMethod.GET)
+	@RequestMapping(value = "/MCustomerWriteView", method = RequestMethod.GET)
 	public String MCustomerWriteView(Model model) throws Exception {
 		
 		List<BoardDTO> list = service.boardList();
@@ -484,7 +489,7 @@ public class MyController {
 	}
 	
 	//회원상세
-	@RequestMapping(value = "DetailCustomerManage", method=RequestMethod.POST)
+	@RequestMapping(value = "/DetailCustomerManage", method=RequestMethod.POST)
 	public String DCustomerManage(MemberDto mddto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 		String path="";
 		HttpSession session3 = req.getSession();
