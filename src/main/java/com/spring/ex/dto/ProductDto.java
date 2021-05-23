@@ -91,5 +91,12 @@ public class ProductDto {
 		this.pWoman = pWoman;
 	}
 	
+	@Override
+	public String toString() {
+		return "ProductDto[ pName=" + pName + ", pCate=" + pCate + ", pPrice=" + pPrice + 
+				", pShip=" + pShip + ", pCount=" + pCount + ", pCountSell=" + pCountSell + 
+				", pCumulSell=" + pCumulSell + ", pMile=" + pMile + ", pUrl=" + pUrl + 
+				", pMan=" + pMan + ", pWoman=" + pWoman + "]";
+	}
 	
 }

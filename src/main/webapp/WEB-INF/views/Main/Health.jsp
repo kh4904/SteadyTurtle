@@ -49,12 +49,13 @@
 				<c:forEach items="${productList}" var="product">
 					<c:if test="${product.getpCate() eq '헬스기구' }">
 						<div class="col-md-6 col-lg-4 mb-5">
-							<a href="#"> <img class="img-fluid"
-								src="${product.getpUrl() }" style="width: 270px; height: 200px;" />
-							</a> <br>
-							<br>
-							<h4>상품명 : ${product.getpName() }</h4>
-							<h5>가격 : ${product.getpPrice() } 원</h5>
+							<form action="product" method="POST">
+					<input type="hidden" id="pName" name="pName" value="${product.getpName() }">
+						<input type="image" src="${product.getpUrl() }" style="width: 270px; height: 200px;"  > 
+						 <br> <br>
+						<h4>상품명 : ${product.getpName() }</h4>
+						<h5>가격 : ${product.getpPrice() } 원</h5>
+						</form>
 						</div>
 					</c:if>
 				</c:forEach>

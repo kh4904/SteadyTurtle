@@ -82,6 +82,12 @@ public class ServiceTurtle implements TurtleService{
 		return pdao.product(pdto);
 	}
 	
+	// 상품수정
+	@Override
+	public void ProductUpdate(ProductDto pudto) throws Exception{
+		productDao.ProductUpdate(pudto);
+	}
+	
 	// 상품랭킹 MemberDao를 Ranking으로 지정
 	@Inject
 	private MemberDao Ranking;

@@ -41,6 +41,14 @@
 <!-- 상품정보 select문 -->
 <select id="product2" resultType="ProductDto">SELECT * from product where pName = #{pName} </select>
 
+<!-- 상품수정 -->
+<update id="productUpdate">
+	UPDATE product SET 
+	pName = #{pName}, pPrice = #{pPrice}, pCount = #{pCount}, 
+	pShip = #{pShip}, pMile = #{pMile}, pCate = #{pCate} 
+	WHERE pUrl = #{pUrl}
+</update>
+
 <!-- 주문내역 select문 -->
 <select id="jumun" resultType="JumunDto">SELECT * from jumun</select>
 

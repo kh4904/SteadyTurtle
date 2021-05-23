@@ -36,8 +36,6 @@
             <div class = "container" style="background-color:#bbdefb;">
                 <div class ="row">
     				<%int i=0; %>
-    				<c:forEach items="${productList}" var="product">
-    					<c:if test = "${product.getpName() eq '하체튼튼철봉' }">
                     		<div class = "col-md-5">
                       			<br><br>
                       			<img src = "${product.getpUrl() }" style="width:80%; height:70%;">
@@ -113,7 +111,7 @@
                        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        		<!-- db연동 -->
-                       		<b style = "font-size:20px;"><input type ="number" class = "input" style ="width:60px; height:30px;" value = "1"> 개</b>
+                       		<b style = "font-size:20px;"><input type ="number" class = "input" style ="width:60px; height:30px;" value = "${product.getpCountSell() }"> 개</b>
                        		</p>
                        		<hr>
                        		<!-- db연동 -->
@@ -127,8 +125,6 @@
                        		<input type = "submit" class="btn btn-info" value="바로구매">
                        		</p>
                        		</div>
-                       </c:if>
-                    </c:forEach>
                  </div>
             </div>   
             </form>  

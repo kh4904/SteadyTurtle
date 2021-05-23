@@ -45,7 +45,7 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectOne(namespace + ".login", ldto);
 	}
 	
-	//회원상세
+	// 회원상세
 	@Override
 	public MemberDto memberDetail(MemberDto mddto) throws Exception{
 		return sqlSessionTemplate.selectOne(namespace + ".memberDetail", mddto);
@@ -68,6 +68,12 @@ public class TotalDao implements MemberDao{
 	@Override
 	public ProductDto product(ProductDto pdto) throws Exception {
 		return sqlSessionTemplate.selectOne(namespace + ".product2", pdto); 
+	}
+	
+	//상품수정
+	@Override
+	public void ProductUpdate(ProductDto pudto) throws Exception{
+		sqlSessionTemplate.update(namespace + ".productUpdate", pudto);
 	}
 	
 	// 헬스기구랭킹 select문

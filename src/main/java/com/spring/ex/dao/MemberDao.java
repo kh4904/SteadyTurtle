@@ -38,6 +38,9 @@ public interface MemberDao {
 	// 상품상세 dto
 	public ProductDto product(ProductDto pdto) throws Exception;
 	
+	// 상품수정 dto
+	public void ProductUpdate(ProductDto pudto) throws Exception;
+	
 	// 헬스기구랭킹 dto
 	public List<ProductDto> healthRanking() throws Exception;
 	

@@ -39,6 +39,9 @@ public interface TurtleService {
 	/* 상품정보 상세 ProductDto를 pdto()로 선언*/
 	public ProductDto product(ProductDto pdto) throws Exception;
 	
+	// 상품수정
+	public void ProductUpdate(ProductDto pudto) throws Exception;
+	
 	/* 헬스기구랭킹 list ProductDto를 healthRanking()로 선언*/
 	public List<ProductDto> healthRanking() throws Exception;
 	

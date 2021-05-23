@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,118 +26,116 @@
 </head>
 <!-- 상품관리 수정하기 페이지 -->
 <body id="page-top">
-        <!-- Navigation 맨위 로고-->
-        <%@ include file="/WEB-INF/views/Master/Mastermenu.jsp" %>
-        
+	<!-- Navigation 맨위 로고-->
+	<%@ include file="/WEB-INF/views/Master/Mastermenu.jsp"%>
+
 	<!-- 상품수정 -->
-	<section class="page-section portfolio" style =" height: 600px;">
+	<section class="page-section portfolio" style="height: 600px;">
 		<div class="container">
 			<div class="col-lg-12">
-				<div class="row">
-					<div class="col-lg-6">
-						<table style="width:100%;">
-							<tr>
-								<td rowspan="6">
-								 	<img class="img-fluid" src="${product.getpUrl() }" style="width: 180px; height: 200px;" />
-								</td>
-								<td>
-									<b style="margin-left: 9px;">상품명</b>
-								</td>
-								<td>
-									<input type="text" style="margin-left:6px; text-align:center;" value="${product.getpName() }"/>
-								</td>
-								
-							</tr>
-							<tr>
-								<td>
-									<b style="margin-left: 8px;">판매가</b>
-								</td>
-								<td>
-									<input type="text" style="margin-left: 6px; text-align:right;" value="${product.getpPrice() }" />
-								</td>
-								<th><b style="margin-left: 2px;">원</b></th>
-							</tr>
-							<tr>
-								<th><b style="margin-left: 8px;">잔여량</b></th>
-								<td>
-									<input type="text" style="margin-left: 6px; text-align:right;" value="${product.getpCount() }" />
-								</td>
-								<th><b style="margin-left: 2px;">개</b></th>
-							</tr>
-							<tr>
-								<th><b style="margin-left: 8px;">배송방법</b></th>
-								<th>
-									<div class="list-group" style="margin-left: 8px;">
-										<select class="form-control"  name="userGender">
-											<option selected disabled hidden>${product.getpShip() }</option>
-											<option>무료배송</option>
-											<option>일반배송</option>
-										</select>
-									</div>
-								</th>
-							</tr>
-							<tr>
-								<th><b style="margin-left: 8px;">추가혜택</b></th>
-								<th><input type="text" style="margin-left: 6px; width: 50px; height: 35px; position:relative; left:120px; text-align:center;" value="${product.getpMile() }" /></th>
-								<th><b style="margin-left: 2px;">% 적립</b></th>
-							</tr>
-							<tr>
-								<th><b style="margin-left: 8px;">카테고리</b></th>
-								<th><div class="list-group" style="margin-left: 8px;">
-										<select class="form-control" name="userGender">
-											<option selected disabled hidden>${product.getpCate() }</option>
-											<option>헬스기구</option>
-											<option>요가상품</option>
-											<option>운동식품</option>
-										</select>
-									</div>
-							   </th>
-							</tr>	
-						</table>
-					</div>
-					
-					<div class="col-lg-6">
-						<div style="width:100%; height:200px; overflow:auto">
-							<table width="100%" border="1">
+				<form action="productUpdate" , method="post">
+				<input type="hidden" id="pUrl" name="pUrl" value="${product.getpUrl()}">
+					<div class="row">
+
+						<div class="col-lg-6">
+
+
+							<table style="width: 100%;">
+
 								<tr>
-									<th style ="text-align: center;">최근 구매자</th>
-									<th style ="text-align: center;">수량</th>
+									<td rowspan="6"><img class="img-fluid"
+										src="${product.getpUrl() }"
+										style="width: 180px; height: 200px;" /></td>
+									<td><b style="margin-left: 9px;">상품명</b></td>
+									<td><input type="text" id="pName" name="pName"
+										style="margin-left: 6px; text-align: center;"
+										value="${product.getpName() }" /></td>
+
 								</tr>
 								<tr>
-									<td style ="text-align: center;">원태연(wty1814)</td>
-									<td style ="text-align: center;">14</td>
+									<td><b style="margin-left: 8px;">판매가</b></td>
+									<td><input type="text" id="pPrice" name="pPrice"
+										style="margin-left: 6px; text-align: right;"
+										value="${product.getpPrice() }" /></td>
+									<th><b style="margin-left: 2px;">원</b></th>
 								</tr>
 								<tr>
-									<td style ="text-align: center;">이동진(tosem2234)</td>
-									<td style ="text-align: center;">2</td>
+									<th><b style="margin-left: 8px;">잔여량</b></th>
+									<td><input type="text" id="pCount" name="pCount"
+										style="margin-left: 6px; text-align: right;"
+										value="${product.getpCount() }" /></td>
+									<th><b style="margin-left: 2px;">개</b></th>
+								</tr>
+								<tr>
+									<th><b style="margin-left: 8px;">배송방법</b></th>
+									<th>
+										<div class="list-group" style="margin-left: 8px;">
+											<select class="form-control" name="pShip" id="pShip">
+												<option selected hidden>${product.getpShip() }</option>
+												<option>무료배송</option>
+												<option>일반배송</option>
+											</select>
+										</div>
+									</th>
+								</tr>
+								<tr>
+									<th><b style="margin-left: 8px;">추가혜택</b></th>
+									<th><input type="text" name="pMile" id="pMile"
+										style="margin-left: 6px; width: 50px; height: 35px; position: relative; left: 120px; text-align: center;"
+										value="${product.getpMile() }" /></th>
+									<th><b style="margin-left: 2px;">% 적립</b></th>
+								</tr>
+								<tr>
+									<th><b style="margin-left: 8px;">카테고리</b></th>
+									<th><div class="list-group" style="margin-left: 8px;">
+											<select class="form-control" name="pCate" id="pCate">
+												<option selected hidden>${product.getpCate() }</option>
+												<option>헬스기구</option>
+												<option>요가상품</option>
+												<option>운동식품</option>
+											</select>
+										</div></th>
 								</tr>
 							</table>
-						
 						</div>
-							<br />
-							<br />
-							<br />
-							
-						<div style="text-align: right;">
-							<!-- 뒤로가기 버튼클릭시 -->
-                        	<a href="ProductManagement" class="btn btn-info">뒤로가기</a>
-                    		<!-- 삭제하기 버튼클릭시 -->
-                    		<input type = "submit" class="btn btn-info" value="삭제하기">
-                    		<!-- 수정하기 버튼클릭시 -->
-                    		<input type = "submit" class="btn btn-info" value="수정하기">
+
+						<div class="col-lg-6">
+							<div style="width: 100%; height: 200px; overflow: auto">
+								<table width="100%" border="1">
+									<tr>
+										<th style="text-align: center;">최근 구매자</th>
+										<th style="text-align: center;">수량</th>
+									</tr>
+									<tr>
+										<td style="text-align: center;">원태연(wty1814)</td>
+										<td style="text-align: center;">14</td>
+									</tr>
+									<tr>
+										<td style="text-align: center;">이동진(tosem2234)</td>
+										<td style="text-align: center;">2</td>
+									</tr>
+								</table>
+
+							</div>
+							<br /> <br /> <br />
+
+							<div style="text-align: right;">
+								<!-- 뒤로가기 버튼클릭시 -->
+								<a href="ProductManagement" class="btn btn-info">뒤로가기</a>
+								<!-- 수정하기 버튼클릭시 -->
+								<input type="submit" class="btn btn-info" value="수정하기">
+							</div>
+
 						</div>
 					</div>
-				</div>
+				</form>
+				<!-- 삭제하기 버튼클릭시 -->
+								<form action="aaaa" method="post">
+									<input type="submit" class="btn btn-info" value="삭제하기">
+								</form>
 			</div>
 		</div>
 	</section>
-	
-	<c:if test ="${member.mMaster != 1 }">
-		<script>
-			alert("관리자권한이 없습니다.")
-			location.href="main";
-		</script>
-	</c:if>
 
 	<!-- Copyright Section(맨밑 하단)-->
 	<div class="copyright py-4 text-center text-white">

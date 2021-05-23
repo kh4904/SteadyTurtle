@@ -38,7 +38,7 @@
                    <!-- 회원,관리자모드 -->
                    <div class="jumbotron" style="padding-top: 20px; width: 400px; height: 190px; position:relative; top:10px; left:-100px;">
                      <ul class="nav nav-tabs">
-                        <li role="presentation" class="active" style="position: relative; left: 60px;"><a href="LoginSuccess" style="text-decoration:none; color:#bdbdbd;">회원</a></li>
+                        <li role="presentation" class="active" style="position: relative; left: 60px;"><a href="main" style="text-decoration:none; color:#bdbdbd;">회원</a></li>
                         <li role="presentation" class="active" style="position: relative; left: 180px;">관리자모드</li>
                      </ul>
                      <ul class="nav nav-pills" style="position: relative; top: 40px; left: 40px;">

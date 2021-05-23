@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -72,8 +73,13 @@ public class MyController {
 	}
 	
 	// 로그인시 보이는화면
-	@RequestMapping("/LoginSuccess")
-	public String Login() {
+	@RequestMapping(value = "/LoginSuccess", method = RequestMethod.GET)
+	public String Login(Model model) throws Exception {
+		
+		List<ProductDto> list = service.productList();
+		
+		model.addAttribute("productList", list);
+		
 		return "Login/LoginSuccess";
 	}
 	
@@ -194,7 +200,7 @@ public class MyController {
 		return "Ranking/FoodRanking";
 	}
 	
-	// 상품정보 페이지
+	// 상품정보 상세보기 페이지
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public String product(Model model) throws Exception {
 		
@@ -203,6 +209,24 @@ public class MyController {
 		model.addAttribute("productList", list);
 		
 		return "Cash/product";
+	}
+	
+	// 상품정보 상세보기 페이지
+	@RequestMapping(value="/product", method=RequestMethod.POST)
+	public String product(ProductDto pdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+			
+		String path="";
+		HttpSession session2 = req.getSession();
+		ProductDto product2 = ServiceTurtle.product(pdto);
+		if(product2 == null) {
+			session2.setAttribute("product", null);
+			rttr.addFlashAttribute("msg", false);
+			path = "redirect:/main";
+		} else {
+			session2.setAttribute("product", product2);
+			path = "redirect:/product";
+		}
+		return path;
 	}
 	
 	// 장바구니 페이지
@@ -419,6 +443,15 @@ public class MyController {
 	@RequestMapping("/mREproduct")
 	public String mREproduct() {
 		return "Master/Manage/mREproduct";
+	}
+	
+	// 상품관리 수정 페이지
+	@RequestMapping(value="productUpdate", method=RequestMethod.POST)
+	public String productUpdate(ProductDto pudto) throws Exception {
+		
+		ServiceTurtle.ProductUpdate(pudto);
+		return "redirect:/ProductManagement";
+		
 	}
 	
 	// 상품관리 추가 페이지

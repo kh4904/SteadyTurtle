@@ -45,7 +45,7 @@
 						<li><a href="HealthRanking" style="color: #000000;">헬스기구
 								랭킹</a></li>
 						<li><a href="YogaRanking" style="color: #000000;">요가용품 랭킹</a></li>
-						<li><a href="FoodRanking" style="color: #000000;">건강식품 랭킹</a></li>
+						<li><a href="FoodRanking" style="color: #000000;">운동식품 랭킹</a></li>
 					</ul></li>
 			</ul>
 		</div>
