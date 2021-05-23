@@ -75,37 +75,37 @@
                 <%int i=0;%>
                 <!-- 상품 랭킹 1~5위 -->
                 <!-- 상품랭킹1위-->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '런닝머신'}">
+                <c:forEach items = "${healthRanking}" var= "health" varStatus="status">
+                 <c:if test = "${status.count eq '1'}">
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/first.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
+                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${health.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     			<th style="width:200px; height:43px;"><center><h4>${health.getpName() }</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${health.getpPrice()}</h4></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${health.getpMile() }%</h3></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${health.getpShip() }</h3></center></th> 
                    			</tr>
                 		</table>
                 		<!-- 밑줄  -->
                			<div class="divider-custom" style="display:block;">
                     		<hr style="background-color:black;">
                 		</div>
-                  </c:if>
+                 </c:if>
                 </c:forEach>
                 
                 
                 <!-- 상품랭킹2위 -->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '하체튼튼철봉'}">
+                <c:forEach items = "${healthRanking}" var= "health" varStatus="status">
+                 <c:if test = "${status.count eq '2'}">
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/second.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
+                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${health.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     			<th style="width:200px; height:43px;"><center><h4>${health.getpName() }</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${health.getpPrice()}</h4></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${health.getpMile() }%</h3></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${health.getpShip() }</h3></center></th> 
                    			</tr>
                 		</table>
                 		<!-- 밑줄  -->
@@ -116,16 +116,16 @@
                 </c:forEach>
                 
                 <!-- 상품랭킹3위 -->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '스쿼트기구'}">
+                <c:forEach items = "${healthRanking}" var= "health" varStatus="status">
+                 <c:if test = "${status.count eq '3'}">
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/third.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
+                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${health.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     			<th style="width:200px; height:43px;"><center><h4>${health.getpName() }</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${health.getpPrice()}</h4></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${health.getpMile() }%</h3></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${health.getpShip() }</h3></center></th> 
                    			</tr>
                 		</table>
                 		<!-- 밑줄  -->
@@ -136,16 +136,16 @@
                 </c:forEach>
                 
                 <!-- 상품랭킹4위 -->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '덤벨'}">
+                <c:forEach items = "${healthRanking}" var= "health" varStatus="status">
+                 <c:if test = "${status.count eq '4'}">
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/forth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
+                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${health.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     			<th style="width:200px; height:43px;"><center><h4>${health.getpName() }</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${health.getpPrice()}</h4></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${health.getpMile() }%</h3></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${health.getpShip() }</h3></center></th> 
                    			</tr>
                 		</table>
                 		<!-- 밑줄  -->
@@ -156,16 +156,16 @@
                 </c:forEach>
                 
                 <!-- 상품랭킹5위 -->
-                <c:forEach items = "${productList}" var= "product">
-                  <c:if test = "${product.getpName() eq '어깨당겨기구'}">
+                <c:forEach items = "${healthRanking}" var= "health" varStatus="status">
+                 <c:if test = "${status.count eq '5'}">
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/fifth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${product.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     			<th style="width:200px; height:43px;"><center><h4>${product.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${product.getpPrice()}</h4></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpMile() }%</h3></center>
-                     			<th style="width:200px; height:43px;"><center><h3>${product.getpShip() }</h3></center></th> 
+                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${health.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     			<th style="width:200px; height:43px;"><center><h4>${health.getpName() }</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${health.getpPrice()}</h4></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${health.getpMile() }%</h3></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${health.getpShip() }</h3></center></th> 
                    			</tr>
                 		</table>
                 		<!-- 밑줄  -->

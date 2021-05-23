@@ -82,6 +82,13 @@
         </div>   
         </section>
         
+        <c:if test ="${member.mId == null }">
+			<script>
+				alert("로그인후 사용가능")
+				location.href="main";
+			</script>
+		</c:if>
+        
         <!-- Copyright Section(맨밑 하단)-->
         <div class="copyright py-4 text-center text-white">
             <div class="container"><small><a href ="#" style="text-decoration:none;">회사소개</a>｜ <a href ="#" style="text-decoration:none;">이용약관</a> ｜ <a href ="#" style="text-decoration:none;">개인정보처리방침</a><br>

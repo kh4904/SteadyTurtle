@@ -89,6 +89,12 @@
 			<a href="CashOn" class="btn btn-primary pull-right">결제하기</a>
 		</p>
 	</div>
+	<c:if test ="${member.mId == null }">
+		<script>
+			alert("로그인후 사용가능")
+			location.href="main";
+		</script>
+	</c:if>
 
 	<!-- Copyright Section(맨밑 하단)-->
 	<div class="copyright py-4 text-center text-white">

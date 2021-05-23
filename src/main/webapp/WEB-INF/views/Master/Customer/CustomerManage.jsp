@@ -109,6 +109,13 @@
 			<hr style="background-color: black;">
 		</div>
 	</div>
+	
+	<c:if test ="${member.mMaster != 1 }">
+		<script>
+			alert("관리자권한이 없습니다.")
+			location.href="main";
+		</script>
+	</c:if>
 
 	<!-- Copyright Section(맨밑 하단)-->
 	<div class="copyright py-4 text-center text-white">

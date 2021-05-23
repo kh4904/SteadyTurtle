@@ -70,6 +70,24 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectOne(namespace + ".product2", pdto); 
 	}
 	
+	// 헬스기구랭킹 select문
+	@Override
+	public List<ProductDto> healthRanking() throws Exception {
+		return sqlSessionTemplate.selectList(namespace+".health");
+	}
+	
+	// 요가상품랭킹 select문
+	@Override
+	public List<ProductDto> yogaRanking() throws Exception {
+		return sqlSessionTemplate.selectList(namespace+".yoga");
+	}
+	
+	// 운동식품랭킹 select문
+	@Override
+	public List<ProductDto> foodRanking() throws Exception {
+		return sqlSessionTemplate.selectList(namespace+".food");
+	}
+	
 	// 주문내역 select문
 	@Override
 	public List<JumunDto> jumunList() throws Exception {

@@ -165,9 +165,9 @@ public class MyController {
 	@RequestMapping(value = "/HealthRanking", method = RequestMethod.GET)
 	public String HealthRanking(Model model) throws Exception {
 		
-		List<ProductDto> list = service.productList();
+		List<ProductDto> list = service.healthRanking();
 		
-		model.addAttribute("productList", list);
+		model.addAttribute("healthRanking", list);
 		
 		return "Ranking/HealthRanking";
 	}
@@ -176,9 +176,9 @@ public class MyController {
 	@RequestMapping(value = "/YogaRanking", method = RequestMethod.GET)
 	public String YogaRanking(Model model) throws Exception {
 		
-		List<ProductDto> list = service.productList();
+		List<ProductDto> list = service.yogaRanking();
 		
-		model.addAttribute("productList", list);
+		model.addAttribute("yogaRanking", list);
 		
 		return "Ranking/YogaRanking";
 	}
@@ -187,9 +187,9 @@ public class MyController {
 	@RequestMapping(value = "/FoodRanking", method = RequestMethod.GET)
 	public String FoodRanking(Model model) throws Exception {
 		
-		List<ProductDto> list = service.productList();
+		List<ProductDto> list = service.foodRanking();
 		
-		model.addAttribute("productList", list);
+		model.addAttribute("foodRanking", list);
 		
 		return "Ranking/FoodRanking";
 	}

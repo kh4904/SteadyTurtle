@@ -38,6 +38,15 @@ public interface MemberDao {
 	// 상품상세 dto
 	public ProductDto product(ProductDto pdto) throws Exception;
 	
+	// 헬스기구랭킹 dto
+	public List<ProductDto> healthRanking() throws Exception;
+	
+	// 요가상품랭킹 dto
+	public List<ProductDto> yogaRanking() throws Exception;
+	
+	// 운동식품랭킹 dto
+	public List<ProductDto> foodRanking() throws Exception;
+	
 	// 주문내역 dto
 	public List<JumunDto> jumunList() throws Exception;
 	

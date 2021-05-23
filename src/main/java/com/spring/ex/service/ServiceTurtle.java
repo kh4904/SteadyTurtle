@@ -82,6 +82,30 @@ public class ServiceTurtle implements TurtleService{
 		return pdao.product(pdto);
 	}
 	
+	// 상품랭킹 MemberDao를 Ranking으로 지정
+	@Inject
+	private MemberDao Ranking;
+		
+	// 헬스기구랭킹
+	@Override
+	public List<ProductDto> healthRanking() throws Exception {
+	
+		return Ranking.healthRanking();
+	}
+	
+	// 요가상품랭킹
+	@Override
+	public List<ProductDto> yogaRanking() throws Exception {
+	
+		return Ranking.yogaRanking();
+	}
+	// 운동식품랭킹
+	@Override
+	public List<ProductDto> foodRanking() throws Exception {
+	
+		return Ranking.foodRanking();
+	}
+	
 	// 주문내역 리스트
 	@Inject
 	private MemberDao JumunDao;

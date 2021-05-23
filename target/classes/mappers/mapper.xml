@@ -29,6 +29,15 @@
 <!-- 상품리스트 select문 -->
 <select id="product" resultType="ProductDto">SELECT * from product</select>
 
+<!-- 헬스기구랭킹 select문 -->
+<select id="health" resultType="ProductDto">SELECT * from product where pCate = '헬스기구' order by pCountSell DESC</select>
+
+<!-- 요가상품랭킹 select문 -->
+<select id="yoga" resultType="ProductDto">SELECT * from product where pCate = '요가상품' order by pCountSell DESC</select>
+
+<!-- 운동식품랭킹 select문 -->
+<select id="food" resultType="ProductDto">SELECT * from product where pCate = '운동식품' order by pCountSell DESC</select>
+
 <!-- 상품정보 select문 -->
 <select id="product2" resultType="ProductDto">SELECT * from product where pName = #{pName} </select>
 

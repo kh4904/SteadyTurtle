@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -131,6 +132,13 @@
 			</div>
 		</div>
 	</section>
+	
+	<c:if test ="${member.mMaster != 1 }">
+		<script>
+			alert("관리자권한이 없습니다.")
+			location.href="main";
+		</script>
+	</c:if>
 
 	<!-- Copyright Section(맨밑 하단)-->
 	<div class="copyright py-4 text-center text-white">

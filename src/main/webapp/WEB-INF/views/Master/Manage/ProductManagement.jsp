@@ -115,7 +115,12 @@
 		</div>
 	</div>
 
-
+	<c:if test ="${member.mMaster != 1 }">
+		<script>
+			alert("관리자권한이 없습니다.")
+			location.href="main";
+		</script>
+	</c:if>
 
 
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
