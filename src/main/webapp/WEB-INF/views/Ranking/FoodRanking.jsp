@@ -76,12 +76,14 @@
                 <!-- 상품랭킹1위-->
                 <c:forEach items = "${foodRanking}" var= "food" varStatus="status">
                  <c:if test = "${status.count eq '1'}">
+                 <form action="product" method="POST">
+                 <input type="hidden" id="pName" name="pName" value="${food.getpName() }">
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/first.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${food.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="${food.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${food.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${food.getpPrice()}</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${food.getpPrice()}원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${food.getpMile() }%</h3></center>
                      			<th style="width:200px; height:43px;"><center><h3>${food.getpShip() }</h3></center></th> 
                    			</tr>
@@ -90,6 +92,7 @@
                			<div class="divider-custom" style="display:block;">
                     		<hr style="background-color:black;">
                 		</div>
+                  </form>
                   </c:if>
                 </c:forEach>
                 
@@ -97,12 +100,14 @@
                 <!-- 상품랭킹2위 -->
                 <c:forEach items = "${foodRanking}" var= "food" varStatus="status">
                  <c:if test = "${status.count eq '2'}">
+                 <form action="product" method="POST">
+                 <input type="hidden" id="pName" name="pName" value="${food.getpName() }">
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/second.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${food.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="${food.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${food.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${food.getpPrice()}</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${food.getpPrice()}원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${food.getpMile() }%</h3></center>
                      			<th style="width:200px; height:43px;"><center><h3>${food.getpShip() }</h3></center></th> 
                    			</tr>
@@ -111,18 +116,21 @@
                			<div class="divider-custom" style="display:block;">
                     		<hr style="background-color:black;">
                 		</div>
+                  </form>
                   </c:if>
                 </c:forEach>
                 
                 <!-- 상품랭킹3위 -->
                 <c:forEach items = "${foodRanking}" var= "food" varStatus="status">
                  <c:if test = "${status.count eq '3'}">
+                 <form action="product" method="POST">
+                 <input type="hidden" id="pName" name="pName" value="${food.getpName() }">
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/third.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${food.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="${food.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${food.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${food.getpPrice()}</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${food.getpPrice()}원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${food.getpMile() }%</h3></center>
                      			<th style="width:200px; height:43px;"><center><h3>${food.getpShip() }</h3></center></th> 
                    			</tr>
@@ -131,18 +139,21 @@
                			<div class="divider-custom" style="display:block;">
                     		<hr style="background-color:black;">
                 		</div>
+                  </form>
                   </c:if>
                 </c:forEach>
                 
                 <!-- 상품랭킹4위 -->
                 <c:forEach items = "${foodRanking}" var= "food" varStatus="status">
                  <c:if test = "${status.count eq '4'}">
+                 <form action="product" method="POST">
+                 <input type="hidden" id="pName" name="pName" value="${food.getpName() }">
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/forth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${food.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="${food.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${food.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${food.getpPrice()}</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${food.getpPrice()}원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${food.getpMile() }%</h3></center>
                      			<th style="width:200px; height:43px;"><center><h3>${food.getpShip() }</h3></center></th> 
                    			</tr>
@@ -151,18 +162,21 @@
                			<div class="divider-custom" style="display:block;">
                     		<hr style="background-color:black;">
                 		</div>
+                  </form>
                   </c:if>
                 </c:forEach>
                 
                 <!-- 상품랭킹5위 -->
                 <c:forEach items = "${foodRanking}" var= "food" varStatus="status">
                  <c:if test = "${status.count eq '5'}">
+                 <form action="product" method="POST">
+                 <input type="hidden" id="pName" name="pName" value="${food.getpName() }">
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/fifth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="${food.getpUrl() }"  style="width:120px; height: 100px;"alt="" /></a></center>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="${food.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${food.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${food.getpPrice()}</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${food.getpPrice()}원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${food.getpMile() }%</h3></center>
                      			<th style="width:200px; height:43px;"><center><h3>${food.getpShip() }</h3></center></th> 
                    			</tr>
@@ -171,6 +185,7 @@
                			<div class="divider-custom" style="display:block;">
                     		<hr style="background-color:black;">
                 		</div>
+                  </form>
                   </c:if>
                 </c:forEach>
             </div>  

@@ -98,7 +98,6 @@ public class ServiceTurtle implements TurtleService{
 	
 		return Ranking.healthRanking();
 	}
-	
 	// 요가상품랭킹
 	@Override
 	public List<ProductDto> yogaRanking() throws Exception {
@@ -110,6 +109,18 @@ public class ServiceTurtle implements TurtleService{
 	public List<ProductDto> foodRanking() throws Exception {
 	
 		return Ranking.foodRanking();
+	}
+	// 남성상품랭킹
+	@Override
+	public List<ProductDto> manRanking() throws Exception {
+	
+		return Ranking.manRanking();
+	}
+	// 여성상품랭킹
+	@Override
+	public List<ProductDto> womanRanking() throws Exception {
+	
+		return Ranking.womanRanking();
 	}
 	
 	// 주문내역 리스트

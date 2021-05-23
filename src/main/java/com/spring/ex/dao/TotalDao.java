@@ -94,6 +94,18 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectList(namespace+".food");
 	}
 	
+	// 남성상품랭킹 select문
+	@Override
+	public List<ProductDto> manRanking() throws Exception {
+		return sqlSessionTemplate.selectList(namespace+".man");
+	}
+	
+	// 여성상품랭킹 select문
+	@Override
+	public List<ProductDto> womanRanking() throws Exception {
+		return sqlSessionTemplate.selectList(namespace+".woman");
+	}
+	
 	// 주문내역 select문
 	@Override
 	public List<JumunDto> jumunList() throws Exception {

@@ -51,6 +51,12 @@ public interface TurtleService {
 	/* 운동식품랭킹 list ProductDto를 foodRanking()로 선언*/
 	public List<ProductDto> foodRanking() throws Exception;
 	
+	/* 남성상품랭킹 list ProductDto를 manRanking()로 선언*/
+	public List<ProductDto> manRanking() throws Exception;
+	
+	/* 여성상품랭킹 list ProductDto를 womanRanking()로 선언*/
+	public List<ProductDto> womanRanking() throws Exception;
+	
 	/* 주문내역 상품 list JumunDto를 jumunList()로 선언*/
 	public List<JumunDto> jumunList() throws Exception;
 	

@@ -50,6 +50,12 @@ public interface MemberDao {
 	// 운동식품랭킹 dto
 	public List<ProductDto> foodRanking() throws Exception;
 	
+	// 남성상품랭킹 dto
+	public List<ProductDto> manRanking() throws Exception;
+	
+	// 여성상품랭킹 dto
+	public List<ProductDto> womanRanking() throws Exception;
+	
 	// 주문내역 dto
 	public List<JumunDto> jumunList() throws Exception;
 	

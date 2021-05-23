@@ -38,6 +38,12 @@
 <!-- 운동식품랭킹 select문 -->
 <select id="food" resultType="ProductDto">SELECT * from product where pCate = '운동식품' order by pCountSell DESC</select>
 
+<!-- 남성상품랭킹 select문 -->
+<select id="man" resultType="ProductDto">SELECT * from product order by pMan DESC</select>
+
+<!-- 여성상품랭킹 select문 -->
+<select id="woman" resultType="ProductDto">SELECT * from product order by pWoman DESC</select>
+
 <!-- 상품정보 select문 -->
 <select id="product2" resultType="ProductDto">SELECT * from product where pName = #{pName} </select>
 

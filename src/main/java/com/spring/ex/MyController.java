@@ -149,9 +149,9 @@ public class MyController {
 	@RequestMapping(value = "/ManRanking", method = RequestMethod.GET)
 	public String ManRanking(Model model) throws Exception {
 		
-		List<ProductDto> list = service.productList();
+		List<ProductDto> list = service.manRanking();
 			
-		model.addAttribute("productList", list);
+		model.addAttribute("manRanking", list);
 			
 		return "Ranking/ManRanking";
 	}
@@ -160,9 +160,9 @@ public class MyController {
 	@RequestMapping(value = "/WomanRanking", method = RequestMethod.GET)
 	public String WomanRanking(Model model) throws Exception {
 		
-		List<ProductDto> list = service.productList();
+		List<ProductDto> list = service.womanRanking();
 			
-		model.addAttribute("productList", list);
+		model.addAttribute("womanRanking", list);
 			
 		return "Ranking/WomanRanking";
 	}

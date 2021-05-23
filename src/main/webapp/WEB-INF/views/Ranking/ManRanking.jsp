@@ -74,84 +74,120 @@
                 
                 <!-- 상품 랭킹 1~5위 -->
                 <!-- 상품랭킹1위-->
-                <table style="width:100%">
-                   <tr style="height:100px;">
-                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/first.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/FoodImg/f1.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
-                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
-                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
-                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th> 
-                   </tr>
-                </table>
-                <!-- 밑줄  -->
-                <div class="divider-custom" style="display:block;">
-                    <hr style="background-color:black;">
-                </div>
+                <c:forEach items = "${manRanking}" var= "man" varStatus="status">
+                 <c:if test = "${status.count eq '1'}">
+                 <form action="product" method="POST">
+                 <input type="hidden" id="pName" name="pName" value="${man.getpName() }">
+                		<table style="width:100%">
+                   			<tr style="height:100px;">
+                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/first.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="${man.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
+                     			<th style="width:200px; height:43px;"><center><h4>${man.getpName() }</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${man.getpPrice()}원</h4></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${man.getpMile() }%</h3></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${man.getpShip() }</h3></center></th> 
+                   			</tr>
+                		</table>
+                		<!-- 밑줄  -->
+                		<div class="divider-custom" style="display:block;">
+                    		<hr style="background-color:black;">
+                		</div>
+                  </form>
+                 </c:if>
+                </c:forEach>
                 
                 <!-- 상품랭킹2위 -->
-                <table style="width:100%">
-                   <tr style="height:100px;">
-                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/second.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/YogaImg/y2.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
-                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
-                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
-                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th> 
-                   </tr>
-                </table>
-                <!-- 밑줄 -->
-                <div class="divider-custom" style="display:block;">
-                    <hr style="background-color:black;">
-                </div>
+                <c:forEach items = "${manRanking}" var= "man" varStatus="status">
+                 <c:if test = "${status.count eq '2'}">
+                 <form action="product" method="POST">
+                 <input type="hidden" id="pName" name="pName" value="${man.getpName() }">
+                		<table style="width:100%">
+                   			<tr style="height:100px;">
+                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/second.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="${man.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
+                     			<th style="width:200px; height:43px;"><center><h4>${man.getpName() }</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${man.getpPrice()}원</h4></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${man.getpMile() }%</h3></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${man.getpShip() }</h3></center></th> 
+                   			</tr>
+                		</table>
+                		<!-- 밑줄  -->
+                		<div class="divider-custom" style="display:block;">
+                    		<hr style="background-color:black;">
+                		</div>
+                  </form>
+                 </c:if>
+                </c:forEach>
                 
                 <!-- 상품랭킹3위 -->
-                <table style="width:100%">
-                   <tr style="height:100px;">
-                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/third.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/YogaImg/y1.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
-                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
-                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
-                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th>
-                   </tr>
-                </table>
-                <!-- 밑줄 -->
-                <div class="divider-custom" style="display:block;">
-                    <hr style="background-color:black;">
-                </div>
+                <c:forEach items = "${manRanking}" var= "man" varStatus="status">
+                 <c:if test = "${status.count eq '3'}">
+                 <form action="product" method="POST">
+                 <input type="hidden" id="pName" name="pName" value="${man.getpName() }">
+                		<table style="width:100%">
+                   			<tr style="height:100px;">
+                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/third.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="${man.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
+                     			<th style="width:200px; height:43px;"><center><h4>${man.getpName() }</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${man.getpPrice()}원</h4></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${man.getpMile() }%</h3></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${man.getpShip() }</h3></center></th> 
+                   			</tr>
+                		</table>
+                		<!-- 밑줄  -->
+                		<div class="divider-custom" style="display:block;">
+                    		<hr style="background-color:black;">
+                		</div>
+                  </form>
+                 </c:if>
+                </c:forEach>
                 
                 <!-- 상품랭킹4위 -->
-                <table style="width:100%">
-                   <tr style="height:100px;">
-                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/forth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/HealthImg/h1.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
-                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
-                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
-                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th>
-                   </tr>
-                </table>
-                <!-- 밑줄 -->
-                <div class="divider-custom" style="display:block;">
-                    <hr style="background-color:black;">
-                </div>
+                <c:forEach items = "${manRanking}" var= "man" varStatus="status">
+                 <c:if test = "${status.count eq '4'}">
+                 <form action="product" method="POST">
+                 <input type="hidden" id="pName" name="pName" value="${man.getpName() }">
+                		<table style="width:100%">
+                   			<tr style="height:100px;">
+                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/forth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="${man.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
+                     			<th style="width:200px; height:43px;"><center><h4>${man.getpName() }</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${man.getpPrice()}원</h4></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${man.getpMile() }%</h3></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${man.getpShip() }</h3></center></th> 
+                   			</tr>
+                		</table>
+                		<!-- 밑줄  -->
+                		<div class="divider-custom" style="display:block;">
+                    		<hr style="background-color:black;">
+                		</div>
+                  </form>
+                 </c:if>
+                </c:forEach>
                 
                 <!-- 상품랭킹5위 -->
-                <table style="width:100%">
-                   <tr style="height:100px;">
-                     <th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/fifth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     <th style="width:150px; height:43px;"><center><a href = "#"><img class="img-fluid" src="resources/assets/FoodImg/f2.jpg"  style="width:120px; height: 100px;"alt="" /></a></center>
-                     <th style="width:200px; height:43px;"><center><h3>상품명</h3></center>
-                     <th style="width:150px; height:43px;"><center><h3>가격</h3></center>
-                     <th style="width:200px; height:43px;"><center><h3>1%</h3></center>
-                     <th style="width:200px; height:43px;"><center><h3>무료배송</h3></center></th>
-                   </tr>
-                </table>
-                <!-- 밑줄 -->
-                <div class="divider-custom" style="display:block;">
-                    <hr style="background-color:black;">
-                </div>
+                <c:forEach items = "${manRanking}" var= "man" varStatus="status">
+                 <c:if test = "${status.count eq '5'}">
+                 <form action="product" method="POST">
+                 <input type="hidden" id="pName" name="pName" value="${man.getpName() }">
+                		<table style="width:100%">
+                   			<tr style="height:100px;">
+                     			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/fifth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="${man.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
+                     			<th style="width:200px; height:43px;"><center><h4>${man.getpName() }</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4>${man.getpPrice()}원</h4></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${man.getpMile() }%</h3></center>
+                     			<th style="width:200px; height:43px;"><center><h3>${man.getpShip() }</h3></center></th> 
+                   			</tr>
+                		</table>
+                		<!-- 밑줄  -->
+                		<div class="divider-custom" style="display:block;">
+                    		<hr style="background-color:black;">
+                		</div>
+                  </form>
+                 </c:if>
+                </c:forEach>
+                
             </div>  
         </section>
         
