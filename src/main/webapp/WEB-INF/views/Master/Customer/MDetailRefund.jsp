@@ -40,7 +40,7 @@
                      <img style="width: 220px; height: 200px;" class="img-fluid" src="resources/assets/FoodImg/f2.jpg" />
                   </td>
                   <td rowspan="4">
-                     <textarea  class="form-control" placeholder="사유 : 기구가 저랑 안맞아요<br/>배송완료일 : 2021.04.02" name="bbsContent" maxlength="2048" style="width: 700px; height: 300px;"></textarea>
+                     <textarea  class="form-control" placeholder="사유 : 기구가 저랑 안맞아요<br/>배송완료일 : 2021.04.02" name="bbsContent" maxlength="2048" style="width: 700px; height: 300px; resize:none;"></textarea>
                   </td>
                </tr>
                <tr>

@@ -60,6 +60,9 @@ public interface TurtleService {
 	/* 주문내역 상품 list JumunDto를 jumunList()로 선언*/
 	public List<JumunDto> jumunList() throws Exception;
 	
+	/* 주문내역 상세 JumunDto를 jdto()로 선언*/
+	public JumunDto jumun(JumunDto jdto) throws Exception;
+	
 	/* 장바구니  list BasketDto를 basketList()로 선언*/
 	public List<BasketDto> basketList() throws Exception;
 	

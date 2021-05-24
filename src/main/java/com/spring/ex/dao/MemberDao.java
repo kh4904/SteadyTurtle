@@ -59,6 +59,9 @@ public interface MemberDao {
 	// 주문내역 dto
 	public List<JumunDto> jumunList() throws Exception;
 	
+	// 주문내역 세션유지 dto
+	public JumunDto jumun(JumunDto jdto) throws Exception;
+	
 	// 장바구니 dto
 	public List<BasketDto> basketList() throws Exception;
 	

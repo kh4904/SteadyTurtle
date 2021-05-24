@@ -56,7 +56,10 @@
 </update>
 
 <!-- 주문내역 select문 -->
-<select id="jumun" resultType="JumunDto">SELECT * from jumun</select>
+<select id="jumun" resultType="JumunDto">SELECT * from jumun order by jNum DESC</select>
+
+<!-- 주문내역 세션값 select문 -->
+<select id="jumun2" resultType="JumunDto">SELECT * from jumun where jNum = #{jNum} </select>
 
 <!-- 장바구니 select문 -->
 <select id="basket" resultType="BasketDto">SELECT * from basket</select>

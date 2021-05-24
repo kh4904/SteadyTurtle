@@ -83,6 +83,9 @@
                <!-- 주문내역 출력 -->
                <c:forEach items="${jumunList}" var="jumun">
                   <c:if test="${jumun.getjId() eq sessionScope.member.getmId()}">
+                  <form action="DetailOrder" method="POST">
+                  <input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum() }">
+               
                   <!-- 주문일자, 주문번호, 주문상세>> 및 밑줄 -->
                <div class="divider-custom"
                   style="display: block; width: 1140px; height: 30px;">
@@ -107,8 +110,8 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="DetailOrder"
-                        style="text-decoration: none; color: black;">주문상세 ></a>
+                        
+                        <input type="submit" class="btn" style="height:30px;" value="주문상세 >" >
                      </b>
                   </p>
                   <hr class="divider-custom" style="background-color: black;">
@@ -116,9 +119,7 @@
                      <table style="width: 100%;">
                         <tr style="height: 100px;">
                            <th style="width: 200px; height: 35px;"><center>
-                                 <a href="#"><img class="img-fluid"
-                                    src="${jumun.getjUrl() }"
-                                    style="width: 120px; height: 100px;" alt="" /></a>
+                             <input type="image" src="${jumun.getjUrl() }" style="width: 120px; height: 100px;" >
                               </center>
                            <th style="width: 300px; height: 35px;"><center>
                                  <h4>${jumun.getjName() }</h4>
@@ -133,7 +134,9 @@
                                  <h4 style="color: orange;">${jumun.getjShip() }</h4>
                               </center></th>
                         </tr>
+                      
                      </table>
+                     </form>
                   </c:if>
                </c:forEach>
             </div>

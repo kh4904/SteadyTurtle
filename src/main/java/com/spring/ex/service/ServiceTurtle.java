@@ -133,6 +133,12 @@ public class ServiceTurtle implements TurtleService{
 		return JumunDao.jumunList();
 	}
 	
+	// 주문내역
+	@Override
+	public JumunDto jumun(JumunDto jdto) throws Exception {
+		return JumunDao.jumun(jdto);
+	}
+	
 	// 장바구니 리스트
 	@Inject
 	private MemberDao BasketDao;

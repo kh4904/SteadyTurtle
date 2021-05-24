@@ -5,6 +5,10 @@ public class JumunDto {
 	private String jNum;
 	// 주문상품이름
 	private String jName;
+	// 주문상품 배송비
+	private String jShipPrice;
+	// 주문상품에 사용한 마일리지
+	private String jMile;
 	// 주문상품총액 가격
 	private String jPrice;
 	// 주문상품 개수
@@ -23,6 +27,8 @@ public class JumunDto {
 	private String jFinishDate;
 	// 주문 승인여부
 	private String jState;
+	// 주문시 메모
+	private String jMemo;
 	
 	public String getjNum() {
 		return jNum;
@@ -35,6 +41,18 @@ public class JumunDto {
 	}
 	public void setjName(String jName) {
 		this.jName = jName;
+	}
+	public String getjShipPrice() {
+		return jShipPrice;
+	}
+	public void setjShipPrice(String jShipPrice) {
+		this.jShipPrice = jShipPrice;
+	}
+	public String getjMile() {
+		return jMile;
+	}
+	public void setjMile(String jMile) {
+		this.jMile = jMile;
 	}
 	public String getjPrice() {
 		return jPrice;
@@ -89,6 +107,12 @@ public class JumunDto {
 	}
 	public void setjState(String jState) {
 		this.jState = jState;
+	}
+	public String getjMemo() {
+		return jMemo;
+	}
+	public void setjMemo(String jMemo) {
+		this.jMemo = jMemo;
 	}
 	
 	

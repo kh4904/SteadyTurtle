@@ -57,12 +57,13 @@
                 	</div>
              <c:if test="${member.mId != null }">
                 
-                	
                 <!-- 상품정보 -->
                 <c:forEach items="${jumunList}" var="jumun">
                   <c:if test="${jumun.getjId() eq sessionScope.member.getmId()}">
+                  <form action="DetailRefund" method="POST">
+                  <input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum() }">
                		<tr>
-                	<th style="width:250px;"><a href = "#"><img class="img-fluid" src="${jumun.getjUrl() }"  style="width:110px; height: 100px;"/></a></th>
+                	<th style="width:250px;"><img class="img-fluid" src="${jumun.getjUrl() }"  style="width:110px; height: 100px;"/></th>
                		<th style="width:300px;">${jumun.getjName() }</th>
                     <th style="width:350px;">${jumun.getjJumunDate() }</th>
                     <th style="width:300px;">${jumun.getjNum() }</th>
@@ -72,9 +73,10 @@
                         <!-- 주문취소 버튼 -->
                     	<input type="submit" class="btn btn-primary form-control" value="주문취소" style=" position:relative; top:-10px; height:40px; width: 100px;"></input>
                     	<!-- 상품환불 버튼 -->
-                    	<a class ="btn" href = "DetailRefund" style="height:40px; width: 100px; background-color:#e0e0e0;">상품환불</a>
+                    	<input type="submit" class ="btn" style="width: 100px; height: 40px; background-color:#e0e0e0;" value="상품환불"  >
                     </th>
                 	</tr>
+                	</form>
                   </c:if>
                 </c:forEach>
              </c:if>

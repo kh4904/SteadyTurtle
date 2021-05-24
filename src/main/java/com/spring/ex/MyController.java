@@ -268,6 +268,24 @@ public class MyController {
 		return "Cash/DetailOrder";
 	}
 	
+	// 주문상품 상세보기 페이지
+	@RequestMapping(value="/DetailOrder", method=RequestMethod.POST)
+	public String DetailOrder(JumunDto pdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+			
+		String path="";
+		HttpSession session3 = req.getSession();
+		JumunDto jumun2 = ServiceTurtle.jumun(pdto);
+		if(jumun2 == null) {
+			session3.setAttribute("jumun", null);
+			rttr.addFlashAttribute("msg", false);
+			path = "redirect:/main";
+		} else {
+			session3.setAttribute("jumun", jumun2);
+			path = "redirect:/DetailOrder";
+		}
+		return path;
+	}
+
 	// 결제창 페이지
 	@RequestMapping("/CashOn")
 	public String CashOn() {
@@ -296,6 +314,24 @@ public class MyController {
 		model.addAttribute("memberList",list2);
 		
 		return "Cash/DetailRefund";
+	}
+	
+	// 환불상품 상세보기 세션유지 페이지
+	@RequestMapping(value="/DetailRefund", method=RequestMethod.POST)
+	public String DetailRefund(JumunDto pdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+				
+		String path="";
+		HttpSession session3 = req.getSession();
+		JumunDto jumun2 = ServiceTurtle.jumun(pdto);
+		if(jumun2 == null) {
+			session3.setAttribute("jumun", null);
+			rttr.addFlashAttribute("msg", false);
+			path = "redirect:/main";
+		} else {
+			session3.setAttribute("jumun", jumun2);
+			path = "redirect:/DetailRefund";
+		}
+		return path;
 	}
 	
 	// 환불요청 게시판작성 페이지

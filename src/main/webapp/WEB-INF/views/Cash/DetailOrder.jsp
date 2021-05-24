@@ -43,9 +43,9 @@
 					</tr>
 					<tr>
 						<th colspan="5">
-							<h6 style="text-align: left;">2021.03.31</h6>
+							<h6 style="text-align: left;">${jumun.getjJumunDate() }</h6>
 						</th>
-						<th style="text-align: right;"><h6>주문번호 : 11111111584</h6>
+						<th style="text-align: right;"><h6>주문번호 : ${jumun.getjNum() }</h6>
 					</tr>
 				</table>
 				<!-- 밑줄 -->
@@ -64,25 +64,25 @@
 						<th colspan="5">
 							<h6 style="text-align: left;">상품금액</h6>
 						</th>
-						<th style="text-align: right;"><h6>8,000원</h6>
+						<th style="text-align: right;"><h6>${jumun.getjPrice() }원</h6>
 					</tr>
 					<tr>
 						<th colspan="5">
 							<h6 style="text-align: left;">배송비</h6>
 						</th>
-						<th style="text-align: right;"><h6>3,000원</h6>
+						<th style="text-align: right;"><h6>${jumun.getjShipPrice() }원</h6>
 					</tr>
 					<tr>
 						<th colspan="5">
 							<h6 style="text-align: left;">사용한 마일리지</h6>
 						</th>
-						<th style="text-align: right;"><h6 style="color: red;">1,000원</h6>
+						<th style="text-align: right;"><h6 style="color: red;">${jumun.getjMile() }원</h6>
 					</tr>
 					<tr>
 						<th colspan="5">
 							<h6 style="text-align: left;">결제금액</h6>
 						</th>
-						<th style="text-align: right;"><h4>10,000원</h4>
+						<th style="text-align: right;"><h4>${jumun.getjPrice() + jumun.getjShipPrice() - jumun.getjMile() }원</h4>
 					</tr>
 				</table>
 				<!-- 밑줄 -->
@@ -97,20 +97,16 @@
 							<h6 style="text-align: left;">상품 정보</h6>
 						</th>
 					</tr>
-					<c:forEach items="${productList}" var="product">
-							<c:if test="${product.getpName() eq '프로틴(초콜릿맛)' }">
 					<tr>
-						<th style="width: 200px;"><a href="#"> <img
-								class="img-fluid" src="${product.getpUrl() }"
-								style="width: 110px; height: 100px;" /></a></th>
-						<th style="width: 300px;">${product.getpName() }</th>
-						<th style="width: 250px;">${product.getpPrice() }원</th>
-						<th style="width: 250px;">1 개</th>
+						<th style="width: 200px;"><img
+								class="img-fluid" src="${jumun.getjUrl() }"
+								style="width: 110px; height: 100px;" /></th>
+						<th style="width: 300px;">${jumun.getjName() }</th>
+						<th style="width: 250px;">${jumun.getjPrice() }원</th>
+						<th style="width: 250px;">${jumun.getjCount() } 개</th>
 						<th style="width: 150px;"><h
-								style="color:orange; font-size:20px;">배송준비</h></th>
+								style="color:orange; font-size:20px;">${jumun.getjShip() }</h></th>
 					</tr>
-					</c:if>
-					</c:forEach>
 				</table>
 				<!-- 밑줄  -->
 				<div class="divider-custom" style="display: block;">
@@ -126,8 +122,6 @@
 								</h4>
 						</th>
 					</tr>
-					<c:forEach items="${memberList}" var="member">
-							<c:if test="${member.getmName() eq '장혁수' }">
 						<tr>
 							<th colspan="5"><h style="text-align: left;">수령자</h></th>
 							<th style="text-align: right;"><h>${member.getmName() }</h>
@@ -142,10 +136,8 @@
 						</tr>
 						<tr>
 							<th colspan="5"><h style="text-align: left;">배송메세지</h></th>
-							<th style="text-align: right;"><h>부재시 문앞에 놔주세요</h>
+							<th style="text-align: right;"><h>${jumun.getjMemo() }</h>
 						</tr>
-							</c:if>
-						</c:forEach>
 				</table>
 			</div>
 		</div>
