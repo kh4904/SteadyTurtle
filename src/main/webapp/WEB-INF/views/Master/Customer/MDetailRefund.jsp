@@ -40,7 +40,7 @@
                      <img style="width: 220px; height: 200px;" class="img-fluid" src="resources/assets/FoodImg/f2.jpg" />
                   </td>
                   <td rowspan="4">
-                     <textarea  class="form-control" placeholder="사유 : 기구가 저랑 안맞아요<br/>배송완료일 : 2021.04.02" name="bbsContent" maxlength="2048" style="width: 700px; height: 300px; resize:none;"></textarea>
+                     <input type= "text"  class="form-control" name="bbsContent" maxlength="2048" style="width: 700px; height: 300px; resize:none;">
                   </td>
                </tr>
                <tr>
@@ -127,7 +127,7 @@
             </table>
             <div style="text-align: right;">
                <form action="MRefund" method="post">
-                  <input type="submit" class="btn btn-primary" value="뒤로가기" onclick="#">
+                  <a href="MRefund" class="btn btn-primary">뒤로가기</a>
                   <input type="submit" class="btn btn-primary" value="환불완료" onclick="#">
                </form>
             </div>

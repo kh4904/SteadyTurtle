@@ -104,8 +104,8 @@
 									<th style="background-color: #b2dfdb;">상품명</th>
 									<th style="background-color: #b2dfdb;">구매일</th>
 									<th style="background-color: #b2dfdb;">수량</th>
-									<th style="background-color: #b2dfdb;">결제금액</th>
 									<th style="background-color: #b2dfdb;">마일리지</th>
+									<th style="background-color: #b2dfdb;">결제금액</th>
 									<th style="background-color: #b2dfdb;">배송완료일</th>
 									<th style="background-color: #b2dfdb;">배송여부</th>
 								</tr>
@@ -113,33 +113,19 @@
 
 							<!-- 고객문의 내용 -->
 							<tbody>
+							<c:forEach items="${jumunList}" var="jumun">
+                  				<c:if test="${jumun.getjId() eq sessionScope.member2.getmId()}">
 								<tr>
-									<th style="background-color: #eeeeee;">프로틴(초코맛)</th>
-									<th style="background-color: #eeeeee;">2021.03.30</th>
-									<th style="background-color: #eeeeee;">1</th>
-									<th style="background-color: #eeeeee;">40,000</th>
-									<th style="background-color: #eeeeee;">400</th>
-									<th style="background-color: #eeeeee;">2021.04.02</th>
-									<th style="background-color: #eeeeee; color: blue;">배송완료</th>
+									<th style="background-color: #eeeeee;">${jumun.getjName() }</th>
+									<th style="background-color: #eeeeee;">${jumun.getjJumunDate() }</th>
+									<th style="background-color: #eeeeee;">${jumun.getjCount() }</th>
+									<th style="background-color: #eeeeee;">${jumun.getjMile() }</th>
+									<th style="background-color: #eeeeee;">${jumun.getjPrice() }</th>
+									<th style="background-color: #eeeeee;">${jumun.getjFinishDate() }</th>
+									<th style="background-color: #eeeeee; color: blue;">${jumun.getjShip() }</th>
 								</tr>
-								<tr>
-									<th style="background-color: #eeeeee;">벤치프레스기구</th>
-									<th style="background-color: #eeeeee;">2021.03.26</th>
-									<th style="background-color: #eeeeee;">5</th>
-									<th style="background-color: #eeeeee;">7,500,000</th>
-									<th style="background-color: #eeeeee;">75,000</th>
-									<th style="background-color: #eeeeee;">2021.03.29</th>
-									<th style="background-color: #eeeeee; color: blue;">배송완료</th>
-								</tr>
-								<tr>
-									<th style="background-color: #eeeeee;">요가세트</th>
-									<th style="background-color: #eeeeee;">2021.03.24</th>
-									<th style="background-color: #eeeeee;">10</th>
-									<th style="background-color: #eeeeee;">300,000</th>
-									<th style="background-color: #eeeeee;">3,000</th>
-									<th style="background-color: #eeeeee;">2021.03.27</th>
-									<th style="background-color: #eeeeee; color: red;">환불처리</th>
-								</tr>
+								</c:if>
+						     </c:forEach>
 							</tbody>
 						</table>
 

@@ -14,6 +14,8 @@ public class BoardDTO {
 	private String bDate;
 	// 게시글 카테고리
 	private String bCate;
+	// 게시글 답변내용
+	private String bReply;
 	// 게시글 답변여부
 	private String bAnswer;
 	
@@ -52,6 +54,12 @@ public class BoardDTO {
 	}
 	public void setbCate(String bCate) {
 		this.bCate = bCate;
+	}
+	public String getbReply() {
+		return bReply;
+	}
+	public void setbReply(String bReply) {
+		this.bReply = bReply;
 	}
 	public String getbAnswer() {
 		return bAnswer;

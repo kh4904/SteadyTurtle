@@ -31,7 +31,6 @@
 	<!-- 게시판 -->
 	<section class="page-section portfolio" style="height:800px;">
 		<div class="container">
-			
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
@@ -48,16 +47,20 @@
 							<td>작성일</td>
 							<td>답변현황</td>
 						</tr>
-						<% int i = 0; %>
 						<c:forEach items="${boardList}" var="board">
+						<form action="ComplainView" method="post">
+						 <input type="hidden" id="bNum" name="bNum" value="${board.getbNum() }">
 						<tr>
 							<td>${board.getbNum() }</td>
 							<td style="width: 20%;">${board.getbCate() }</a></td>
-							<td><a href="ComplainView">${board.getbTitle() }</a></td>
+							<td>
+								<input type="submit" class="btn" value="${board.getbTitle() }" style="height:30px; position:relative; top:-8px; color: #004d99;" >				
+							</td>
 							<td>${board.getmName() }</td>
 							<td>${board.getbDate() }</td>
 							<td style="color:red;">${board.getbAnswer() }</td>
 						</tr>
+						</form>
 						</c:forEach>
 					</tbody>
 				</table>

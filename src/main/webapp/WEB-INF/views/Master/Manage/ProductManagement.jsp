@@ -45,14 +45,14 @@
 								<input type="hidden" id="pName" name="pName" value="${product.getpName() }">
 								<table style="width: 100%;">
 									<tr>
-										<td rowspan="6" style="width: 200px;"><a href="#"> <img
+										<td rowspan="6" style="width: 200px;"> <img
 												class="img-fluid" src="${product.getpUrl() }"
-												style="width: 150px; height: 150px;" /></a></td>
+												style="width: 150px; height: 150px;" /></td>
 										<th><a style="text-align: center;">상품명:
-												${product.getpName() }</a></th>
+												${product.getpName() }</th>
 										<td rowspan="6"><input type="submit" value="수정하기"
 											class="btn btn-primary"
-											style="width: 100px; height: 40px; background-color: #ffdb4d; color: #004d99;"></a>
+											style="width: 100px; height: 40px; background-color: #ffdb4d; color: #004d99;">
 										</td>
 									</tr>
 									<tr>

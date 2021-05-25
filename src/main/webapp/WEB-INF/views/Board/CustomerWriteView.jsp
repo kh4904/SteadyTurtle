@@ -29,14 +29,11 @@
 <body id="page-top">
 	<!-- Navigation 맨위 로고-->
 	<%@ include file="/WEB-INF/views/menu.jsp"%>
-	<br />
-	<br />
-	<br />
+	
 	<!-- 게시판 -->
 	<section class="page-section portfolio" style="height:800px;">
 		<div class="container">
-			
-				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
 							<th colspan="6" style="background-color: #eeeeee; text-align: center;">글 보기
@@ -47,24 +44,29 @@
 						<tr>
 							<td>글번호</td>
 							<td style="width: 20%;">카테고리</td>
-							<td>작성일</td>
 							<td>글 제목</td>
 							<td>작성자</td>
+							<td>작성일</td>
 							<td>답변현황</td>
 						</tr>
-						<% int i = 0;%>
 						<c:forEach items="${boardList}" var="board">
-						  <tr>
+						<form action="CustomerWriteAnswer" method="post">
+						 <input type="hidden" id="bNum" name="bNum" value="${board.getbNum() }">
+						<tr>
 							<td>${board.getbNum() }</td>
-							<td style="width: 20%;">${board.getbCate() }</td>
-							<td>${board.getbDate() }</td>
-							<td>${board.getbTitle() }</td>
+							<td style="width: 20%;">${board.getbCate() }</a></td>
+							<td>
+								<input type="submit" class="btn" value="${board.getbTitle() }" style="height:30px; position:relative; top:-8px; color: #004d99;" >				
+							</td>
 							<td>${board.getmName() }</td>
+							<td>${board.getbDate() }</td>
 							<td style="color:red;">${board.getbAnswer() }</td>
-						  </tr>
+						</tr>
+						</form>
 						</c:forEach>
 					</tbody>
 				</table>
+				
 				<!-- 글쓰기 버튼 -->
 				<div style="text-align:right;">
 						<a href="CustomerWrite" class="btn btn-info">글쓰기</a>

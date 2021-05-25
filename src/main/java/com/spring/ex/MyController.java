@@ -340,6 +340,24 @@ public class MyController {
 		return "Board/RefundWrite";
 	}
 	
+	// 환불요청 게시판작성 페이지(세션값주기)
+	@RequestMapping(value="/RefundWrite", method=RequestMethod.POST)
+	public String RefundWrite(JumunDto pdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+			
+		String path="";
+		HttpSession session3 = req.getSession();
+		JumunDto jumun2 = ServiceTurtle.jumun(pdto);
+		if(jumun2 == null) {
+			session3.setAttribute("jumun", null);
+			rttr.addFlashAttribute("msg", false);
+			path = "redirect:/main";
+		} else {
+			session3.setAttribute("jumun", jumun2);
+			path = "redirect:/RefundWrite";
+		}
+		return path;
+	}
+	
 	// 고객문의게시판
 	@RequestMapping(value = "/CustomerWriteView", method = RequestMethod.GET)
 	public String CustomerWriteView(Model model) throws Exception {
@@ -349,6 +367,32 @@ public class MyController {
 		model.addAttribute("boardList",list);
 		
 		return "Board/CustomerWriteView";
+	}
+	
+	// 고객문의 게시판 글보기
+	@RequestMapping("/CustomerWriteAnswer")
+	public String CutomerWriteAnswer(){
+		
+		return "Board/CustomerWriteAnswer";
+		
+	}
+	
+	// 고객문의 게시판 글보기(세션값주기)
+	@RequestMapping(value="/CustomerWriteAnswer", method=RequestMethod.POST)
+	public String CustomerWriteAnswer(BoardDTO bdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+					
+		String path="";
+		HttpSession session2 = req.getSession();
+		BoardDTO board = ServiceTurtle.board2(bdto);
+		if(board == null) {
+			session2.setAttribute("board", null);
+			rttr.addFlashAttribute("msg", false);
+			path = "redirect:/main";
+		} else {
+			session2.setAttribute("board", board);
+			path = "redirect:/CustomerWriteAnswer";
+		}
+		return path;
 	}
 	
 	// 고객문의 글쓰기 페이지
@@ -457,7 +501,7 @@ public class MyController {
 		return "Master/Manage/ProductManagement";
 	}
 	
-	//상품상세보기
+	//상품관리 수정 페이지
 	@RequestMapping(value="/mREproduct", method=RequestMethod.POST)
 	public String REproduct(ProductDto pdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 			
@@ -476,8 +520,13 @@ public class MyController {
 	}
 	
 	// 상품관리 수정 페이지
-	@RequestMapping("/mREproduct")
-	public String mREproduct() {
+	@RequestMapping(value = "/mREproduct", method = RequestMethod.GET)
+	public String mREproduct(Model model) throws Exception {
+		
+		List<SellDto> list = service.sellList();
+		
+		model.addAttribute("sellList", list);
+		
 		return "Master/Manage/mREproduct";
 	}
 	
@@ -546,6 +595,24 @@ public class MyController {
 		return "Master/Customer/ComplainView";
 	}
 	
+	// 고객문의 상세내용 보기 페이지(세션값주기)
+	@RequestMapping(value="/ComplainView", method=RequestMethod.POST)
+	public String REproduct(BoardDTO bdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+				
+		String path="";
+		HttpSession session2 = req.getSession();
+		BoardDTO board = ServiceTurtle.board2(bdto);
+		if(board == null) {
+			session2.setAttribute("board", null);
+			rttr.addFlashAttribute("msg", false);
+			path = "redirect:/main";
+		} else {
+			session2.setAttribute("board", board);
+			path = "redirect:/ComplainView";
+		}
+		return path;
+	}
+	
 	// 회원관리 목록
 	@RequestMapping(value = "/CustomerManage", method = RequestMethod.GET)
 	public String CustomerManage(Model model) throws Exception {
@@ -578,8 +645,10 @@ public class MyController {
 	public String DetailCustomerManage(Model model) throws Exception {
 		
 		List<MemberDto> list = service.memberList();
+		List<JumunDto> list2 = service.jumunList();
 		
 		model.addAttribute("memberList",list);
+		model.addAttribute("jumunList", list2);
 		
 		return "Master/Customer/DetailCustomerManage";
 	}

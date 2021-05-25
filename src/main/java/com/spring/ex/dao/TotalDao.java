@@ -130,6 +130,12 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectList(namespace+".board");
 	}
 	
+	// 고객문의 게시판 목록 세션값 select문
+	@Override
+	public BoardDTO board2(BoardDTO bbdto) throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".board2", bbdto); 
+	}
+	
 	// 고객문의 게시판 글쓰기 insert문
 	@Override
 	public void board(BoardDTO bdto) throws Exception {

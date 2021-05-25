@@ -65,7 +65,10 @@
 <select id="basket" resultType="BasketDto">SELECT * from basket</select>
 
 <!-- 고객문의 게시판 목록 select문 -->
-<select id="board" resultType="BoardDTO">SELECT * from board</select>
+<select id="board" resultType="BoardDTO">SELECT * from board order by bNum DESC</select>
+
+<!-- 고객문의 게시판 목록 세션값 select문 -->
+<select id="board2" resultType="BoardDTO">SELECT * from board where bNum = #{bNum} </select>
 
 <!-- 고객문의 게시판작성 -->
 <insert id="boardWrite">insert into board(mName, bNum, bTitle, bNote, bCate, bAnswer) values(#{mName}, 0, #{bTitle}, #{bNote}, #{bCate}, "미등록")</insert>

@@ -170,6 +170,14 @@ public class ServiceTurtle implements TurtleService{
 		
 	}
 	
+	//상품 상세
+	@Inject MemberDao bbdao;
+			
+	@Override
+	public BoardDTO board2(BoardDTO bbdto) throws Exception {
+		return bbdao.board2(bbdto);
+	}
+	
 	// 환불요청 목록
 	@Inject
 	private MemberDao RefundDao;

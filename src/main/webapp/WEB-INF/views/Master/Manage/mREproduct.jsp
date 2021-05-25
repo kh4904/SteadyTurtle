@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,14 +107,14 @@
 										<th style="text-align: center;">최근 구매자</th>
 										<th style="text-align: center;">수량</th>
 									</tr>
+								<c:forEach items="${sellList}" var="sell">
+                 					<c:if test="${sell.getsProduct() eq sessionScope.product.getpName()}">
 									<tr>
-										<td style="text-align: center;">원태연(wty1814)</td>
-										<td style="text-align: center;">14</td>
+										<td style="text-align: center;">${sell.getsCustomer() }(${sell.getsId() })</td>
+										<td style="text-align: center;">${sell.getsCount() }</td>
 									</tr>
-									<tr>
-										<td style="text-align: center;">이동진(tosem2234)</td>
-										<td style="text-align: center;">2</td>
-									</tr>
+									</c:if>
+							    </c:forEach>
 								</table>
 
 							</div>
@@ -121,7 +122,7 @@
 
 							<div style="text-align: right;">
 								<!-- 뒤로가기 버튼클릭시 -->
-								<a href="ProductManagement" class="btn btn-info">뒤로가기</a>
+								<a href="ProductManagement" class="btn btn-info"">뒤로가기</a>
 								<!-- 수정하기 버튼클릭시 -->
 								<input type="submit" class="btn btn-info" value="수정하기">
 							</div>

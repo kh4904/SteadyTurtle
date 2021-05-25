@@ -29,7 +29,7 @@
     <!-- 고객문의 상세내용 보기 페이지 -->
 	<body id="page-top">
         <!-- Navigation 맨위 로고-->
-        <%@ include file="/WEB-INF/views/Master/Mastermenu.jsp" %>  
+        <%@ include file="/WEB-INF/views/menu.jsp" %>  
 	
 	<!-- 고객문의 상세내용 및 답변달기 -->
 	<section class="page-section portfolio" id="portfolio">
@@ -62,29 +62,21 @@
                      
                      <!-- 관리자가 답변달아주는곳 -->
                      <tr>
-                         <td colspan="6">
-                         	<textarea class = "form-control" style="text-align: center; width:1145px; height:300px; resize:none;" placeholder="${board.getbReply() }"></textarea>
+                         <td colspan="6" style="height: 300px; background-color: #eeeeee; text-align: left;">
+                         	${board.getbReply() }
                          </td>
                      </tr>
                  </tbody>
             </table>
             
             <!-- 이동버튼 -->
-            <div class ="contanier" style="position:relative; left:950px;">
-            	<a href="MCustomerWriteView" class="btn btn-primary" style="">목록</a>
+            <div class ="contanier" style="position:relative; left:1000px;">
+            	<a href="CustomerWriteView" class="btn btn-primary" style="">목록</a>
             	<a href="#" class="btn btn-primary" style="">삭제</a>
-           	 	<a href="#" class="btn btn-primary" style="">답변달기</a>
             </div>
         </div>
     </div>
 	</section>
-	
-	<c:if test ="${member.mMaster != 1 }">
-		<script>
-			alert("관리자권한이 없습니다.")
-			location.href="main";
-		</script>
-	</c:if>
 
     <!-- Copyright Section(맨밑 하단)-->
 	<div class="copyright py-4 text-center text-white">

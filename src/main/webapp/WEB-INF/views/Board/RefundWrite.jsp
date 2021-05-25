@@ -38,7 +38,7 @@
             <table>
                <tr>
                   <th style="text-align: left;"><a href="#"> 
-                  	<img class="img-fluid" src="resources/assets/FoodImg/f2.jpg" style="width: 220px; height: 200px;" /></a>
+                  	<img class="img-fluid" src="${jumun.getjUrl() }" style="width: 220px; height: 200px;" /></a>
                   </th>
                   <th rowspan="4">
                      <div style="text-align: right; margin-left: 20px;">
@@ -47,13 +47,13 @@
                   </th>
                </tr>
                <tr>
-                  <th style="text-align: center;">프로틴(초코)</th>
+                  <th style="text-align: center;">${jumun.getjName() }</th>
                </tr>
                <tr>
-                  <th style="text-align: center;">10,000원</th>
+                  <th style="text-align: center;">${jumun.getjPrice() - jumun.getjMile() }원</th>
                </tr>
                <tr>
-                  <th style="text-align: center;">1 개</th>
+                  <th style="text-align: center;">${jumun.getjCount() } 개</th>
                </tr>
             </table>
             <form action="#" method="post" enctype="Multipart/form-data">
@@ -82,18 +82,9 @@
                <table>
                   <tr>
                      <th>
-                        <div>
-                           <h>비밀번호: </h>
-                           <input type="text" maxlength="4"
-                              style="margin-left: 10px; width: 120px; height: 35px;"
-                              value="4자리 숫자" onclick="this.value='';" />
-                        </div>
-                     </th>
-
-                     <th>
-                        <div style="margin-left: 525px;">
-                           <input type="button" style="width: 100px; height: 35px;" value="뒤로가기" /> 
-                           <input type="button" style="margin-left: 10px; width: 100px; height: 35px;" value="환불신청" />
+                        <div style="margin-left: 525px; position:relative; left:180px;">
+                           <a href="DetailRefund" class="btn btn-info" style="width: 100px; height: 40px;">뒤로가기</a> 
+                           <input type="button" class="btn btn-info" style="margin-left: 10px; width: 100px; height: 40px;" value="환불신청" />
                         </div>
                      </th>
                   </tr>
