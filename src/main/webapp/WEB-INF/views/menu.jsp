@@ -154,6 +154,7 @@
 						</div>
 					</div>
 				</c:if>
+				
 				<c:if test="${msg3 == false }">
 						<script>
 						alert("${member.mName} 님 환영합니다.")

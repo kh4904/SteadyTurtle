@@ -81,7 +81,7 @@
 					<div class="list-group"
 						style="position: relative; top: -20px; left: 200px;">
 						이메일 : <input type="email" class="form-control"
-							placeholder="입력해주세요" id="mEmail" name="mEmail" maxlength="10"
+							placeholder="입력해주세요" id="mEmail" name="mEmail" maxlength="30"
 							style="width: 300px; height: 40px; position: relative; left: 130px; top: -30px;">
 					</div>
 
@@ -89,7 +89,7 @@
 					<div class="list-group"
 						style="position: relative; top: -20px; left: 200px;">
 						주소 : <input type="text" class="form-control" placeholder="입력해주세요"
-							id="mAddr" name="mAddr" maxlength="20"
+							id="mAddr" name="mAddr" maxlength="50"
 							style="width: 300px; height: 40px; position: relative; left: 130px; top: -30px;">
 					</div>
 

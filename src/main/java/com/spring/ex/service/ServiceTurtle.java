@@ -50,6 +50,25 @@ public class ServiceTurtle implements TurtleService{
 		return dao.login(ldto);
 	}
 	
+	//아이디찾기
+	@Inject
+	private MemberDao memberDaoId;
+		
+	@Override
+	public MemberDto memberId(MemberDto mIdDto) throws Exception {
+	
+		return memberDaoId.memberId(mIdDto);
+	}
+		
+	//비밀번호찾기
+	@Inject
+	private MemberDao memberDaoPw;
+	@Override
+	public MemberDto memberPw(MemberDto mPwDto) throws Exception {
+	
+		return memberDaoPw.memberPw(mPwDto);
+	}
+	
 	//회원상세
 	@Inject MemberDao mddao;
 		

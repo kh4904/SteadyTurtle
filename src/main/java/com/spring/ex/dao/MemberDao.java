@@ -26,6 +26,12 @@ public interface MemberDao {
 	// 로그인 dto
 	public MemberDto login(MemberDto ldto) throws Exception;
 	
+	// 아이디찾기 dto
+	public MemberDto memberId(MemberDto mIdDto) throws Exception;
+		
+	// 비밀번호찾기 dto
+	public MemberDto memberPw(MemberDto mPwDto) throws Exception;
+	
 	// 회원상세 dto
 	public MemberDto memberDetail(MemberDto mddto) throws Exception;
 	

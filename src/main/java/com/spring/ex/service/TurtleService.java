@@ -27,6 +27,12 @@ public interface TurtleService {
 	//로그인 MemberDto를 ldto로 선언
 	public MemberDto login(MemberDto ldto) throws Exception;
 	
+	/* 아이디찾기 MemberDto를 memberId()로 선언*/
+	public MemberDto memberId(MemberDto mIdDto) throws Exception;
+	
+	/* 비밀번호찾기 MemberDto를 memberPw()로 선언*/
+	public MemberDto memberPw(MemberDto mPwDto) throws Exception;
+	
 	//회원상세 MemberDto를 mddto로 선언
 	public MemberDto memberDetail(MemberDto mddto) throws Exception;
 	

@@ -66,12 +66,6 @@ public class MyController {
 		return "redirect:/main";
 	}
 	
-	// 아이디, 비밀번호찾기 페이지
-	@RequestMapping("/idSearch")
-	public String idSearch() {
-		return "Login/idSearch";
-	}
-	
 	// 로그인시 보이는화면
 	@RequestMapping(value = "/LoginSuccess", method = RequestMethod.GET)
 	public String Login(Model model) throws Exception {
@@ -110,6 +104,46 @@ public class MyController {
 		session.invalidate();
 		rttr.addFlashAttribute("msg2",false);
 		return "redirect:/main";
+	}
+	
+	// 아이디, 비밀번호찾기 페이지
+	@RequestMapping(value = "/idSearch", method = RequestMethod.GET)
+	public String idSearch() throws Exception {
+		return "Login/idSearch";
+	}
+	
+	// 아이디 찾기 
+	@RequestMapping(value = "/LoginActionId", method = RequestMethod.POST)
+	public String FindId(MemberDto mIdDto,HttpServletRequest req,RedirectAttributes rttr) throws Exception {
+		String path = "";
+		HttpSession session5 = req.getSession();
+		MemberDto login = ServiceTurtle.memberId(mIdDto);
+		if (login == null) {
+			rttr.addFlashAttribute("msg5", false);
+			path = "redirect:/idSearch";
+		} else {
+			session5.setAttribute("member5", login);
+			rttr.addFlashAttribute("msg5", true);
+			path = "redirect:/idSearch";
+		}
+		return path;
+	}
+		
+	// 비밀번호 찾기 
+	@RequestMapping(value ="/LoginActionPw", method = RequestMethod.POST)
+	public String FindPw(MemberDto mPwDto,HttpServletRequest req,RedirectAttributes rttr) throws Exception {
+		String path = "";
+		HttpSession session6 = req.getSession();
+		MemberDto login = ServiceTurtle.memberPw(mPwDto);
+		if (login == null) {
+			rttr.addFlashAttribute("msg7", false);
+			path = "redirect:/idSearch";
+		} else {
+			session6.setAttribute("member6", login);
+			rttr.addFlashAttribute("msg7", true);
+			path = "redirect:/idSearch";
+		}
+		return path;
 	}
 	
 	// 헬스기구 페이지

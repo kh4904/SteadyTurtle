@@ -31,14 +31,14 @@
 				<div class="col-lg-6">
 					<h1 style="position: relative; top: -30px; left: 400px;">아이디 찾기</h1>
 					<!-- 아이디 찾기 폼 -->
-					<form method="post" action="loginAction.jsp" style="position: relative; top: 10px; left: 300px;">
+					<form method="post" action="LoginActionId" style="position: relative; top: 10px; left: 300px;">
 					    <!-- 이름 입력란 -->
 						<div class="form-group" style="position: relative; top: 1px;">
-						이름 : <input type="text" class="form-control" placeholder="입력해주세요" name="userName" maxlength="20" style="width: 250px; height: 40px; position: relative; left: 80px; top: -30px;">
+						이름 : <input type="text" class="form-control" placeholder="입력해주세요" id = "mName"name="mName" maxlength="20" style="width: 250px; height: 40px; position: relative; left: 80px; top: -30px;">
 						</div>
 						<!-- 전화번호 입력란 -->
 						<div class="form-group" style="position: relative; top: -30px;">
-						전화번호 : <input type="text" class="form-control" placeholder="입력해주세요" name="userNumber" maxlength="20" style="width: 250px; height: 40px; position: relative; left: 80px; top: -30px;">
+						전화번호 : <input type="text" class="form-control" placeholder="입력해주세요" id = "mPhone" name="mPhone" maxlength="20" style="width: 250px; height: 40px; position: relative; left: 80px; top: -30px;">
 						</div>
 						<!-- 확인버튼 -->
 						<input type="submit" class="btn btn-primary form-control" value="확인" style="width: 150px; height: 40px; position: relative; top: -30px; left: 130px;">
@@ -51,18 +51,18 @@
 				<div class="col-lg-6">
 					<h1 style="position: relative; top: -30px; left: 200px;">비밀번호 찾기</h1>
 					<!-- 비밀번호 찾기 폼 -->
-					<form method="post" action="loginAction.jsp" style="position: relative; top: 10px; left: 100px;">
+					<form method="post" action="LoginActionPw" style="position: relative; top: 10px; left: 100px;">
 					    <!-- 아이디 입력란 -->
 						<div class="form-group" style="position: relative; top: 1px;">
-							아이디 : <input type="text" class="form-control" placeholder="입력해주세요" name="userID" maxlength="20" style="width: 250px; height: 40px; position: relative; left: 80px; top: -30px;">
+							아이디 : <input type="text" class="form-control" placeholder="입력해주세요" name="mId" maxlength="30" style="width: 250px; height: 40px; position: relative; left: 80px; top: -30px;">
 						</div>
 						<!-- 이름 입력란 -->
 						<div class="form-group" style="position: relative; top: -30px;">
-							이름 : <input type="text" class="form-control" placeholder="입력해주세요" name="userName" maxlength="20" style="width: 250px; height: 40px; position: relative; left: 80px; top: -30px;">
+							이름 : <input type="text" class="form-control" placeholder="입력해주세요" name="mName" maxlength="20" style="width: 250px; height: 40px; position: relative; left: 80px; top: -30px;">
 						</div>
 						<!-- 이메일 입력란 -->
 						<div class="form-group" style="position: relative; top: -55px;">
-						이메일 : <input type="text" class="form-control" placeholder="입력해주세요" name="userNumber" maxlength="20" style="width: 250px; height: 40px; position: relative; left: 80px; top: -30px;">
+						이메일 : <input type="text" class="form-control" placeholder="입력해주세요" name="mEmail" maxlength="30" style="width: 250px; height: 40px; position: relative; left: 80px; top: -30px;">
 						</div>
 						<!-- 확인버튼 -->
 						<input type="submit" class="btn btn-primary form-control" value="확인" style="width: 150px; height: 40px; position: relative; top: -70px; left: 130px;">
@@ -70,6 +70,27 @@
 				</div>
 			</div>
 		</section>
+		
+		<c:if test="${msg5 == true }">
+			<script>
+				alert("회원님의 아이디는 ${member5.mId}입니다")
+			</script>
+		</c:if>
+		<c:if test="${msg5 == false }">
+			<script>
+				alert("입력하신 정보와 일치하는 아이디는 없습니다.")
+			</script>
+		</c:if>
+		<c:if test="${msg7 == true }">
+			<script>
+				alert("회원님의 비밀번호는 ${member6.mPw}입니다")
+			</script>
+		</c:if>
+		<c:if test="${msg7 == false }">
+			<script>
+				alert("입력하신 정보와 일치하는 비밀번호는 없습니다.")
+			</script>
+		</c:if>
         
         <!-- Copyright Section(맨밑 하단)-->
         <div class="copyright py-4 text-center text-white">

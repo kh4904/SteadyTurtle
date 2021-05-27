@@ -45,6 +45,18 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectOne(namespace + ".login", ldto);
 	}
 	
+	// 아이디 찾기 select문
+	@Override
+	public MemberDto memberId(MemberDto mIdDto) throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".mId",mIdDto);
+	}
+		
+	// 비번 찾기 select문
+	@Override
+	public MemberDto memberPw(MemberDto mPwDto) throws Exception{
+		return sqlSessionTemplate.selectOne(namespace + ".mPw",mPwDto);
+	}
+	
 	// 회원상세
 	@Override
 	public MemberDto memberDetail(MemberDto mddto) throws Exception{
