@@ -70,10 +70,26 @@
                     <th style="width:200px;">${jumun.getjPrice()}원<br>${jumun.getjCount() }개</th>
                     <th style="width:150px;"><h style="color:orange;">${jumun.getjShip() }</h></th>
                     <th style="width:150px; height:100px;">
-                        <!-- 주문취소 버튼 -->
-                    	<input type="submit" class="btn btn-primary form-control" value="주문취소" style=" position:relative; top:-10px; height:40px; width: 100px;"></input>
-                    	<!-- 상품환불 버튼 -->
-                    	<input type="submit" class ="btn" style="width: 100px; height: 40px; background-color:#e0e0e0;" value="상품환불"  >
+                        <c:choose>
+							<c:when test="${jumun.getjShip() eq '배송준비'}">
+       							<!-- 주문취소 버튼 -->
+                    			<input type="submit" class="btn btn-primary form-control" value="주문취소" style=" position:relative; top:-10px; height:40px; width: 100px;"></input>
+                    			<!-- 상품환불 버튼 비활성화 -->
+                    			<text class="btn" style="width: 100px; height: 40px; background-color:#e0e0e0;" >상품환불</text>
+    						</c:when>
+    						<c:when test="${jumun.getjShip() eq '배송중'}">
+        						<!-- 주문취소 버튼 비활성화 -->
+    							<text class="btn" style=" position:relative; top:-10px; height:40px; width: 100px; background-color:#e0e0e0;" >주문취소</text>
+                    			<!-- 상품환불 버튼 비활성화 -->
+                    			<text class="btn" style="width: 100px; height: 40px; background-color:#e0e0e0;" >상품환불</text>
+    						</c:when>
+    						<c:when test="${jumun.getjShip() eq '배송완료'}">
+    						    <!-- 주문취소 버튼 비활성화 -->
+    							<text class="btn" style=" position:relative; top:-10px; height:40px; width: 100px; background-color:#e0e0e0;" >주문취소</text>
+                    			<!-- 상품환불 버튼 -->
+                    			<input type="submit" class ="btn btn-primary form-control" style="width: 100px; height: 40px;" value="상품환불"  >
+    						</c:when>
+						</c:choose>
                     </th>
                 	</tr>
                 	</form>

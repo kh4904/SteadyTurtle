@@ -44,7 +44,7 @@
 							<td>아이디</td>
 							<td>주문수량</td>
 							<td>결제금액</td>
-							<td>결제상태</td>
+							<td>결재상태</td>
 							<td></td>
 							
 						</tr>
@@ -58,7 +58,14 @@
 							<td>${jumun.getjId() }</td>
 							<td>${jumun.getjCount() }</td>
 							<td>${jumun.getjPrice() }</td>
-							<td style="color:red;">${jumun.getjState() }</td>
+							<c:choose>
+								<c:when test="${jumun.getjState() eq '승인'}">
+       							 <td style="color:blue;">승인</td>
+    							</c:when>
+    							<c:when test="${jumun.getjState() eq '미승인'}">
+        						 <td style="color:red;">미승인</td>
+    							</c:when>
+							</c:choose>
 							<td ><input type="submit" class="btn btn-primary pull-right" value="승인" /></td>
 						</tr>
 				    </c:forEach>

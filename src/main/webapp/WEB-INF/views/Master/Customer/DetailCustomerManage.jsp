@@ -122,7 +122,20 @@
 									<th style="background-color: #eeeeee;">${jumun.getjMile() }</th>
 									<th style="background-color: #eeeeee;">${jumun.getjPrice() }</th>
 									<th style="background-color: #eeeeee;">${jumun.getjFinishDate() }</th>
-									<th style="background-color: #eeeeee; color: blue;">${jumun.getjShip() }</th>
+									<c:choose>
+										<c:when test="${jumun.getjShip() eq '배송준비'}">
+       										 <th style="background-color: #eeeeee; color: orange;">배송준비</th>
+    									</c:when>
+    									<c:when test="${jumun.getjShip() eq '배송중'}">
+        						 			<th style="background-color: #eeeeee; color: orange;">배송중</th>
+    									</c:when>
+    									<c:when test="${jumun.getjShip() eq '배송완료'}">
+        						 			<th style="background-color: #eeeeee; color: blue;">배송완료</th>
+    									</c:when>
+    									<c:when test="${jumun.getjShip() eq '환불처리'}">
+        						 			<th style="background-color: #eeeeee; color: red;">환불처리</th>
+    									</c:when>
+									</c:choose>
 								</tr>
 								</c:if>
 						     </c:forEach>

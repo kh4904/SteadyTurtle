@@ -645,7 +645,7 @@ public class MyController {
 		return "Master/Customer/MDetailRefund";
 	}
 	
-	// 고객문의 목록
+	// 관리자 고객문의 목록
 	@RequestMapping(value = "/MCustomerWriteView", method = RequestMethod.GET)
 	public String MCustomerWriteView(Model model) throws Exception {
 		
@@ -656,7 +656,7 @@ public class MyController {
 		return "Master/Customer/MCustomerWriteView";
 	}
 	
-	// 고객문의 상세내용 보기
+	// 관리자 고객문의 상세내용 보기
 	@RequestMapping(value = "/ComplainView", method = RequestMethod.GET)
 	public String ComplainView(Model model) throws Exception {
 		
@@ -667,7 +667,7 @@ public class MyController {
 		return "Master/Customer/ComplainView";
 	}
 	
-	// 고객문의 상세내용 보기 페이지(세션값주기)
+	// 관리자 고객문의 상세내용 보기 페이지(세션값주기)
 	@RequestMapping(value="/ComplainView", method=RequestMethod.POST)
 	public String ComplainView(BoardDTO bdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 				
@@ -686,7 +686,7 @@ public class MyController {
 		return path;
 	}
 	
-	// 상품관리 수정 페이지
+	// 관리자 고객문의 답변달기
 	@RequestMapping(value="/boardAnswer", method=RequestMethod.POST)
 	public String boardAnswer(BoardDTO bdto) throws Exception {
 		
