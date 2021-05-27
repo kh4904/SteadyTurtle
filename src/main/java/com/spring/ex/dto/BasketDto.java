@@ -53,8 +53,8 @@ public class BasketDto {
 	
 	@Override
 	public String toString() {
-		return "BasketInsertDto [ mId =" + mId + ", pName=" + pName + ", pCountsSell=" +
-				pCountsSell + ", pPrice=" + pPrice + ", pUrl=" + pUrl + "]";
+		return "BasketDto [ mId =" + mId + ", pName=" + pName + ", pCountsSell=" +
+				pCountsSell + ", pPrice=" + pPrice + ", pUrl=" + pUrl + ", pPriceSell="+ pPriceSell + "]";
 	}
 	
 }

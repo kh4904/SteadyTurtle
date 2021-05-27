@@ -137,6 +137,12 @@ public class TotalDao implements MemberDao{
 	public List<BasketDto> basketList() throws Exception {
 		return sqlSessionTemplate.selectList(namespace+".basket");
 	}
+	
+	//장바구니 추가
+	@Override
+	public void basketInsert(BasketDto bidto) throws Exception {
+		sqlSessionTemplate.insert(namespace + ".basketInsert", bidto);
+	}
 
 	// 고객문의 게시판 목록 select문
 	@Override

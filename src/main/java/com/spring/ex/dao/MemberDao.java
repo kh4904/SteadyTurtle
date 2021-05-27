@@ -73,6 +73,9 @@ public interface MemberDao {
 	// 장바구니 dto
 	public List<BasketDto> basketList() throws Exception;
 	
+	//장바구니 추가
+	public void basketInsert(BasketDto bidto) throws Exception;
+	
 	// 고객문의 게시판 목록 dto
 	public List<BoardDTO> boardList() throws Exception;
 	

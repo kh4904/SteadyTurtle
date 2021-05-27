@@ -40,7 +40,7 @@
 					
 				</div>
 				<div class="col-md-6">
-					<form name="form" method="post">
+					<form name="form" method="post" action="basket">
 						<input type="hidden" name="pUrl" id="pUrl" value="${product.getpUrl() }">
 						<br>
 						<h2 style="text-align: center">${product.getpName() }</h2>
@@ -137,7 +137,7 @@
 						<hr>
 						<!-- 뒤로가기 버튼클릭시 -->
 						<p style="text-align: right;">
-							<a href="#" class="btn btn-secondary">뒤로가기</a>
+							<a href="main" class="btn btn-secondary">홈으로</a>
 							<!-- 장바구니 버튼클릭시 -->
 							<c:if test="${member != null }">
 								<input type="submit" class="btn btn-info" name="basketinsert" value="장바구니" onclick="javascript: form.action='basketinsert';" >

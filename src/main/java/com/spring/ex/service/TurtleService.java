@@ -74,6 +74,9 @@ public interface TurtleService {
 	/* 장바구니  list BasketDto를 basketList()로 선언*/
 	public List<BasketDto> basketList() throws Exception;
 	
+	//장바구니 추가
+	public void basketInsert(BasketDto bidto) throws Exception;
+	
 	// 고객문의 게시판 list BoardDTO를 boardList로 선언
 	public List<BoardDTO> boardList() throws Exception;
 	

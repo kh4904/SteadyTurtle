@@ -268,12 +268,23 @@ public class MyController {
 	// 장바구니 페이지
 	@RequestMapping(value = "/basket", method = RequestMethod.GET)
 	public String basket(Model model) throws Exception {
-		
+			
 		List<BasketDto> list = service.basketList();
 		
 		model.addAttribute("basketList", list);
 		
 		return "Login/basket";
+	}
+		
+	//장바구니 추가
+	@RequestMapping(value = "/basketinsert", method = RequestMethod.POST)
+	public String basketInsert(BasketDto bidto, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+			
+		String path="";
+		HttpSession session2 = req.getSession();
+		ServiceTurtle.basketInsert(bidto);
+		
+		return "redirect:/basket";
 	}
 	
 	// 주문조회 페이지

@@ -70,6 +70,12 @@
 <!-- 장바구니 select문 -->
 <select id="basket" resultType="BasketDto">SELECT * from basket</select>
 
+<!-- 장바구니 추가 -->
+<insert id="basketInsert">
+	insert into basket(mId, pName, pCountsSell, pPrice, pPriceSell, pUrl)
+	values(#{mId}, #{pName}, #{pCountsSell}, #{pPrice}, #{pPrice} * #{pCountsSell}, #{pUrl})
+</insert>
+
 <!-- 고객문의 게시판 목록 select문 -->
 <select id="board" resultType="BoardDTO">SELECT * from board order by bNum DESC</select>
 
