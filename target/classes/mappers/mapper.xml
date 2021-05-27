@@ -84,5 +84,22 @@
 
 <!-- 판매상품 목록 select문 -->
 <select id="sell" resultType="SellDto">SELECT * from sell</select>
+
+<!-- 바로구매 -->
+<insert id="cash">
+	insert into cashon(pName, pCountsSell, pPrice, pShip, pSumPrice)
+	values(#{pName}, #{pCountsSell}, #{pPrice}, #{pShip}, #{pPrice} * #{pCountsSell})
+</insert>
+
+<!-- 바로구매 select문 -->
+<select id="Cashview" resultType="CashDto">SELECT * from cashon </select>
+<!-- 결제하기 -->
+<insert id="cashOk">
+	insert into cashlist(cNum, mId, mName, pPrice, pCount, pCate, pName, mAddr, mEmail, cMailNum, cName, cPhone)
+	values(0, #{mId}, #{mName}, #{pPrice}, #{pCount}, #{pCate}, #{pName}, #{mAddr}, #{mEmail}, #{cMailNum}, #{cName}, #{cPhone} )
+</insert>
+
+<!-- 결제하기 delete -->
+<delete id="cashdelete"> delete from cashon where pName = #{pName} </delete>
 </mapper>
 

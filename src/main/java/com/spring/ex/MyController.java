@@ -17,6 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
+import com.spring.ex.dto.CashDto;
+import com.spring.ex.dto.CashlistDto;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
@@ -320,10 +322,35 @@ public class MyController {
 		return path;
 	}
 
+	// 바로결제
+	@RequestMapping(value = "/Cash", method = RequestMethod.POST)
+	public String Cash(CashDto cdto) throws Exception {
+		
+		ServiceTurtle.cash(cdto);
+		
+		return "redirect:/CashOn";
+	}
+		
 	// 결제창 페이지
-	@RequestMapping("/CashOn")
-	public String CashOn() {
+	@RequestMapping(value = "/CashOn", method = RequestMethod.GET)
+	public String CashOn(Model model) throws Exception {
+		
+		List<CashDto> list = service.cashdto();
+		
+		model.addAttribute("cashList", list);
+		
 		return "Cash/CashOn";
+	}
+		
+	//결제하기
+	@RequestMapping(value = "CashOk", method = RequestMethod.POST)
+	public String CashOk(CashlistDto cldto, CashDto deldto) throws Exception {
+		
+		service.cashdelete(deldto);
+		
+		ServiceTurtle.cashOk(cldto);
+		
+		return "redirect:/main";
 	}
 	
 	// 환불조회 페이지

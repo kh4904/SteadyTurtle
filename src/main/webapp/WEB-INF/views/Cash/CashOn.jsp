@@ -34,236 +34,240 @@
 	<br>
 	<!-- 주문/결제 헤드부분 -->
 	<header class="bg-white text-white">
-		<div class="container">
-			<!-- 주문/결제 문구 및 밑줄표시-->
-			<h2 class="page-section-heading text-uppercase text-secondary mb-0">주문/결제</h2>
-			<!-- 밑줄 -->
-			<div class="divider-custom" style="display: block;">
-				<hr style="background-color: black;">
-			</div>
+		<form action="CashOk" method="POST">
+			<div class="container">
+				<!-- 주문/결제 문구 및 밑줄표시-->
+				<h2 class="page-section-heading text-uppercase text-secondary mb-0">주문/결제</h2>
+				<!-- 밑줄 -->
+				<div class="divider-custom" style="display: block;">
+					<hr style="background-color: black;">
+				</div>
 
-			<!-- 주문자정보 필드셋 -->
-			<fieldset style="background-color: #e3f2fd;">
-				<legend style="color: black;">주문자 정보</legend>
-				<label style="color: black;">이름</label> <input type="text"
-					id="fname" name="fname"
-					style="position: relative; left: 35px; width: 500px;"><br>
-				<label style="color: black;">휴대전화</label> <input type="tel"
-					id="lname" name="lname" placeholder="01012345678"
-					style="width: 500px;"><br> <small
-					style="color: red; position: relative; left: 80px;">' - '
-					빼고 입력해주세요.</small><br> <label style="color: black;">이메일</label> <input
-					type="email" id="Ename" name="Ename" placeholder="id@naver.com"
-					style="position: relative; left: 20px; width: 500px;">
-			</fieldset>
+				<!-- 주문자정보 필드셋 -->
+				<fieldset style="background-color: #e3f2fd;">
+					<c:if test="${member != null }">
+						<input type="hidden" id="mId" name="mId" value="${member.mId }">
+					</c:if>
+					<c:if test="${member == null }">
+						<input type="hidden" id="mId" name="mId" value="비회원주문">
+					</c:if>
+					<legend style="color: black;">주문자 정보</legend>
+					<label style="color: black;">이름</label> 
+					<input type="text"id="mName" name="mName" value="${member.mName }"style="position: relative; left: 35px; width: 500px;"><br>
+					<label style="color: black;">휴대전화</label> <input type="tel"
+						id="mPhone" name="" mPhone"" value="${member.mPhone }"
+						style="width: 500px;"><br> <small
+						style="color: red; position: relative; left: 80px;">' - '
+						빼고 입력해주세요.</small><br> <label style="color: black;">이메일</label> <input
+						type="email" id="mEmail" name="mEmail" value="${member.mEmail }"
+						style="position: relative; left: 20px; width: 500px;">
+				</fieldset>
 
-			<!-- 밑줄 -->
-			<div class="divider-custom" style="display: block;">
-				<hr style="background-color: black;">
-			</div>
+				<!-- 밑줄 -->
+				<div class="divider-custom" style="display: block;">
+					<hr style="background-color: black;">
+				</div>
 
-			<!-- 배송지 정보 필드셋 -->
-			<fieldset style="background-color: #e3f2fd;">
-				<legend style="color: black;">배송지 정보</legend>
-				<label style="color: black;">받는분</label> <input type="text"
-					id="fname" name="fname"
-					style="position: relative; left: 25px; width: 500px;"><br>
-				<label style="color: black;">주소</label><br>
-				<textarea class="textarea"
-					style="position: relative; left: 75px; top: -30px; width: 500px;"></textarea>
-				<br> <label style="color: black;">우편번호</label> <input
-					type="text" class="input"
-					style="position: relative; left: 5px; width: 500px;"><br>
-				<label style="color: black;">휴대전화</label> <input type="tel"
-					id="Ename" name="Ename" placeholder="01011223344"
-					style="position: relative; left: 5px; width: 500px;"><br>
-				<small style="color: red; position: relative; left: 80px;">'
-					- ' 빼고 입력해주세요.</small><br>
-			</fieldset>
+				<!-- 배송지 정보 필드셋 -->
+				<fieldset style="background-color: #e3f2fd;">
+					<legend style="color: black;">배송지 정보</legend>
+					<label style="color: black;">받는분</label> 
+					<input type="text" id="cName" name="cName" style="position: relative; left: 25px; width: 500px;"><br>
+					<label style="color: black;">주소</label><br> 
+					<input class="text" id="mAddr" name="mAddr" value="${member.mAddr }" style="position: relative; left: 75px; top: -30px; width: 500px;">
+					<br> <label style="color: black;">우편번호</label> 
+					<input type="text" id="cMailNum" name="cMailNum" style="position: relative; left: 5px; width: 500px;"><br>
+					<label style="color: black;">휴대전화</label> 
+					<input type="tel" id="cPhone" name="cPhone" placeholder="01011223344" style="position: relative; left: 5px; width: 500px;"><br>
+					<small style="color: red; position: relative; left: 80px;">'
+						- ' 빼고 입력해주세요.</small><br>
+				</fieldset>
 
-			<!-- 밑줄 -->
-			<div class="divider-custom" style="display: block;">
-				<hr style="background-color: black;">
-			</div>
+				<!-- 밑줄 -->
+				<div class="divider-custom" style="display: block;">
+					<hr style="background-color: black;">
+				</div>
 
-			<!-- 주문상품 보기 -->
-			<div class="container" style="background-color: #bbdefb;">
-				<div class="row">
-					<div class="col-md-5">
-						<h2 style="color: black;">주문상품</h2>
-						<img src="./resources/assets/HealthImg/h1.jpg"
-							style="width: 50%; height: 60%;">
-					</div>
-					<div class="col-md-6">
-						<br>
-						<h2 style="color: black;">
-							<center>하체튼튼철봉</center>
-						</h2>
-						<hr>
-						<p>
-							<b style="font-size: 20px; color: black;">주문수량 : </b>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- db연동 -->
-							<b style="font-size: 20px; color: black;">1 개</b>
-						</p>
-						<hr>
-						<p>
-							<b style="font-size: 20px; color: black;">상품금액 : </b>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- db연동 -->
-							<b style="font-size: 20px; color: black;">150,000 원</b>
-						</p>
-						<hr>
-						<p>
-							<b style="font-size: 20px; color: black;">마일리지 : </b>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- db연동 -->
-							<input type="text" value="0"
-								style="position: relative; width: 70px; height: 30px;"></input><b
-								style="font-size: 20px; color: black;">/ 2,640 M</b>
-						</p>
-						<hr>
-						<p>
-							<b style="font-size: 20px; color: black;">배송비 : </b>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- db연동 -->
-							<b style="font-size: 20px; color: black;">3,000 원</b>
-						</p>
-						<hr>
-						<!-- db연동 -->
-						<h4 style="text-align: right; color: black;">총 결제금액 :
-							153,000원</h4>
-						<hr>
+				<!-- 주문상품 보기 -->
+				<div class="container" style="background-color: #bbdefb;">
+					<div class="row">
+						<div class="col-md-5">
+							<h2 style="color: black;">주문상품</h2>
+							<img src="${product.getpUrl() }"
+								style="width: 50%; height: 60%;">
+						</div>
+						<div class="col-md-6">
+							<c:forEach items="${cashList}" var="cashList">
+									<br>
+									<h2 style="color: black;">${cashList.pName }</h2>
+									<input type="hidden" id="pName" name="pName" value="${cashList.pName }" >
+									<input type="hidden" id="pCate" name="pCate" value="${product.getpCate() }" >
+									<hr>
+									<p>
+										<b style="font-size: 20px; color: black;">주문수량 : </b>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<!-- db연동 -->
+										<b style="font-size: 20px; color: black;">${cashList.getpCountsSell() } 개</b>
+										<input type="hidden" id="pCount" name="pCount" value="${cashList.getpCountsSell() }" >
+									</p>
+									<hr>
+									<p>
+										<b style="font-size: 20px; color: black;">상품금액 : </b>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<!-- db연동 -->
+										<b style="font-size: 20px; color: black;">${cashList.getpPrice()} 원</b>
+									</p>
+									<hr>
+									<p>
+										<b style="font-size: 20px; color: black;">마일리지 : </b>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<!-- db연동 -->
+										<input type="text" value="0"
+											style="position: relative; width: 70px; height: 30px;"></input><b
+											style="font-size: 20px; color: black;">/ 2,640 M</b>
+									</p>
+									<hr>
+									<p>
+										<b style="font-size: 20px; color: black;">배송비 : </b>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<!-- db연동 -->
+										<b style="font-size: 20px; color: black;">3,000 원</b>
+									</p>
+									<hr>
+									<!-- db연동 -->
+									<h4 style="text-align: right; color: black;">총 결제금액 : ${cashList.pSumPrice}</h4>
+									<input type="hidden" id="pPrice" name="pPrice" value="${cashList.pSumPrice}" >
+									<hr>
+							</c:forEach>
+						</div>
 					</div>
 				</div>
+
+				<!-- 배송 요청사항 필드셋 -->
+				<fieldset style="background-color: #bbdefb;">
+					<p style="font-size: 20px; color: black; text-align: center;">
+						배송 요청사항 <select>
+							<option value="" selected>문앞에 놔주세요.</option>
+							<option value="">부재시 경비실에 맡겨주세요.</option>
+							<option value="">도착전 연락주세요.</option>
+						</select>
+					</p>
+				</fieldset>
+
+				<!-- 밑줄 -->
+				<div class="divider-custom" style="display: block;">
+					<hr style="background-color: black;">
+				</div>
+
+				<!-- 결제방법 문구 -->
+				<h3 style="color: black;">결제방법</h3>
+				<hr>
+
 			</div>
 
-			<!-- 배송 요청사항 필드셋 -->
-			<fieldset style="background-color: #bbdefb;">
-				<p style="font-size: 20px; color: black; text-align: center;">
-					배송 요청사항 <select>
-						<option value="" selected>문앞에 놔주세요.</option>
-						<option value="">부재시 경비실에 맡겨주세요.</option>
-						<option value="">도착전 연락주세요.</option>
-					</select>
-				</p>
-			</fieldset>
+			<!-- 결제방법 (신용카드, 휴대폰결제, Toss) -->
+			<div class="container">
+				<table style="width: 100%">
+					<tr style="color: black;">
+						<th style="font-size: 20px;"><a href="#"
+							style="color: black; text-decoration: none;">신용카드</a></th>
+						<th style="font-size: 20px;"><a href="#"
+							style="color: black; text-decoration: none;">휴대폰결제</a></th>
+						<th style="font-size: 20px;"><a href="#"
+							style="color: black; text-decoration: none;">Toss</a></th>
+					</tr>
+				</table>
+				<hr>
+				<br>
 
-			<!-- 밑줄 -->
-			<div class="divider-custom" style="display: block;">
-				<hr style="background-color: black;">
-			</div>
-
-			<!-- 결제방법 문구 -->
-			<h3 style="color: black;">결제방법</h3>
-			<hr>
-		</div>
-
-		<!-- 결제방법 (신용카드, 휴대폰결제, Toss) -->
-		<div class="container">
-			<table style="width: 100%">
-				<tr style="color: black;">
-					<th style="font-size: 20px;"><a href="#"
-						style="color: black; text-decoration: none;">신용카드</a></th>
-					<th style="font-size: 20px;"><a href="#"
-						style="color: black; text-decoration: none;">휴대폰결제</a></th>
-					<th style="font-size: 20px;"><a href="#"
-						style="color: black; text-decoration: none;">Toss</a></th>
-				</tr>
-			</table>
-			<hr>
-			<br>
-
-			<!-- 카드및 할부선택 -->
-			<div class="container" style="background-color: #e3f2fd;">
-				<div class="row">
-					<div class="col-md-5">
-						<br>
-						<h4 style="color: black;">신용카드 결제</h4>
-					</div>
-					<div class="col-md-6">
-						<br>
-						<p>
-							<b style="font-size: 20px; color: black;">카드선택</b>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<!-- 카드및 할부선택 -->
+				<div class="container" style="background-color: #e3f2fd;">
+					<div class="row">
+						<div class="col-md-5">
+							<br>
+							<h4 style="color: black;">신용카드 결제</h4>
+						</div>
+						<div class="col-md-6">
+							<br>
+							<p>
+								<b style="font-size: 20px; color: black;">카드선택</b>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<!-- db연동 -->
+								<select style="width: 220px; height: 30px;">
+									<option value="">[필수] 카드사를 선택하세요.</option>
+									<option value="KB">KB국민</option>
+									<option value="IBK">IBK기업</option>
+									<option value="SH">신한</option>
+									<option value="SA">삼성</option>
+									<option value="BC">BC</option>
+									<option value="NH">농협</option>
+								</select>
+							</p>
+							<hr>
+							<p>
+								<b style="font-size: 20px; color: black;">할부선택</b>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<!-- db연동 -->
+								<select style="width: 220px; height: 30px;">
+									<option value="">일시불</option>
+									<option value="">1개월 할부</option>
+									<option value="">3개월 할부</option>
+									<option value="">6개월 할부</option>
+									<option value="">12개월 할부</option>
+								</select>
+							</p>
+							<hr>
 							<!-- db연동 -->
-							<select style="width: 220px; height: 30px;">
-								<option value="">[필수] 카드사를 선택하세요.</option>
-								<option value="KB">KB국민</option>
-								<option value="IBK">IBK기업</option>
-								<option value="SH">신한</option>
-								<option value="SA">삼성</option>
-								<option value="BC">BC</option>
-								<option value="NH">농협</option>
-							</select>
-						</p>
-						<hr>
-						<p>
-							<b style="font-size: 20px; color: black;">할부선택</b>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<!-- db연동 -->
-							<select style="width: 220px; height: 30px;">
-								<option value="">일시불</option>
-								<option value="">1개월 할부</option>
-								<option value="">3개월 할부</option>
-								<option value="">6개월 할부</option>
-								<option value="">12개월 할부</option>
-							</select>
-						</p>
-						<hr>
-						<!-- db연동 -->
-						<p class="check"
-							style="color: black; text-align: right; font-size: 15px;">
-							<input type="checkbox"> <span>구매조건 및 이용약관에 동의하며,<br>결제를
-								진행합니다.
-							</span>
-						</p>
-						<hr>
-						<!-- 결제하기 버튼 -->
-						<center>
-							<input type="submit" class="btn"
-								style="width: 250px; height: 50px; background-color: #757575; color: white;"
-								value="결제하기">
-						</center>
-						<br>
+							<p class="check" style="color: black; text-align: right; font-size: 15px;">
+								<div class="checkT">
+									<input type="checkbox" id="chk"> <span>구매조건 및 이용약관에 동의하며,<br>결제를 진행합니다. </span>
+								</div>
+							</p>
+							<hr>
+							<!-- 결제하기 버튼 -->
+							<div class="btnArea">
+								<button type="submit" class="btn" disabled="disabled" style="margin-bottom: 20px; margin-left: -50px; width: 250px; height: 50px; background-color: #757575; color: white;">결제하기</button> <br>
+							</div>
+						</div>
 					</div>
 				</div>
+				<br> <br>
+
 			</div>
-			<br> <br>
-		</div>
+		</form>
 	</header>
 
 	<!-- Copyright Section(맨밑 하단)-->
@@ -296,6 +300,6 @@
 	<script src="resources/assets/mail/jqBootstrapValidation.js"></script>
 	<script src="resources/assets/mail/contact_me.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+	<script src="resources/js/scripts.js"></script>
 </body>
 </html>

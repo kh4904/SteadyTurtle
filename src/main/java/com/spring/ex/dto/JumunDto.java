@@ -115,5 +115,12 @@ public class JumunDto {
 		this.jMemo = jMemo;
 	}
 	
+	@Override
+	public String toString() {
+		return "JumunDto[ jNum=" + jNum + ", jName=" + jName + ", jPrice=" + jPrice + ", jCount=" + jCount + 
+				", jCustomer=" + jCustomer + ", jId=" + jId + ", jUrl=" + jUrl + 
+				", jShip=" + jShip + ", jJumunDate=" + jJumunDate + ", jFinishDate=" + jFinishDate + ", jState=" + jState + " , jMemo=" + jMemo +"]";
+	}
+	
 	
 }

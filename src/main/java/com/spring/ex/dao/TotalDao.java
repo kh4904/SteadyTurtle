@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
+import com.spring.ex.dto.CashDto;
+import com.spring.ex.dto.CashlistDto;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
@@ -164,5 +166,28 @@ public class TotalDao implements MemberDao{
 	@Override
 	public List<SellDto> sellList() throws Exception{
 		return sqlSessionTemplate.selectList(namespace+".sell");
+	}
+	
+	//바로구매
+	@Override
+	public void cash(CashDto cdto) throws Exception {
+		sqlSessionTemplate.insert(namespace + ".cash", cdto);
+	}
+		
+	//바로구매
+	@Override
+	public List<CashDto> cashdto() throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".Cashview");
+	}
+		
+	//결제하기
+	@Override
+	public void cashOk(CashlistDto cldto) throws Exception {
+		sqlSessionTemplate.insert(namespace + ".cashOk", cldto); 
+	}
+	
+	@Override
+	public void cashdelete(CashDto deldto) throws Exception {
+		sqlSessionTemplate.delete(namespace + ".cashdelete", deldto);
 	}
 }

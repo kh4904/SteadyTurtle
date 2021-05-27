@@ -16,6 +16,7 @@
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
 	crossorigin="anonymous"></script>
+
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css" />
@@ -32,10 +33,26 @@
 
 	<!-- 장바구니-->
 	<section class="page-section portfolio">
-		<div class="container" style="width: 1431px; height: 650px;">
+		<div class="container" style="width: 1431px; min-height: 650px; max-height:100%;">
+		<div class="checkbox_group">
 		<!-- 장바구니 문구 및 밑줄표시-->
 			<h2 class="page-section-heading text-uppercase text-secondary mb-0">장바구니</h2>
 			<!-- 밑줄 -->
+			<div class="divider-custom" style="display: block;">
+				<hr style="background-color: black;">
+			</div>
+			
+			<table style="width: 100%">
+					<tr>
+						<th style="width: 200px; height: 43px; text-align: center"><h4>사진</h4></th>
+						<th style="width: 300px; height: 43px; text-align: center"><h4>상품명</h4></th>
+						<th style="width: 250px; height: 43px; text-align: center"><h4>수량</h4></th>
+						<th style="width: 250px; height: 43px; text-align: center"><h4>상품 개별 가격</h4></th>
+						<th style="width: 250px; height: 43px; text-align: center"><h4>상품 총 가격</h4></th>
+						<th style="width: 150px; height: 43px; text-align: center">
+							<h5>전체선택<input type="checkbox" id="check_all" style="width: 25px; height: 25px;"></h5>
+						</th></tr>
+				</table>
 			<div class="divider-custom" style="display: block;">
 				<hr style="background-color: black;">
 			</div>
@@ -43,35 +60,39 @@
 
 			<!-- 장바구니에 담긴 상품 -->
 			<div class="row">
+			
 			<c:forEach items="${basketList}" var="basket">
-                  <c:if test="${basket.getBsId() eq sessionScope.member.getmId()}">
-				<table style="width: 100%">
+                  <c:if test="${basket.getmId() eq sessionScope.member.getmId()}">
+                  <form action="Cash" method="post">
+					<table style="width: 100%">
 					<tr style="height: 100px;">
-						<th style="width: 200px; height: 43px;"><center>
-								<a href="#"><img class="img-fluid"
-									src="${basket.getBsUrl()} "
-									style="width: 120px; height: 100px;" alt="" /></a>
-							</center>
-						<th style="width: 300px; height: 43px;"><center>
-								<h3>${basket.getBsName() }</h3>
-							</center>
-						<th style="width: 250px; height: 43px;"><center>
-								<input type="number" class="input"
-									style="width: 60px; height: 30px;" value="1">
-							</center>
-						<th style="width: 250px; height: 43px;"><center>
-								<h3>${basket.getBsPrice() }원</h3>
-							</center>
-						<th style="width: 150px; height: 43px;"><center>
-								<input type="checkbox" id="chkbox"
-									style="width: 25px; height: 25px;"></input>
-							</center></th>
+						<th style="width: 200px; height: 43px; text-align: center">
+							<a href="#"><img class="img-fluid" src="${basket.getpUrl()} " style="width: 120px; height: 100px;" alt="" /></a>
+						<th style="width: 300px; height: 43px; text-align: center">
+							<h3>${basket.getpName() }</h3>
+							<input type="hidden" name="pName" value="${basket.getpName() }" id="pName">
+						<th style="width: 250px; height: 43px; text-align: center">
+							<input type="number" class="input" style="width: 60px; height: 30px;" value="${basket.getpCountsSell() }">
+							<input type="hidden" name="pCountsSell" value="${basket.getpCountsSell() }" id="pCountsSell">
+						<th style="width: 250px; height: 43px; text-align: center">
+							<h3>${basket.getpPrice() }원</h3>
+							<input type="hidden" name="pPrice" value="${basket.getpPrice() }" id="pPrice">
+						<th style="width: 250px; height: 43px; text-align: center">
+							<h3>${basket.getpPriceSell() }원</h3>
+							<input type="hidden" value="3000" id="pShip" name="pShip">
+						<th style="width: 150px; height: 43px; text-align: center">
+							<input type="checkbox" id="chkbox" style="width: 25px; height: 25px;" class="normal"></input></th>
+							
+							
 					</tr>
 				</table>
+				<input type="submit" value="결제하기">
+				</form>
 				</c:if>
 			</c:forEach>
 			</div>
 			</c:if>
+		</div>
 		</div>
 	</section>
 	<div class="container">
@@ -82,7 +103,7 @@
 		<p style="text-align: right;">
 			<!-- 전체선택 -->
 			<label class="btn btn-primary pull-right"
-				style="position: relative; top: 4px;" for="chkbox">전체선택</label>
+				style="position: relative; top: 4px;" for="check_all">전체선택</label>
 			<!-- 선택삭제 -->
 			<a href="#" class="btn btn-primary pull-right">선택삭제</a>
 			<!-- 결제하기 -->
@@ -126,6 +147,6 @@
 	<script src="resources/assets/mail/jqBootstrapValidation.js"></script>
 	<script src="resources/assets/mail/contact_me.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+	<script src="resources/js/scripts.js"></script>
 </body>
 </html>

@@ -23,5 +23,8 @@
 
 <!-- 판매상품 Dto -->
 <typeAlias type="com.spring.ex.dto.SellDto" alias="SellDto"/>
+
+<!-- 바로구매 -->
+<typeAlias type="com.spring.ex.dto.CashDto" alias="CashDto"/>
 </typeAliases>
 </configuration> 

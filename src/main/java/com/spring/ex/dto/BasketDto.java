@@ -2,45 +2,59 @@ package com.spring.ex.dto;
 
 public class BasketDto {
 	// 장바구니에 담은 고객분 아이디
-	private String bsId;
+	private String mId;
 	// 장바구니에 담긴 상품이름
-	private String bsName;
+	private String pName;
 	// 장바구니에 담긴 상품개수
-	private String bsCount;
+	private String pCountsSell;
 	// 장바구니에 담긴 상품가격
-	private String bsPrice;
+	private String pPrice;
 	// 장바구니에 담긴 상품 이미지 url
-	private String bsUrl;
+	private String pUrl;
+	//장바구니에 담긴 상품 총 가격
+	private String pPriceSell;
 	
-	public String getBsId() {
-		return bsId;
+	public String getmId() {
+		return mId;
 	}
-	public void setBsId(String bsId) {
-		this.bsId = bsId;
+	public void setmId(String mId) {
+		this.mId = mId;
 	}
-	public String getBsName() {
-		return bsName;
+	public String getpName() {
+		return pName;
 	}
-	public void setBsName(String bsName) {
-		this.bsName = bsName;
+	public void setpName(String pName) {
+		this.pName = pName;
 	}
-	public String getBsCount() {
-		return bsCount;
+	public String getpCountsSell() {
+		return pCountsSell;
 	}
-	public void setBsCount(String bsCount) {
-		this.bsCount = bsCount;
+	public void setpCountsSell(String pCountsSell) {
+		this.pCountsSell = pCountsSell;
 	}
-	public String getBsPrice() {
-		return bsPrice;
+	public String getpPrice() {
+		return pPrice;
 	}
-	public void setBsPrice(String bsPrice) {
-		this.bsPrice = bsPrice;
+	public void setpPrice(String pPrice) {
+		this.pPrice = pPrice;
 	}
-	public String getBsUrl() {
-		return bsUrl;
+	public String getpUrl() {
+		return pUrl;
 	}
-	public void setBsUrl(String bsUrl) {
-		this.bsUrl = bsUrl;
+	public void setpUrl(String pUrl) {
+		this.pUrl = pUrl;
+	}
+	public String getpPriceSell() {
+		return pPriceSell;
+	}
+	public void setpPriceSell(String pPriceSell) {
+		this.pPriceSell = pPriceSell;
+	}
+	
+	@Override
+	public String toString() {
+		return "BasketInsertDto [ mId =" + mId + ", pName=" + pName + ", pCountsSell=" +
+				pCountsSell + ", pPrice=" + pPrice + ", pUrl=" + pUrl + "]";
 	}
 	
 }

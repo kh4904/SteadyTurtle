@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
+import com.spring.ex.dto.CashDto;
+import com.spring.ex.dto.CashlistDto;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
@@ -86,5 +88,15 @@ public interface TurtleService {
 	
 	// 환불요청 게시판 list RefundDto를 refundList로 선언
 	public List<SellDto> sellList() throws Exception;
+	
+	//바로구매
+	public void cash(CashDto cdto) throws Exception;
+		
+	//바로구매
+	public List<CashDto> cashdto() throws Exception;
+		
+	//결제하기
+	public void cashOk(CashlistDto cldto) throws Exception;
+	public void cashdelete(CashDto deldto) throws Exception;
 	
 }
