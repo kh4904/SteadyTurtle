@@ -85,6 +85,9 @@ public interface MemberDao {
 	// 고객문의 게시판 글쓰기 dto
 	public void board(BoardDTO bdto) throws Exception;
 	
+	// 고객문의 게시글 답변 dto
+	public void boardAnswer(BoardDTO bdto) throws Exception;
+	
 	// 환불요청 게시판 목록 dto
 	public List<RefundDto> refundList() throws Exception;
 	

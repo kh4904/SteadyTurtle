@@ -35,6 +35,8 @@
 	<section class="page-section portfolio" id="portfolio">
 	     <div class="container">
         <div class="row">
+            <form action="boardAnswer" method="POST">
+            <input type="hidden" id="bNum" name="bNum" value="${board.getbNum()}">
             <table class="table table-striped" style="text-align: center; border:1px solid #dddddd">
                   <!-- 글제목,카테고리,작성일,작성자 라벨 -->
                  <thead>
@@ -63,7 +65,9 @@
                      <!-- 관리자가 답변달아주는곳 -->
                      <tr>
                          <td colspan="6">
-                         	<textarea class = "form-control" style="text-align: center; width:1145px; height:300px; resize:none;" placeholder="${board.getbReply() }"></textarea>
+                         	<input type="textarea" name="bReply" id="bReply"
+										style="width: 1145px; height: 300px; resize:none; text-align: center;"
+										placeholder="${board.getbReply() }" />
                          </td>
                      </tr>
                  </tbody>
@@ -73,8 +77,9 @@
             <div class ="contanier" style="position:relative; left:950px;">
             	<a href="MCustomerWriteView" class="btn btn-primary" style="">목록</a>
             	<a href="#" class="btn btn-primary" style="">삭제</a>
-           	 	<a href="#" class="btn btn-primary" style="">답변달기</a>
+           	 	<input type="submit" class="btn btn-primary" value="답변달기">
             </div>
+            </form>
         </div>
     </div>
 	</section>

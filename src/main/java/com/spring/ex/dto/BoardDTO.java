@@ -16,8 +16,6 @@ public class BoardDTO {
 	private String bCate;
 	// 게시글 답변내용
 	private String bReply;
-	// 게시글 답변여부
-	private String bAnswer;
 	
 	public String getmName() {
 		return mName;
@@ -61,15 +59,9 @@ public class BoardDTO {
 	public void setbReply(String bReply) {
 		this.bReply = bReply;
 	}
-	public String getbAnswer() {
-		return bAnswer;
-	}
-	public void setbAnswer(String bAnswer) {
-		this.bAnswer = bAnswer;
-	}
 	
 	@Override
 	public String toString() {
-		return "BoardDTO [mName=" + mName + ", bTitle=" + bTitle + ", bCate=" + bCate + ", bNote=" + bNote + "]";
+		return "BoardDTO [mName=" + mName + ",bNum=" + bNum + ", bTitle=" + bTitle + ", bCate=" + bCate + ", bNote=" + bNote + ", bDate=" + bDate + ", bReply=" + bReply + "]";
 	}
 }

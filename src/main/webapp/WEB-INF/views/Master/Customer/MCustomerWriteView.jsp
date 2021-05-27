@@ -58,7 +58,14 @@
 							</td>
 							<td>${board.getmName() }</td>
 							<td>${board.getbDate() }</td>
-							<td style="color:red;">${board.getbAnswer() }</td>
+							<c:choose>
+								<c:when test="${board.getbReply() eq '답변없음.'}">
+       							 <td style="color:red;">미등록</td>
+    							</c:when>
+    							<c:when test="${board.getbReply() ne '답변없음.'}">
+        						 <td style="color:blue;">등록</td>
+    							</c:when>
+							</c:choose>
 						</tr>
 						</form>
 						</c:forEach>

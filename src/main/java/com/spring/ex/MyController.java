@@ -669,11 +669,12 @@ public class MyController {
 	
 	// 고객문의 상세내용 보기 페이지(세션값주기)
 	@RequestMapping(value="/ComplainView", method=RequestMethod.POST)
-	public String REproduct(BoardDTO bdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+	public String ComplainView(BoardDTO bdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 				
 		String path="";
 		HttpSession session2 = req.getSession();
 		BoardDTO board = ServiceTurtle.board2(bdto);
+		
 		if(board == null) {
 			session2.setAttribute("board", null);
 			rttr.addFlashAttribute("msg", false);
@@ -683,6 +684,16 @@ public class MyController {
 			path = "redirect:/ComplainView";
 		}
 		return path;
+	}
+	
+	// 상품관리 수정 페이지
+	@RequestMapping(value="/boardAnswer", method=RequestMethod.POST)
+	public String boardAnswer(BoardDTO bdto) throws Exception {
+		
+		service.boardAnswer(bdto);
+		
+		return "redirect:/MCustomerWriteView";
+			
 	}
 	
 	// 회원관리 목록

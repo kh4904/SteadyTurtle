@@ -83,7 +83,10 @@
 <select id="board2" resultType="BoardDTO">SELECT * from board where bNum = #{bNum} </select>
 
 <!-- 고객문의 게시판작성 -->
-<insert id="boardWrite">insert into board(mName, bNum, bTitle, bNote, bCate, bAnswer) values(#{mName}, 0, #{bTitle}, #{bNote}, #{bCate}, "미등록")</insert>
+<insert id="boardWrite">insert into board(mName, bNum, bTitle, bNote, bCate, bReply) values(#{mName}, 0, #{bTitle}, #{bNote}, #{bCate}, "답변없음.")</insert>
+
+<!-- 고객문의 게시글 답변 update문 -->
+<update id="boardAnswer">UPDATE board SET bReply = #{bReply} WHERE bNum = #{bNum} </update>
 
 <!-- 환불요청 게시판 목록 select문 -->
 <select id="refund" resultType="RefundDto">SELECT * from refundboard</select>

@@ -199,6 +199,12 @@ public class ServiceTurtle implements TurtleService{
 		
 	}
 	
+	// 고객문의 게시글 답변 
+	@Override
+	public void boardAnswer(BoardDTO bdto) throws Exception {
+		bdao.boardAnswer(bdto);
+	}
+	
 	//상품 상세
 	@Inject MemberDao bbdao;
 			
