@@ -27,125 +27,131 @@
 </head>
 <!-- 상품관리 추가하기 페이지 -->
 <body id="page-top">
-        <!-- Navigation 맨위 로고-->
-        <%@ include file="/WEB-INF/views/Master/Mastermenu.jsp" %>
-        
+	<!-- Navigation 맨위 로고-->
+	<%@ include file="/WEB-INF/views/Master/Mastermenu.jsp"%>
+
 	<!-- 몸통 -->
 	<!-- 상품추가 -->
 	<section class="page-section portfolio">
-		<form name = "product" action="./processAddProduct.jsp" class="form-horizontal" method="post" enctype="multipart/form-data">
-            <div class = "container" style="background-color:#bbdefb;">
-                <div class ="row">
-            <div class = "col-md-5">
-                 <br><br>
-                <img src = "./resources/assets/HealthImg/h1.jpg" style="width:80%; height:70%;">
-                 <br><br>
-                <input type = "submit" class="btn btn-info" value="이미지업로드" style="position:relative; left:100px;">
-            </div>
-            <div class = "col-md-6">
-                 <br>
-                 <h2><input type="text" style="margin-left: 40px; text-align:center; "placeholder="상품명"/></h2>
-                 <hr>
-                 <p><b style = "font-size:20px;">판매가 : </b>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <!-- db연동 -->
-                  <b style = "font-size:20px;"><input type="text" style="width:150px;"/> 원</b>
-                  </p>
-                  <hr>
-                  <p><b style = "font-size:20px;">수량 : </b>
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   <!-- db연동 -->
-                   <b style = "font-size:20px;"><input type="text" style="width:150px;"/> 개</b>
-                   </p>
-                   <hr>
-                   <p><b style = "font-size:20px;">배송방법 : </b>
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   <!-- db연동 -->
-                   <select class="form-control" name="userGender" style="width:120px; position:relative; left:350px; top:-30px;">
-			       		<option>무료배송</option>
-				   		<option>일반배송</option>
-				    </select>
-                    </p>
-                    <hr>
-                    <p><b style = "font-size:20px;">추가혜택 : </b>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <!-- db연동 -->
-                    <b style = "font-size:20px; color:blue;"><input type="text" style="width:50px;"/> % 적립</b>
-                    </p>
-                    <hr>
-                    <p><b style = "font-size:20px;">카테고리 : </b>
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <!-- db연동 -->
-                     <b style = "font-size:20px;">
-                       	<select class="form-control" name="userGender" style="width:120px; position:relative; left:350px; top:-30px;">
-						   <option>헬스기구</option>
-						   <option>요가상품</option>
-						   <option>운동식품</option>
-						</select>
-				    </b>
-                     </p>
-                     <hr>
-                    <!-- 뒤로가기 버튼클릭시 -->
-                    <p style="text-align:right;">
-                    <a href="ProductManagement" class="btn btn-info">뒤로가기</a>
-                    <!-- 추가하기 버튼클릭시 -->
-                    <input type = "submit" class="btn btn-info" value="추가하기">
-                    </p>
-                    </div>
-                </div>
-            </div>   
-           </form>
+			<div class="container" style="background-color: #bbdefb;">
+				<div class="row">
+					<div class="col-md-5">
+						<br>
+						<br> <img src="./resources/assets/HealthImg/h1.jpg"
+							style="width: 80%; height: 70%;"> <br>
+						<br> <input type="submit" class="btn btn-info" value="이미지업로드"
+							style="position: relative; left: 100px;">
+					</div>
+					<div class="col-md-6">
+						<form action="addproduct" method="POST">
+							<br>
+							<table style="width: 100%">
+								<tr>
+									<td style="text-align: center;">
+										<h2>
+											<input type="text" id="pName" name="pName" style="margin-left: 40px; text-align: center;" placeholder="상품명" />
+										</h2>
+									</td>
+								</tr>
+							</table>
+							<hr>
+							<table style="width: 100%">
+								<tr>
+									<td style="text-align: left ;">
+										<b style="font-size: 20px;">판매가 : </b>
+									</td>
+									<td style="text-align: right ;">
+										<b style="font-size: 20px;">
+										<input type="text" id="pPrice" name="pPrice" style="width: 150px;" /> 원</b>
+									</td>
+								</tr>
+							</table>
+							<hr>
+							<table style="width: 100%">
+								<tr>
+									<td style="text-align: left ;">
+										<b style="font-size: 20px;">수량 : </b>
+									</td>
+									<td style="text-align: right ;">
+										<b style="font-size: 20px;">
+										<input type="text" id="pCount" name="pCount" style="width: 150px;" /> 개</b>
+									</td>
+								</tr>
+							</table>
+							<hr>
+							<table style="width: 100%">
+								<tr>
+									<td style="text-align: left ;">
+										<b style="font-size: 20px;">배송방법 : </b>
+									</td>
+									<td style="text-align: right ;">
+										<select class="form-control" name="pShip" id="pShip" style="width: 120px; margin-right: -95px">
+											<option>무료배송</option>
+											<option>일반배송</option>
+										</select>
+									</td>
+								</tr>
+							</table>
+							<hr>
+							<table style="width: 100%">
+								<tr>
+									<td style="text-align: left ;">
+										<b style="font-size: 20px;">추가혜택 : </b>
+									</td>
+									<td style="text-align: right ;">
+										<b style="font-size: 20px; color: blue;">
+										<input type="text" id="pMile" name="pMile" style="width: 50px;" /> % 적립</b>
+									</td>
+								</tr>
+							</table>
+							<hr>
+							<table style="width: 100%">
+								<tr>
+									<td style="text-align: left ;">
+										<b style="font-size: 20px;">카테고리 : </b>
+									</td>
+									<td style="text-align: right ;">
+										<b style="font-size: 20px;"> 
+										<select class="form-control "name="pCate" id="pCate" style="width: 120px; margin-right: -95px ">
+											<option>헬스기구</option>
+											<option>요가상품</option>
+											<option>운동식품</option>
+										</select>
+										</b>
+									</td>
+								</tr>
+							</table>
+							<hr>
+							<!-- 뒤로가기 버튼클릭시 -->
+							<p style="text-align: right;">
+								<a href="ProductManagement" class="btn btn-info">뒤로가기</a>
+								<!-- 추가하기 버튼클릭시 -->
+								<input type="submit" class="btn btn-info" value="추가하기">
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
 	</section>
-	
-	<c:if test ="${member.mMaster != 1 }">
+
+	<c:if test="${member.mMaster != 1 }">
 		<script>
 			alert("관리자권한이 없습니다.")
-			location.href="main";
+			location.href = "main";
 		</script>
 	</c:if>
 
 	<!-- Copyright Section(맨밑 하단)-->
-        <div class="copyright py-4 text-center text-white">
-            <div class="container"><small><a href ="#" style="text-decoration:none;">회사소개</a>｜ <a href ="#" style="text-decoration:none;">이용약관</a> ｜ <a href ="#" style="text-decoration:none;">개인정보처리방침</a><br>
-            (주)꾸준한거북이 ｜대표 : 김규헌 ｜ 개인정보보호책임자 : 원태연 ｜ 사업자등록번호: 111-22-34567 사업자정보 확인> ｜ 02-159-8948<br>
-                     경기도 의정부시 서부로 545 경민대학교 ｜ FAX. 02-1234-5678 ｜ Email. steadyturtle@kyungmin.ac.kr</small>
-            </div>
-        </div>
+	<div class="copyright py-4 text-center text-white">
+		<div class="container">
+			<small><a href="#" style="text-decoration: none;">회사소개</a>｜ <a
+				href="#" style="text-decoration: none;">이용약관</a> ｜ <a href="#"
+				style="text-decoration: none;">개인정보처리방침</a><br> (주)꾸준한거북이 ｜대표 :
+				김규헌 ｜ 개인정보보호책임자 : 원태연 ｜ 사업자등록번호: 111-22-34567 사업자정보 확인> ｜
+				02-159-8948<br> 경기도 의정부시 서부로 545 경민대학교 ｜ FAX. 02-1234-5678 ｜
+				Email. steadyturtle@kyungmin.ac.kr</small>
+		</div>
+	</div>
 
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
 	<div class="scroll-to-top d-lg-none position-fixed">

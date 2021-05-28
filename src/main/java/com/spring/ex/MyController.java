@@ -617,6 +617,14 @@ public class MyController {
 		return "Master/Manage/Addproduct";
 	}
 	
+	//상품추가
+	@RequestMapping(value = "addproduct", method = RequestMethod.POST)
+	public String addproduct(ProductDto apdto, RedirectAttributes redirectAttributes) throws Exception {
+		ServiceTurtle.addProduct(apdto);
+		
+		return "redirect:/ProductManagement";
+	}
+	
 	// 재고관리
 	@RequestMapping(value = "/InventoryManage", method = RequestMethod.GET)
 	public String InventoryManage(Model model) throws Exception {

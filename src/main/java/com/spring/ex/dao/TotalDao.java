@@ -84,6 +84,11 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectOne(namespace + ".product2", pdto); 
 	}
 	
+	//상품추가
+	public void addProduct(ProductDto apdto) throws Exception {
+		sqlSessionTemplate.insert(namespace + ".addProduct", apdto);
+	}
+	
 	//상품수정
 	@Override
 	public void ProductUpdate(ProductDto pudto) throws Exception{

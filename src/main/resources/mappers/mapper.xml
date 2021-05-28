@@ -53,6 +53,12 @@
 <!-- 상품정보 select문 -->
 <select id="product2" resultType="ProductDto">SELECT * from product where pName = #{pName} </select>
 
+<!-- 상품추가 -->
+<insert id="addProduct">
+	INSERT INTO product(pName, pCate, pPrice, pShip, pCount, pCountSell, pCumulSell, pMile, pUrl, pMan, pWoman)
+	values(#{pName}, #{pCate}, #{pPrice}, #{pShip}, #{pCount}, 0, 0, #{pMile}, null, 0, 0)
+</insert>
+
 <!-- 상품수정 -->
 <update id="productUpdate">
 	UPDATE product SET 

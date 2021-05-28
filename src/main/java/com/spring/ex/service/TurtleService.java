@@ -47,6 +47,9 @@ public interface TurtleService {
 	/* 상품정보 상세 ProductDto를 pdto()로 선언*/
 	public ProductDto product(ProductDto pdto) throws Exception;
 	
+	//상품추가
+	public void addProduct(ProductDto apdto) throws Exception;
+	
 	// 상품수정
 	public void ProductUpdate(ProductDto pudto) throws Exception;
 	

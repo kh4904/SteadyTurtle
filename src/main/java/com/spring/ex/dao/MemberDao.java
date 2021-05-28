@@ -46,6 +46,9 @@ public interface MemberDao {
 	// 상품상세 dto
 	public ProductDto product(ProductDto pdto) throws Exception;
 	
+	//상품추가
+	public void addProduct(ProductDto apdto) throws Exception;
+	
 	// 상품수정 dto
 	public void ProductUpdate(ProductDto pudto) throws Exception;
 	
