@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
-import com.spring.ex.dto.CashDto;
 import com.spring.ex.dto.CashlistDto;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
