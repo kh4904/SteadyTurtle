@@ -99,6 +99,9 @@ public interface MemberDao {
 	// 환불요청 게시판 목록 세션값주기 dto
 	public RefundDto refund2(RefundDto rdto) throws Exception;
 	
+	// 환불요청 신청 승락  dto
+	public void RefundUpdate(RefundDto rrDto) throws Exception;
+	
 	// 판매상품 목록 dto
 	public List<SellDto> sellList() throws Exception;
 	

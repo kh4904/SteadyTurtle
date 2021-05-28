@@ -702,6 +702,16 @@ public class MyController {
 		return path;
 	}
 	
+	// 관리자 환불요청 신청 승락하기
+	@RequestMapping(value="/RefundUpdate", method=RequestMethod.POST)
+	public String RefundUpdate(RefundDto rrDto) throws Exception {
+		
+		service.RefundUpdate(rrDto);
+			
+		return "redirect:/MRefund";
+			
+	}
+	
 	// 관리자 고객문의 목록
 	@RequestMapping(value = "/MCustomerWriteView", method = RequestMethod.GET)
 	public String MCustomerWriteView(Model model) throws Exception {

@@ -241,6 +241,12 @@ public class ServiceTurtle implements TurtleService{
 		return RefundDao.refund2(rdto);
 	}
 	
+	// 환불신청 승락 update 
+	@Override
+	public void RefundUpdate(RefundDto rrDto) throws Exception {
+		RefundDao.RefundUpdate(rrDto);
+	}
+	
 	// 판매상품 목록
 	@Inject
 	private MemberDao SellDao;

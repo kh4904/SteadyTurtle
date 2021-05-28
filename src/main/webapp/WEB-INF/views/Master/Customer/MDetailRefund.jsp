@@ -119,10 +119,18 @@
                   </td>
                </tr>
             </table>
-            <div style="text-align: right;">
-               <form action="MRefund" method="post">
-                  <a href="MRefund" class="btn btn-primary">뒤로가기</a>
-                  <input type="submit" class="btn btn-primary" value="환불완료" onclick="#">
+            <div>
+               <form action="RefundUpdate" method="POST">
+            	<input type="hidden" id="rNum" name="rNum" value="${refund.getrNum()}">
+            	  <a href="MRefund" class="btn btn-primary" style="position:relative; left:700px;">뒤로가기</a>
+            	  <c:choose>
+						<c:when test="${refund.getrCheck() eq '1'}">
+       					  <td></td>
+    					</c:when>
+    					<c:when test="${refund.getrCheck() ne '1'}">
+        				  <td><input type="submit" class="btn btn-primary" value="환불처리" style="position:relative; left:710px;"></td>
+    					</c:when>
+					</c:choose>
                </form>
             </div>
          </div>
