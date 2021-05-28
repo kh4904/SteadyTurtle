@@ -97,7 +97,10 @@ public interface TurtleService {
 	// 환불요청 게시판 list RefundDto를 refundList로 선언
 	public List<RefundDto> refundList() throws Exception;
 	
-	// 환불요청 게시판 list RefundDto를 refundList로 선언
+	/* 환불요청 게시판 세션주기 RefundDto를 rdto()로 선언*/
+	public RefundDto refund2(RefundDto rdto) throws Exception;
+	
+	// 판매목록 게시판 list SellDto를 sellList로 선언
 	public List<SellDto> sellList() throws Exception;
 	
 	//결제하기

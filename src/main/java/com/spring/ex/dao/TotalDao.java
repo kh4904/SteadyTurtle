@@ -185,6 +185,12 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectList(namespace+".refund");
 	}
 	
+	// 환불요청 게시판 목록 세션값 select문
+	@Override
+	public RefundDto refund2(RefundDto rdto) throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".refund2", rdto); 
+	}
+	
 	// 판매상품목록 select문
 	@Override
 	public List<SellDto> sellList() throws Exception{

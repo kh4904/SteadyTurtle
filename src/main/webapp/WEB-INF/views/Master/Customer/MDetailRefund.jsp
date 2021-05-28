@@ -34,23 +34,17 @@
    <section class="page-section portfolio">
       <div class="container">
          <div class="col-lg-12">
-            <table>
+            <table style="background-color:#e0e0e0;">
                <tr>
                   <td>
-                     <img style="width: 220px; height: 200px;" class="img-fluid" src="resources/assets/FoodImg/f2.jpg" />
+                     <img style="width: 220px; height: 200px;" class="img-fluid" src="${refund.getrUrl() }" />
                   </td>
-                  <td rowspan="4">
-                     <input type= "text"  class="form-control" name="bbsContent" maxlength="2048" style="width: 700px; height: 300px; resize:none;">
+                  <td rowspan="4" style="width: 700px; height: 300px; text-align:center; ">
+                     ${refund.getrNote() }
                   </td>
                </tr>
                <tr>
-                  <th style="text-align: center;">프로틴(초코)</th>
-               </tr>
-               <tr>
-                  <th style="text-align: center;">10,000원</th>
-               </tr>
-               <tr>
-                  <th style="text-align: center;">1 개</th>
+                  <th rowspan="4" style="text-align: center; font-size:20px; background-color:white;">${refund.getrProduct() }</th>
                </tr>
             </table>
             <table>
@@ -79,13 +73,13 @@
                      <h6 style="text-align:left;">이름 :</h6>
                   </td>
                   <td>
-                     <h6 style="text-align:left;">박남일</h6>
+                     <h6 style="text-align:left;">${refund.getrName() }</h6>
                   </td>
                   <td>
                      <h6 style="text-align:left;">상품구매일 :</h6>
                   </td>
                   <td>
-                     <h6 style="text-align:left;">2021.03.30</h6>
+                     <h6 style="text-align:left;">${refund.getrJumunDate() }</h6>
                   </td>
                </tr>
                <tr>
@@ -93,13 +87,13 @@
                      <h6 style="text-align:left;">아이디 :</h6>
                   </td>
                   <td>
-                     <h6 style="text-align:left;">namil12</h6>
+                     <h6 style="text-align:left;">${refund.getrId() }</h6>
                   </td>
                   <td>
                      <h6 style="text-align:left;">배송완료일 :</h6>
                   </td>
                   <td>
-                     <h6 style="text-align:left;">2021.04.02</h6>
+                     <h6 style="text-align:left;">${refund.getrFinishDate() }</h6>
                   </td>
                </tr>
                <tr>
@@ -107,13 +101,13 @@
                      <h6 style="text-align:left;">이메일 :</h6>
                   </td>
                   <td>
-                     <h6 style="text-align:left;">namilLove@naver.com</h6>
+                     <h6 style="text-align:left;">${refund.getrEmail() }</h6>
                   </td>
                   <td>
                      <h6 style="text-align:left;">등급 :</h6>
                   </td>
                   <td>
-                     <h6 style="text-align:left;">플래티넘</h6>
+                     <h6 style="text-align:left;">${refund.getrGrade() }</h6>
                   </td>
                </tr>
                <tr>
@@ -121,7 +115,7 @@
                      <h6 style="text-align:left;">전화번호 :</h6>
                   </td>
                   <td>
-                     <h6 style="text-align:left;">010-8282-5252</h6>
+                     <h6 style="text-align:left;">${refund.getrPhone() }</h6>
                   </td>
                </tr>
             </table>

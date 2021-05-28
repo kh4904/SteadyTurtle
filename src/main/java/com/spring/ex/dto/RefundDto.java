@@ -7,10 +7,16 @@ public class RefundDto {
 	private String rId;
 	// 환불 작성한 고객이름
 	private String rName;
+	// 환불 작성한 고객이메일
+	private String rEmail;
+	// 환불 작성한 고객휴대전화
+	private String rPhone;
 	// 고객의 등급
 	private String rGrade;
 	// 환불 상품 이름
     private String rProduct;
+    // 환불 상품 이미지 url
+    private String rUrl;
     // 환불요청 제목
     private String rTitle;
     // 환불요청 내용
@@ -42,6 +48,18 @@ public class RefundDto {
 	public void setrName(String rName) {
 		this.rName = rName;
 	}
+	public String getrEmail() {
+		return rEmail;
+	}
+	public void setrEmail(String rEmail) {
+		this.rEmail = rEmail;
+	}
+	public String getrPhone() {
+		return rPhone;
+	}
+	public void setrPhone(String rPhone) {
+		this.rPhone = rPhone;
+	}
 	public String getrGrade() {
 		return rGrade;
 	}
@@ -53,6 +71,12 @@ public class RefundDto {
 	}
 	public void setrProduct(String rProduct) {
 		this.rProduct = rProduct;
+	}
+	public String getrUrl() {
+		return rUrl;
+	}
+	public void setrUrl(String rUrl) {
+		this.rUrl = rUrl;
 	}
 	public String getrTitle() {
 		return rTitle;
@@ -89,6 +113,11 @@ public class RefundDto {
 	}
 	public void setrCheck(String rCheck) {
 		this.rCheck = rCheck;
+	}
+	
+	@Override
+	public String toString() {
+		return "RefundDto [rNum=" + rNum + ",rId=" + rId + ", rName=" + rName + ",rEmail=" + rEmail + ", rPhone=" + rPhone + ", rGrade=" + rGrade + ", rProduct=" + rProduct + ", rUrl=" + rUrl + ", rTitle=" + rTitle + ", rNote=" + rNote + ", rDate=" + rDate + ", rJumunDate=" + rJumunDate + ", rFinishDate=" + rFinishDate +", rCheck=" + rCheck + "]";
 	}
 }
 

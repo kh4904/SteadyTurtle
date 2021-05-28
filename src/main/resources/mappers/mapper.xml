@@ -101,7 +101,10 @@
 <update id="boardAnswer">UPDATE board SET bReply = #{bReply} WHERE bNum = #{bNum} </update>
 
 <!-- 환불요청 게시판 목록 select문 -->
-<select id="refund" resultType="RefundDto">SELECT * from refundboard</select>
+<select id="refund" resultType="RefundDto">SELECT * from refundboard order by rNum DESC</select>
+
+<!-- 환불요청 게시판 목록 세션값 select문 -->
+<select id="refund2" resultType="RefundDto">SELECT * from refundboard where rNum = #{rNum} </select>
 
 <!-- 판매상품 목록 select문 -->
 <select id="sell" resultType="SellDto">SELECT * from sell</select>

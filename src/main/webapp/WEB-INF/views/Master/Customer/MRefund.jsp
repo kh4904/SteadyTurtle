@@ -49,14 +49,24 @@
                      <td>환불현황</td>
                   </tr>
                   <c:forEach items="${refundList}" var="refund">
+                  <form action="MDetailRefund" method="post">
+					<input type="hidden" id="rNum" name="rNum" value="${refund.getrNum() }">
                   <tr>
                      <td>${refund.getrNum() }</td>
                      <td style="width: 20%;">${refund.getrProduct() }</td>
                      <td>${refund.getrDate() }</td>
                      <td>${refund.getrGrade() }</td>
                      <td>${refund.getrName() }</td>
-                     <td style="color:red;"><a href="MDetailRefund">${refund.getrCheck() }</a></td>
+                     <c:choose>
+						<c:when test="${refund.getrCheck() eq '1'}">
+       					  <td><input type="submit" class="btn" value="환불완료" style="height:30px; position:relative; top:-8px; color:red;" ></td>
+    					</c:when>
+    					<c:when test="${refund.getrCheck() ne '1'}">
+        				  <td><input type="submit" class="btn" value="환불신청" style="height:30px; position:relative; top:-8px; color:#004d99;" ></td>
+    					</c:when>
+					</c:choose>
                   </tr>
+                  </form>
                   </c:forEach>
                </tbody>
             </table>

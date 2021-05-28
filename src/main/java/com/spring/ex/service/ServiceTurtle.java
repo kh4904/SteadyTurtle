@@ -217,7 +217,7 @@ public class ServiceTurtle implements TurtleService{
 		bdao.boardAnswer(bdto);
 	}
 	
-	//상품 상세
+	// 고객문의 세션주기
 	@Inject MemberDao bbdao;
 			
 	@Override
@@ -233,6 +233,12 @@ public class ServiceTurtle implements TurtleService{
 	public List<RefundDto> refundList() throws Exception {
 			
 		return RefundDao.refundList();
+	}
+	
+	// 환불요청 게시글 세션주기
+	@Override
+	public RefundDto refund2(RefundDto rdto) throws Exception {
+		return RefundDao.refund2(rdto);
 	}
 	
 	// 판매상품 목록

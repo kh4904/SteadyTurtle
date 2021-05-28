@@ -677,10 +677,29 @@ public class MyController {
 		return "Master/Customer/MRefund";
 	}
 	
-	// 환불요청 상세내용 보기
+	// 관리자 환불요청 상세내용 보기 페이지
 	@RequestMapping("/MDetailRefund")
 	public String MDetailRefund() {
 		return "Master/Customer/MDetailRefund";
+	}
+	
+	// 관리자 환불요청 상세내용 보기 페이지(세션값주기)
+	@RequestMapping(value="/MDetailRefund", method=RequestMethod.POST)
+	public String MDetailRefund(RefundDto rdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+				
+		String path="";
+		HttpSession session2 = req.getSession();
+		RefundDto refund = ServiceTurtle.refund2(rdto);
+		
+		if(refund == null) {
+			session2.setAttribute("refund", null);
+			rttr.addFlashAttribute("msg", false);
+			path = "redirect:/main";
+		} else {
+			session2.setAttribute("refund", refund);
+			path = "redirect:/MDetailRefund";
+		}
+		return path;
 	}
 	
 	// 관리자 고객문의 목록
