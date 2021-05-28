@@ -106,6 +106,9 @@
 <!-- 환불요청 게시판 목록 세션값 select문 -->
 <select id="refund2" resultType="RefundDto">SELECT * from refundboard where rNum = #{rNum} </select>
 
+<!-- 환불요청 게시판작성 -->
+<insert id="refundWrite">insert into refundboard(rNum,rName ,rId, rEmail, rPhone, rGrade, rProduct, rUrl,  rNote, rJumunDate,rFinishDate,rCheck) values(0,#{rName} ,#{rId}, #{rEmail}, #{rPhone}, #{rGrade}, #{rProduct}, #{rUrl}, #{rNote}, #{rJumunDate}, #{rFinishDate}, 0)</insert>
+
 <!-- 환불요청 승락시 update문 -->
 <update id="RefundUpdate">UPDATE refundboard SET rCheck = 1 WHERE rNum = #{rNum} </update>
 

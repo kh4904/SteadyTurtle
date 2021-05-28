@@ -235,6 +235,14 @@ public class ServiceTurtle implements TurtleService{
 		return RefundDao.refundList();
 	}
 	
+	// 환불요청 글쓰기
+	@Override
+	public void refundWrite(RefundDto rwDto) throws Exception {
+			
+		RefundDao.refundWrite(rwDto);
+			
+	}
+	
 	// 환불요청 게시글 세션주기
 	@Override
 	public RefundDto refund2(RefundDto rdto) throws Exception {

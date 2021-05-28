@@ -460,6 +460,15 @@ public class MyController {
 		return path;
 	}
 	
+	// 환불요청 환불신청 글쓴후 DB보내기
+	@RequestMapping(value = "/refundwrite", method = RequestMethod.POST)
+	public String refundwrite(RefundDto rwDto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.refundWrite(rwDto);
+		
+		return "redirect:/refund";
+	}
+	
 	// 고객문의게시판
 	@RequestMapping(value = "/CustomerWriteView", method = RequestMethod.GET)
 	public String CustomerWriteView(Model model) throws Exception {

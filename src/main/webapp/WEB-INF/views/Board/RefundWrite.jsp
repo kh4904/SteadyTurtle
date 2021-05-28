@@ -33,16 +33,29 @@
    <!-- 환불 -->
    <!-- 환불요청 글쓰기 -->
    <section class="page-section portfolio">
+  
       <div class="container">
          <div class="col-lg-12">
+         <c:if test ="${member.mId != null }">
+         <form method="post" action="refundwrite">
+         <input type="hidden" id = "rProduct" name="rProduct" value="${jumun.getjName() }">
+         <input type="hidden" id = "rId" name="rId" value="${member.getmId() }">
+         <input type="hidden" id = "rName" name="rName" value="${member.getmName() }">
+         <input type="hidden" id = "rEmail" name="rEmail" value="${member.getmEmail() }">
+         <input type="hidden" id = "rPhone" name="rPhone" value="${member.getmPhone() }">
+         <input type="hidden" id = "rGrade" name="rGrade" value="${member.getmGrade() }">
+         <input type="hidden" id = "rUrl" name="rUrl" value="${jumun.getjUrl() }">
+         <input type="hidden" id = "rJumunDate" name="rJumunDate" value="${jumun.getjJumunDate() }">
+         <input type="hidden" id = "rFinishDate" name="rFinishDate" value="${jumun.getjFinishDate() }">
             <table>
+            
                <tr>
                   <th style="text-align: left;"><a href="#"> 
                   	<img class="img-fluid" src="${jumun.getjUrl() }" style="width: 220px; height: 200px;" /></a>
                   </th>
                   <th rowspan="4">
                      <div style="text-align: right; margin-left: 20px;">
-                        <textarea class="form-control" placeholder="꼭 기재 해주세요. 1) 환불사유 2) 배송완료일 3) 상품사진첨부 4) 통장사본사진첨부" name="bbsContent" maxlength="2048" style="width: 700px; height: 300px; resize:none;"></textarea>
+                        <textarea class="form-control" placeholder="꼭 기재 해주세요. 1) 환불사유 2) 배송완료일 3) 상품사진첨부 4) 통장사본사진첨부" id="rNote" name="rNote" maxlength="2048" style="width: 700px; height: 300px; resize:none;"></textarea>
                      </div>
                   </th>
                </tr>
@@ -56,7 +69,6 @@
                   <th style="text-align: center;">${jumun.getjCount() } 개</th>
                </tr>
             </table>
-            <form action="#" method="post" enctype="Multipart/form-data">
                <table>
                   <tr>
                      <th>
@@ -84,14 +96,25 @@
                      <th>
                         <div style="margin-left: 525px; position:relative; left:180px;">
                            <a href="DetailRefund" class="btn btn-info" style="width: 100px; height: 40px;">뒤로가기</a> 
-                           <input type="button" class="btn btn-info" style="margin-left: 10px; width: 100px; height: 40px;" value="환불신청" />
+                           <input type="submit" class="btn btn-info" style="margin-left: 10px; width: 100px; height: 40px;" value="환불신청" />
                         </div>
                      </th>
                   </tr>
+                 
                </table>
-            </form>
+          </form>
+               
+            
+            </c:if>
+            </div>
          </div>
    </section>
+   <c:if test ="${member.mId == null }">
+			<script>
+				alert("로그인후 사용가능")
+				location.href="main";
+			</script>
+   </c:if>
 
 
 

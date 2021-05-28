@@ -17,8 +17,6 @@ public class RefundDto {
     private String rProduct;
     // 환불 상품 이미지 url
     private String rUrl;
-    // 환불요청 제목
-    private String rTitle;
     // 환불요청 내용
     private String rNote;
     // 환불요청 작성일
@@ -78,12 +76,6 @@ public class RefundDto {
 	public void setrUrl(String rUrl) {
 		this.rUrl = rUrl;
 	}
-	public String getrTitle() {
-		return rTitle;
-	}
-	public void setrTitle(String rTitle) {
-		this.rTitle = rTitle;
-	}
 	public String getrNote() {
 		return rNote;
 	}
@@ -117,7 +109,7 @@ public class RefundDto {
 	
 	@Override
 	public String toString() {
-		return "RefundDto [rNum=" + rNum + ",rId=" + rId + ", rName=" + rName + ",rEmail=" + rEmail + ", rPhone=" + rPhone + ", rGrade=" + rGrade + ", rProduct=" + rProduct + ", rUrl=" + rUrl + ", rTitle=" + rTitle + ", rNote=" + rNote + ", rDate=" + rDate + ", rJumunDate=" + rJumunDate + ", rFinishDate=" + rFinishDate +", rCheck=" + rCheck + "]";
+		return "RefundDto [rNum=" + rNum + ",rId=" + rId + ", rName=" + rName + ",rEmail=" + rEmail + ", rPhone=" + rPhone + ", rGrade=" + rGrade + ", rProduct=" + rProduct + ", rUrl=" + rUrl + ", rNote=" + rNote + ", rDate=" + rDate + ", rJumunDate=" + rJumunDate + ", rFinishDate=" + rFinishDate +", rCheck=" + rCheck + "]";
 	}
 }
 
