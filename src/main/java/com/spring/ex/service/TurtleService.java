@@ -23,6 +23,9 @@ public interface TurtleService {
 	/* 회원가입 MemberDto를 dto로 선언 */
 	public void register(MemberDto dto) throws Exception;
 	
+	//아이디 중복 체크
+	public int idChk(MemberDto mdto) throws Exception;
+	
 	/* 회원수정 MemberUpdate 회원dto를 mDto로 선언*/ 
 	public void MemberUpdate(MemberDto mDto) throws Exception;
 	
@@ -98,14 +101,7 @@ public interface TurtleService {
 	// 환불요청 게시판 list RefundDto를 refundList로 선언
 	public List<SellDto> sellList() throws Exception;
 	
-	//바로구매
-	public void cash(CashDto cdto) throws Exception;
-		
-	//바로구매
-	public List<CashDto> cashdto() throws Exception;
-		
 	//결제하기
 	public void cashOk(CashlistDto cldto) throws Exception;
-	public void cashdelete(CashDto deldto) throws Exception;
 	
 }

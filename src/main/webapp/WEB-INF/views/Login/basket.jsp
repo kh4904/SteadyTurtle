@@ -16,7 +16,7 @@
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
 	crossorigin="anonymous"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css" />
@@ -27,7 +27,39 @@
 <link href="resources/css/styles.css" rel="stylesheet" />
 </head>
 <!-- 장바구니 -->
-<body id="page-top">
+<body onload="init();">
+<script language="JavaScript">
+var pPrice;
+var pCountsSell;
+function init () {
+	pPrice = document.form.pPrice.value;
+	pCountsSell = document.form.pCountsSell.value;
+	document.form.sum.value = pPrice;
+	change();
+}
+function add () {
+	hm = document.form.pCountsSell;
+	sum = document.form.sum;
+	hm.value ++ ;
+	sum.value = parseInt(hm.value) * pPrice;
+}
+function del () {
+	hm = document.form.pCountsSell;
+	sum = document.form.sum;
+		if (hm.value > 1) {
+			hm.value -- ;
+			sum.value = parseInt(hm.value) * pPrice;
+		}
+}
+function change () {
+	hm = document.form.pCountsSell;
+	sum = document.form.sum;
+		if (hm.value < 0) {
+			hm.value = 0;
+		}
+	sum.value = parseInt(hm.value) * pPrice;
+}  
+</script>
 	<!-- Navigation 맨위 로고-->
 	<%@ include file="/WEB-INF/views/menu.jsp" %>
 
@@ -63,27 +95,36 @@
 			
 			<c:forEach items="${basketList}" var="basket">
                   <c:if test="${basket.getmId() eq sessionScope.member.getmId()}">
-                  <form action="Cash" method="post">
+                  <form name="form" action="Cash" method="post">
 					<table style="width: 100%">
 					<tr style="height: 100px;">
-						<th style="width: 200px; height: 43px; text-align: center">
-							<a href="#"><img class="img-fluid" src="${basket.getpUrl()} " style="width: 120px; height: 100px;" alt="" /></a>
-						<th style="width: 300px; height: 43px; text-align: center">
+						<td style="width: 200px; height: 43px; text-align: center">
+							<a href="#">
+								<img class="img-fluid" src="${basket.getpUrl()} " style="width: 120px; height: 100px;" alt="" />
+							</a>
+						</td>
+						<td style="width: 300px; height: 43px; text-align: center">
 							<h3>${basket.getpName() }</h3>
 							<input type="hidden" name="pName" value="${basket.getpName() }" id="pName">
-						<th style="width: 250px; height: 43px; text-align: center">
-							<input type="number" class="input" style="width: 60px; height: 30px;" value="${basket.getpCountsSell() }">
-							<input type="hidden" name="pCountsSell" value="${basket.getpCountsSell() }" id="pCountsSell">
-						<th style="width: 250px; height: 43px; text-align: center">
+						</td>
+						<td style="width: 250px; height: 43px; text-align: center">
+							<input type="text" onchange="change();" id="pCountsSell" name="pCountsSell" size="3" style="width: 60px; height: 30px;" value="1"> 개</b>
+							<input type="button" value=" + " onclick="add();">
+							<input type="button" value=" - " onclick="del();">
+							<br>
+							<br>
+						</td>
+						<td style="width: 250px; height: 43px; text-align: center">
 							<h3>${basket.getpPrice() }원</h3>
 							<input type="hidden" name="pPrice" value="${basket.getpPrice() }" id="pPrice">
-						<th style="width: 250px; height: 43px; text-align: center">
-							<h3>${basket.getpPriceSell() }원</h3>
+						</td>
+						<td style="width: 250px; height: 43px; text-align: center">
+							<h3><input type="text" name="sum" size="11"> 원</h3>
 							<input type="hidden" value="3000" id="pShip" name="pShip">
-						<th style="width: 150px; height: 43px; text-align: center">
-							<input type="checkbox" id="chkbox" style="width: 25px; height: 25px;" class="normal"></input></th>
-							
-							
+						</td>
+						<td style="width: 150px; height: 43px; text-align: center">
+							<input type="checkbox" id="chkbox" style="width: 25px; height: 25px;" class="normal"></input>
+						</td>
 					</tr>
 				</table>
 				<input type="submit" value="결제하기">
@@ -147,6 +188,6 @@
 	<script src="resources/assets/mail/jqBootstrapValidation.js"></script>
 	<script src="resources/assets/mail/contact_me.js"></script>
 	<!-- Core theme JS-->
-	<script src="resources/js/scripts.js"></script>
+	<script src="js/scripts.js"></script>
 </body>
 </html>

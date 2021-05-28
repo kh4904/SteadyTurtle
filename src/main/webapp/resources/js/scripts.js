@@ -20,6 +20,7 @@
 		}
 	});
 
+
 	// 체크박스가 체크되면 버튼 활성화 되게 만들기
 	$(function() {
 		$('.checkT input[type="checkbox"]').click(function() {

@@ -25,6 +25,9 @@ public interface MemberDao {
 	// 회원가입 dto
 	public void register(MemberDto dto) throws Exception;
 	
+	//아이디 중복 체크
+	public int idChk(MemberDto mdto) throws Exception;
+	
 	// 로그인 dto
 	public MemberDto login(MemberDto ldto) throws Exception;
 	
@@ -97,13 +100,6 @@ public interface MemberDao {
 	// 판매상품 목록 dto
 	public List<SellDto> sellList() throws Exception;
 	
-	//바로구매
-	public void cash(CashDto cdto) throws Exception;
-		
-	//바로구매
-	public List<CashDto> cashdto() throws Exception;
-		
 	//결제하기
 	public void cashOk(CashlistDto cldto) throws Exception;
-	public void cashdelete(CashDto deldto) throws Exception;
 }

@@ -9,6 +9,12 @@
 <insert id="register">INSERT INTO member( mId , mPw , mName, mGender, mPhone, mBirth, mEmail, mAddr, mGrade, mNote, mList, mMile, mCumulmile, mMaster)
 	                  VALUES(#{mId} , #{mPw}, #{mName}, #{mGender}, #{mPhone}, #{mBirth}, #{mEmail}, #{mAddr}, "브론즈", null, null, 0, 0, 0)</insert>
 
+<!-- 아이디 중복 체크 -->
+<select id="idChk" resultType="int">
+	SELECT COUNT(*) FROM member
+	WHERE mId = #{mId}
+</select>
+
 <!--회원수정 update문 -->
 <update id="MemberUpdate">UPDATE member SET mEmail = #{mEmail} ,mName =#{mName},
 		mPhone =#{mPhone},mAddr=#{mAddr},mPw=#{mPw}
@@ -106,15 +112,10 @@
 	values(#{pName}, #{pCountsSell}, #{pPrice}, #{pShip}, #{pPrice} * #{pCountsSell})
 </insert>
 
-<!-- 바로구매 select문 -->
-<select id="Cashview" resultType="CashDto">SELECT * from cashon </select>
 <!-- 결제하기 -->
 <insert id="cashOk">
 	insert into cashlist(cNum, mId, mName, pPrice, pCount, pCate, pName, mAddr, mEmail, cMailNum, cName, cPhone)
 	values(0, #{mId}, #{mName}, #{pPrice}, #{pCount}, #{pCate}, #{pName}, #{mAddr}, #{mEmail}, #{cMailNum}, #{cName}, #{cPhone} )
 </insert>
-
-<!-- 결제하기 delete -->
-<delete id="cashdelete"> delete from cashon where pName = #{pName} </delete>
 </mapper>
 

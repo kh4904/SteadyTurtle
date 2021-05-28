@@ -35,6 +35,13 @@ public class TotalDao implements MemberDao{
 		sqlSessionTemplate.insert(namespace + ".register", dto);
 	}
 	
+	//아이디 중복 체크
+	@Override
+	public int idChk(MemberDto mdto) throws Exception {
+		int result = sqlSessionTemplate.selectOne(namespace + ".idChk", mdto);
+		return result;
+	}
+	
 	//회원 정보 update문 수정 
 	@Override
 	public void MemberUpdate(MemberDto Mdto) throws Exception {
@@ -185,26 +192,9 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectList(namespace+".sell");
 	}
 	
-	//바로구매
-	@Override
-	public void cash(CashDto cdto) throws Exception {
-		sqlSessionTemplate.insert(namespace + ".cash", cdto);
-	}
-		
-	//바로구매
-	@Override
-	public List<CashDto> cashdto() throws Exception {
-		return sqlSessionTemplate.selectList(namespace + ".Cashview");
-	}
-		
 	//결제하기
 	@Override
 	public void cashOk(CashlistDto cldto) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".cashOk", cldto); 
-	}
-	
-	@Override
-	public void cashdelete(CashDto deldto) throws Exception {
-		sqlSessionTemplate.delete(namespace + ".cashdelete", deldto);
 	}
 }

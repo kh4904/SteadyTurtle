@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.dto.BasketDto;
@@ -59,12 +60,30 @@ public class MyController {
 		return "Login/join";
 	}
 	
+	//아이디 중복체크
+	@RequestMapping(value="/idChk", method = RequestMethod.POST)
+	@ResponseBody
+	public int idChk(MemberDto mdto) throws Exception {
+		int result = ServiceTurtle.idChk(mdto);
+		return result;
+	}
+	
 	// 회원가입 후 메인페이지로 보내
 	@RequestMapping(value = "/main", method = RequestMethod.POST)
-	public String joinPOST(MemberDto dto, RedirectAttributes redirectAttributes) throws Exception {
-
+	public String joinPOST(MemberDto dto) throws Exception {
+		int result = service.idChk(dto);
+		try {
+			if(result == 1) {
+				return "Login/join";
+			}else if(result == 0) {
+				
+			}
+			// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기 
+			// 존재하지 않는다면 -> register
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 		service.register(dto);
-
 		return "redirect:/main";
 	}
 	
@@ -333,31 +352,43 @@ public class MyController {
 		return path;
 	}
 
-	// 바로결제
-	@RequestMapping(value = "/Cash", method = RequestMethod.POST)
-	public String Cash(CashDto cdto) throws Exception {
-		
-		ServiceTurtle.cash(cdto);
-		
-		return "redirect:/CashOn";
-	}
-		
 	// 결제창 페이지
 	@RequestMapping(value = "/CashOn", method = RequestMethod.GET)
 	public String CashOn(Model model) throws Exception {
-		
-		List<CashDto> list = service.cashdto();
-		
-		model.addAttribute("cashList", list);
-		
+			
+		List<ProductDto> list = service.productList();
+			
+		model.addAttribute("productList", list);
+			
 		return "Cash/CashOn";
 	}
+	// 바로결제
+	@RequestMapping(value = "/Cash", method = RequestMethod.POST)
+	public String Cash(ProductDto pdto, HttpServletRequest req, RedirectAttributes rttr, Model model) throws Exception {
 		
+		String pCountsSell = req.getParameter("pCountsSell");
+		String sum = req.getParameter("sum");
+			
+		String path="";
+		HttpSession session5 = req.getSession();
+		HttpSession session1 = req.getSession();
+		ProductDto product2 = ServiceTurtle.product(pdto);
+		if(product2 == null) {
+			session5.setAttribute("product", null);
+			rttr.addFlashAttribute("msg", false);
+			path = "redirect:/product";
+		} else {
+			session1.setAttribute("pCountsSell", pCountsSell);
+			session1.setAttribute("sum", sum);
+			session5.setAttribute("product", product2);
+			path = "redirect:/CashOn";
+		}
+		return path;
+	}
+			
 	//결제하기
 	@RequestMapping(value = "CashOk", method = RequestMethod.POST)
-	public String CashOk(CashlistDto cldto, CashDto deldto) throws Exception {
-		
-		service.cashdelete(deldto);
+	public String CashOk(CashlistDto cldto) throws Exception {
 		
 		ServiceTurtle.cashOk(cldto);
 		

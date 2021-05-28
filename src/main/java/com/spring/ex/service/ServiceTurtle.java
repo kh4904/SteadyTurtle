@@ -40,6 +40,13 @@ public class ServiceTurtle implements TurtleService{
 
 	}
 	
+	//아이디 중복 체크
+	@Override
+	public int idChk(MemberDto mdto) throws Exception {
+		int result = dao.idChk(mdto);
+		return result;
+	}
+	
 	//회원수정
 	@Override
 	public void MemberUpdate(MemberDto mdto) throws Exception {
@@ -239,28 +246,12 @@ public class ServiceTurtle implements TurtleService{
 		return SellDao.sellList();
 	}
 	
-	//바로구매
+	//결제하기
 	@Inject MemberDao cdao;
-		
-	@Override
-	public void cash(CashDto cdto) throws Exception {
-		cdao.cash(cdto);
-	}
-		
-	//바로구매
-	@Override
-	public List<CashDto> cashdto() throws Exception {
-		return cdao.cashdto();
-	}
 		
 	//결제하기
 	@Override
 	public void cashOk(CashlistDto cldto) throws Exception {
 		cdao.cashOk(cldto);
-	}
-		
-	@Override
-	public void cashdelete(CashDto deldto) throws Exception {
-		cdao.cashdelete(deldto);
 	}
 }

@@ -16,6 +16,7 @@
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
 	crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css" />
@@ -26,7 +27,39 @@
 <link href="resources/css/styles.css" rel="stylesheet" />
 </head>
 <!-- 아이디 비밀번호 찾기 -->
-<body id="page-top">
+<body onload="init();">
+<script language="JavaScript">
+var pPrice;
+var pCountsSell;
+function init () {
+	pPrice = document.form.pPrice.value;
+	pCountsSell = document.form.pCountsSell.value;
+	document.form.sum.value = pPrice;
+	change();
+}
+function add () {
+	hm = document.form.pCountsSell;
+	sum = document.form.sum;
+	hm.value ++ ;
+	sum.value = parseInt(hm.value) * pPrice;
+}
+function del () {
+	hm = document.form.pCountsSell;
+	sum = document.form.sum;
+		if (hm.value > 1) {
+			hm.value -- ;
+			sum.value = parseInt(hm.value) * pPrice;
+		}
+}
+function change () {
+	hm = document.form.pCountsSell;
+	sum = document.form.sum;
+		if (hm.value < 0) {
+			hm.value = 0;
+		}
+	sum.value = parseInt(hm.value) * pPrice;
+}  
+</script>
 	<!-- Navigation 맨위 로고-->
 	<%@ include file="/WEB-INF/views/menu.jsp"%>
 
@@ -65,6 +98,7 @@
 						<hr>
 						<p>
 							<b style="font-size: 20px;">판매량 : </b>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -125,15 +159,18 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<!-- db연동 -->
 							<b style="font-size: 20px;">
-							<input type="number" id="pCountsSell" name="pCountsSell" class="input" style="width: 60px; height: 30px;" value="1"> 개</b>
+							<input type="button" value=" + " onclick="add();">
+							<input type="text" onchange="change();" id="pCountsSell" name="pCountsSell" size="3" style="width: 40px; height: 40px;" value="1">
+							<input type="button" value=" - " onclick="del();"> 개</b>
+							<br>
 						</p>
 						<hr>
 						<!-- db연동 -->
 						<h4 style="text-align: right;">총 결제금액 :
-							${product.getpPrice()} 원</h4>
+							<input type="text" name="sum" size="11"> 원</h4>
 						<hr>
 						<!-- 뒤로가기 버튼클릭시 -->
 						<p style="text-align: right;">

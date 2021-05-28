@@ -16,6 +16,7 @@
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
 	crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css" />
@@ -26,7 +27,39 @@
 <link href="resources/css/styles.css" rel="stylesheet" />
 </head>
 <!-- 아이디 비밀번호 찾기 -->
-<body id="page-top">
+<body onload="init();">
+<script language="JavaScript">
+var pPrice;
+var pCount;
+function init () {
+	pPrice = document.form.pPrice.value;
+	pCount = document.form.pCount.value;
+	document.form.sum.value = pPrice;
+	change();
+}
+function add () {
+	hm = document.form.pCount;
+	sum = document.form.sum;
+	hm.value ++ ;
+	sum.value = parseInt(hm.value) * pPrice;
+}
+function del () {
+	hm = document.form.pCount;
+	sum = document.form.sum;
+		if (hm.value > 1) {
+			hm.value -- ;
+			sum.value = parseInt(hm.value) * pPrice;
+		}
+}
+function change () {
+	hm = document.form.pCount;
+	sum = document.form.sum;
+		if (hm.value < 0) {
+			hm.value = 0;
+		}
+	sum.value = parseInt(hm.value) * pPrice;
+}  
+</script>
 	<!-- Navigation 맨위 로고-->
 	<%@ include file="/WEB-INF/views/menu.jsp"%>
 	<br>
@@ -34,7 +67,7 @@
 	<br>
 	<!-- 주문/결제 헤드부분 -->
 	<header class="bg-white text-white">
-		<form action="CashOk" method="POST">
+		<form action="CashOk" method="POST" name="form">
 			<div class="container">
 				<!-- 주문/결제 문구 및 밑줄표시-->
 				<h2 class="page-section-heading text-uppercase text-secondary mb-0">주문/결제</h2>
@@ -97,10 +130,9 @@
 								style="width: 50%; height: 60%;">
 						</div>
 						<div class="col-md-6">
-							<c:forEach items="${cashList}" var="cashList">
 									<br>
-									<h2 style="color: black;">${cashList.pName }</h2>
-									<input type="hidden" id="pName" name="pName" value="${cashList.pName }" >
+									<h2 style="color: black;">${product.getpName() }</h2>
+									<input type="hidden" id="pName" name="pName" value="${product.getpName() }" >
 									<input type="hidden" id="pCate" name="pCate" value="${product.getpCate() }" >
 									<hr>
 									<p>
@@ -116,8 +148,8 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<!-- db연동 -->
-										<b style="font-size: 20px; color: black;">${cashList.getpCountsSell() } 개</b>
-										<input type="hidden" id="pCount" name="pCount" value="${cashList.getpCountsSell() }" >
+										<b style="font-size: 20px; color: black;">${pCountsSell } 개</b>
+										<input type="hidden" id="pCount" name="pCount" onchange="change();" value="${pCountsSell }" >
 									</p>
 									<hr>
 									<p>
@@ -131,7 +163,7 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<!-- db연동 -->
-										<b style="font-size: 20px; color: black;">${cashList.getpPrice()} 원</b>
+										<b style="font-size: 20px; color: black;">${product.getpPrice() } 원</b> 
 									</p>
 									<hr>
 									<p>
@@ -143,9 +175,14 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<!-- db연동 -->
+									<c:if test="${member != null }">
 										<input type="text" value="0"
 											style="position: relative; width: 70px; height: 30px;"></input><b
-											style="font-size: 20px; color: black;">/ 2,640 M</b>
+											style="font-size: 20px; color: black;">/ ${member.mMile } M</b>
+									</c:if>
+									<c:if test="${member == null }">
+										<b style="font-size: 15px; color: black;">비회원은 사용할 수 없습니다</b>
+									</c:if>
 									</p>
 									<hr>
 									<p>
@@ -160,14 +197,27 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<!-- db연동 -->
-										<b style="font-size: 20px; color: black;">3,000 원</b>
+										<c:if test="${product.getpShip() eq '무료배송' }">
+											<b style="font-size: 20px; color: black;">무료배송</b>
+										</c:if>
+										<c:if test="${product.getpShip() eq '일반배송' }">
+											<b style="font-size: 20px; color: black;">3000 원</b>
+										</c:if>
 									</p>
 									<hr>
 									<!-- db연동 -->
-									<h4 style="text-align: right; color: black;">총 결제금액 : ${cashList.pSumPrice}</h4>
-									<input type="hidden" id="pPrice" name="pPrice" value="${cashList.pSumPrice}" >
+									<h4 style="text-align: right; color: black;">
+										<c:if test="${product.getpShip() eq '무료배송' }">
+											총 결제금액 : ${sum }
+											<input type="hidden" id="pPrice" name="pPrice" value="${sum }" >
+										</c:if>
+										<c:if test="${product.getpShip() eq '일반배송' }">
+											총 결제금액 : ${sum + 3000}
+											<input type="hidden" id="pPrice" name="pPrice" value="${sum + 3000 }" >
+										</c:if>
+									</h4>
+									
 									<hr>
-							</c:forEach>
 						</div>
 					</div>
 				</div>
