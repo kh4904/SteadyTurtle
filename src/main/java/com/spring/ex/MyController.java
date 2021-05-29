@@ -811,4 +811,13 @@ public class MyController {
 		
 		return "Master/Customer/DetailCustomerManage";
 	}
+	
+	// 관리자쪽에서 회원탈퇴시키기
+	@RequestMapping(value = "/CustomerDelete", method = RequestMethod.POST)
+	public String CustomerDelete(MemberDto ddto, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		service.memberdelete(ddto);
+		return "redirect:/CustomerManage";
+			
+	}
 }

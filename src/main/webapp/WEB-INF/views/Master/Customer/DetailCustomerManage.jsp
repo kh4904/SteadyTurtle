@@ -148,11 +148,15 @@
 							<hr style="background-color: black;">
 						</div>
 						<!-- 회원삭제 버튼 -->
+						<form action="CustomerDelete" method="post">
+						<input type="hidden" id="mId" name="mId" value="${member2.getmId()}">
+						<input type="hidden" id="mPw" name="mPw" value="${member2.getmPw()}">
 						<div class="contanier"
 							style="position: relative; top: -20px; left: 980px;">
-							<a href="CustomerManage" class="btn btn-primary">목록</a> <a
-								href="#" class="btn btn-primary" style="">회원삭제</a>
+							<a href="CustomerManage" class="btn btn-primary">목록</a> 
+							<input type="submit" class="btn btn-primary" value="회원삭제">
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>
