@@ -62,7 +62,7 @@
 
 			<!-- 장바구니에 담긴 상품 -->
 			<div class="row">
-			
+			<c:set var = "allSum" value="0" />
 				<c:forEach items="${cartList}" var="cartList">
                   <form name="form" action="Cash" method="post">
 					<table style="width: 100%">
@@ -79,10 +79,7 @@
 						</td>
 						<td style="width: 250px; height: 43px; text-align: center">
 							<h3>${cartList.getCartStock() }개</h3>
-							<input type="hidden" name="CartStock" value="${cartList.getCartStock() }" id="CartStock">
-							
-							<br>
-							<br>
+							<input type="hidden" name="pCountsSell" value="${cartList.getCartStock() }" id="CartStock">
 						</td>
 						<td style="width: 250px; height: 43px; text-align: center">
 							<h3>${cartList.getpPrice() }원</h3>
@@ -105,6 +102,7 @@
 				</table>
 				<input type="submit" value="결제하기">
 				</form>
+				<c:set var = "allSum" value="${allSum + (cartList.pPrice * cartList.cartStock) }" />
 			</c:forEach>
 			</div>
 			</c:if>
@@ -112,6 +110,20 @@
 		</div>
 	</section>
 	<div class="container">
+		<!-- 밑줄 -->
+		<div class="divider-custom" style="display: block;">
+			<hr style="background-color: black;">
+		</div>
+			<div class="allSum">
+				<p style="text-align: right;">
+  					총 합계 : <fmt:formatNumber pattern="###,###,###" value="${allSum}" />원
+  				</p>
+ 			</div>
+ 			<div class="orderOpne">
+ 				<p style="text-align: right;">
+					<button type="button" class="orderOpne_bnt">주문 정보 입력</button>
+				</p>
+			</div>
 		<!-- 밑줄 -->
 		<div class="divider-custom" style="display: block;">
 			<hr style="background-color: black;">
