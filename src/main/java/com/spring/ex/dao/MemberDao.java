@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
+import com.spring.ex.dto.CartListVO;
+import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.CashlistDto;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
@@ -81,8 +83,13 @@ public interface MemberDao {
 	// 장바구니 dto
 	public List<BasketDto> basketList() throws Exception;
 	
-	//장바구니 추가
-	public void basketInsert(BasketDto bidto) throws Exception;
+	public List<CartListVO> cartList(String mId) throws Exception;
+	
+	//장바구니 추가2
+	public void addCart(CartListVO cart) throws Exception;
+		
+	//장바구니 추가3
+	public void addCart5(CartVO cart) throws Exception;
 	
 	// 고객문의 게시판 목록 dto
 	public List<BoardDTO> boardList() throws Exception;

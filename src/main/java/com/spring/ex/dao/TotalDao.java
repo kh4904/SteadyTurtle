@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
+import com.spring.ex.dto.CartListVO;
+import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.CashlistDto;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
@@ -154,10 +156,22 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectList(namespace+".basket");
 	}
 	
-	//장바구니 추가
+	//장바구니 추가2
 	@Override
-	public void basketInsert(BasketDto bidto) throws Exception {
-		sqlSessionTemplate.insert(namespace + ".basketInsert", bidto);
+	public void addCart(CartListVO cart) throws Exception {
+		sqlSessionTemplate.insert(namespace + ".addCart", cart);
+	}
+		
+	//장바구니 추가3
+	@Override
+	public void addCart5(CartVO cart) throws Exception {
+		sqlSessionTemplate.insert(namespace + ".addCart", cart);
+	}
+	
+	//장바구니 추가4
+	@Override
+	public List<CartListVO> cartList(String mId) throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".cartList", mId);
 	}
 
 	// 고객문의 게시판 목록 select문

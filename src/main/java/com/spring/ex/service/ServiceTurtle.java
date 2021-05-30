@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.spring.ex.dao.MemberDao;
 import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
+import com.spring.ex.dto.CartListVO;
+import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.CashlistDto;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
@@ -190,10 +192,23 @@ public class ServiceTurtle implements TurtleService{
 	
 	// 장바구니 추가
 	@Inject MemberDao bidao;
-		
+	
+	//장바구니 추가2
 	@Override
-	public void basketInsert(BasketDto bidto) throws Exception {
-		bidao.basketInsert(bidto);
+	public void addCart(CartListVO cart) throws Exception {
+		bidao.addCart(cart);
+	}
+		
+	//장바구니 추가5
+	@Override
+	public void addCart5(CartVO cart) throws Exception {
+		bidao.addCart5(cart);
+	}
+	
+	//장바구니 추가4
+	@Override
+	public List<CartListVO> cartList(String mId) throws Exception {
+		return dao.cartList(mId);
 	}
 	
 	// 고객문의 목록

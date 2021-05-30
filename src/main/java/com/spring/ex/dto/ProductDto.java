@@ -1,6 +1,9 @@
 package com.spring.ex.dto;
 
 public class ProductDto {
+	
+	//상품번호
+	private int pNum;
 	// 상품명
 	private String pName;
 	// 상품 카테고리
@@ -24,6 +27,13 @@ public class ProductDto {
 	// 상품구매자 수(여성)
 	private String pWoman;
 	
+	
+	public int getpNum() {
+		return pNum;
+	}
+	public void setpNum(int pNum) {
+		this.pNum = pNum;
+	}
 	public String getpName() {
 		return pName;
 	}
@@ -93,7 +103,7 @@ public class ProductDto {
 	
 	@Override
 	public String toString() {
-		return "ProductDto[ pName=" + pName + ", pCate=" + pCate + ", pPrice=" + pPrice + 
+		return "ProductDto[pNum=" + pNum + ", pName=" + pName + ", pCate=" + pCate + ", pPrice=" + pPrice + 
 				", pShip=" + pShip + ", pCount=" + pCount + ", pCountSell=" + pCountSell + 
 				", pCumulSell=" + pCumulSell + ", pMile=" + pMile + ", pUrl=" + pUrl + 
 				", pMan=" + pMan + ", pWoman=" + pWoman + "]";

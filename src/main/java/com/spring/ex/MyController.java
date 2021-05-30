@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
+import com.spring.ex.dto.CartListVO;
+import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.CashlistDto;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
@@ -285,24 +286,34 @@ public class MyController {
 	
 	// 장바구니 페이지
 	@RequestMapping(value = "/basket", method = RequestMethod.GET)
-	public String basket(Model model) throws Exception {
-			
-		List<BasketDto> list = service.basketList();
+	public String basket(HttpSession session, Model model) throws Exception {
+		 
+		MemberDto member = (MemberDto)session.getAttribute("member");
+		String mId = member.getmId();
 		
-		model.addAttribute("basketList", list);
+		List<CartListVO> cartList = service.cartList(mId);
+		
+		model.addAttribute("cartList", cartList);
 		
 		return "Login/basket";
 	}
-		
-	//장바구니 추가
-	@RequestMapping(value = "/basketinsert", method = RequestMethod.POST)
-	public String basketInsert(BasketDto bidto, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
-			
-		String path="";
-		HttpSession session2 = req.getSession();
-		ServiceTurtle.basketInsert(bidto);
-		
-		return "redirect:/basket";
+	
+	// 카트 담기
+	@ResponseBody
+	@RequestMapping(value = "/addCart", method = RequestMethod.POST)
+	public int addCart(CartVO cart, HttpSession session) throws Exception {
+		 
+		int result = 0;
+		 
+		MemberDto member = (MemberDto)session.getAttribute("member");
+		ProductDto product = (ProductDto)session.getAttribute("product");
+		 if(member != null) {
+		 	cart.setmId(member.getmId());
+		 	cart.setpNum(product.getpNum());
+		 	service.addCart5(cart);
+		 	result = 1;
+		 }
+		return result;
 	}
 	
 	// 주문조회 페이지

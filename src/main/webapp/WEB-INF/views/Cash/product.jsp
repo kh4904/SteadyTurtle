@@ -16,7 +16,7 @@
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
 	crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css" />
@@ -65,18 +65,21 @@ function change () {
 
 	<!-- 상품보기 -->
 	<section class="page-section portfolio">
-		<div class="container" style="background-color: #bbdefb;">
+		<div class="container" style="background-color: #bbdefb; height:600px;">
 			<div class="row">
 				<div class="col-md-5">
-					<br> <br> <img src="${product.getpUrl() }"style="width: 80%; height: 70%;">
+					<br> <br> <img src="${product.getpUrl() }"style="width: 80%; height: 50%;">
 					<br>
 					
 				</div>
 				<div class="col-md-6">
+					<form role="form" method="post">
+						<input type="hidden" name="pNum" value="${product.getpNum() }" />
+					</form>
 					<form name="form" method="post" action="basket">
 						<input type="hidden" name="pUrl" id="pUrl" value="${product.getpUrl() }">
 						<br>
-						<h2 style="text-align: center">${product.getpName() }</h2>
+						<h2 style="text-align: center"> ${product.getpName() }</h2>
 						<input type="hidden" id="mId" name="mId" value="${member.getmId() }"> 
 						<input type="hidden" name="pName" value="${product.getpName() }" id="pName">
 						<hr>
@@ -151,21 +154,17 @@ function change () {
 						<hr>
 						<p>
 							<b style="font-size: 20px;">구매갯수 : </b>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							
 							<!-- db연동 -->
 							<b style="font-size: 20px;">
-							<input type="button" value=" + " onclick="add();">
-							<input type="text" onchange="change();" id="pCountsSell" name="pCountsSell" size="3" style="width: 40px; height: 40px;" value="1">
-							<input type="button" value=" - " onclick="del();"> 개</b>
-							<br>
+							<p class="cartStock" style="position:relative; top:-50px; left:400px;">
+							
+								<input type="button" value=" + " onclick="add();">
+								<input type="number" class="numBox" min="1" onchange="change();" id="pCountsSell" name="pCountsSell" size="3" style="width: 40px; height: 40px;" value="1" readonly="readonly">
+								<input type="button" value=" - " onclick="del();"> 개</b>
+													
+							</p>
 						</p>
 						<hr>
 						<!-- db연동 -->
@@ -173,13 +172,46 @@ function change () {
 							<input type="text" name="sum" size="11"> 원</h4>
 						<hr>
 						<!-- 뒤로가기 버튼클릭시 -->
-						<p style="text-align: right;">
-							<a href="main" class="btn btn-secondary">홈으로</a>
+						<p>
+							<a href="main" class="btn btn-secondary" style="position:relative; ">홈으로</a>
 							<!-- 장바구니 버튼클릭시 -->
-							<c:if test="${member != null }">
-								<input type="submit" class="btn btn-info" name="basketinsert" value="장바구니" onclick="javascript: form.action='basketinsert';" >
-							</c:if>
-							<input type="submit" class="btn btn-info" name="Cash" value="결제하기" onclick="javascript: form.action='Cash';" >
+							<p class="addToCart">
+								<button type="button" class="btn addCart_btn btn-info" style="position:relative; left:350px; top:-50px;">장바구니</button>
+ 
+								<script>
+								$(".addCart_btn").click(function(){
+									var pNum = $("#pNum").val();
+									var cartStock = $(".numBox").val();
+									
+									console.log("pNum : " + pNum);
+									console.log("cartStock : " + cartStock);
+      
+									var data = {
+											pNum : pNum,
+										cartStock : cartStock
+									};
+   
+									$.ajax({
+										url : "/ex/addCart",
+										type : "post",
+										data : data,
+										success : function(result){
+											 if(result == 1) {
+											     alert("장바구니 담기 성공");
+											     $(".numBox").val("1");
+											    } else {
+											     alert("회원만 사용할 수 있습니다.")
+											     $(".numBox").val("1");
+											    }
+											   },
+										error : function(){
+											alert("카트 담기 실패");
+										}
+									});
+								});
+								</script>
+							</p>
+							<input type="submit" class="btn btn-info" name="Cash" value="결제하기" onclick="javascript: form.action='Cash';" style="position:relative; left:450px; top:-107px;" >
 						</p>
 
 					</form>
@@ -221,6 +253,7 @@ function change () {
 	<script src="resources/assets/mail/jqBootstrapValidation.js"></script>
 	<script src="resources/assets/mail/contact_me.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+	<script src="resources/js/scripts.js"></script>
+	<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
 </body>
 </html>

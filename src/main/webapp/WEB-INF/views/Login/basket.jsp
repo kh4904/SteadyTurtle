@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,39 +28,8 @@
 <link href="resources/css/styles.css" rel="stylesheet" />
 </head>
 <!-- 장바구니 -->
-<body onload="init();">
-<script language="JavaScript">
-var pPrice;
-var pCountsSell;
-function init () {
-	pPrice = document.form.pPrice.value;
-	pCountsSell = document.form.pCountsSell.value;
-	document.form.sum.value = pPrice;
-	change();
-}
-function add () {
-	hm = document.form.pCountsSell;
-	sum = document.form.sum;
-	hm.value ++ ;
-	sum.value = parseInt(hm.value) * pPrice;
-}
-function del () {
-	hm = document.form.pCountsSell;
-	sum = document.form.sum;
-		if (hm.value > 1) {
-			hm.value -- ;
-			sum.value = parseInt(hm.value) * pPrice;
-		}
-}
-function change () {
-	hm = document.form.pCountsSell;
-	sum = document.form.sum;
-		if (hm.value < 0) {
-			hm.value = 0;
-		}
-	sum.value = parseInt(hm.value) * pPrice;
-}  
-</script>
+<body>
+
 	<!-- Navigation 맨위 로고-->
 	<%@ include file="/WEB-INF/views/menu.jsp" %>
 
@@ -93,34 +63,40 @@ function change () {
 			<!-- 장바구니에 담긴 상품 -->
 			<div class="row">
 			
-			<c:forEach items="${basketList}" var="basket">
-                  <c:if test="${basket.getmId() eq sessionScope.member.getmId()}">
+				<c:forEach items="${cartList}" var="cartList">
                   <form name="form" action="Cash" method="post">
 					<table style="width: 100%">
 					<tr style="height: 100px;">
 						<td style="width: 200px; height: 43px; text-align: center">
 							<a href="#">
-								<img class="img-fluid" src="${basket.getpUrl()} " style="width: 120px; height: 100px;" alt="" />
+								<img class="img-fluid" src="${cartList.getpUrl()} " style="width: 120px; height: 100px;" alt="" />
 							</a>
 						</td>
 						<td style="width: 300px; height: 43px; text-align: center">
-							<h3>${basket.getpName() }</h3>
-							<input type="hidden" name="pName" value="${basket.getpName() }" id="pName">
+							<h3>${cartList.getpName() }</h3>
+							<input type="hidden" name="pName" value="${cartList.getpName() }" id="pName">
+							<input type="hidden" name="pNum" value="${cartList.getpNum() }" id="pNum">
 						</td>
 						<td style="width: 250px; height: 43px; text-align: center">
-							<input type="text" onchange="change();" id="pCountsSell" name="pCountsSell" size="3" style="width: 60px; height: 30px;" value="1"> 개</b>
-							<input type="button" value=" + " onclick="add();">
-							<input type="button" value=" - " onclick="del();">
+							<h3>${cartList.getCartStock() }개</h3>
+							<input type="hidden" name="CartStock" value="${cartList.getCartStock() }" id="CartStock">
+							
 							<br>
 							<br>
 						</td>
 						<td style="width: 250px; height: 43px; text-align: center">
-							<h3>${basket.getpPrice() }원</h3>
-							<input type="hidden" name="pPrice" value="${basket.getpPrice() }" id="pPrice">
+							<h3>${cartList.getpPrice() }원</h3>
+							<input type="hidden" name="pPrice" value="${cartList.getpPrice() }" id="pPrice">
 						</td>
 						<td style="width: 250px; height: 43px; text-align: center">
-							<h3><input type="text" name="sum" size="11"> 원</h3>
-							<input type="hidden" value="3000" id="pShip" name="pShip">
+							<h3><fmt:formatNumber pattern="###,###,###" value="${cartList.pPrice * cartList.cartStock}" /> 원</h3>
+							<c:if test="${product.getpShip() eq '일반배송'}">
+								<input type="hidden" value="3000" id="pShip" name="pShip">
+							</c:if>
+							<c:if test="${product.getpShip() eq '무료배송'}">
+								<input type="hidden" value="0" id="pShip" name="pShip">
+							</c:if>
+							<input type="hidden" value="${cartList.pPrice * cartList.cartStock}" id="sum" name="sum">
 						</td>
 						<td style="width: 150px; height: 43px; text-align: center">
 							<input type="checkbox" id="chkbox" style="width: 25px; height: 25px;" class="normal"></input>
@@ -129,7 +105,6 @@ function change () {
 				</table>
 				<input type="submit" value="결제하기">
 				</form>
-				</c:if>
 			</c:forEach>
 			</div>
 			</c:if>

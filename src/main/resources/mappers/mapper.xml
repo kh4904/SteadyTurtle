@@ -90,10 +90,22 @@
 <select id="basket" resultType="BasketDto">SELECT * from basket</select>
 
 <!-- 장바구니 추가 -->
-<insert id="basketInsert">
-	insert into basket(mId, pName, pCountsSell, pPrice, pPriceSell, pUrl)
-	values(#{mId}, #{pName}, #{pCountsSell}, #{pPrice}, #{pPrice} * #{pCountsSell}, #{pUrl})
+<insert id="addCart">
+	insert into cart(cartNum, mId, pNum, cartStock)
+     VALUES (NEXTVAL(cart_seq), #{mId}, #{pNum}, #{cartStock})
 </insert>
+
+<!-- 장바구니 리스트 -->
+<select id="cartList" resultType="CartListVO">
+select
+     row_number() over(order by c.cartNum desc) as num,
+     c.cartNum, c.mId, c.pNum, c.cartStock, c.addDate,
+     g.pName, g.pPrice, g.pUrl
+ from cart c
+     inner join product g
+         on c.pNum = g.pNum  
+     where c.mId = #{mId}
+</select>
 
 <!-- 고객문의 게시판 목록 select문 -->
 <select id="board" resultType="BoardDTO">SELECT * from board order by bNum DESC</select>
