@@ -57,6 +57,9 @@ public interface TurtleService {
 	// 상품수정
 	public void ProductUpdate(ProductDto pudto) throws Exception;
 	
+	// 상품삭제
+	public void productDelete(ProductDto pzdto) throws Exception;
+	
 	/*재고 관리 ProductDto 를 pADto로선언*/
 	public void productAdd(ProductDto pADto) throws Exception;
 	

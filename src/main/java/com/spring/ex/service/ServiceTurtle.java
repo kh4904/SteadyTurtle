@@ -123,6 +123,12 @@ public class ServiceTurtle implements TurtleService{
 		productDao.ProductUpdate(pudto);
 	}
 	
+	// 상품삭제
+	@Override
+	public void productDelete(ProductDto pzdto) throws Exception{
+		productDao.productDelete(pzdto);
+	}
+	
 	//재고수정
 	@Override
 	public void productAdd(ProductDto pADto) throws Exception{

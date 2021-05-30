@@ -103,6 +103,12 @@ public class TotalDao implements MemberDao{
 		sqlSessionTemplate.update(namespace + ".productUpdate", pudto);
 	}
 	
+	// 상품삭제
+	@Override
+	public void productDelete(ProductDto pzdto) throws Exception {
+		sqlSessionTemplate.delete(namespace + ".productDelete", pzdto);	
+	}
+	
 	//재고관리
 	public void productAdd(ProductDto pADto) throws Exception{
 		sqlSessionTemplate.update(namespace + ".productAdd", pADto);

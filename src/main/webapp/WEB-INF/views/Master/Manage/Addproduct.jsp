@@ -58,6 +58,18 @@
 							<table style="width: 100%">
 								<tr>
 									<td style="text-align: left ;">
+										<b style="font-size: 20px;">상품번호 : </b>
+									</td>
+									<td style="text-align: right ;">
+										<b style="font-size: 20px;">
+										<input type="text" id="pNum" name="pNum" style="width: 150px;" /> </b>
+									</td>
+								</tr>
+							</table>
+							<hr>
+							<table style="width: 100%">
+								<tr>
+									<td style="text-align: left ;">
 										<b style="font-size: 20px;">판매가 : </b>
 									</td>
 									<td style="text-align: right ;">

@@ -120,20 +120,21 @@
 							</div>
 							<br /> <br /> <br />
 
-							<div style="text-align: right;">
-								<!-- 뒤로가기 버튼클릭시 -->
-								<a href="ProductManagement" class="btn btn-info"">뒤로가기</a>
+							<div>
 								<!-- 수정하기 버튼클릭시 -->
-								<input type="submit" class="btn btn-info" value="수정하기">
+								<input type="submit" class="btn btn-info" value="수정하기" style="position:relative; left:400px;">
 							</div>
 
 						</div>
 					</div>
 				</form>
 				<!-- 삭제하기 버튼클릭시 -->
-								<form action="aaaa" method="post">
-									<input type="submit" class="btn btn-info" value="삭제하기">
-								</form>
+				<form action="productDelete" , method="post">
+				<input type="hidden" id="pNum" name="pNum" value="${product.getpNum()}">
+				     <!-- 뒤로가기 버튼클릭시 -->
+					 <a href="ProductManagement" class="btn btn-info" style="position:relative; top:-40px; left:750px;">뒤로가기</a>
+					 <input type="submit" class="btn btn-info" value="삭제하기" style="position:relative; top:-40px; left:750px;">
+				</form>
 			</div>
 		</div>
 	</section>

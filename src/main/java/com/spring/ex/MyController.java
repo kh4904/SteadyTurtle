@@ -670,6 +670,15 @@ public class MyController {
 		
 	}
 	
+	// 상품관리 삭제 
+	@RequestMapping(value = "/productDelete", method = RequestMethod.POST)
+	public String productDelete(ProductDto pzdto) throws Exception {
+		
+		service.productDelete(pzdto);
+		return "redirect:/ProductManagement";		
+		
+	}
+	
 	// 상품관리 추가 페이지
 	@RequestMapping("/Addproduct")
 	public String Addproduct() {
