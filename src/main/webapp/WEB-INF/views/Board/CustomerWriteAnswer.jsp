@@ -70,9 +70,19 @@
             </table>
             
             <!-- 이동버튼 -->
-            <div class ="contanier" style="position:relative; left:1000px;">
-            	<a href="CustomerWriteView" class="btn btn-primary" style="">목록</a>
-            	<a href="#" class="btn btn-primary" style="">삭제</a>
+            <div class ="contanier">
+            <form action="boardDelete2" method="POST">
+           		<input type="hidden" id="bNum" name="bNum" value="${board.getbNum()}">
+            	<c:choose>
+					<c:when test="${board.getmName() eq sessionScope.member.getmName()}">
+       					<input type="submit" class="btn btn-primary" value="삭제" style="position:relative; left:1010px;">
+              	 		<a href="CustomerWriteView" class="btn btn-primary" style="position:relative; left:1020px;">목록</a>
+    				</c:when>
+    				<c:when test="${board.getmName() ne sessionScope.member.getmName()}">
+        			 	<a href="CustomerWriteView" class="btn btn-primary" style="position:relative; left:1080px;">목록</a>
+    				</c:when>
+			</c:choose>
+            </form>
             </div>
         </div>
     </div>

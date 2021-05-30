@@ -94,6 +94,9 @@ public interface TurtleService {
 	/* 고객문의 게시글 답변 boardAnswer 보드dto를 bDto로 선언*/ 
 	public void boardAnswer(BoardDTO bDto) throws Exception;
 	
+	// 고객문의 게시글 삭제 boardDelete 보드dto를 bddto로 선언
+	public void boardDelete(BoardDTO bddto) throws Exception;
+	
 	// 환불요청 게시판 list RefundDto를 refundList로 선언
 	public List<RefundDto> refundList() throws Exception;
 	

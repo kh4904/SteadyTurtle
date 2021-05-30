@@ -506,6 +506,15 @@ public class MyController {
 		return path;
 	}
 	
+	// 고객문의 게시글 삭제하기(글쓴 장본인이면 가능)
+	@RequestMapping(value = "/boardDelete2", method = RequestMethod.POST)
+	public String boardDelete2(BoardDTO bddto) throws Exception {
+
+		service.boardDelete(bddto);
+		return "redirect:/CustomerWriteView";
+			
+	}
+	
 	// 고객문의 글쓰기 페이지
 	@RequestMapping(value = "/CustomerWrite", method = RequestMethod.GET)
 	public String CustomerWrite() throws Exception {
@@ -772,6 +781,15 @@ public class MyController {
 			
 	}
 	
+	// 관리자쪽에서 고객문의 게시글 삭제하기
+	@RequestMapping(value = "/boardDelete", method = RequestMethod.POST)
+	public String boardDelete(BoardDTO bddto) throws Exception {
+
+		service.boardDelete(bddto);
+		return "redirect:/MCustomerWriteView";
+			
+	}
+	
 	// 회원관리 목록
 	@RequestMapping(value = "/CustomerManage", method = RequestMethod.GET)
 	public String CustomerManage(Model model) throws Exception {
@@ -814,7 +832,7 @@ public class MyController {
 	
 	// 관리자쪽에서 회원탈퇴시키기
 	@RequestMapping(value = "/CustomerDelete", method = RequestMethod.POST)
-	public String CustomerDelete(MemberDto ddto, HttpSession session, RedirectAttributes rttr) throws Exception {
+	public String CustomerDelete(MemberDto ddto) throws Exception {
 
 		service.memberdelete(ddto);
 		return "redirect:/CustomerManage";

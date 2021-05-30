@@ -100,6 +100,9 @@
 <!-- 고객문의 게시글 답변 update문 -->
 <update id="boardAnswer">UPDATE board SET bReply = #{bReply} WHERE bNum = #{bNum} </update>
 
+<!-- 고객문의 게시글 삭제 delete문 -->
+<delete id="boardDelete"> delete from board where bNum = #{bNum} </delete>
+
 <!-- 환불요청 게시판 목록 select문 -->
 <select id="refund" resultType="RefundDto">SELECT * from refundboard order by rNum DESC</select>
 

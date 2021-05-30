@@ -225,6 +225,12 @@ public class ServiceTurtle implements TurtleService{
 		return bbdao.board2(bbdto);
 	}
 	
+	// 고객문의 게시글 삭제하기
+	@Override
+	public void boardDelete(BoardDTO bddto) throws Exception{
+		bdao.boardDelete(bddto);
+	}
+
 	// 환불요청 목록
 	@Inject
 	private MemberDao RefundDao;

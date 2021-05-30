@@ -179,6 +179,13 @@ public class TotalDao implements MemberDao{
 		sqlSessionTemplate.update(namespace + ".boardAnswer", bdto);
 	}
 	
+	// 고객문의 게시글 삭제 delete문
+	@Override
+	public void boardDelete(BoardDTO bddto) throws Exception {
+		sqlSessionTemplate.delete(namespace + ".boardDelete", bddto);
+		
+	}
+	
 	// 환불요청 게시판 목록 select문
 	@Override
 	public List<RefundDto> refundList() throws Exception{

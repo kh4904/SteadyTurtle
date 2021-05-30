@@ -74,12 +74,15 @@
             </table>
             
             <!-- 이동버튼 -->
-            <div class ="contanier" style="position:relative; left:950px;">
-            	<a href="MCustomerWriteView" class="btn btn-primary" style="">목록</a>
-            	<a href="#" class="btn btn-primary" style="">삭제</a>
-           	 	<input type="submit" class="btn btn-primary" value="답변달기">
+            <div class ="contanier">
+           	 	<input type="submit" class="btn btn-primary" value="답변달기" style="position:relative; left:1080px;">
             </div>
             </form>
+            <form action="boardDelete" method="POST">
+           		<input type="hidden" id="bNum" name="bNum" value="${board.getbNum()}">
+           			<a href="MCustomerWriteView" class="btn btn-primary" style="position:relative; top:-40px;">목록</a>
+            		<input type="submit" class="btn btn-primary" value="삭제" style="position:relative; top:-40px; left:950px;">
+           	</form>
         </div>
     </div>
 	</section>
