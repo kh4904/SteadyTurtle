@@ -1,7 +1,9 @@
 package com.spring.ex;
 
+import java.io.File;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.dto.BoardDTO;
@@ -28,6 +31,8 @@ import com.spring.ex.dto.SellDto;
 import com.spring.ex.service.ServiceTurtle;
 import com.spring.ex.service.TurtleService;
 
+import com.spring.ex.utils.UploadFileUtils;
+
 @Controller
 public class MyController {
 	
@@ -38,6 +43,9 @@ public class MyController {
 	public MyController(TurtleService service) {
 		this.service = service;
 	}
+	
+	@Resource(name="uploadPath")
+	private String uploadPath;
 	
 	// 로그인시 필요
 	@Autowired
@@ -678,7 +686,24 @@ public class MyController {
 	
 	//상품추가
 	@RequestMapping(value = "addproduct", method = RequestMethod.POST)
-	public String addproduct(ProductDto apdto, RedirectAttributes redirectAttributes) throws Exception {
+	public String addproduct(ProductDto apdto, MultipartFile file, RedirectAttributes redirectAttributes) throws Exception {
+		
+		//파일 업로드
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if(file != null) {
+		 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+
+		apdto.setpUrl(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		apdto.setpImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		
+		
 		ServiceTurtle.addProduct(apdto);
 		
 		return "redirect:/ProductManagement";

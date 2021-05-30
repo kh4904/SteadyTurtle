@@ -45,8 +45,9 @@ textarea#gdsDes { width:400px; height:180px; }
 	<!-- 몸통 -->
 	<!-- 상품추가 -->
 	<section class="page-section portfolio">
-			<div class="container" style="background-color: #bbdefb;">
-				<div class="row">
+		<div class="container" style="background-color: #bbdefb;">
+			<div class="row">
+				<form action="addproduct" method="POST" enctype="multipart/form-data">
 					<div class="inputArea">
 						<label for="pImg">이미지</label>
 						<input type="file" id="pImg" name="file" />
@@ -63,9 +64,10 @@ textarea#gdsDes { width:400px; height:180px; }
 									}
 								});
 							</script>
+							<%=request.getRealPath("/") %>
 					</div>
 					<div class="col-md-6">
-						<form action="addproduct" method="POST">
+						
 							<br>
 							<table style="width: 100%">
 								<tr>
@@ -150,11 +152,11 @@ textarea#gdsDes { width:400px; height:180px; }
 								<!-- 추가하기 버튼클릭시 -->
 								<input type="submit" class="btn btn-info" value="추가하기">
 							</p>
-						</form>
 					</div>
-				</div>
+				</form>
 			</div>
-	</section>
+		</div>
+</section>
 
 	<c:if test="${member.mMaster != 1 }">
 		<script>

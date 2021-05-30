@@ -61,8 +61,8 @@
 
 <!-- 상품추가 -->
 <insert id="addProduct">
-	INSERT INTO product(pName, pCate, pPrice, pShip, pCount, pCountSell, pCumulSell, pMile, pUrl, pMan, pWoman)
-	values(#{pName}, #{pCate}, #{pPrice}, #{pShip}, #{pCount}, 0, 0, #{pMile}, null, 0, 0)
+	INSERT INTO product(pName, pCate, pPrice, pShip, pCount, pCountSell, pCumulSell, pMile, pUrl, pMan, pWoman, pImg)
+	values(#{pName}, #{pCate}, #{pPrice}, #{pShip}, #{pCount}, 0, 0, #{pMile}, #{pUrl}, 0, #{pImg})
 </insert>
 
 <!-- 상품수정 -->
