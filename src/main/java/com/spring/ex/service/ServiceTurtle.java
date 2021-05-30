@@ -121,6 +121,12 @@ public class ServiceTurtle implements TurtleService{
 		productDao.ProductUpdate(pudto);
 	}
 	
+	//재고수정
+	@Override
+	public void productAdd(ProductDto pADto) throws Exception{
+		productDao.productAdd(pADto);
+	}
+	
 	// 상품랭킹 MemberDao를 Ranking으로 지정
 	@Inject
 	private MemberDao Ranking;

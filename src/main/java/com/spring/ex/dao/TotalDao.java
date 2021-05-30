@@ -101,6 +101,11 @@ public class TotalDao implements MemberDao{
 		sqlSessionTemplate.update(namespace + ".productUpdate", pudto);
 	}
 	
+	//재고관리
+	public void productAdd(ProductDto pADto) throws Exception{
+		sqlSessionTemplate.update(namespace + ".productAdd", pADto);
+	}
+	
 	// 헬스기구랭킹 select문
 	@Override
 	public List<ProductDto> healthRanking() throws Exception {

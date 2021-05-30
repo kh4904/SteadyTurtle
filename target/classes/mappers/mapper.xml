@@ -73,6 +73,13 @@
 	WHERE pUrl = #{pUrl}
 </update>
 
+<!-- 재고관리 -->
+<update id="productAdd">
+	UPDATE product SET 
+	pCount = #{pCount} 
+	WHERE pName = #{pName}
+</update>
+
 <!-- 주문내역 select문 -->
 <select id="jumun" resultType="JumunDto">SELECT * from jumun order by jNum DESC</select>
 

@@ -684,6 +684,15 @@ public class MyController {
 		return "Master/Manage/InventoryManage";
 	}
 	
+	// 재고관리 수정
+	@RequestMapping(value="/InventoryManage",method = RequestMethod.POST)
+	public String InventoryManage(ProductDto pADto,Model model) throws Exception{
+		
+		service.productAdd(pADto);
+		
+		return "redirect:/InventoryManage";
+	}
+	
 	// 환불요청 목록
 	@RequestMapping(value = "/MRefund", method = RequestMethod.GET)
 	public String MRefund(Model model) throws Exception {
