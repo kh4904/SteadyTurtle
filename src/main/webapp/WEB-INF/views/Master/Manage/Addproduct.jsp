@@ -46,24 +46,25 @@ textarea#gdsDes { width:400px; height:180px; }
 	<!-- 상품추가 -->
 	<section class="page-section portfolio">
 		<div class="container" style="background-color: #bbdefb;">
+		<form action="addproduct" method="POST" enctype="multipart/form-data">
 			<div class="row">
-				<form action="addproduct" method="POST" enctype="multipart/form-data">
+				
 					<div class="inputArea">
-						<label for="pImg">이미지</label>
-						<input type="file" id="pImg" name="file" />
-						<div class="select_img"><img src="" /></div>
- 
-							<script>
-								$("#pImg").change(function(){
-									if(this.files && this.files[0]) {
-										var reader = new FileReader;
-										reader.onload = function(data) {
-											$(".select_img img").attr("src", data.target.result).width(500);        
+						<div class="col-md-5">
+							<input type="file" id="pImg" name="file" />
+							<div class="select_img"><img src="" /></div>
+								<script>
+									$("#pImg").change(function(){
+										if(this.files && this.files[0]) {
+											var reader = new FileReader;
+											reader.onload = function(data) {
+												$(".select_img img").attr("src", data.target.result).width(500);        
+											}
+											reader.readAsDataURL(this.files[0]);
 										}
-										reader.readAsDataURL(this.files[0]);
-									}
-								});
-							</script>
+									});
+								</script>
+						</div>
 					</div>
 					<div class="col-md-6">
 						
@@ -152,9 +153,11 @@ textarea#gdsDes { width:400px; height:180px; }
 								<input type="submit" class="btn btn-info" value="추가하기">
 							</p>
 					</div>
-				</form>
+				
 			</div>
+			</form>
 		</div>
+		
 </section>
 
 	<c:if test="${member.mMaster != 1 }">

@@ -510,7 +510,8 @@ public class MyController {
 	// 고객문의 게시판 글보기(세션값주기)
 	@RequestMapping(value="/CustomerWriteAnswer", method=RequestMethod.POST)
 	public String CustomerWriteAnswer(BoardDTO bdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
-					
+		
+		
 		String path="";
 		HttpSession session2 = req.getSession();
 		BoardDTO board = ServiceTurtle.board2(bdto);
@@ -519,6 +520,7 @@ public class MyController {
 			rttr.addFlashAttribute("msg", false);
 			path = "redirect:/main";
 		} else {
+			
 			session2.setAttribute("board", board);
 			path = "redirect:/CustomerWriteAnswer";
 		}
@@ -526,6 +528,7 @@ public class MyController {
 	}
 	
 	// 고객문의 게시글 삭제하기(글쓴 장본인이면 가능)
+
 	@RequestMapping(value = "/boardDelete2", method = RequestMethod.POST)
 	public String boardDelete2(BoardDTO bddto) throws Exception {
 
@@ -542,8 +545,23 @@ public class MyController {
 	
 	// 고객문의 글쓰기 후 고객게시판페이지로 보내
 	@RequestMapping(value = "/writeAction", method = RequestMethod.POST)
-	public String boardPOST(BoardDTO bdto, RedirectAttributes redirectAttributes) throws Exception {
+	public String boardPOST(BoardDTO bdto, MultipartFile file, RedirectAttributes redirectAttributes) throws Exception {
+		
+		//파일 업로드
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
 
+		if(file != null) {
+			fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		bdto.setbUrl(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		bdto.setbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		
+		
 		service.boardWrite(bdto);
 
 		return "redirect:/CustomerWriteView";
