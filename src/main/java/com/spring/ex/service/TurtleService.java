@@ -84,6 +84,9 @@ public interface TurtleService {
 	/* 주문내역 상세 JumunDto를 jdto()로 선언*/
 	public JumunDto jumun(JumunDto jdto) throws Exception;
 	
+	// 주문신청 삭제
+	public void jumundelete(JumunDto jddto) throws Exception;
+	
 	/* 장바구니  list BasketDto를 basketList()로 선언*/
 	public List<BasketDto> basketList() throws Exception;
 	

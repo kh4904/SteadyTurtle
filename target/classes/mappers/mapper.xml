@@ -89,6 +89,9 @@
 <!-- 주문내역 세션값 select문 -->
 <select id="jumun2" resultType="JumunDto">SELECT * from jumun where jNum = #{jNum} </select>
 
+<!-- 주문신청 삭제 delete문 -->
+<delete id="jumunDelete"> delete from jumun where jNum = #{jNum}</delete>
+
 <!-- 장바구니 select문 -->
 <select id="basket" resultType="BasketDto">SELECT * from basket</select>
 

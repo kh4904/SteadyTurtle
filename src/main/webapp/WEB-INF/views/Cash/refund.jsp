@@ -60,8 +60,6 @@
                 <!-- 상품정보 -->
                 <c:forEach items="${jumunList}" var="jumun">
                   <c:if test="${jumun.getjId() eq sessionScope.member.getmId()}">
-                  <form action="DetailRefund" method="POST">
-                  <input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum() }">
                		<tr>
                 	<th style="width:250px;"><img class="img-fluid" src="${jumun.getjUrl() }"  style="width:110px; height: 100px;"/></th>
                		<th style="width:300px;">${jumun.getjName() }</th>
@@ -73,7 +71,10 @@
                         <c:choose>
 							<c:when test="${jumun.getjShip() eq '배송준비'}">
        							<!-- 주문취소 버튼 -->
-                    			<input type="submit" class="btn btn-primary form-control" value="주문취소" style=" position:relative; top:-10px; height:40px; width: 100px;"></input>
+       							<form action="jumundelete" method="POST">
+                  					<input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum() }">
+                    					<input type="submit" class="btn btn-primary form-control" value="주문취소" style=" position:relative; top:-10px; height:40px; width: 100px;"></input>
+                    			</form>
                     			<!-- 상품환불 버튼 비활성화 -->
                     			<text class="btn" style="width: 100px; height: 40px; background-color:#e0e0e0;" >상품환불</text>
     						</c:when>
@@ -87,12 +88,14 @@
     						    <!-- 주문취소 버튼 비활성화 -->
     							<text class="btn" style=" position:relative; top:-10px; height:40px; width: 100px; background-color:#e0e0e0;" >주문취소</text>
                     			<!-- 상품환불 버튼 -->
+                    			<form action="DetailRefund" method="POST">
+                  					<input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum() }">
                     			<input type="submit" class ="btn btn-primary form-control" style="width: 100px; height: 40px;" value="상품환불"  >
+                    			</form>
     						</c:when>
 						</c:choose>
                     </th>
                 	</tr>
-                	</form>
                   </c:if>
                 </c:forEach>
              </c:if>

@@ -158,10 +158,10 @@ function change () {
 							
 							<!-- db연동 -->
 							<b style="font-size: 20px;">
-							<p class="cartStock" style="position:relative; top:-50px; left:400px;">
+							<p class="cartStock" style="position:relative; top:-50px; left:380px;">
 							
 								<input type="button" value=" + " onclick="add();">
-								<input type="number" class="numBox" min="1" onchange="change();" id="pCountsSell" name="pCountsSell" size="3" style="width: 40px; height: 40px;" value="1" readonly="readonly">
+								<input type="number" class="numBox" min="1" onchange="change();" id="pCountsSell" name="pCountsSell" size="3" style="width: 50px; height: 40px;" value="1" readonly="readonly">
 								<input type="button" value=" - " onclick="del();"> 개</b>
 													
 							</p>

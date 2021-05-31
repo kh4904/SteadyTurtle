@@ -416,6 +416,15 @@ public class MyController {
 		return "Cash/refund";
 	}
 	
+	// 주문신청 취소하기
+	@RequestMapping(value = "/jumundelete", method = RequestMethod.POST)
+	public String jumundelete(JumunDto jddto) throws Exception {
+		
+			service.jumundelete(jddto);
+			return "redirect:/refund";
+				
+	}
+	
 	// 환불상품 상세보기 페이지
 	@RequestMapping(value = "/DetailRefund", method = RequestMethod.GET)
 	public String DetailRefund(Model model) throws Exception {

@@ -83,6 +83,9 @@ public interface MemberDao {
 	// 주문내역 세션유지 dto
 	public JumunDto jumun(JumunDto jdto) throws Exception;
 	
+	// 주문신청 취소(삭제)
+	public void jumundelete(JumunDto jddto) throws Exception;
+	
 	// 장바구니 dto
 	public List<BasketDto> basketList() throws Exception;
 	
