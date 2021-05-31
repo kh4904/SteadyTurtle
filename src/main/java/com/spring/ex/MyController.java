@@ -45,13 +45,13 @@ public class MyController {
 	}
 	
 	@Resource(name="uploadPath")
-	private String uploadPath;
+	String uploadPath;
 	
-	// 로그인시 필요
+	// 濡쒓렇�씤�떆 �븘�슂
 	@Autowired
 	private ServiceTurtle ServiceTurtle;
 
-	// 메인페이지
+	// 硫붿씤�럹�씠吏�
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String main(Model model) throws Exception {
 		
@@ -62,13 +62,13 @@ public class MyController {
 		return "Main/main";
 	}
 	
-	// 회원가입 페이지
+	// �쉶�썝媛��엯 �럹�씠吏�
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join() throws Exception {
 		return "Login/join";
 	}
 	
-	//아이디 중복체크
+	//�븘�씠�뵒 以묐났泥댄겕
 	@RequestMapping(value="/idChk", method = RequestMethod.POST)
 	@ResponseBody
 	public int idChk(MemberDto mdto) throws Exception {
@@ -76,7 +76,7 @@ public class MyController {
 		return result;
 	}
 	
-	// 회원가입 후 메인페이지로 보내
+	// �쉶�썝媛��엯 �썑 硫붿씤�럹�씠吏�濡� 蹂대궡
 	@RequestMapping(value = "/main", method = RequestMethod.POST)
 	public String joinPOST(MemberDto dto) throws Exception {
 		int result = service.idChk(dto);
@@ -86,8 +86,8 @@ public class MyController {
 			}else if(result == 0) {
 				
 			}
-			// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기 
-			// 존재하지 않는다면 -> register
+			// �슂湲곗뿉�꽌~ �엯�젰�맂 �븘�씠�뵒媛� 議댁옱�븳�떎硫� -> �떎�떆 �쉶�썝媛��엯 �럹�씠吏�濡� �룎�븘媛�湲� 
+			// 議댁옱�븯吏� �븡�뒗�떎硫� -> register
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -95,7 +95,7 @@ public class MyController {
 		return "redirect:/main";
 	}
 	
-	// 로그인시 보이는화면
+	// 濡쒓렇�씤�떆 蹂댁씠�뒗�솕硫�
 	@RequestMapping(value = "/LoginSuccess", method = RequestMethod.GET)
 	public String Login(Model model) throws Exception {
 		
@@ -106,7 +106,7 @@ public class MyController {
 		return "Login/LoginSuccess";
 	}
 	
-	// 로그인시 보이는화면
+	// 濡쒓렇�씤�떆 蹂댁씠�뒗�솕硫�
 	@RequestMapping(value = "/LoginSuccess", method = RequestMethod.POST)
 	public String Login(MemberDto ldto, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 
@@ -127,7 +127,7 @@ public class MyController {
 	    return path;
 	}
 	
-	//로그아웃
+	//濡쒓렇�븘�썐
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public String logout(HttpSession session, RedirectAttributes rttr) throws Exception {
 		session.invalidate();
@@ -135,13 +135,13 @@ public class MyController {
 		return "redirect:/main";
 	}
 	
-	// 아이디, 비밀번호찾기 페이지
+	// �븘�씠�뵒, 鍮꾨�踰덊샇李얘린 �럹�씠吏�
 	@RequestMapping(value = "/idSearch", method = RequestMethod.GET)
 	public String idSearch() throws Exception {
 		return "Login/idSearch";
 	}
 	
-	// 아이디 찾기 
+	// �븘�씠�뵒 李얘린 
 	@RequestMapping(value = "/LoginActionId", method = RequestMethod.POST)
 	public String FindId(MemberDto mIdDto,HttpServletRequest req,RedirectAttributes rttr) throws Exception {
 		String path = "";
@@ -158,7 +158,7 @@ public class MyController {
 		return path;
 	}
 		
-	// 비밀번호 찾기 
+	// 鍮꾨�踰덊샇 李얘린 
 	@RequestMapping(value ="/LoginActionPw", method = RequestMethod.POST)
 	public String FindPw(MemberDto mPwDto,HttpServletRequest req,RedirectAttributes rttr) throws Exception {
 		String path = "";
@@ -175,7 +175,7 @@ public class MyController {
 		return path;
 	}
 	
-	// 헬스기구 페이지
+	// �뿬�뒪湲곌뎄 �럹�씠吏�
 	@RequestMapping(value = "/Health", method = RequestMethod.GET)
 	public String Health(Model model) throws Exception {
 		
@@ -186,7 +186,7 @@ public class MyController {
 		return "Main/Health";
 	}
 	
-	// 요가상품 페이지
+	// �슂媛��긽�뭹 �럹�씠吏�
 	@RequestMapping(value = "/Yoga", method = RequestMethod.GET)
 	public String Yoga(Model model) throws Exception {
 		
@@ -197,7 +197,7 @@ public class MyController {
 		return "Main/Yoga";	
 	}
 	
-	// 운동식품 페이지
+	// �슫�룞�떇�뭹 �럹�씠吏�
 	@RequestMapping(value = "/Food", method = RequestMethod.GET)
 	public String Food(Model model) throws Exception {
 		
@@ -208,7 +208,7 @@ public class MyController {
 		return "Main/Food";
 	}
 	
-	// 남성랭킹 페이지
+	// �궓�꽦�옲�궧 �럹�씠吏�
 	@RequestMapping(value = "/ManRanking", method = RequestMethod.GET)
 	public String ManRanking(Model model) throws Exception {
 		
@@ -219,7 +219,7 @@ public class MyController {
 		return "Ranking/ManRanking";
 	}
 	
-	// 여성랭킹 페이지
+	// �뿬�꽦�옲�궧 �럹�씠吏�
 	@RequestMapping(value = "/WomanRanking", method = RequestMethod.GET)
 	public String WomanRanking(Model model) throws Exception {
 		
@@ -230,7 +230,7 @@ public class MyController {
 		return "Ranking/WomanRanking";
 	}
 	
-	// 헬스기구랭킹 페이지
+	// �뿬�뒪湲곌뎄�옲�궧 �럹�씠吏�
 	@RequestMapping(value = "/HealthRanking", method = RequestMethod.GET)
 	public String HealthRanking(Model model) throws Exception {
 		
@@ -241,7 +241,7 @@ public class MyController {
 		return "Ranking/HealthRanking";
 	}
 		
-	// 요가상품랭킹 페이지
+	// �슂媛��긽�뭹�옲�궧 �럹�씠吏�
 	@RequestMapping(value = "/YogaRanking", method = RequestMethod.GET)
 	public String YogaRanking(Model model) throws Exception {
 		
@@ -252,7 +252,7 @@ public class MyController {
 		return "Ranking/YogaRanking";
 	}
 
-	// 운동식품랭킹 페이지
+	// �슫�룞�떇�뭹�옲�궧 �럹�씠吏�
 	@RequestMapping(value = "/FoodRanking", method = RequestMethod.GET)
 	public String FoodRanking(Model model) throws Exception {
 		
@@ -263,7 +263,7 @@ public class MyController {
 		return "Ranking/FoodRanking";
 	}
 	
-	// 상품정보 상세보기 페이지
+	// �긽�뭹�젙蹂� �긽�꽭蹂닿린 �럹�씠吏�
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public String product(Model model) throws Exception {
 		
@@ -274,7 +274,7 @@ public class MyController {
 		return "Cash/product";
 	}
 	
-	// 상품정보 상세보기 페이지
+	// �긽�뭹�젙蹂� �긽�꽭蹂닿린 �럹�씠吏�
 	@RequestMapping(value="/product", method=RequestMethod.POST)
 	public String product(ProductDto pdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 			
@@ -292,7 +292,7 @@ public class MyController {
 		return path;
 	}
 	
-	// 장바구니 페이지
+	// �옣諛붽뎄�땲 �럹�씠吏�
 	@RequestMapping(value = "/basket", method = RequestMethod.GET)
 	public String basket(HttpSession session, Model model) throws Exception {
 		 
@@ -306,7 +306,7 @@ public class MyController {
 		return "Login/basket";
 	}
 	
-	// 카트 담기
+	// 移댄듃 �떞湲�
 	@ResponseBody
 	@RequestMapping(value = "/addCart", method = RequestMethod.POST)
 	public int addCart(CartVO cart, HttpSession session) throws Exception {
@@ -324,7 +324,7 @@ public class MyController {
 		return result;
 	}
 	
-	// 주문조회 페이지
+	// 二쇰Ц議고쉶 �럹�씠吏�
 	@RequestMapping(value = "/JumunSearch", method = RequestMethod.GET)
 	public String JumunSearch(Model model) throws Exception {
 		
@@ -339,7 +339,7 @@ public class MyController {
 		return "Login/JumunSearch";
 	}
 	
-	// 주문상품 상세보기 페이지
+	// 二쇰Ц�긽�뭹 �긽�꽭蹂닿린 �럹�씠吏�
 	@RequestMapping(value = "/DetailOrder", method = RequestMethod.GET)
 	public String DetailOrder(Model model) throws Exception {
 		
@@ -352,7 +352,7 @@ public class MyController {
 		return "Cash/DetailOrder";
 	}
 	
-	// 주문상품 상세보기 페이지
+	// 二쇰Ц�긽�뭹 �긽�꽭蹂닿린 �럹�씠吏�
 	@RequestMapping(value="/DetailOrder", method=RequestMethod.POST)
 	public String DetailOrder(JumunDto pdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 			
@@ -370,7 +370,7 @@ public class MyController {
 		return path;
 	}
 
-	// 결제창 페이지
+	// 寃곗젣李� �럹�씠吏�
 	@RequestMapping(value = "/CashOn", method = RequestMethod.GET)
 	public String CashOn(Model model) throws Exception {
 			
@@ -380,7 +380,7 @@ public class MyController {
 			
 		return "Cash/CashOn";
 	}
-	// 바로결제
+	// 諛붾줈寃곗젣
 	@RequestMapping(value = "/Cash", method = RequestMethod.POST)
 	public String Cash(ProductDto pdto, HttpServletRequest req, RedirectAttributes rttr, Model model) throws Exception {
 		
@@ -404,7 +404,7 @@ public class MyController {
 		return path;
 	}
 			
-	//결제하기
+	//寃곗젣�븯湲�
 	@RequestMapping(value = "CashOk", method = RequestMethod.POST)
 	public String CashOk(CashlistDto cldto) throws Exception {
 		
@@ -413,7 +413,7 @@ public class MyController {
 		return "redirect:/main";
 	}
 	
-	// 환불조회 페이지
+	// �솚遺덉“�쉶 �럹�씠吏�
 	@RequestMapping(value = "/refund", method = RequestMethod.GET)
 	public String refund(Model model) throws Exception {
 		
@@ -424,7 +424,7 @@ public class MyController {
 		return "Cash/refund";
 	}
 	
-	// 환불상품 상세보기 페이지
+	// �솚遺덉긽�뭹 �긽�꽭蹂닿린 �럹�씠吏�
 	@RequestMapping(value = "/DetailRefund", method = RequestMethod.GET)
 	public String DetailRefund(Model model) throws Exception {
 		
@@ -437,7 +437,7 @@ public class MyController {
 		return "Cash/DetailRefund";
 	}
 	
-	// 환불상품 상세보기 세션유지 페이지
+	// �솚遺덉긽�뭹 �긽�꽭蹂닿린 �꽭�뀡�쑀吏� �럹�씠吏�
 	@RequestMapping(value="/DetailRefund", method=RequestMethod.POST)
 	public String DetailRefund(JumunDto pdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 				
@@ -455,13 +455,13 @@ public class MyController {
 		return path;
 	}
 	
-	// 환불요청 게시판작성 페이지
+	// �솚遺덉슂泥� 寃뚯떆�뙋�옉�꽦 �럹�씠吏�
 	@RequestMapping("/RefundWrite")
 	public String RefundWrite() {
 		return "Board/RefundWrite";
 	}
 	
-	// 환불요청 게시판작성 페이지(세션값주기)
+	// �솚遺덉슂泥� 寃뚯떆�뙋�옉�꽦 �럹�씠吏�(�꽭�뀡媛믪＜湲�)
 	@RequestMapping(value="/RefundWrite", method=RequestMethod.POST)
 	public String RefundWrite(JumunDto pdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 			
@@ -479,7 +479,7 @@ public class MyController {
 		return path;
 	}
 	
-	// 환불요청 환불신청 글쓴후 DB보내기
+	// �솚遺덉슂泥� �솚遺덉떊泥� 湲��벖�썑 DB蹂대궡湲�
 	@RequestMapping(value = "/refundwrite", method = RequestMethod.POST)
 	public String refundwrite(RefundDto rwDto, RedirectAttributes redirectAttributes) throws Exception {
 		
@@ -488,7 +488,7 @@ public class MyController {
 		return "redirect:/refund";
 	}
 	
-	// 고객문의게시판
+	// 怨좉컼臾몄쓽寃뚯떆�뙋
 	@RequestMapping(value = "/CustomerWriteView", method = RequestMethod.GET)
 	public String CustomerWriteView(Model model) throws Exception {
 		
@@ -499,7 +499,7 @@ public class MyController {
 		return "Board/CustomerWriteView";
 	}
 	
-	// 고객문의 게시판 글보기
+	// 怨좉컼臾몄쓽 寃뚯떆�뙋 湲�蹂닿린
 	@RequestMapping("/CustomerWriteAnswer")
 	public String CutomerWriteAnswer(){
 		
@@ -507,7 +507,7 @@ public class MyController {
 		
 	}
 	
-	// 고객문의 게시판 글보기(세션값주기)
+	// 怨좉컼臾몄쓽 寃뚯떆�뙋 湲�蹂닿린(�꽭�뀡媛믪＜湲�)
 	@RequestMapping(value="/CustomerWriteAnswer", method=RequestMethod.POST)
 	public String CustomerWriteAnswer(BoardDTO bdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 					
@@ -525,7 +525,7 @@ public class MyController {
 		return path;
 	}
 	
-	// 고객문의 게시글 삭제하기(글쓴 장본인이면 가능)
+	// 怨좉컼臾몄쓽 寃뚯떆湲� �궘�젣�븯湲�(湲��벖 �옣蹂몄씤�씠硫� 媛��뒫)
 	@RequestMapping(value = "/boardDelete2", method = RequestMethod.POST)
 	public String boardDelete2(BoardDTO bddto) throws Exception {
 
@@ -534,13 +534,13 @@ public class MyController {
 			
 	}
 	
-	// 고객문의 글쓰기 페이지
+	// 怨좉컼臾몄쓽 湲��벐湲� �럹�씠吏�
 	@RequestMapping(value = "/CustomerWrite", method = RequestMethod.GET)
 	public String CustomerWrite() throws Exception {
 		return "Board/CustomerWrite";
 	}
 	
-	// 고객문의 글쓰기 후 고객게시판페이지로 보내
+	// 怨좉컼臾몄쓽 湲��벐湲� �썑 怨좉컼寃뚯떆�뙋�럹�씠吏�濡� 蹂대궡
 	@RequestMapping(value = "/writeAction", method = RequestMethod.POST)
 	public String boardPOST(BoardDTO bdto, RedirectAttributes redirectAttributes) throws Exception {
 
@@ -549,13 +549,13 @@ public class MyController {
 		return "redirect:/CustomerWriteView";
 	}
 	
-	// 회원정보 수정 페이지
+	// �쉶�썝�젙蹂� �닔�젙 �럹�씠吏�
 	@RequestMapping("/MyPage")
 	public String MyPage() {
 		return "Login/MyPage";
 	}
 	
-	// 회원정보 수정
+	// �쉶�썝�젙蹂� �닔�젙
 	@RequestMapping(value="/MyPage",method = RequestMethod.POST)
 	public String MyPageUpdate(MemberDto mDto,HttpSession session) throws Exception{
 		
@@ -566,21 +566,21 @@ public class MyController {
 		return "redirect:/MyPage";
 	}
 	
-	// 회원 탈퇴 get
+	// �쉶�썝 �깉�눜 get
 	@RequestMapping(value = "/memberDeleteView", method = RequestMethod.GET)
 	public String memberDeleteView() throws Exception {
 		return "Login/memberDeleteView";
 	}
 		
-	// 회원 탈퇴 post
+	// �쉶�썝 �깉�눜 post
 	@RequestMapping(value = "/memberdelete", method = RequestMethod.POST)
 	public String memberDelete(MemberDto ddto, HttpSession session, RedirectAttributes rttr) throws Exception {
 
-		// 세션에 있는 member를 가져와 member변수에 넣어줍니다.
+		// �꽭�뀡�뿉 �엳�뒗 member瑜� 媛��졇�� member蹂��닔�뿉 �꽔�뼱以띾땲�떎.
 		MemberDto member = (MemberDto) session.getAttribute("member");
-		// 세션에있는 비밀번호
+		// �꽭�뀡�뿉�엳�뒗 鍮꾨�踰덊샇
 		String sessionPass = member.getmPw();
-		// vo로 들어오는 비밀번호
+		// vo濡� �뱾�뼱�삤�뒗 鍮꾨�踰덊샇
 		String voPass = ddto.getmPw();
 
 		if (!(sessionPass.equals(voPass))) {
@@ -593,8 +593,8 @@ public class MyController {
 			
 	}
 	
-	// 관리자모드 
-	// 메인페이지
+	// 愿�由ъ옄紐⑤뱶 
+	// 硫붿씤�럹�씠吏�
 	@RequestMapping(value = "/mainMaster", method = RequestMethod.GET)
 	public String mainMaster(Model model) throws Exception {
 		
@@ -607,7 +607,7 @@ public class MyController {
 		return "Master/mainMaster";
 	}
 	
-	// 판매현황 상세
+	// �뙋留ㅽ쁽�솴 �긽�꽭
 	@RequestMapping(value = "/SalesStatus", method = RequestMethod.GET)
 	public String SalesStatus(Model model) throws Exception {
 		
@@ -618,7 +618,7 @@ public class MyController {
 		return "Master/SalesStatus";
 	}
 	
-	// 주문요청 내역
+	// 二쇰Ц�슂泥� �궡�뿭
 	@RequestMapping(value = "/OrderHistory", method = RequestMethod.GET)
 	public String OrderHistory(Model model) throws Exception {
 		
@@ -629,7 +629,7 @@ public class MyController {
 		return "Master/Manage/OrderHistory";
 	}
 	
-	// 상품관리 보기 페이지
+	// �긽�뭹愿�由� 蹂닿린 �럹�씠吏�
 	@RequestMapping(value = "/ProductManagement", method = RequestMethod.GET)
 	public String ProductManagement(Model model) throws Exception {
 		
@@ -640,7 +640,7 @@ public class MyController {
 		return "Master/Manage/ProductManagement";
 	}
 	
-	//상품관리 수정 페이지
+	//�긽�뭹愿�由� �닔�젙 �럹�씠吏�
 	@RequestMapping(value="/mREproduct", method=RequestMethod.POST)
 	public String REproduct(ProductDto pdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 			
@@ -658,7 +658,7 @@ public class MyController {
 		return path;
 	}
 	
-	// 상품관리 수정 페이지
+	// �긽�뭹愿�由� �닔�젙 �럹�씠吏�
 	@RequestMapping(value = "/mREproduct", method = RequestMethod.GET)
 	public String mREproduct(Model model) throws Exception {
 		
@@ -669,7 +669,7 @@ public class MyController {
 		return "Master/Manage/mREproduct";
 	}
 	
-	// 상품관리 수정 페이지
+	// �긽�뭹愿�由� �닔�젙 �럹�씠吏�
 	@RequestMapping(value="productUpdate", method=RequestMethod.POST)
 	public String productUpdate(ProductDto pudto) throws Exception {
 		
@@ -678,17 +678,17 @@ public class MyController {
 		
 	}
 	
-	// 상품관리 추가 페이지
+	// �긽�뭹愿�由� 異붽� �럹�씠吏�
 	@RequestMapping("/Addproduct")
 	public String Addproduct() {
 		return "Master/Manage/Addproduct";
 	}
 	
-	//상품추가
+	//�긽�뭹異붽�
 	@RequestMapping(value = "addproduct", method = RequestMethod.POST)
 	public String addproduct(ProductDto apdto, MultipartFile file, RedirectAttributes redirectAttributes) throws Exception {
 		
-		//파일 업로드
+		//�뙆�씪 �뾽濡쒕뱶
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -709,7 +709,7 @@ public class MyController {
 		return "redirect:/ProductManagement";
 	}
 	
-	// 재고관리
+	// �옱怨좉�由�
 	@RequestMapping(value = "/InventoryManage", method = RequestMethod.GET)
 	public String InventoryManage(Model model) throws Exception {
 		
@@ -720,7 +720,7 @@ public class MyController {
 		return "Master/Manage/InventoryManage";
 	}
 	
-	// 재고관리 수정
+	// �옱怨좉�由� �닔�젙
 	@RequestMapping(value="/InventoryManage",method = RequestMethod.POST)
 	public String InventoryManage(ProductDto pADto,Model model) throws Exception{
 		
@@ -729,7 +729,7 @@ public class MyController {
 		return "redirect:/InventoryManage";
 	}
 	
-	// 환불요청 목록
+	// �솚遺덉슂泥� 紐⑸줉
 	@RequestMapping(value = "/MRefund", method = RequestMethod.GET)
 	public String MRefund(Model model) throws Exception {
 		
@@ -740,13 +740,13 @@ public class MyController {
 		return "Master/Customer/MRefund";
 	}
 	
-	// 관리자 환불요청 상세내용 보기 페이지
+	// 愿�由ъ옄 �솚遺덉슂泥� �긽�꽭�궡�슜 蹂닿린 �럹�씠吏�
 	@RequestMapping("/MDetailRefund")
 	public String MDetailRefund() {
 		return "Master/Customer/MDetailRefund";
 	}
 	
-	// 관리자 환불요청 상세내용 보기 페이지(세션값주기)
+	// 愿�由ъ옄 �솚遺덉슂泥� �긽�꽭�궡�슜 蹂닿린 �럹�씠吏�(�꽭�뀡媛믪＜湲�)
 	@RequestMapping(value="/MDetailRefund", method=RequestMethod.POST)
 	public String MDetailRefund(RefundDto rdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 				
@@ -765,7 +765,7 @@ public class MyController {
 		return path;
 	}
 	
-	// 관리자 환불요청 신청 승락하기
+	// 愿�由ъ옄 �솚遺덉슂泥� �떊泥� �듅�씫�븯湲�
 	@RequestMapping(value="/RefundUpdate", method=RequestMethod.POST)
 	public String RefundUpdate(RefundDto rrDto) throws Exception {
 		
@@ -775,7 +775,7 @@ public class MyController {
 			
 	}
 	
-	// 관리자 고객문의 목록
+	// 愿�由ъ옄 怨좉컼臾몄쓽 紐⑸줉
 	@RequestMapping(value = "/MCustomerWriteView", method = RequestMethod.GET)
 	public String MCustomerWriteView(Model model) throws Exception {
 		
@@ -786,7 +786,7 @@ public class MyController {
 		return "Master/Customer/MCustomerWriteView";
 	}
 	
-	// 관리자 고객문의 상세내용 보기
+	// 愿�由ъ옄 怨좉컼臾몄쓽 �긽�꽭�궡�슜 蹂닿린
 	@RequestMapping(value = "/ComplainView", method = RequestMethod.GET)
 	public String ComplainView(Model model) throws Exception {
 		
@@ -797,7 +797,7 @@ public class MyController {
 		return "Master/Customer/ComplainView";
 	}
 	
-	// 관리자 고객문의 상세내용 보기 페이지(세션값주기)
+	// 愿�由ъ옄 怨좉컼臾몄쓽 �긽�꽭�궡�슜 蹂닿린 �럹�씠吏�(�꽭�뀡媛믪＜湲�)
 	@RequestMapping(value="/ComplainView", method=RequestMethod.POST)
 	public String ComplainView(BoardDTO bdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 				
@@ -816,7 +816,7 @@ public class MyController {
 		return path;
 	}
 	
-	// 관리자 고객문의 답변달기
+	// 愿�由ъ옄 怨좉컼臾몄쓽 �떟蹂��떖湲�
 	@RequestMapping(value="/boardAnswer", method=RequestMethod.POST)
 	public String boardAnswer(BoardDTO bdto) throws Exception {
 		
@@ -826,7 +826,7 @@ public class MyController {
 			
 	}
 	
-	// 관리자쪽에서 고객문의 게시글 삭제하기
+	// 愿�由ъ옄履쎌뿉�꽌 怨좉컼臾몄쓽 寃뚯떆湲� �궘�젣�븯湲�
 	@RequestMapping(value = "/boardDelete", method = RequestMethod.POST)
 	public String boardDelete(BoardDTO bddto) throws Exception {
 
@@ -835,7 +835,7 @@ public class MyController {
 			
 	}
 	
-	// 회원관리 목록
+	// �쉶�썝愿�由� 紐⑸줉
 	@RequestMapping(value = "/CustomerManage", method = RequestMethod.GET)
 	public String CustomerManage(Model model) throws Exception {
 		
@@ -846,7 +846,7 @@ public class MyController {
 		return "Master/Customer/CustomerManage";
 	}
 	
-	//회원상세
+	//�쉶�썝�긽�꽭
 	@RequestMapping(value = "/DetailCustomerManage", method=RequestMethod.POST)
 	public String DCustomerManage(MemberDto mddto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 		String path="";
@@ -862,7 +862,7 @@ public class MyController {
 		return path;
 	}
 	
-	// 회원관리 상세보기 보기
+	// �쉶�썝愿�由� �긽�꽭蹂닿린 蹂닿린
 	@RequestMapping(value = "/DetailCustomerManage", method = RequestMethod.GET)
 	public String DetailCustomerManage(Model model) throws Exception {
 		
@@ -875,7 +875,7 @@ public class MyController {
 		return "Master/Customer/DetailCustomerManage";
 	}
 	
-	// 관리자쪽에서 회원탈퇴시키기
+	// 愿�由ъ옄履쎌뿉�꽌 �쉶�썝�깉�눜�떆�궎湲�
 	@RequestMapping(value = "/CustomerDelete", method = RequestMethod.POST)
 	public String CustomerDelete(MemberDto ddto) throws Exception {
 

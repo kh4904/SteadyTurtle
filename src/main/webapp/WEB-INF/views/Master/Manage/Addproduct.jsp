@@ -64,7 +64,6 @@ textarea#gdsDes { width:400px; height:180px; }
 									}
 								});
 							</script>
-							<%=request.getRealPath("/") %>
 					</div>
 					<div class="col-md-6">
 						

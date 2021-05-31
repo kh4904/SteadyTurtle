@@ -23,7 +23,19 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
-	<context:component-scan base-package="com.spring.ex.utils" />
+	<!-- 업로드 패스 설정 -->
+	<bean class="java.lang.String" id="uploadPath">
+		<constructor-arg value="C:\Users\DPC-S5D\git\TeamProject\src\main\webapp\resources\assets\img\ "/>
+	</bean>
+
+
+	<bean
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		id="multipartResolver">
+		<property name="maxUploadSize" value="10485760" />
+	</bean>
+	
+	
 
 	<!-- sqlSessionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -31,4 +43,9 @@
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
 		<property name="mapperLocations" value="classpath:/mappers/**/*.xml"> </property>
 	</bean>
+	
+	
+	<context:component-scan base-package="com.spring.ex.utils" />
 </beans>
+
+
