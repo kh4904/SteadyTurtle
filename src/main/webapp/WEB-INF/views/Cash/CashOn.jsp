@@ -126,7 +126,7 @@ function change () {
 					<div class="row">
 						<div class="col-md-5">
 							<h2 style="color: black;">주문상품</h2>
-							<img src="${product.getpUrl() }"
+							<img src="resources/assets/img${product.getpImg() }"
 								style="width: 50%; height: 60%;">
 						</div>
 						<div class="col-md-6">

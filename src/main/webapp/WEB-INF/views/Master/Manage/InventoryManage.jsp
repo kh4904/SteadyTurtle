@@ -123,7 +123,7 @@
 														<input type="hidden" id="pName" name="pName"
 															value="${product.pName}">
 								<tr>
-									<td><img class="img-fluid" src="${product.getpUrl() }"
+									<td><img class="img-fluid" src="resources/assets/img${product.getpImg() }"
 										style="width: 110px; height: 100px;">
 										<p style="font-size: 20px;">${product.getpName() }</p></td>
 									<td>

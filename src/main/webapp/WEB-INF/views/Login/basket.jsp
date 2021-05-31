@@ -69,7 +69,7 @@
 					<tr style="height: 100px;">
 						<td style="width: 200px; height: 43px; text-align: center">
 							<a href="#">
-								<img class="img-fluid" src="${cartList.getpUrl()} " style="width: 120px; height: 100px;" alt="" />
+								<img class="img-fluid" src="resources/assets/img${cartList.getpUrl()} " style="width: 120px; height: 100px;" alt="" />
 							</a>
 						</td>
 						<td style="width: 300px; height: 43px; text-align: center">

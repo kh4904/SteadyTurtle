@@ -45,7 +45,7 @@
 
 								<tr>
 									<td rowspan="6"><img class="img-fluid"
-										src="${product.getpUrl() }"
+										src="resources/assets/img${product.getpImg() }"
 										style="width: 180px; height: 200px;" /></td>
 									<td><b style="margin-left: 9px;">상품명</b></td>
 									<td><input type="text" id="pName" name="pName"

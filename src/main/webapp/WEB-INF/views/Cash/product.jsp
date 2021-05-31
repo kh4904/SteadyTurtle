@@ -68,7 +68,7 @@ function change () {
 		<div class="container" style="background-color: #bbdefb; height:600px;">
 			<div class="row">
 				<div class="col-md-5">
-					<br> <br> <img src="${product.getpUrl() }"style="width: 80%; height: 50%;">
+					<br> <br> <img src="resources/assets/img${product.getpImg() }"style="width: 80%; height: 50%;">
 					<br>
 					
 				</div>
