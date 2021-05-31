@@ -186,6 +186,12 @@ public class ServiceTurtle implements TurtleService{
 		return JumunDao.jumun(jdto);
 	}
 	
+	// 주문내역 승인 update 
+	@Override
+	public void jumunState(JumunDto juDto) throws Exception {
+		JumunDao.jumunState(juDto);
+	}
+	
 	// 주문신청삭제(취소)
 	@Override
 	public void jumundelete(JumunDto jddto) throws Exception{

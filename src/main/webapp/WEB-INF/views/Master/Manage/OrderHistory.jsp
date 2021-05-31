@@ -66,7 +66,12 @@
         						 <td style="color:red;">미승인</td>
     							</c:when>
 							</c:choose>
-							<td ><input type="submit" class="btn btn-primary pull-right" value="승인" /></td>
+							<td >
+							<form action="jumunState" method="POST">
+            				<input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum()}">
+								<input type="submit" class="btn btn-primary pull-right" value="승인" />
+							</form>
+							</td>
 						</tr>
 				    </c:forEach>
 					</tbody>

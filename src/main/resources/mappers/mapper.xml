@@ -92,6 +92,9 @@
 <!-- 주문신청 삭제 delete문 -->
 <delete id="jumunDelete"> delete from jumun where jNum = #{jNum}</delete>
 
+<!-- 주문내역 승인 update문 -->
+<update id="jumunState">UPDATE jumun SET jState = '승인', jShip = '배송중' WHERE jNum = #{jNum} </update>
+
 <!-- 장바구니 select문 -->
 <select id="basket" resultType="BasketDto">SELECT * from basket</select>
 

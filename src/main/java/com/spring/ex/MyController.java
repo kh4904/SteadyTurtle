@@ -630,6 +630,15 @@ public class MyController {
 		return "Master/Manage/OrderHistory";
 	}
 	
+	// 주문요청 결재 승인
+	@RequestMapping(value="jumunState", method=RequestMethod.POST)
+	public String jumunState(JumunDto juDto) throws Exception {
+			
+		ServiceTurtle.jumunState(juDto);
+		return "redirect:/OrderHistory";
+		
+	}
+	
 	// 상품관리 보기 페이지
 	@RequestMapping(value = "/ProductManagement", method = RequestMethod.GET)
 	public String ProductManagement(Model model) throws Exception {

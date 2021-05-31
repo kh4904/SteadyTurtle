@@ -156,6 +156,12 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectOne(namespace + ".jumun2", jdto); 
 	}
 	
+	// 주문내역 결재승인
+	@Override
+	public void jumunState(JumunDto juDto) throws Exception{
+		sqlSessionTemplate.update(namespace + ".jumunState", juDto);
+	}
+	
 	// 주문신청삭제(취소)
 	@Override
 	public void jumundelete(JumunDto jddto) throws Exception {
