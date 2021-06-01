@@ -128,6 +128,12 @@ public interface TurtleService {
 	/* 환불요청 게시판 환불신청 승락 RefundUpdate의 RefundDto를 rrDto로 선언*/ 
 	public void RefundUpdate(RefundDto rrDto) throws Exception;
 	
+	/* 환불요청 게시판 환불신청시 주문쪽 환불처리로 변경 refundJumun의 JumunDto를 jrDto로 선언*/ 
+	public void refundJumun(JumunDto jrDto) throws Exception;
+	
+	/* 환불요청 게시글 환불처리시 주문쪽 환불완료로 변경 jumunRefund의 JumunDto를 rjDto로 선언*/ 
+	public void jumunRefund(JumunDto rjDto) throws Exception;
+	
 	// 판매목록 게시판 list SellDto를 sellList로 선언
 	public List<SellDto> sellList() throws Exception;
 	

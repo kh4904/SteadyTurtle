@@ -127,6 +127,12 @@ public interface MemberDao {
 	// 환불요청 신청 승락  dto
 	public void RefundUpdate(RefundDto rrDto) throws Exception;
 	
+	// 환불요청시 주문DB쪽 환불처리로 변경
+	public void refundJumun(JumunDto jrDto) throws Exception;
+	
+	// 환불요청 신청 승락시 주문DB쪽 환불완료로 변경
+	public void jumunRefund(JumunDto rjDto) throws Exception;
+	
 	// 판매상품 목록 dto
 	public List<SellDto> sellList() throws Exception;
 	

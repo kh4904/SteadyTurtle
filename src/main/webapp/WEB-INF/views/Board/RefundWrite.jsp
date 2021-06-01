@@ -38,6 +38,7 @@
          <div class="col-lg-12">
          <c:if test ="${member.mId != null }">
          <form method="post" action="refundwrite">
+         <input type="hidden" id = "rNumber" name="rNumber" value="${jumun.getjNum() }">
          <input type="hidden" id = "rProduct" name="rProduct" value="${jumun.getjName() }">
          <input type="hidden" id = "rId" name="rId" value="${member.getmId() }">
          <input type="hidden" id = "rName" name="rName" value="${member.getmName() }">
@@ -47,11 +48,12 @@
          <input type="hidden" id = "rUrl" name="rUrl" value="${jumun.getjUrl() }">
          <input type="hidden" id = "rJumunDate" name="rJumunDate" value="${jumun.getjJumunDate() }">
          <input type="hidden" id = "rFinishDate" name="rFinishDate" value="${jumun.getjFinishDate() }">
+         <input type="hidden" id = "jNum" name="jNum" value="${jumun.getjNum() }">
             <table>
             
                <tr>
-                  <th style="text-align: left;"><a href="#"> 
-                  	<img class="img-fluid" src="${jumun.getjUrl() }" style="width: 220px; height: 200px;" /></a>
+                  <th style="text-align: left;">
+                  	<img class="img-fluid" src="${jumun.getjUrl() }" style="width: 220px; height: 200px;" />
                   </th>
                   <th rowspan="4">
                      <div style="text-align: right; margin-left: 20px;">

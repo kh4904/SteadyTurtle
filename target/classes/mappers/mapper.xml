@@ -138,10 +138,16 @@ select
 <select id="refund2" resultType="RefundDto">SELECT * from refundboard where rNum = #{rNum} </select>
 
 <!-- 환불요청 게시판작성 -->
-<insert id="refundWrite">insert into refundboard(rNum,rName ,rId, rEmail, rPhone, rGrade, rProduct, rUrl,  rNote, rJumunDate,rFinishDate,rCheck) values(0,#{rName} ,#{rId}, #{rEmail}, #{rPhone}, #{rGrade}, #{rProduct}, #{rUrl}, #{rNote}, #{rJumunDate}, #{rFinishDate}, 0)</insert>
+<insert id="refundWrite">insert into refundboard(rNum,rName ,rId, rEmail, rPhone, rGrade,rNumber ,rProduct, rUrl,  rNote, rJumunDate,rFinishDate,rCheck) values(0,#{rName} ,#{rId}, #{rEmail}, #{rPhone}, #{rGrade},#{rNumber} ,#{rProduct}, #{rUrl}, #{rNote}, #{rJumunDate}, #{rFinishDate}, 0)</insert>
 
 <!-- 환불요청 승락시 update문 -->
 <update id="RefundUpdate">UPDATE refundboard SET rCheck = 1 WHERE rNum = #{rNum} </update>
+
+<!-- 환불신청 요청시 주문쪽 환불처리로 변경 update문 -->
+<update id="refundJumun">UPDATE jumun SET jShip = '환불요청' WHERE jNum = #{jNum} </update>
+
+<!-- 환불신청 승락시 주문쪽 환불완료로 변경 update문 -->
+<update id="jumunRefund">UPDATE jumun SET jShip = '환불완료' WHERE jNum = #{jNum} </update>
 
 <!-- 판매상품 목록 select문 -->
 <select id="sell" resultType="SellDto">SELECT * from sell</select>

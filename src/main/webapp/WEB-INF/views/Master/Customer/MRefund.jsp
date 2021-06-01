@@ -59,7 +59,7 @@
                      <td>${refund.getrName() }</td>
                      <c:choose>
 						<c:when test="${refund.getrCheck() eq '1'}">
-       					  <td><input type="submit" class="btn" value="환불처리" style="height:30px; position:relative; top:-8px; color:red;" ></td>
+       					  <td><input type="submit" class="btn" value="환불완료" style="height:30px; position:relative; top:-8px; color:red;" ></td>
     					</c:when>
     					<c:when test="${refund.getrCheck() ne '1'}">
         				  <td><input type="submit" class="btn" value="환불신청" style="height:30px; position:relative; top:-8px; color:#004d99;" ></td>

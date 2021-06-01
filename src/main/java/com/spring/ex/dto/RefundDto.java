@@ -13,6 +13,8 @@ public class RefundDto {
 	private String rPhone;
 	// 고객의 등급
 	private String rGrade;
+	// 환불 상품번호
+	private String rNumber;
 	// 환불 상품 이름
     private String rProduct;
     // 환불 상품 이미지 url
@@ -64,6 +66,12 @@ public class RefundDto {
 	public void setrGrade(String rGrade) {
 		this.rGrade = rGrade;
 	}
+	public String getrNumber() {
+		return rNumber;
+	}
+	public void setrNumber(String rNumber) {
+		this.rNumber = rNumber;
+	}
 	public String getrProduct() {
 		return rProduct;
 	}
@@ -109,7 +117,7 @@ public class RefundDto {
 	
 	@Override
 	public String toString() {
-		return "RefundDto [rNum=" + rNum + ",rId=" + rId + ", rName=" + rName + ",rEmail=" + rEmail + ", rPhone=" + rPhone + ", rGrade=" + rGrade + ", rProduct=" + rProduct + ", rUrl=" + rUrl + ", rNote=" + rNote + ", rDate=" + rDate + ", rJumunDate=" + rJumunDate + ", rFinishDate=" + rFinishDate +", rCheck=" + rCheck + "]";
+		return "RefundDto [rNum=" + rNum + ",rId=" + rId + ", rName=" + rName + ",rEmail=" + rEmail + ", rPhone=" + rPhone + ", rGrade=" + rGrade + ", rNumber=" + rNumber + ", rProduct=" + rProduct + ", rUrl=" + rUrl + ", rNote=" + rNote + ", rDate=" + rDate + ", rJumunDate=" + rJumunDate + ", rFinishDate=" + rFinishDate +", rCheck=" + rCheck + "]";
 	}
 }
 

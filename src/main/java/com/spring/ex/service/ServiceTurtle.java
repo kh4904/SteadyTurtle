@@ -300,6 +300,18 @@ public class ServiceTurtle implements TurtleService{
 		RefundDao.RefundUpdate(rrDto);
 	}
 	
+	// 환불신청시 주문쪽 환불처리로 변경 
+	@Override
+	public void refundJumun(JumunDto jrDto) throws Exception {
+		RefundDao.refundJumun(jrDto);
+	}
+	
+	// 환불신청 승락시 주문쪽 환불처리로 변경 
+	@Override
+	public void jumunRefund(JumunDto rjDto) throws Exception {
+		RefundDao.jumunRefund(rjDto);
+	}
+	
 	// 판매상품 목록
 	@Inject
 	private MemberDao SellDao;

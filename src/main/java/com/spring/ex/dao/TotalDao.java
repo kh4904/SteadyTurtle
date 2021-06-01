@@ -248,6 +248,18 @@ public class TotalDao implements MemberDao{
 		sqlSessionTemplate.update(namespace + ".RefundUpdate", rrDto);
 	}
 	
+	// 환불요청시 주문쪽 환불처리로 변경 update문
+	@Override
+	public void refundJumun(JumunDto jrDto) throws Exception {
+		sqlSessionTemplate.update(namespace + ".refundJumun", jrDto);
+	}
+	
+	// 환불요청 신청 승락시 주문쪽 환불완료로 변경 update문
+	@Override
+	public void jumunRefund(JumunDto rjDto) throws Exception {
+		sqlSessionTemplate.update(namespace + ".jumunRefund", rjDto);
+	}
+	
 	// 판매상품목록 select문
 	@Override
 	public List<SellDto> sellList() throws Exception{

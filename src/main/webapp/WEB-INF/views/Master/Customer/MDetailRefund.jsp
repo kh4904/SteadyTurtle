@@ -122,6 +122,7 @@
             <div>
                <form action="RefundUpdate" method="POST">
             	<input type="hidden" id="rNum" name="rNum" value="${refund.getrNum()}">
+            	<input type="hidden" id="jNum" name="jNum" value="${refund.getrNumber()}">
             	  <a href="MRefund" class="btn btn-primary">뒤로가기</a>
             	  <c:choose>
 						<c:when test="${refund.getrCheck() eq '1'}">

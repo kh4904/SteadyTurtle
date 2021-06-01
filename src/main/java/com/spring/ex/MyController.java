@@ -482,9 +482,10 @@ public class MyController {
 	
 	// 환불요청 환불신청 글쓴후 DB보내기
 	@RequestMapping(value = "/refundwrite", method = RequestMethod.POST)
-	public String refundwrite(RefundDto rwDto, RedirectAttributes redirectAttributes) throws Exception {
+	public String refundwrite(RefundDto rwDto, JumunDto jrDto) throws Exception {
 		
 		service.refundWrite(rwDto);
+		service.refundJumun(jrDto);
 		
 		return "redirect:/refund";
 	}
@@ -769,9 +770,10 @@ public class MyController {
 	
 	// 관리자 환불요청 신청 승락하기
 	@RequestMapping(value="/RefundUpdate", method=RequestMethod.POST)
-	public String RefundUpdate(RefundDto rrDto) throws Exception {
+	public String RefundUpdate(RefundDto rrDto,JumunDto rjDto) throws Exception {
 		
 		service.RefundUpdate(rrDto);
+		service.jumunRefund(rjDto);
 			
 		return "redirect:/MRefund";
 			
