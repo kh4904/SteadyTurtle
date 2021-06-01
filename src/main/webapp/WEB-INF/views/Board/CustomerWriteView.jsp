@@ -31,7 +31,7 @@
 	<%@ include file="/WEB-INF/views/menu.jsp"%>
 	
 	<!-- 게시판 -->
-	<section class="page-section portfolio" style="height:800px;">
+	<section class="page-section portfolio" style="min-height:700px; height:100%;">
 		<div class="container">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>

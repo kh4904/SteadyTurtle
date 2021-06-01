@@ -132,8 +132,11 @@
     									<c:when test="${jumun.getjShip() eq '배송완료'}">
         						 			<th style="background-color: #eeeeee; color: blue;">배송완료</th>
     									</c:when>
-    									<c:when test="${jumun.getjShip() eq '환불처리'}">
+    									<c:when test="${jumun.getjShip() eq '환불완료'}">
         						 			<th style="background-color: #eeeeee; color: red;">환불처리</th>
+    									</c:when>
+    									<c:when test="${jumun.getjShip() eq '환불요청'}">
+        						 			<th style="background-color: #eeeeee; color: orange;">환불요청</th>
     									</c:when>
 									</c:choose>
 								</tr>

@@ -61,8 +61,8 @@
 
 <!-- 상품추가 -->
 <insert id="addProduct">
-	INSERT INTO product(pNum,pName, pCate, pPrice, pShip, pCount, pCountSell, pCumulSell, pMile, pUrl, pMan, pWoman)
-	values(#{pNum},#{pName}, #{pCate}, #{pPrice}, #{pShip}, #{pCount}, 0, 0, #{pMile}, null, 0, 0)
+	INSERT INTO product(pNum, pName, pCate, pPrice, pShip, pCount, pCountSell, pCumulSell, pMile, pUrl, pMan, pWoman, pImg)
+	values(NEXTVAL(my_seq), #{pName}, #{pCate}, #{pPrice}, #{pShip}, #{pCount}, 0, 0, #{pMile}, #{pUrl}, 0, 0, #{pImg})
 </insert>
 
 <!-- 상품수정 -->
@@ -123,7 +123,10 @@ select
 <select id="board2" resultType="BoardDTO">SELECT * from board where bNum = #{bNum} </select>
 
 <!-- 고객문의 게시판작성 -->
-<insert id="boardWrite">insert into board(mName, bNum, bTitle, bNote, bCate, bReply) values(#{mName}, 0, #{bTitle}, #{bNote}, #{bCate}, "답변없음.")</insert>
+<insert id="boardWrite">
+	insert into board(mName, bNum, bTitle, bNote, bCate, bReply, bUrl, bImg) 
+	values(#{mName}, 0, #{bTitle}, #{bNote}, #{bCate}, "답변없음.", #{bUrl}, #{bImg})
+</insert>
 
 <!-- 고객문의 게시글 답변 update문 -->
 <update id="boardAnswer">UPDATE board SET bReply = #{bReply} WHERE bNum = #{bNum} </update>

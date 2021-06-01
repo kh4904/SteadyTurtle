@@ -23,8 +23,9 @@
 	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
 	rel="stylesheet" type="text/css" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="resources/css/styles.css" rel="stylesheet" />
-
+<link href="resources/css/styles.css" rel="stylesheet" /><!-- 
+<link href="resources/css2/styles.css" rel="stylesheet" />
+<link href="resources/css2/font-awesome.css" rel="stylesheet" /> -->
 <!-- 슬라이드 효과 css -->
 <style type="text/css">
 /* 캐러셀 영역 설정 */
@@ -57,9 +58,9 @@
 </head>
 <!-- 메인페이지 -->
 <body id="page-top">
+
 	<!-- Navigation 맨위 로고-->
 	<%@ include file="/WEB-INF/views/menu.jsp" %>
-
 	<!-- 슬라이드 이미지  -->
 	<header class="bg-white text-white text-center" style="height: 500px;">
 		<div class="container-fluid text-center my-3"
@@ -123,7 +124,7 @@
 					<div class="col-md-6 col-lg-4 mb-5">
 					<form action="product" method="POST">
 					<input type="hidden" id="pName" name="pName" value="${product.getpName() }">
-						<input type="image" src="${product.getpUrl() }" style="width: 270px; height: 200px;"  > 
+						<input type="image" src="resources/assets/img${product.getpImg() }" style="width: 270px; height: 200px;"  >
 						 <br> <br>
 						<h4>상품명 : ${product.getpName() }</h4>
 						<h5>가격 : ${product.getpPrice() } 원</h5>
@@ -137,7 +138,7 @@
 			</div>
 		</div>
 	</section>
-
+	
 	<%@ include file="/WEB-INF/views/footer.jsp" %>
 
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
@@ -159,5 +160,6 @@
 	<script src="resources/assets/mail/contact_me.js"></script>
 	<!-- Core theme JS-->
 	<script src="js/scripts.js"></script>
+	<script src="resources/js/scripts.js"></script>
 </body>
 </html>

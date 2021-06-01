@@ -45,7 +45,7 @@
 
 								<tr>
 									<td rowspan="6"><img class="img-fluid"
-										src="${product.getpUrl() }"
+										src="resources/assets/img${product.getpImg() }"
 										style="width: 180px; height: 200px;" /></td>
 									<td><b style="margin-left: 9px;">상품명</b></td>
 									<td><input type="text" id="pName" name="pName"
@@ -124,7 +124,6 @@
 								<!-- 수정하기 버튼클릭시 -->
 								<input type="submit" class="btn btn-info" value="수정하기" style="position:relative; left:400px;">
 							</div>
-
 						</div>
 					</div>
 				</form>
@@ -138,7 +137,6 @@
 			</div>
 		</div>
 	</section>
-
 	<!-- Copyright Section(맨밑 하단)-->
 	<div class="copyright py-4 text-center text-white">
 		<div class="container">
@@ -150,13 +148,11 @@
 				Email. steadyturtle@kyungmin.ac.kr </small>
 		</div>
 	</div>
-
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
 	<div class="scroll-to-top d-lg-none position-fixed">
 		<a class="js-scroll-trigger d-block text-center text-white rounded"
 			href="#page-top"><i class="fa fa-chevron-up"></i></a>
 	</div>
-
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

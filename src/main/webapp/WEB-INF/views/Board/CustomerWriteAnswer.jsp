@@ -59,7 +59,14 @@
                          	${board.getbNote() }
                          </td>
                      </tr>
-                     
+                    <c:if test="${board.getbUrl() != ''}">
+                     	<tr>
+                         <td colspan="6" style="height: 300px; text-align: left;">
+                         	<img src="resources/assets/img${board.getbUrl() }" />
+                         	${board.getbUrl()}
+                         </td>
+                     	</tr>
+                    </c:if>
                      <!-- 관리자가 답변달아주는곳 -->
                      <tr>
                          <td colspan="6" style="height: 300px; background-color: #eeeeee; text-align: left;">

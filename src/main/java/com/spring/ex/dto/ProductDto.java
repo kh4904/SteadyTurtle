@@ -26,7 +26,8 @@ public class ProductDto {
 	private String pMan;
 	// 상품구매자 수(여성)
 	private String pWoman;
-	
+	// 상품 이미지
+	private String pImg;
 	
 	public int getpNum() {
 		return pNum;
@@ -100,13 +101,20 @@ public class ProductDto {
 	public void setpWoman(String pWoman) {
 		this.pWoman = pWoman;
 	}
+	public String getpImg() {
+		return pImg;
+	}
+	public void setpImg(String pImg) {
+		this.pImg = pImg;
+	}
+	
 	
 	@Override
 	public String toString() {
 		return "ProductDto[pNum=" + pNum + ", pName=" + pName + ", pCate=" + pCate + ", pPrice=" + pPrice + 
 				", pShip=" + pShip + ", pCount=" + pCount + ", pCountSell=" + pCountSell + 
 				", pCumulSell=" + pCumulSell + ", pMile=" + pMile + ", pUrl=" + pUrl + 
-				", pMan=" + pMan + ", pWoman=" + pWoman + "]";
+				", pMan=" + pMan + ", pWoman=" + pWoman + ", pImg=" + pImg + "]";
 	}
 	
 }

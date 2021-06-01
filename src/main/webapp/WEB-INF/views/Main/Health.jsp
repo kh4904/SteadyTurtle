@@ -51,7 +51,7 @@
 						<div class="col-md-6 col-lg-4 mb-5">
 							<form action="product" method="POST">
 					<input type="hidden" id="pName" name="pName" value="${product.getpName() }">
-						<input type="image" src="${product.getpUrl() }" style="width: 270px; height: 200px;"  > 
+						<input type="image" src="resources/assets/img${product.getpImg() }" style="width: 270px; height: 200px;"  > 
 						 <br> <br>
 						<h4>상품명 : ${product.getpName() }</h4>
 						<h5>가격 : ${product.getpPrice() } 원</h5>

@@ -1,5 +1,6 @@
 package com.spring.ex;
 
+import java.io.File;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.ex.dto.BoardDTO;
@@ -27,6 +29,7 @@ import com.spring.ex.dto.RefundDto;
 import com.spring.ex.dto.SellDto;
 import com.spring.ex.service.ServiceTurtle;
 import com.spring.ex.service.TurtleService;
+import com.spring.ex.utils.UploadFileUtils;
 
 @Controller
 public class MyController {
@@ -544,11 +547,27 @@ public class MyController {
 	
 	// 고객문의 글쓰기 후 고객게시판페이지로 보내
 	@RequestMapping(value = "/writeAction", method = RequestMethod.POST)
-	public String boardPOST(BoardDTO bdto, RedirectAttributes redirectAttributes) throws Exception {
+	public String boardPOST(BoardDTO bdto, MultipartFile file, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception {
+	      
+	    //파일 업로드
+	    String imgUploadPath = request.getSession().getServletContext().getRealPath("/resources/assets/img");
+	            
+	    String fileName = null;
 
-		service.boardWrite(bdto);
+	    if(file != null) {
+	       fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes()); 
+	    } else {
+	       fileName = File.separator + "images" + File.separator + "none.png";
+	    }
 
-		return "redirect:/CustomerWriteView";
+
+	    bdto.setbUrl(File.separator + File.separator + fileName);
+	    bdto.setbImg(File.separator + File.separator + "s" + File.separator + "s_" + fileName);
+	            
+	      
+	    service.boardWrite(bdto);
+
+	    return "redirect:/CustomerWriteView";
 	}
 	
 	// 회원정보 수정 페이지
@@ -710,7 +729,24 @@ public class MyController {
 	
 	//상품추가
 	@RequestMapping(value = "addproduct", method = RequestMethod.POST)
-	public String addproduct(ProductDto apdto, RedirectAttributes redirectAttributes) throws Exception {
+	public String addproduct(ProductDto apdto, MultipartFile file, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception {
+		
+		//파일 업로드
+		String imgUploadPath = request.getSession().getServletContext().getRealPath("/resources/assets/img");
+		
+		String fileName = null;
+		
+		if(file != null) {
+			fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes()); 
+		} else {
+			fileName = File.separator + "images" + File.separator + "none.png";
+		}
+
+
+		apdto.setpUrl(File.separator + File.separator + fileName);
+		apdto.setpImg(File.separator + File.separator + "s" + File.separator + "s_" + fileName);
+		
+		
 		ServiceTurtle.addProduct(apdto);
 		
 		return "redirect:/ProductManagement";

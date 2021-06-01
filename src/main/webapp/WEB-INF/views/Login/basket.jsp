@@ -18,6 +18,7 @@
 <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
 	crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/resources/jquery/jquery-3.3.1.min.js"></script>
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css" />
@@ -26,7 +27,18 @@
 	rel="stylesheet" type="text/css" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="resources/css/styles.css" rel="stylesheet" />
+
+<style>
+.allCheck { float:left; width:200px; }
+.allCheck input { width:16px; height:16px; }
+.allCheck label { margin-left:10px; }
+.delBtn { float:right; width:300px; text-align:right; }
+.delBtn button { font-size:18px; padding:5px 10px; border:1px solid #eee; background:#eee;}
+.checkBox { float:left; width:30px; }
+.checkBox input { width:16px; height:16px; }
+</style>
 </head>
+
 <!-- 장바구니 -->
 <body>
 
@@ -52,7 +64,19 @@
 						<th style="width: 250px; height: 43px; text-align: center"><h4>상품 개별 가격</h4></th>
 						<th style="width: 250px; height: 43px; text-align: center"><h4>상품 총 가격</h4></th>
 						<th style="width: 150px; height: 43px; text-align: center">
-							<h5>전체선택<input type="checkbox" id="check_all" style="width: 25px; height: 25px;"></h5>
+							<div class="allCheck">
+							<h5>전체선택<input type="checkbox" name="allCheck" id="allCheck" style="width: 25px; height: 25px;"></h5>
+							 <script>
+								$("#allCheck").click(function(){
+									var chk = $("#allCheck").prop("checked");
+									if(chk) {
+										$(".chBox").prop("checked", true);
+									} else {
+										$(".chBox").prop("checked", false);
+									}
+								});
+							</script>
+							</div>
 						</th></tr>
 				</table>
 			<div class="divider-custom" style="display: block;">
@@ -62,14 +86,14 @@
 
 			<!-- 장바구니에 담긴 상품 -->
 			<div class="row">
-			
+			<c:set var = "allSum" value="0" />
 				<c:forEach items="${cartList}" var="cartList">
                   <form name="form" action="Cash" method="post">
 					<table style="width: 100%">
 					<tr style="height: 100px;">
 						<td style="width: 200px; height: 43px; text-align: center">
 							<a href="#">
-								<img class="img-fluid" src="${cartList.getpUrl()} " style="width: 120px; height: 100px;" alt="" />
+								<img class="img-fluid" src="resources/assets/img${cartList.getpUrl()} " style="width: 120px; height: 100px;" alt="" />
 							</a>
 						</td>
 						<td style="width: 300px; height: 43px; text-align: center">
@@ -79,10 +103,7 @@
 						</td>
 						<td style="width: 250px; height: 43px; text-align: center">
 							<h3>${cartList.getCartStock() }개</h3>
-							<input type="hidden" name="CartStock" value="${cartList.getCartStock() }" id="CartStock">
-							
-							<br>
-							<br>
+							<input type="hidden" name="pCountsSell" value="${cartList.getCartStock() }" id="CartStock">
 						</td>
 						<td style="width: 250px; height: 43px; text-align: center">
 							<h3>${cartList.getpPrice() }원</h3>
@@ -99,12 +120,26 @@
 							<input type="hidden" value="${cartList.pPrice * cartList.cartStock}" id="sum" name="sum">
 						</td>
 						<td style="width: 150px; height: 43px; text-align: center">
-							<input type="checkbox" id="chkbox" style="width: 25px; height: 25px;" class="normal"></input>
+						<div class="checkBox">
+							<input type="checkbox" id="chBox" name="chBox" data-cartNum="${cartList.cartNum}" style="width: 25px; height: 25px;" class="normal"></input>
+							<script>
+								$(".chBox").click(function(){
+									$("#allCheck").prop("checked", false);
+								});
+							</script>
+							</div>
+						</td>
+						<td>
+							<button type="button" class="delete_btn" data-cartNum="${cartList.cartNum}">삭제</button>
+						</td>
+						<td>
+							<input type="submit" value="결제하기">
 						</td>
 					</tr>
 				</table>
-				<input type="submit" value="결제하기">
+				
 				</form>
+				<c:set var = "allSum" value="${allSum + (cartList.pPrice * cartList.cartStock) }" />
 			</c:forEach>
 			</div>
 			</c:if>
@@ -116,12 +151,55 @@
 		<div class="divider-custom" style="display: block;">
 			<hr style="background-color: black;">
 		</div>
+			<div class="allSum">
+				<p style="text-align: right;">
+  					총 합계 : <fmt:formatNumber pattern="###,###,###" value="${allSum}" />원
+  				</p>
+ 			</div>
+ 			<div class="orderOpne">
+ 				<p style="text-align: right;">
+					<button type="button" class="orderOpne_bnt">주문 정보 입력</button>
+				</p>
+			</div>
+		<!-- 밑줄 -->
+		<div class="divider-custom" style="display: block;">
+			<hr style="background-color: black;">
+		</div>
 		<p style="text-align: right;">
 			<!-- 전체선택 -->
 			<label class="btn btn-primary pull-right"
 				style="position: relative; top: 4px;" for="check_all">전체선택</label>
 			<!-- 선택삭제 -->
-			<a href="#" class="btn btn-primary pull-right">선택삭제</a>
+			<div class="delBtn">
+                     <button type="button" class="selectDelete_btn">삭제</button> 
+                 
+                 <script>
+                $(".selectDelete_btn").click(function(){
+                 var confirm_val = confirm("정말 삭제하시겠습니까?");
+                 
+                 if(confirm_val) {
+                  var checkArr = new Array();
+                  
+                  $("input[class='chBox']:checked").each(function(){
+                   checkArr.push($(this).attr("data-cartNum"));
+                  });
+                   
+                  $.ajax({
+                     url : "/cartdel",
+                     type : "post",
+                     data : { chbox : checkArr },
+                     success : function(result){
+                      if(result == 1) {          
+                       location.href = "/Login/basket";
+                      } else {
+                       alert("삭제 실패");
+                      }
+                     }
+                    });
+                   } 
+                 });
+               </script>   
+                 </div>
 			<!-- 결제하기 -->
 			<a href="CashOn" class="btn btn-primary pull-right">결제하기</a>
 		</p>
@@ -163,6 +241,7 @@
 	<script src="resources/assets/mail/jqBootstrapValidation.js"></script>
 	<script src="resources/assets/mail/contact_me.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+	<script src="/js/scripts.js"></script>
+	
 </body>
 </html>

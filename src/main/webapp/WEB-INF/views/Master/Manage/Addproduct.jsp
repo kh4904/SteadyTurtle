@@ -24,6 +24,18 @@
 	rel="stylesheet" type="text/css" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="resources/css/styles.css" rel="stylesheet" />
+<!--  -->
+
+<script src="resources/jquery/jquery-3.3.1.min.js"></script>
+<style>
+.inputArea { margin:10px 0; }
+select { width:100px; }
+label { display:inline-block; width:70px; padding:5px; }
+label[for='gdsDes'] { display:block; }
+input { width:150px; }
+textarea#gdsDes { width:400px; height:180px; }
+.select_img img { margin:20px 0; }
+</style>
 </head>
 <!-- 상품관리 추가하기 페이지 -->
 <body id="page-top">
@@ -33,23 +45,35 @@
 	<!-- 몸통 -->
 	<!-- 상품추가 -->
 	<section class="page-section portfolio">
-			<div class="container" style="background-color: #bbdefb;">
-				<div class="row">
-					<div class="col-md-5">
-						<br>
-						<br> <img src="./resources/assets/HealthImg/h1.jpg"
-							style="width: 80%; height: 70%;"> <br>
-						<br> <input type="submit" class="btn btn-info" value="이미지업로드"
-							style="position: relative; left: 100px;">
+		<div class="container" style="background-color: #bbdefb;">
+		<form action="addproduct" method="POST" enctype="multipart/form-data">
+			<div class="row">
+				
+					<div class="inputArea">
+						<div class="col-md-5">
+							<input type="file" id="pImg" name="file" />
+							<div class="select_img"><img src="" /></div>
+								<script>
+									$("#pImg").change(function(){
+										if(this.files && this.files[0]) {
+											var reader = new FileReader;
+											reader.onload = function(data) {
+												$(".select_img img").attr("src", data.target.result).width(500);        
+											}
+											reader.readAsDataURL(this.files[0]);
+										}
+									});
+								</script>
+						</div>
 					</div>
 					<div class="col-md-6">
-						<form action="addproduct" method="POST">
+						
 							<br>
 							<table style="width: 100%">
 								<tr>
 									<td style="text-align: center;">
 										<h2>
-											<input type="text" id="pName" name="pName" style="margin-left: 40px; text-align: center;" placeholder="상품명" />
+											<input type="text" id="pName" name="pName" style="width: 400px; margin-left: 40px; text-align: center;" placeholder="상품명" />
 										</h2>
 									</td>
 								</tr>
@@ -140,11 +164,13 @@
 								<!-- 추가하기 버튼클릭시 -->
 								<input type="submit" class="btn btn-info" value="추가하기">
 							</p>
-						</form>
 					</div>
-				</div>
+				
 			</div>
-	</section>
+			</form>
+		</div>
+		
+</section>
 
 	<c:if test="${member.mMaster != 1 }">
 		<script>
@@ -183,6 +209,6 @@
 	<script src="resources/assets/mail/jqBootstrapValidation.js"></script>
 	<script src="resources/assets/mail/contact_me.js"></script>
 	<!-- Core theme JS-->
-	<script src="resources/js/scripts.js"></script>
+	<script src="js/scripts.js"></script>
 </body>
 </html>

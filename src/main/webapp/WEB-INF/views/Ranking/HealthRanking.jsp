@@ -82,7 +82,7 @@
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/first.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><input type="image" src="${health.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="resources/assets/img${health.getpImg() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${health.getpName() }</h4></center>
                      			<th style="width:150px; height:43px;"><center><h4>${health.getpPrice()}원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${health.getpMile() }%</h3></center>
@@ -106,7 +106,7 @@
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/second.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><input type="image" src="${health.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="resources/assets/img${health.getpImg() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${health.getpName() }</h4></center>
                      			<th style="width:150px; height:43px;"><center><h4>${health.getpPrice()}원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${health.getpMile() }%</h3></center>
@@ -129,7 +129,7 @@
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/third.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><input type="image" src="${health.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="resources/assets/img${health.getpImg() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${health.getpName() }</h4></center>
                      			<th style="width:150px; height:43px;"><center><h4>${health.getpPrice()}원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${health.getpMile() }%</h3></center>
@@ -152,7 +152,7 @@
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/forth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><input type="image" src="${health.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="resources/assets/img${health.getpImg() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${health.getpName() }</h4></center>
                      			<th style="width:150px; height:43px;"><center><h4>${health.getpPrice()}원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${health.getpMile() }%</h3></center>
@@ -175,7 +175,7 @@
                 		<table style="width:100%">
                    			<tr style="height:100px;">
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/fifth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
-                     			<th style="width:150px; height:43px;"><center><input type="image" src="${health.getpUrl() }" style="width:120px; height: 100px;" alt=""  ></center>
+                     			<th style="width:150px; height:43px;"><center><input type="image" src="resources/assets/img${health.getpImg() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${health.getpName() }</h4></center>
                      			<th style="width:150px; height:43px;"><center><h4>${health.getpPrice()}원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${health.getpMile() }%</h3></center>
