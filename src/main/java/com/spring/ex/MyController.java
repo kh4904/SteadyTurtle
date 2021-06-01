@@ -44,9 +44,6 @@ public class MyController {
 		this.service = service;
 	}
 	
-	@Resource(name="uploadPath")
-	private String uploadPath;
-	
 	// 로그인시 필요
 	@Autowired
 	private ServiceTurtle ServiceTurtle;
@@ -548,14 +545,14 @@ public class MyController {
 	public String boardPOST(BoardDTO bdto, MultipartFile file, RedirectAttributes redirectAttributes) throws Exception {
 		
 		//파일 업로드
-		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String imgUploadPath = File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
 
 		if(file != null) {
 			fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
 		} else {
-			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+			fileName = File.separator + "images" + File.separator + "none.png";
 		}
 
 		bdto.setbUrl(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
@@ -704,17 +701,17 @@ public class MyController {
 	
 	//상품추가
 	@RequestMapping(value = "addproduct", method = RequestMethod.POST)
-	public String addproduct(ProductDto apdto, MultipartFile file, RedirectAttributes redirectAttributes) throws Exception {
+	public String addproduct(ProductDto apdto, MultipartFile file, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception {
 		
 		//파일 업로드
-		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String imgUploadPath = request.getSession().getServletContext().getRealPath("/");
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
 
 		if(file != null) {
 		 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
 		} else {
-		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		 fileName = File.separator + "images" + File.separator + "none.png";
 		}
 
 

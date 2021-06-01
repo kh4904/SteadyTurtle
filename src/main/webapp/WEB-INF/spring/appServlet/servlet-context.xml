@@ -29,15 +29,8 @@
 	<context:component-scan
 		base-package="com.spring.ex" />
 
-	<!-- 업로드 패스 설정 -->
-	<beans:bean class="java.lang.String" id="uploadPath">
-		<beans:constructor-arg value="C:\\Users\won\git\TeamProject\src\main\webapp\resources\assets\img\" />
-	</beans:bean>
-
-	<!-- 일반 파일 업로드 경로 -->
-	<resources mapping="/imgUpload/**"
-		location="/resources/imgUpload/" />
-
+	<resources mapping="/imgUpload/**" location="/imgUpload/" />
+	
 	<beans:bean
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		id="multipartResolver">

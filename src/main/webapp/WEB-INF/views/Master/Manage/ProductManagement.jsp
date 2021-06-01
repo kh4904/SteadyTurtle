@@ -46,8 +46,8 @@
 								<table style="width: 100%;">
 									<tr>
 										<td rowspan="6" style="width: 200px;"> <img
-												class="img-fluid" src="resources/assets/img${product.getpImg() }"
-												style="width: 150px; height: 150px;" /></td>
+												class="img-fluid" src="${product.getpImg() }"
+												style="width: 150px; height: 150px;" />${product.getpImg() }</td>
 										<th><a style="text-align: center;">상품명:
 												${product.getpName() }</th>
 										<td rowspan="6"><input type="submit" value="수정하기"
