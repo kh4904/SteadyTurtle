@@ -61,7 +61,7 @@
                 <c:forEach items="${jumunList}" var="jumun">
                   <c:if test="${jumun.getjId() eq sessionScope.member.getmId()}">
                		<tr>
-                	<th style="width:250px;"><img class="img-fluid" src="${jumun.getjUrl() }"  style="width:110px; height: 100px;"/></th>
+                	<th style="width:250px;"><img class="img-fluid" src="resources/assets/img${jumun.getjUrl()}"  style="width:110px; height: 100px;"/></th>
                		<th style="width:300px;">${jumun.getjName() }</th>
                     <th style="width:350px;">${jumun.getjJumunDate() }</th>
                     <th style="width:300px;">${jumun.getjNum() }</th>

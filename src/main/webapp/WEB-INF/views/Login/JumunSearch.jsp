@@ -119,7 +119,7 @@
                      <table style="width: 100%;">
                         <tr style="height: 100px;">
                            <th style="width: 200px; height: 35px;"><center>
-                             <input type="image" src="${jumun.getjUrl() }" style="width: 120px; height: 100px;" >
+                             <input type="image" src="resources/assets/img${jumun.getjUrl()}" style="width: 120px; height: 100px;" >
                               </center>
                            <th style="width: 300px; height: 35px;"><center>
                                  <h4>${jumun.getjName() }</h4>

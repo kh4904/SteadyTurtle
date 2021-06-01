@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +55,7 @@
 						<input type="image" src="resources/assets/img${product.getpImg() }" style="width: 270px; height: 200px;"  > 
 						 <br> <br>
 						<h4>상품명 : ${product.getpName() }</h4>
-						<h5>가격 : ${product.getpPrice() } 원</h5>
+						<h5>가격 : <fmt:formatNumber pattern="###,###,###" value="${product.getpPrice()}" /> 원</h5>
 						</form>
 						</div>
 					</c:if>

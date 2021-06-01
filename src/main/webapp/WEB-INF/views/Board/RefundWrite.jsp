@@ -53,7 +53,7 @@
             
                <tr>
                   <th style="text-align: left;">
-                  	<img class="img-fluid" src="${jumun.getjUrl() }" style="width: 220px; height: 200px;" />
+                  	<img class="img-fluid" src="resources/assets/img${jumun.getjUrl()}" style="width: 220px; height: 200px;" />
                   </th>
                   <th rowspan="4">
                      <div style="text-align: right; margin-left: 20px;">

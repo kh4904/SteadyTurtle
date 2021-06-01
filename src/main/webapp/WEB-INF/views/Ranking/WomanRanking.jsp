@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +96,7 @@
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/first.png"  style="width:70px; height: 50px;"alt="" /></center></th>
                      			<th style="width:150px; height:43px;"><center><input type="image" src="resources/assets/img${woman.getpImg() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${woman.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${woman.getpPrice()}원</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4><fmt:formatNumber pattern="###,###,###" value="${woman.getpPrice()}" />원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${woman.getpMile() }%</h3></center>
                      			<th style="width:200px; height:43px;"><center><h3>${woman.getpShip() }</h3></center></th> 
                    			</tr>
@@ -118,7 +119,7 @@
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/second.png"  style="width:70px; height: 50px;"alt="" /></center></th>
                      			<th style="width:150px; height:43px;"><center><input type="image" src="resources/assets/img${woman.getpImg() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${woman.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${woman.getpPrice()}원</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4><fmt:formatNumber pattern="###,###,###" value="${woman.getpPrice()}" />원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${woman.getpMile() }%</h3></center>
                      			<th style="width:200px; height:43px;"><center><h3>${woman.getpShip() }</h3></center></th> 
                    			</tr>
@@ -141,7 +142,7 @@
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/third.png"  style="width:70px; height: 50px;"alt="" /></center></th>
                      			<th style="width:150px; height:43px;"><center><input type="image" src="resources/assets/img${woman.getpImg() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${woman.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${woman.getpPrice()}원</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4><fmt:formatNumber pattern="###,###,###" value="${woman.getpPrice()}" />원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${woman.getpMile() }%</h3></center>
                      			<th style="width:200px; height:43px;"><center><h3>${woman.getpShip() }</h3></center></th> 
                    			</tr>
@@ -164,7 +165,7 @@
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/forth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
                      			<th style="width:150px; height:43px;"><center><input type="image" src="resources/assets/img${woman.getpImg() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${woman.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${woman.getpPrice()}원</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4><fmt:formatNumber pattern="###,###,###" value="${woman.getpPrice()}" />원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${woman.getpMile() }%</h3></center>
                      			<th style="width:200px; height:43px;"><center><h3>${woman.getpShip() }</h3></center></th> 
                    			</tr>
@@ -187,7 +188,7 @@
                      			<th style="width:150px; height:43px;"><center><img class="img-fluid" src="resources/assets/RankingImg/fifth.png"  style="width:70px; height: 50px;"alt="" /></center></th>
                      			<th style="width:150px; height:43px;"><center><input type="image" src="resources/assets/img${woman.getpImg() }" style="width:120px; height: 100px;" alt=""  ></center>
                      			<th style="width:200px; height:43px;"><center><h4>${woman.getpName() }</h4></center>
-                     			<th style="width:150px; height:43px;"><center><h4>${woman.getpPrice()}원</h4></center>
+                     			<th style="width:150px; height:43px;"><center><h4><fmt:formatNumber pattern="###,###,###" value="${woman.getpPrice()}" />원</h4></center>
                      			<th style="width:200px; height:43px;"><center><h3>${woman.getpMile() }%</h3></center>
                      			<th style="width:200px; height:43px;"><center><h3>${woman.getpShip() }</h3></center></th> 
                    			</tr>
