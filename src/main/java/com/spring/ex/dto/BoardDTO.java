@@ -17,9 +17,6 @@ public class BoardDTO {
 	// 게시글 답변내용
 	private String bReply;
 	
-	private String bUrl;
-	private String bImg;
-	
 	public String getmName() {
 		return mName;
 	}
@@ -62,22 +59,9 @@ public class BoardDTO {
 	public void setbReply(String bReply) {
 		this.bReply = bReply;
 	}
-	
-	public String getbUrl() {
-		return bUrl;
-	}
-	public void setbUrl(String bUrl) {
-		this.bUrl = bUrl;
-	}
-	public String getbImg() {
-		return bImg;
-	}
-	public void setbImg(String bImg) {
-		this.bImg = bImg;
-	}
 	@Override
 	public String toString() {
 		return "BoardDTO [mName=" + mName + ",bNum=" + bNum + ", bTitle=" + bTitle + ", bCate=" + bCate + ", bNote=" + bNote + ", bDate=" + bDate + ", bReply=" + bReply + 
-				", bUrl=" + bUrl + ", bImg=" + bImg + "]";
+				"]";
 	}
 }

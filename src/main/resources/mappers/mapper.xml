@@ -124,8 +124,8 @@ select
 
 <!-- 고객문의 게시판작성 -->
 <insert id="boardWrite">
-	insert into board(mName, bNum, bTitle, bNote, bCate, bReply, bUrl, bImg) 
-	values(#{mName}, 0, #{bTitle}, #{bNote}, #{bCate}, "답변없음.", #{bUrl}, #{bImg})
+	insert into board(mName, bNum, bTitle, bNote, bCate, bReply) 
+	values(#{mName}, 0, #{bTitle}, #{bNote}, #{bCate}, "답변없음.")
 </insert>
 
 <!-- 고객문의 게시글 답변 update문 -->

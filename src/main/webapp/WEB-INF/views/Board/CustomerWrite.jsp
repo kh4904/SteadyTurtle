@@ -36,7 +36,7 @@
 	<div class="container">
 		<div class="col-lg-12">
 			<div class="row">
-				<form method="post" action="writeAction" enctype="multipart/form-data">
+				<form method="post" action="writeAction">
 				<c:if test ="${member.mId != null }">
 					<input type="hidden" id = "mName" name="mName" value="${member.mName }">
 					<div class="" style="text-align:center;">
@@ -57,25 +57,6 @@
 										<option>배송관련</option>
 										<option>기타</option>
 						  			</select>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="5" style="text-align: left;">
-									<div class="inputArea">
-										<input type="file" id="bImg" name="file" />
-										<div class="select_img"></div>
-											<script>
-												$("#bImg").change(function(){
-													if(this.files && this.files[0]) {
-														var reader = new FileReader;
-														reader.onload = function(data) {
-															$(".select_img img").attr("src", data.target.result).width(500);        
-														}
-														reader.readAsDataURL(this.files[0]);
-													}
-												});
-											</script>
-									</div>
 								</td>
 							</tr>
 							<tr>

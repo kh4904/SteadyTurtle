@@ -547,27 +547,11 @@ public class MyController {
 	
 	// 고객문의 글쓰기 후 고객게시판페이지로 보내
 	@RequestMapping(value = "/writeAction", method = RequestMethod.POST)
-	public String boardPOST(BoardDTO bdto, MultipartFile file, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception {
-	      
-	    //파일 업로드
-	    String imgUploadPath = request.getSession().getServletContext().getRealPath("/resources/assets/img");
-	            
-	    String fileName = null;
-
-	    if(file != null) {
-	       fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes()); 
-	    } else {
-	       fileName = File.separator + "images" + File.separator + "none.png";
-	    }
-
-
-	    bdto.setbUrl(File.separator + File.separator + fileName);
-	    bdto.setbImg(File.separator + File.separator + "s" + File.separator + "s_" + fileName);
-	            
-	      
-	    service.boardWrite(bdto);
-
-	    return "redirect:/CustomerWriteView";
+	public String boardPOST(BoardDTO bdto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.boardWrite(bdto);
+		
+		return "redirect:/CustomerWriteView";
 	}
 	
 	// 회원정보 수정 페이지
