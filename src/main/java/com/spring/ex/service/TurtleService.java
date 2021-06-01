@@ -51,6 +51,9 @@ public interface TurtleService {
 	/* 상품정보 상세 ProductDto를 pdto()로 선언*/
 	public ProductDto product(ProductDto pdto) throws Exception;
 	
+	/*검색 기능 product dto 를 pSDto로 선언*/
+	public List<ProductDto> productSearch() throws Exception;
+	
 	//상품추가
 	public void addProduct(ProductDto apdto) throws Exception;
 	
@@ -77,6 +80,8 @@ public interface TurtleService {
 	
 	/* 여성상품랭킹 list ProductDto를 womanRanking()로 선언*/
 	public List<ProductDto> womanRanking() throws Exception;
+	
+	
 	
 	/* 주문내역 상품 list JumunDto를 jumunList()로 선언*/
 	public List<JumunDto> jumunList() throws Exception;

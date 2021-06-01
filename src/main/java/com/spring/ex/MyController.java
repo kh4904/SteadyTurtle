@@ -60,6 +60,9 @@ public class MyController {
 		return "Login/join";
 	}
 	
+	
+	
+	
 	//아이디 중복체크
 	@RequestMapping(value="/idChk", method = RequestMethod.POST)
 	@ResponseBody
@@ -149,6 +152,33 @@ public class MyController {
 		}
 		return path;
 	}
+	
+	//검색 결과 페이지 
+	@RequestMapping(value = "/Search", method = RequestMethod.GET)
+	public String Search() throws Exception {
+		return "Main/Search";
+	}
+	
+	//검색결과 메소드 
+	@RequestMapping(value = "/productSearch", method = RequestMethod.GET)
+	public String productSearch(Model model, ProductDto dto, HttpServletRequest request) throws Exception {
+		String search = request.getParameter("search");
+		String keyword = request.getParameter("keyword");
+		
+		List<ProductDto> list5 = service.productSearch();	
+		
+		model.addAttribute("product",list5);
+		model.addAttribute("search",search);
+		model.addAttribute("keyword",keyword);
+		System.out.println(model);
+		System.out.println(search);
+		System.out.println(keyword);
+		return "Main/Search";
+	}
+	
+
+
+		
 		
 	// 비밀번호 찾기 
 	@RequestMapping(value ="/LoginActionPw", method = RequestMethod.POST)
@@ -331,7 +361,7 @@ public class MyController {
 		return "Login/JumunSearch";
 	}
 	
-	// 주문상품 상세보기 페이지
+	// 주문상품 상세보기 페이지 
 	@RequestMapping(value = "/DetailOrder", method = RequestMethod.GET)
 	public String DetailOrder(Model model) throws Exception {
 		

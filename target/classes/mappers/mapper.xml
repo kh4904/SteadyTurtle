@@ -32,6 +32,19 @@
 <!-- 비밀번호찾기 select문 -->
 <select id="mPw" resultType="MemberDto">SELECT * from member WHERE mId =#{mId} and mName = #{mName} and mEmail=#{mEmail}</select>
 
+
+<!-- 검색창 select문 -->
+<select id="productSearch" resultType="ProductDto">SELECT * from product  <include refid="Search"></include> ORDER BY pName 
+</select>
+<sql id="Search">
+      <choose>
+         <when test="search != null">
+            WHERE ${search} LIKE CONCAT('%',#{keyword},'%')
+         </when>
+      </choose>
+   </sql>
+
+
 <!-- 회원상세 select문 -->
 <select id="memberDetail" resultType="MemberDto">SELECT * from member where mId = #{mId} </select>
 

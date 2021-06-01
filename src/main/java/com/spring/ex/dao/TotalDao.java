@@ -19,175 +19,180 @@ import com.spring.ex.dto.RefundDto;
 import com.spring.ex.dto.SellDto;
 
 @Repository
-public class TotalDao implements MemberDao{
+public class TotalDao implements MemberDao {
 	@Inject
 	private SqlSession sqlSessionTemplate;
-	private static final String namespace = "com.spring.ex.mapper";//mapper �� id �� ã�°�
-	
+	private static final String namespace = "com.spring.ex.mapper";// mapper �� id �� ã�°�
+
 	// 회원정보 select문
 	@Override
 	public List<MemberDto> memberList() throws Exception {
-		return sqlSessionTemplate.selectList(namespace+".id");
+		return sqlSessionTemplate.selectList(namespace + ".id");
 	}
-	
+
 	// 회원가입 insert문
 	@Override
 	public void register(MemberDto dto) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".register", dto);
 	}
-	
-	//아이디 중복 체크
+
+	// 아이디 중복 체크
 	@Override
 	public int idChk(MemberDto mdto) throws Exception {
 		int result = sqlSessionTemplate.selectOne(namespace + ".idChk", mdto);
 		return result;
 	}
-	
-	//회원 정보 update문 수정 
+
+	// 회원 정보 update문 수정
 	@Override
 	public void MemberUpdate(MemberDto Mdto) throws Exception {
 		sqlSessionTemplate.update(namespace + ".MemberUpdate", Mdto);
 	}
-	
+
 	// 로그인
 	@Override
-	public MemberDto login(MemberDto ldto) throws Exception{
+	public MemberDto login(MemberDto ldto) throws Exception {
 		return sqlSessionTemplate.selectOne(namespace + ".login", ldto);
 	}
-	
+
 	// 아이디 찾기 select문
 	@Override
 	public MemberDto memberId(MemberDto mIdDto) throws Exception {
-		return sqlSessionTemplate.selectOne(namespace + ".mId",mIdDto);
+		return sqlSessionTemplate.selectOne(namespace + ".mId", mIdDto);
 	}
-		
+
 	// 비번 찾기 select문
 	@Override
-	public MemberDto memberPw(MemberDto mPwDto) throws Exception{
-		return sqlSessionTemplate.selectOne(namespace + ".mPw",mPwDto);
+	public MemberDto memberPw(MemberDto mPwDto) throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".mPw", mPwDto);
 	}
-	
+
 	// 회원상세
 	@Override
-	public MemberDto memberDetail(MemberDto mddto) throws Exception{
+	public MemberDto memberDetail(MemberDto mddto) throws Exception {
 		return sqlSessionTemplate.selectOne(namespace + ".memberDetail", mddto);
 	}
-	
+
 	// 회원탈퇴
 	@Override
 	public void memberdelete(MemberDto ddto) throws Exception {
 		sqlSessionTemplate.delete(namespace + ".memberdelete", ddto);
-		
+
 	}
-	
+
 	// 상품정보 select문
 	@Override
 	public List<ProductDto> productList() throws Exception {
-		return sqlSessionTemplate.selectList(namespace+".product");
+		return sqlSessionTemplate.selectList(namespace + ".product");
+	}
+
+	// 검색기능
+	public List<ProductDto> productSearch() throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".productSearch");
 	}
 	
 	// 상품상세 select문
 	@Override
 	public ProductDto product(ProductDto pdto) throws Exception {
-		return sqlSessionTemplate.selectOne(namespace + ".product2", pdto); 
+		return sqlSessionTemplate.selectOne(namespace + ".product2", pdto);
 	}
-	
-	//상품추가
+
+	// 상품추가
 	public void addProduct(ProductDto apdto) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".addProduct", apdto);
 	}
-	
-	//상품수정
+
+	// 상품수정
 	@Override
-	public void ProductUpdate(ProductDto pudto) throws Exception{
+	public void ProductUpdate(ProductDto pudto) throws Exception {
 		sqlSessionTemplate.update(namespace + ".productUpdate", pudto);
 	}
-	
+
 	// 상품삭제
 	@Override
 	public void productDelete(ProductDto pzdto) throws Exception {
-		sqlSessionTemplate.delete(namespace + ".productDelete", pzdto);	
+		sqlSessionTemplate.delete(namespace + ".productDelete", pzdto);
 	}
-	
-	//재고관리
-	public void productAdd(ProductDto pADto) throws Exception{
+
+	// 재고관리
+	public void productAdd(ProductDto pADto) throws Exception {
 		sqlSessionTemplate.update(namespace + ".productAdd", pADto);
 	}
-	
+
 	// 헬스기구랭킹 select문
 	@Override
 	public List<ProductDto> healthRanking() throws Exception {
-		return sqlSessionTemplate.selectList(namespace+".health");
+		return sqlSessionTemplate.selectList(namespace + ".health");
 	}
-	
+
 	// 요가상품랭킹 select문
 	@Override
 	public List<ProductDto> yogaRanking() throws Exception {
-		return sqlSessionTemplate.selectList(namespace+".yoga");
+		return sqlSessionTemplate.selectList(namespace + ".yoga");
 	}
-	
+
 	// 운동식품랭킹 select문
 	@Override
 	public List<ProductDto> foodRanking() throws Exception {
-		return sqlSessionTemplate.selectList(namespace+".food");
+		return sqlSessionTemplate.selectList(namespace + ".food");
 	}
-	
+
 	// 남성상품랭킹 select문
 	@Override
 	public List<ProductDto> manRanking() throws Exception {
-		return sqlSessionTemplate.selectList(namespace+".man");
+		return sqlSessionTemplate.selectList(namespace + ".man");
 	}
-	
+
 	// 여성상품랭킹 select문
 	@Override
 	public List<ProductDto> womanRanking() throws Exception {
-		return sqlSessionTemplate.selectList(namespace+".woman");
+		return sqlSessionTemplate.selectList(namespace + ".woman");
 	}
-	
+
 	// 주문내역 select문
 	@Override
 	public List<JumunDto> jumunList() throws Exception {
-		return sqlSessionTemplate.selectList(namespace+".jumun");
+		return sqlSessionTemplate.selectList(namespace + ".jumun");
 	}
-	
+
 	// 주문내역 세션유지
 	@Override
 	public JumunDto jumun(JumunDto jdto) throws Exception {
-		return sqlSessionTemplate.selectOne(namespace + ".jumun2", jdto); 
+		return sqlSessionTemplate.selectOne(namespace + ".jumun2", jdto);
 	}
-	
+
 	// 주문내역 결재승인
 	@Override
-	public void jumunState(JumunDto juDto) throws Exception{
+	public void jumunState(JumunDto juDto) throws Exception {
 		sqlSessionTemplate.update(namespace + ".jumunState", juDto);
 	}
-	
+
 	// 주문신청삭제(취소)
 	@Override
 	public void jumundelete(JumunDto jddto) throws Exception {
 		sqlSessionTemplate.delete(namespace + ".jumunDelete", jddto);
-		
+
 	}
-	
+
 	// 장바구니 select문
 	@Override
 	public List<BasketDto> basketList() throws Exception {
-		return sqlSessionTemplate.selectList(namespace+".basket");
+		return sqlSessionTemplate.selectList(namespace + ".basket");
 	}
-	
-	//장바구니 추가2
+
+	// 장바구니 추가2
 	@Override
 	public void addCart(CartListVO cart) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".addCart", cart);
 	}
-		
-	//장바구니 추가3
+
+	// 장바구니 추가3
 	@Override
 	public void addCart5(CartVO cart) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".addCart", cart);
 	}
-	
-	//장바구니 추가4
+
+	// 장바구니 추가4
 	@Override
 	public List<CartListVO> cartList(String mId) throws Exception {
 		return sqlSessionTemplate.selectList(namespace + ".cartList", mId);
@@ -195,68 +200,74 @@ public class TotalDao implements MemberDao{
 
 	// 고객문의 게시판 목록 select문
 	@Override
-	public List<BoardDTO> boardList() throws Exception{
-		return sqlSessionTemplate.selectList(namespace+".board");
+	public List<BoardDTO> boardList() throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".board");
 	}
-	
+
 	// 고객문의 게시판 목록 세션값 select문
 	@Override
 	public BoardDTO board2(BoardDTO bbdto) throws Exception {
-		return sqlSessionTemplate.selectOne(namespace + ".board2", bbdto); 
+		return sqlSessionTemplate.selectOne(namespace + ".board2", bbdto);
 	}
-	
+
 	// 고객문의 게시판 글쓰기 insert문
 	@Override
 	public void board(BoardDTO bdto) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".boardWrite", bdto);
 	}
-	
+
 	// 고객문의 게시글 답변 update문
 	@Override
 	public void boardAnswer(BoardDTO bdto) throws Exception {
 		sqlSessionTemplate.update(namespace + ".boardAnswer", bdto);
 	}
-	
+
 	// 고객문의 게시글 삭제 delete문
 	@Override
 	public void boardDelete(BoardDTO bddto) throws Exception {
 		sqlSessionTemplate.delete(namespace + ".boardDelete", bddto);
-		
+
 	}
-	
+
 	// 환불요청 게시판 목록 select문
 	@Override
-	public List<RefundDto> refundList() throws Exception{
-		return sqlSessionTemplate.selectList(namespace+".refund");
+	public List<RefundDto> refundList() throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".refund");
 	}
-	
+
 	// 고객문의 게시판 글쓰기 insert문
 	@Override
 	public void refundWrite(RefundDto rwDto) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".refundWrite", rwDto);
 	}
-	
+
 	// 환불요청 게시판 목록 세션값 select문
 	@Override
 	public RefundDto refund2(RefundDto rdto) throws Exception {
-		return sqlSessionTemplate.selectOne(namespace + ".refund2", rdto); 
+		return sqlSessionTemplate.selectOne(namespace + ".refund2", rdto);
 	}
-	
+
 	// 환불요청 신청 승락 update문
 	@Override
 	public void RefundUpdate(RefundDto rrDto) throws Exception {
 		sqlSessionTemplate.update(namespace + ".RefundUpdate", rrDto);
 	}
-	
+
 	// 판매상품목록 select문
 	@Override
-	public List<SellDto> sellList() throws Exception{
-		return sqlSessionTemplate.selectList(namespace+".sell");
+	public List<SellDto> sellList() throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".sell");
 	}
-	
-	//결제하기
+
+	// 결제하기
 	@Override
 	public void cashOk(CashlistDto cldto) throws Exception {
-		sqlSessionTemplate.insert(namespace + ".cashOk", cldto); 
+		sqlSessionTemplate.insert(namespace + ".cashOk", cldto);
 	}
+
+	
+
+	
+
+	
 }

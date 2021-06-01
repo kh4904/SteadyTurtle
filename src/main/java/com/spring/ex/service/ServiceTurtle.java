@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.ex.dao.MemberDao;
+import com.spring.ex.dao.TotalDao;
 import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.CartListVO;
@@ -78,6 +79,8 @@ public class ServiceTurtle implements TurtleService{
 	
 		return memberDaoPw.memberPw(mPwDto);
 	}
+	
+	
 	
 	//회원상세
 	@Inject MemberDao mddao;
@@ -239,6 +242,14 @@ public class ServiceTurtle implements TurtleService{
 		return boardDao.boardList();
 	}
 	
+	//검색기능
+		@Inject
+		private TotalDao TotalDao;
+		
+		@Override
+		public List<ProductDto> productSearch() throws Exception{
+			return  TotalDao.productSearch();
+		}
 	
 	// 고객문의 글쓰기
 	@Inject MemberDao bdao;

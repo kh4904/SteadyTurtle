@@ -10,18 +10,20 @@
 		</div>
 		<!-- 검색창 -->
 		<div class="col-lg-5">
-			<form class="navbar-form navbar-left" role="search">
-				<div class="row">
-					<div class="form-group">
+			<form method="GET" action="productSearch" id ="search" name="search">
+					<div class="list-group">
 						<input type="text" class="form-control" placeholder="검색창"
-							style="width: 500px; height: 50px;">
+							id="keyword" name="keyword" style="width: 500px; height: 50px;">
 					</div>
-					<button type="submit" class="btn btn-default">
-						<i class="fas fa-search"
-							style="width: 30px; height: 30px; color: #fff;"></i>
-					</button>
-				</div>
+					<div class="list-group">
+						<input type="submit" class="btn btn-default"> <i
+							class="fas fa-search"
+							style="width: 50px; height: 30px; color: #fff; left: 100px;"></i>
+					</div>
+				
 			</form>
+
+
 
 			<!-- 헬스기구, 요가상품, 운동식품, 상품랭킹 문구 -->
 			<ul class="nav nav-pills"
@@ -154,19 +156,21 @@
 						</div>
 					</div>
 				</c:if>
-				
+
 				<c:if test="${msg3 == false }">
-						<script>
+					<script>
 						alert("${member.mName} 님 환영합니다.")
-						</script>
+					</script>
 				</c:if>
 				<c:if test="${member != null }">
 					<ul class="nav nav-tabs">
 						<li role="presentation" class="active"
 							style="position: relative; left: 60px; color: #000000;">회원</li>
-					    <c:if test ="${member.mMaster == 1 }">
-					       <li role="presentation" class="active" style="position: relative; left: 180px;"><a href="mainMaster" style="text-decoration:none; color:#bdbdbd;">관리자모드</a></li>
-					    </c:if>
+						<c:if test="${member.mMaster == 1 }">
+							<li role="presentation" class="active"
+								style="position: relative; left: 180px;"><a
+								href="mainMaster" style="text-decoration: none; color: #bdbdbd;">관리자모드</a></li>
+						</c:if>
 					</ul>
 					<ul class="nav nav-pills"
 						style="position: relative; top: 30px; left: 20px;">
@@ -194,7 +198,7 @@
 							<form method="post" action="logout">
 								<input type="submit" class="btn btn-link" id="logoutbtn"
 									value="로그아웃"
-									style="font-size: 15px; font-family:여린굴림; color: black; text-decoration: none; position:relative; top:-10px;">
+									style="font-size: 15px; font-family: 여린굴림; color: black; text-decoration: none; position: relative; top: -10px;">
 							</form>
 						</li>
 					</ul>

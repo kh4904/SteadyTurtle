@@ -29,6 +29,9 @@ public interface MemberDao {
 	//아이디 중복 체크
 	public int idChk(MemberDto mdto) throws Exception;
 	
+	//검색기능
+	public List<ProductDto> productSearch() throws Exception;
+	
 	// 로그인 dto
 	public MemberDto login(MemberDto ldto) throws Exception;
 	
