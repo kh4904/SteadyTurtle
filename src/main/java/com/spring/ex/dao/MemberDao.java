@@ -136,6 +136,9 @@ public interface MemberDao {
 	// 판매상품 목록 dto
 	public List<SellDto> sellList() throws Exception;
 	
+	// 판매상품 목록 날짜 중복된 데이터값 한번만 출력
+	public List<SellDto> sellOne() throws Exception;
+	
 	//결제하기
 	public void cashOk(CashlistDto cldto) throws Exception;
 }

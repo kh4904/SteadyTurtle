@@ -322,6 +322,13 @@ public class ServiceTurtle implements TurtleService{
 		return SellDao.sellList();
 	}
 	
+	// 판매상품 날짜 데이터 중복값 1개만출력
+	@Override
+	public List<SellDto> sellOne() throws Exception {
+			
+		return SellDao.sellOne();
+	}
+	
 	//결제하기
 	@Inject MemberDao cdao;
 		

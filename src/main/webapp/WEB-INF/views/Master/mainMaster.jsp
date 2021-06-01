@@ -48,8 +48,8 @@ aside ul li{clear:both;float:left;margin-top:10px}
                   <tr>
                      <th style="width:200px; height:23px;">
                      <select style = "width:150px; height:30px; position:relative; top:-5px; left:40px;">
-                        <c:forEach items="${sellList}" var="sell">
-                        <option value = "">${sell.getsDate() }</option>
+                        <c:forEach items="${sellOne}" var="sellOne">
+                        <option value = "">${sellOne.getsDate() }</option>
                         </c:forEach>
                      </select>
                      </th>

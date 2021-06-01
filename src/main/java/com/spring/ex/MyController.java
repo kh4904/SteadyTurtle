@@ -602,9 +602,11 @@ public class MyController {
 		
 		List<MemberDto> list = service.memberList();
 		List<SellDto> list2 = service.sellList();
+		List<SellDto> list3 = service.sellOne();
 		
 		model.addAttribute("memberList", list);
 		model.addAttribute("sellList", list2);
+		model.addAttribute("sellOne", list3);
 		
 		return "Master/mainMaster";
 	}
@@ -614,8 +616,10 @@ public class MyController {
 	public String SalesStatus(Model model) throws Exception {
 		
 		List<SellDto> list = service.sellList();
+		List<SellDto> list2 = service.sellOne();
 		
 		model.addAttribute("sellList", list);
+		model.addAttribute("sellOne",list2);
 		
 		return "Master/SalesStatus";
 	}

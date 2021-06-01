@@ -266,6 +266,12 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectList(namespace+".sell");
 	}
 	
+	// 판매상품목록 중복된 날짜데이터값 1회만출력 select문
+	@Override
+	public List<SellDto> sellOne() throws Exception{
+		return sqlSessionTemplate.selectList(namespace+".sellOne");
+	}
+	
 	//결제하기
 	@Override
 	public void cashOk(CashlistDto cldto) throws Exception {

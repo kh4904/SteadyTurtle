@@ -137,6 +137,9 @@ public interface TurtleService {
 	// 판매목록 게시판 list SellDto를 sellList로 선언
 	public List<SellDto> sellList() throws Exception;
 	
+	// 판매목록 중복된 데이터 날짜값 1개만 출력
+	public List<SellDto> sellOne() throws Exception;
+	
 	//결제하기
 	public void cashOk(CashlistDto cldto) throws Exception;
 	

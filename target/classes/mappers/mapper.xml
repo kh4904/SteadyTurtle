@@ -152,6 +152,9 @@ select
 <!-- 판매상품 목록 select문 -->
 <select id="sell" resultType="SellDto">SELECT * from sell</select>
 
+<!-- 판매상품 목록중 날짜 중복된 데이터값 한개만출력 select문 -->
+<select id="sellOne" resultType="SellDto">SELECT * from sell group by sDate</select>
+
 <!-- 바로구매 -->
 <insert id="cash">
 	insert into cashon(pName, pCountsSell, pPrice, pShip, pSumPrice)
