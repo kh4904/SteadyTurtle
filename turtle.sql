@@ -67,18 +67,65 @@ CREATE TABLE IF NOT EXISTS `board` (
   `bCate` varchar(50) DEFAULT NULL,
   `bReply` varchar(50) DEFAULT '답변없음.',
   PRIMARY KEY (`bNum`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 turtle.board:~6 rows (대략적) 내보내기
+-- 테이블 데이터 turtle.board:~4 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
 INSERT IGNORE INTO `board` (`mName`, `bNum`, `bTitle`, `bNote`, `bDate`, `bCate`, `bReply`) VALUES
-	('에이', 1, 'ㅎㅇㅎㅇ', '안녕하세요', '2021-05-16', '상품관련', '답변없음.'),
-	('최진표', 2, 'asd', 'asdf', '2021-05-16', '상품관련', '답변없음.'),
-	('에이', 3, '제품에 이상이많아요', '환불요청을하고싶은데 어디를 이용하면될까요??', '2021-05-17', '상품관련', '답변없음.'),
-	('장혁수', 6, '안녕하세요', '죽을맛이예요', '2021-05-25', '기타', '안녕안해요.'),
-	('장혁수', 7, '테스트입니다', '그만하고싶어요', '2021-05-25', '배송관련', '더 하셔야됩니다 슨생님'),
-	('추효동', 9, '마지막 찐테스트입니다.', '찐마지막입니ㅏㄷ.', '2021-05-27', '상품관련', '마지막테스트 고생하셨어요.');
+	('에이', 1, '제품에 이상이많아요', '환불요청을하고싶은데 어디를 이용하면될까요??', '2021-05-17', '상품관련', '그냥써주세요.'),
+	('장혁수', 2, '안녕하세요', '죽을맛이예요', '2021-05-25', '기타', '안녕안해요.'),
+	('장혁수', 3, '테스트입니다', '그만하고싶어요', '2021-05-25', '배송관련', '더 하셔야됩니다 슨생님'),
+	('에이', 11, '찐확인', '테스트 완료', '2021-05-30', '상품관련', '답변없음.');
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
+
+-- 테이블 turtle.cart 구조 내보내기
+CREATE TABLE IF NOT EXISTS `cart` (
+  `cartNum` int(11) NOT NULL,
+  `mId` varchar(50) NOT NULL,
+  `pNum` int(11) NOT NULL,
+  `cartStock` int(11) NOT NULL,
+  `addDate` date NOT NULL DEFAULT sysdate(),
+  PRIMARY KEY (`cartNum`,`mId`),
+  KEY `cart_mId` (`mId`),
+  KEY `cart_pNum` (`pNum`),
+  CONSTRAINT `cart_mId` FOREIGN KEY (`mId`) REFERENCES `member` (`mId`),
+  CONSTRAINT `cart_pNum` FOREIGN KEY (`pNum`) REFERENCES `product` (`pNum`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- 테이블 데이터 turtle.cart:~12 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT IGNORE INTO `cart` (`cartNum`, `mId`, `pNum`, `cartStock`, `addDate`) VALUES
+	(1013, 'wty123', 1, 2, '2021-05-30'),
+	(1014, 'wty123', 10, 3, '2021-05-30'),
+	(1015, 'aaa', 16, 1, '2021-05-30'),
+	(1016, 'aaa', 4, 4, '2021-05-30'),
+	(1017, 'aaa', 13, 2, '2021-05-30'),
+	(1018, 'wty123', 17, 3, '2021-05-30'),
+	(2001, 'wyt15', 2, 1, '2021-05-30'),
+	(2002, 'wkdgurtn', 15, 1, '2021-05-30'),
+	(2003, 'wkdgurtn', 18, 1, '2021-05-30'),
+	(2004, 'wkdgurtn', 16, 1, '2021-05-30'),
+	(2005, 'wyt15', 3, 1, '2021-05-30'),
+	(2006, 'wyt15', 3, 1, '2021-05-30');
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+
+-- 테이블 turtle.cart_seq 구조 내보내기
+CREATE TABLE IF NOT EXISTS `cart_seq` (
+  `next_not_cached_value` bigint(21) NOT NULL,
+  `minimum_value` bigint(21) NOT NULL,
+  `maximum_value` bigint(21) NOT NULL,
+  `start_value` bigint(21) NOT NULL COMMENT 'start value when sequences is created or value if RESTART is used',
+  `increment` bigint(21) NOT NULL COMMENT 'increment value',
+  `cache_size` bigint(21) unsigned NOT NULL,
+  `cycle_option` tinyint(1) unsigned NOT NULL COMMENT '0 if no cycles are allowed, 1 if the sequence should begin a new cycle when maximum_value is passed',
+  `cycle_count` bigint(21) NOT NULL COMMENT 'How many cycles have been done'
+) ENGINE=InnoDB SEQUENCE=1;
+
+-- 테이블 데이터 turtle.cart_seq:~1 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `cart_seq` DISABLE KEYS */;
+INSERT IGNORE INTO `cart_seq` (`next_not_cached_value`, `minimum_value`, `maximum_value`, `start_value`, `increment`, `cache_size`, `cycle_option`, `cycle_count`) VALUES
+	(3001, 1, 9223372036854775806, 1, 1, 1000, 0, 0);
+/*!40000 ALTER TABLE `cart_seq` ENABLE KEYS */;
 
 -- 테이블 turtle.cashlist 구조 내보내기
 CREATE TABLE IF NOT EXISTS `cashlist` (
@@ -90,21 +137,20 @@ CREATE TABLE IF NOT EXISTS `cashlist` (
   `pCate` varchar(50) DEFAULT NULL,
   `pName` varchar(50) DEFAULT NULL,
   `mAddr` varchar(50) DEFAULT NULL,
-  `mPhone` varchar(50) DEFAULT NULL,
   `mEmail` varchar(50) DEFAULT NULL,
   `cMailNum` varchar(50) DEFAULT NULL,
   `cName` varchar(50) DEFAULT NULL,
   `cPhone` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`cNum`)
-) ENGINE=InnoDB AUTO_INCREMENT=1111119 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1111120 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 turtle.cashlist:~5 rows (대략적) 내보내기
+-- 테이블 데이터 turtle.cashlist:~4 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `cashlist` DISABLE KEYS */;
-INSERT IGNORE INTO `cashlist` (`cNum`, `mId`, `mName`, `pPrice`, `pCount`, `pCate`, `pName`, `mAddr`, `mPhone`, `mEmail`, `cMailNum`, `cName`, `cPhone`) VALUES
-	(1111111, 'wty123', '원태연', 400000, 1, '헬스기구', '런닝머신', NULL, NULL, NULL, NULL, NULL, NULL),
-	(1111112, 'wty123', '원태연', 10000, 3, 'aaaa', 'bbbb', NULL, NULL, NULL, NULL, NULL, NULL),
-	(1111115, 'wkdgurtn', '추효동', 2000, 1, '요가상품', '돌기마사지봉', '당고개 어딘가', NULL, 'cncn@naver', '100000', '추효동', '1011112222'),
-	(1111116, 'wyt15', '장혁수', 18000, 3, '운동식품', '다이어트 도시락', '서울 노원구 꾸준로94길 7', NULL, 'emak18@naver.com', '1122', '장혁수', '11111111');
+INSERT IGNORE INTO `cashlist` (`cNum`, `mId`, `mName`, `pPrice`, `pCount`, `pCate`, `pName`, `mAddr`, `mEmail`, `cMailNum`, `cName`, `cPhone`) VALUES
+	(1111111, 'wty123', '원태연', 400000, 1, '헬스기구', '런닝머신', NULL, NULL, NULL, NULL, NULL),
+	(1111112, 'wty123', '원태연', 10000, 3, 'aaaa', 'bbbb', NULL, NULL, NULL, NULL, NULL),
+	(1111115, 'wkdgurtn', '추효동', 2000, 1, '요가상품', '돌기마사지봉', '당고개 어딘가', 'cncn@naver', '100000', '추효동', '1011112222'),
+	(1111116, 'wyt15', '장혁수', 18000, 3, '운동식품', '다이어트 도시락', '서울 노원구 꾸준로94길 7', 'emak18@naver.com', '1122', '장혁수', '11111111');
 /*!40000 ALTER TABLE `cashlist` ENABLE KEYS */;
 
 -- 테이블 turtle.file 구조 내보내기
@@ -144,17 +190,17 @@ CREATE TABLE IF NOT EXISTS `jumun` (
 -- 테이블 데이터 turtle.jumun:~6 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `jumun` DISABLE KEYS */;
 INSERT IGNORE INTO `jumun` (`jNum`, `jName`, `jShipPrice`, `jMile`, `jPrice`, `jCount`, `jCustomer`, `jId`, `jUrl`, `jShip`, `jJumunDate`, `jFinishDate`, `jState`, `jMemo`) VALUES
-	(1111234, '프로틴(초콜릿맛)', 3000, 1000, 16000, 2, '장혁수', 'wyt15', 'resources/assets/FoodImg/f2.jpg', '배송중', '2021-05-11', '2021-05-11', '미승인', '부재시 경비실에 맡겨주세요.'),
+	(1111234, '프로틴(초콜릿맛)', 3000, 1000, 16000, 2, '장혁수', 'wyt15', 'resources/assets/FoodImg/f2.jpg', '배송중', '2021-05-11', '2021-05-11', '승인', '부재시 경비실에 맡겨주세요.'),
 	(1111235, '하체튼튼철봉', 3000, 1000, 800000, 1, '원태연', 'toowm554', 'resources/assets/HealthImg/h1.jpg', '배송완료', '2021-05-17', '2021-05-17', '승인', '부재시 경비실에 맡겨주세요.'),
 	(1111236, '핸들링봉', 3000, 500, 33000, 3, '장혁수', 'wyt15', 'resources/assets/YogaImg/y1.jpg', '배송완료', '2021-05-18', '2021-05-18', '승인', '부재시 경비실에 맡겨주세요.'),
-	(1111237, '프로틴(초콜릿맛)', 3000, 200, 24000, 3, '추효동', 'wkdgurtn', 'resources/assets/FoodImg/f2.jpg', '배송완료', '2021-05-24', '2021-05-25', '승인', '부재시 경비실에 맡겨주세요.'),
+	(1111237, '하체튼튼철봉', 3000, 1000, 800000, 1, '추효동', 'wkdgurtn', 'resources/assets/HealthImg/h1.jpg', '배송완료', '2021-05-31', '2021-05-31', '승인', '문앞에 놔주세요.'),
 	(1111238, '핸들링봉', 3000, 300, 11000, 1, '추효동', 'wkdgurtn', 'resources/assets/YogaImg/y1.jpg', '배송중', '2021-05-24', '2021-05-24', '미승인', '문앞에 놔주세요.'),
-	(1111239, '하체튼튼철봉', 3000, 400, 1600000, 2, '추효동', 'wkdgurtn', 'resources/assets/HealthImg/h1.jpg', '배송준비', '2021-05-24', '2021-05-24', '미승인', '문앞에 놔주세요.');
+	(1111239, '프로틴(초콜릿맛)', 3000, 1000, 16000, 2, '추효동', 'wkdgurtn', 'resources/assets/FoodImg/f2.jpg', '배송준비', '2021-05-31', '2021-05-31', '미승인', '부재시 경비실에 맡겨주세요.');
 /*!40000 ALTER TABLE `jumun` ENABLE KEYS */;
 
 -- 테이블 turtle.member 구조 내보내기
 CREATE TABLE IF NOT EXISTS `member` (
-  `mId` varchar(50) DEFAULT NULL,
+  `mId` varchar(50) NOT NULL,
   `mPw` varchar(50) DEFAULT NULL,
   `mName` varchar(50) DEFAULT NULL,
   `mGender` varchar(50) DEFAULT NULL,
@@ -167,26 +213,45 @@ CREATE TABLE IF NOT EXISTS `member` (
   `mList` varchar(50) DEFAULT NULL,
   `mMile` int(15) DEFAULT NULL,
   `mCumulmile` int(15) DEFAULT NULL,
-  `mMaster` int(2) DEFAULT NULL
+  `mMaster` int(2) DEFAULT NULL,
+  PRIMARY KEY (`mId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 turtle.member:~10 rows (대략적) 내보내기
+-- 테이블 데이터 turtle.member:~9 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
 INSERT IGNORE INTO `member` (`mId`, `mPw`, `mName`, `mGender`, `mPhone`, `mBirth`, `mEmail`, `mAddr`, `mGrade`, `mNote`, `mList`, `mMile`, `mCumulmile`, `mMaster`) VALUES
-	('wyt15', 's554', '장혁수', '남성', '01054871154', '1998-03-04', 'emak18@naver.com', '서울 노원구 꾸준로94길 7', '플래티넘', NULL, NULL, 300, 1500, 1),
-	('toowm654', 'bb55', '원태연', '남성', '01089764124', '2021-05-11', 'foew8@naver.com', '서울 꾸준동 꾸준리 88길 7', '플래티넘', NULL, NULL, 0, 0, 1),
-	('ggw21', 'gg521', '김규헌', '남성', '01087761245', '2021-05-11', 'gg121@naver.com', '서울 헬스해 헬스로 24길 5', '플래티넘', NULL, NULL, 0, 0, 1),
-	('gow12', 'faa64', '이동진', '남성', '01055432158', '2021-05-11', 'gow64@naver.com', '서울 운동구 빠릇리 88길 8', '플래티넘', NULL, NULL, 0, 0, 1),
+	('aaa', 'aaa', '에이', '여성', '01011112222', '2021-05-24', 'aaa@naver.com', '경기도 에이동 에이에이 11', '골드', NULL, NULL, 30, 60, 0),
 	('bbb', '222', '비비', '여성', '01022221111', '2021-05-11', 'bbb22@naver.com', '경기도 비비동 비비해 22리', '실버', NULL, NULL, 0, 0, 0),
 	('ccc', '333', '씨씨', '여성', '01054872154', '2021-05-11', 'ccc33@naver.com', '서울 씨씨해 씨씨놉 33로 4', '실버', NULL, NULL, 0, 0, 0),
 	('ddd', '444', '디디', '남성', '01033367842', '2021-05-11', 'ddd44@naver.com', '전라북도 덜덜해 덜덜리 55길 8', '플래티넘', NULL, NULL, 0, 0, 0),
-	('eee', '555', '이이', '여성', '01055556666', '2021-05-11', 'eee54@naver.com', '경기도 이이빨 이이로 53길 5', '골드', NULL, NULL, 0, 0, 0),
+	('ggw21', 'gg521', '김규헌', '남성', '01087761245', '2021-05-11', 'gg121@naver.com', '서울 헬스해 헬스로 24길 5', '플래티넘', NULL, NULL, 0, 0, 1),
+	('gow12', 'faa64', '이동진', '남성', '01055432158', '2021-05-11', 'gow64@naver.com', '서울 운동구 빠릇리 88길 8', '플래티넘', NULL, NULL, 0, 0, 1),
+	('toowm654', 'bb55', '원태연', '남성', '01089764124', '2021-05-11', 'foew8@naver.com', '서울 꾸준동 꾸준리 88길 7', '플래티넘', NULL, NULL, 0, 0, 1),
 	('wkdgurtn', 'wkdgurtn', '추효동', '남성', '01066677788', '2021-05-10', 'cncn@naver', '당고개 어딘가', '브론즈', NULL, NULL, 0, 0, 0),
-	('aaa', '111', '에이', '여성', '01022221111', '2018-02-20', 'afs@adad', '에이역에서 에이살겠지', '브론즈', NULL, NULL, 0, 0, 0);
+	('wyt15', 's554', '장혁수', '남성', '01054871154', '1998-03-04', 'emak18@naver.com', '서울 노원구 꾸준로94길 7', '플래티넘', NULL, NULL, 300, 1500, 1);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
+
+-- 테이블 turtle.my_seq 구조 내보내기
+CREATE TABLE IF NOT EXISTS `my_seq` (
+  `next_not_cached_value` bigint(21) NOT NULL,
+  `minimum_value` bigint(21) NOT NULL,
+  `maximum_value` bigint(21) NOT NULL,
+  `start_value` bigint(21) NOT NULL COMMENT 'start value when sequences is created or value if RESTART is used',
+  `increment` bigint(21) NOT NULL COMMENT 'increment value',
+  `cache_size` bigint(21) unsigned NOT NULL,
+  `cycle_option` tinyint(1) unsigned NOT NULL COMMENT '0 if no cycles are allowed, 1 if the sequence should begin a new cycle when maximum_value is passed',
+  `cycle_count` bigint(21) NOT NULL COMMENT 'How many cycles have been done'
+) ENGINE=InnoDB SEQUENCE=1;
+
+-- 테이블 데이터 turtle.my_seq:~1 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `my_seq` DISABLE KEYS */;
+INSERT IGNORE INTO `my_seq` (`next_not_cached_value`, `minimum_value`, `maximum_value`, `start_value`, `increment`, `cache_size`, `cycle_option`, `cycle_count`) VALUES
+	(1001, 1, 9223372036854775806, 1, 1, 1000, 0, 0);
+/*!40000 ALTER TABLE `my_seq` ENABLE KEYS */;
 
 -- 테이블 turtle.product 구조 내보내기
 CREATE TABLE IF NOT EXISTS `product` (
+  `pNum` int(11) NOT NULL,
   `pName` varchar(50) DEFAULT NULL,
   `pCate` varchar(50) DEFAULT NULL,
   `pPrice` int(50) DEFAULT NULL,
@@ -197,30 +262,31 @@ CREATE TABLE IF NOT EXISTS `product` (
   `pMile` int(11) DEFAULT NULL,
   `pUrl` varchar(50) DEFAULT NULL,
   `pMan` int(11) DEFAULT NULL,
-  `pWoman` int(11) DEFAULT NULL
+  `pWoman` int(11) DEFAULT NULL,
+  PRIMARY KEY (`pNum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 테이블 데이터 turtle.product:~18 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT IGNORE INTO `product` (`pName`, `pCate`, `pPrice`, `pShip`, `pCount`, `pCountSell`, `pCumulSell`, `pMile`, `pUrl`, `pMan`, `pWoman`) VALUES
-	('맛있닭(닭가슴살)', '운동식품', 5000, '무료배송', 150, 5, 25000, 1, 'resources/assets/FoodImg/ChickenBreast.PNG', 1, 2),
-	('다이어트 도시락', '운동식품', 6000, '무료배송', 300, 3, 18000, 1, 'resources/assets/FoodImg/DietLunchBox.jpg', 1, 2),
-	('프로틴(ISOLATE)', '운동식품', 11000, '무료배송', 300, 7, 77000, 1, 'resources/assets/FoodImg/f1.jpg', 1, 2),
-	('프로틴(초콜릿맛)', '운동식품', 12000, '무료배송', 300, 5, 60000, 1, 'resources/assets/FoodImg/f2.jpg', 2, 1),
-	('프로틴(에이치프로틴)', '운동식품', 9000, '무료배송', 300, 8, 72000, 1, 'resources/assets/FoodImg/f3.jpg', 3, 1),
-	('새우샐러드', '운동식품', 3000, '무료배송', 300, 4, 12000, 1, 'resources/assets/FoodImg/Salad.jpg', 2, 1),
-	('아이스고구마', '운동식품', 2600, '무료배송', 300, 3, 7800, 1, 'resources/assets/FoodImg/SweatPotato.jpg', 8, 1),
-	('벤치프레스', '헬스기구', 1200000, '무료배송', 100, 6, 7200000, 1, 'resources/assets/HealthImg/BenchPress.PNG', 5, 0),
-	('덤벨', '헬스기구', 4000, '무료배송', 100, 4, 16000, 1, 'resources/assets/HealthImg/Dumbbell.PNG', 3, 1),
-	('하체튼튼철봉', '헬스기구', 800000, '무료배송', 100, 9, 7200000, 1, 'resources/assets/HealthImg/h1.jpg', 1, 0),
-	('어깨당겨기구', '헬스기구', 800000, '무료배송', 100, 2, 1600000, 1, 'resources/assets/HealthImg/LatPullDown.PNG', 1, 1),
-	('런닝머신', '헬스기구', 400000, '무료배송', 100, 5, 2000000, 1, 'resources/assets/HealthImg/RunningMachine.PNG', 3, 2),
-	('스쿼트기구', '헬스기구', 700000, '무료배송', 100, 1, 700000, 1, 'resources/assets/HealthImg/Squat.PNG', 9, 1),
-	('핸들링봉', '요가상품', 11000, '무료배송', 100, 8, 88000, 1, 'resources/assets/YogaImg/y1.jpg', 1, 7),
-	('돌기마사지봉', '요가상품', 2000, '무료배송', 100, 12, 24000, 1, 'resources/assets/YogaImg/y2.jpg', 4, 8),
-	('요가복(여성)', '요가상품', 22000, '일반배송', 100, 5, 110000, 2, 'resources/assets/YogaImg/YogaClothes.PNG', 0, 5),
-	('요가매트', '요가상품', 8000, '무료배송', 100, 7, 56000, 1, 'resources/assets/YogaImg/YogaFoamBlur.PNG', 1, 6),
-	('요가매트(칼라)', '요가상품', 9000, '무료배송', 100, 2, 18000, 1, 'resources/assets/YogaImg/YogaMat.PNG', 1, 1);
+INSERT IGNORE INTO `product` (`pNum`, `pName`, `pCate`, `pPrice`, `pShip`, `pCount`, `pCountSell`, `pCumulSell`, `pMile`, `pUrl`, `pMan`, `pWoman`) VALUES
+	(1, '맛있닭(닭가슴살)', '운동식품', 5000, '무료배송', 300, 5, 25000, 1, 'resources/assets/FoodImg/ChickenBreast.PNG', 1, 2),
+	(2, '다이어트 도시락', '운동식품', 6000, '무료배송', 50, 3, 18000, 1, 'resources/assets/FoodImg/DietLunchBox.jpg', 1, 2),
+	(3, '프로틴(ISOLATE)', '운동식품', 11000, '무료배송', 60, 7, 77000, 1, 'resources/assets/FoodImg/f1.jpg', 1, 2),
+	(4, '프로틴(초콜릿맛)', '운동식품', 12000, '무료배송', 80, 5, 60000, 1, 'resources/assets/FoodImg/f2.jpg', 2, 1),
+	(5, '프로틴(에이치프로틴)', '운동식품', 9000, '무료배송', 300, 8, 72000, 1, 'resources/assets/FoodImg/f3.jpg', 3, 1),
+	(6, '새우샐러드', '운동식품', 3000, '무료배송', 300, 4, 12000, 1, 'resources/assets/FoodImg/Salad.jpg', 2, 1),
+	(7, '아이스고구마', '운동식품', 2600, '무료배송', 300, 3, 7800, 1, 'resources/assets/FoodImg/SweatPotato.jpg', 8, 1),
+	(8, '벤치프레스', '헬스기구', 1200000, '무료배송', 100, 6, 7200000, 1, 'resources/assets/HealthImg/BenchPress.PNG', 5, 0),
+	(9, '덤벨', '헬스기구', 4000, '무료배송', 100, 4, 16000, 1, 'resources/assets/HealthImg/Dumbbell.PNG', 3, 1),
+	(10, '하체튼튼철봉', '헬스기구', 800000, '무료배송', 100, 9, 7200000, 1, 'resources/assets/HealthImg/h1.jpg', 1, 0),
+	(11, '어깨당겨기구', '헬스기구', 800000, '무료배송', 100, 2, 1600000, 1, 'resources/assets/HealthImg/LatPullDown.PNG', 1, 1),
+	(12, '런닝머신', '헬스기구', 400000, '무료배송', 100, 5, 2000000, 1, 'resources/assets/HealthImg/RunningMachine.PNG', 3, 2),
+	(13, '스쿼트기구', '헬스기구', 700000, '무료배송', 100, 1, 700000, 1, 'resources/assets/HealthImg/Squat.PNG', 9, 1),
+	(14, '핸들링봉', '요가상품', 11000, '무료배송', 100, 8, 88000, 1, 'resources/assets/YogaImg/y1.jpg', 1, 7),
+	(15, '돌기마사지봉', '요가상품', 2000, '무료배송', 100, 12, 24000, 1, 'resources/assets/YogaImg/y2.jpg', 4, 8),
+	(16, '요가복(여성)', '요가상품', 22000, '일반배송', 100, 5, 110000, 2, 'resources/assets/YogaImg/YogaClothes.PNG', 0, 5),
+	(17, '요가매트', '요가상품', 8000, '무료배송', 100, 7, 56000, 1, 'resources/assets/YogaImg/YogaFoamBlur.PNG', 1, 6),
+	(18, '요가매트(칼라)', '요가상품', 9000, '무료배송', 100, 2, 18000, 1, 'resources/assets/YogaImg/YogaMat.PNG', 1, 1);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 
 -- 테이블 turtle.refundboard 구조 내보내기
@@ -228,22 +294,26 @@ CREATE TABLE IF NOT EXISTS `refundboard` (
   `rNum` int(255) NOT NULL AUTO_INCREMENT,
   `rId` varchar(50) DEFAULT NULL,
   `rName` varchar(50) DEFAULT NULL,
+  `rEmail` varchar(50) DEFAULT NULL,
+  `rPhone` varchar(50) DEFAULT NULL,
   `rGrade` varchar(50) DEFAULT NULL,
   `rProduct` varchar(50) DEFAULT NULL,
-  `rTitle` varchar(50) DEFAULT NULL,
+  `rUrl` varchar(50) DEFAULT NULL,
   `rNote` varchar(50) DEFAULT NULL,
   `rDate` date DEFAULT sysdate(),
   `rJumunDate` date DEFAULT sysdate(),
   `rFinishDate` date DEFAULT sysdate(),
-  `rCheck` varchar(50) DEFAULT NULL,
+  `rCheck` int(11) DEFAULT NULL,
   PRIMARY KEY (`rNum`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 turtle.refundboard:~2 rows (대략적) 내보내기
+-- 테이블 데이터 turtle.refundboard:~4 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `refundboard` DISABLE KEYS */;
-INSERT IGNORE INTO `refundboard` (`rNum`, `rId`, `rName`, `rGrade`, `rProduct`, `rTitle`, `rNote`, `rDate`, `rJumunDate`, `rFinishDate`, `rCheck`) VALUES
-	(1, 'wkdgurtn', '추효동', '브론즈', '다이어트 도시락', '맛이없네요.', '상한거같은 맛이예요 유통기한도 아슬아슬하고 환불요청합니다. ', '2021-05-19', '2021-05-17', '2021-05-18', '환불신청'),
-	(2, 'ggw21', '김규헌', '플래티넘', '어깨당겨기구', '어깨가 안당겨져요', '어깨당겨기구가아니라 온몸이 당기네요 환불요청합니다.', '2021-05-19', '2021-05-15', '2021-05-18', '환불신청');
+INSERT IGNORE INTO `refundboard` (`rNum`, `rId`, `rName`, `rEmail`, `rPhone`, `rGrade`, `rProduct`, `rUrl`, `rNote`, `rDate`, `rJumunDate`, `rFinishDate`, `rCheck`) VALUES
+	(1, 'wkdgurtn', '추효동', 'cncn@naver', '01066677788', '브론즈', '다이어트 도시락', 'resources/assets/FoodImg/DietLunchBox.jpg', '상한거같은 맛이예요 유통기한도 아슬아슬하고 환불요청합니다. ', '2021-05-19', '2021-05-17', '2021-05-18', 1),
+	(2, 'ggw21', '김규헌', 'gg121@naver.com', '01087761245', '플래티넘', '어깨당겨기구', 'resources/assets/HealthImg/LatPullDown.PNG', '어깨당겨기구가아니라 온몸이 당기네요 환불요청합니다.', '2021-05-19', '2021-05-15', '2021-05-18', 1),
+	(3, 'toowm654', '원태연', 'foew8@naver.com', '01089764124', '플래티넘', '덤벨', 'resources/assets/HealthImg/Dumbbell.PNG', '철인줄알았는데 고무네요. 환불요청합니다.', '2021-05-28', '2021-05-26', '2021-05-28', 0),
+	(5, 'wyt15', '장혁수', 'emak18@naver.com', '01054871154', '플래티넘', '핸들링봉', 'resources/assets/YogaImg/y1.jpg', '고무가아니네요.', '2021-05-28', '2021-05-18', '2021-05-18', 0);
 /*!40000 ALTER TABLE `refundboard` ENABLE KEYS */;
 
 -- 테이블 turtle.sell 구조 내보내기
