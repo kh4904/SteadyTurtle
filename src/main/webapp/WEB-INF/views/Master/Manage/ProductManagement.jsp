@@ -67,6 +67,9 @@
 									<tr>
 										<th><a style="text-align: center;">${product.getpCate() }</a></th>
 									</tr>
+									<tr>
+										<th><a style="text-align: center;">판매량 : ${product.getpCountSell() } 개</a></th>
+									</tr>
 								</table>
 							</form>
 						</div>

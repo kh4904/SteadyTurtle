@@ -13,7 +13,6 @@
 <typeAlias type="com.spring.ex.dto.JumunDto" alias="JumunDto"/>
 
 <!-- 장바구니  Dto -->
-<typeAlias type="com.spring.ex.dto.BasketDto" alias="BasketDto"/> 
 <typeAlias type="com.spring.ex.dto.CartListVO" alias="CartListVO"/>
 
 <!-- 고객문의 Dto -->
