@@ -37,7 +37,7 @@
       <div class="container">
          <div class="col-lg-12">
          <c:if test ="${member.mId != null }">
-         <form method="post" action="refundwrite">
+         <form method="post" action="refundwrite" enctype="multipart/form-data">
          <input type="hidden" id = "rNumber" name="rNumber" value="${jumun.getjNum() }">
          <input type="hidden" id = "rProduct" name="rProduct" value="${jumun.getjName() }">
          <input type="hidden" id = "rId" name="rId" value="${member.getmId() }">
@@ -49,11 +49,12 @@
          <input type="hidden" id = "rJumunDate" name="rJumunDate" value="${jumun.getjJumunDate() }">
          <input type="hidden" id = "rFinishDate" name="rFinishDate" value="${jumun.getjFinishDate() }">
          <input type="hidden" id = "jNum" name="jNum" value="${jumun.getjNum() }">
+            
             <table>
             
                <tr>
                   <th style="text-align: left;">
-                  	<img class="img-fluid" src="resources/assets/img${jumun.getjUrl()}" style="width: 220px; height: 200px;" />
+                  	<img class="img-fluid" src="resources/assets/img${jumun.getjUrl() }" style="width: 220px; height: 200px;" />
                   </th>
                   <th rowspan="4">
                      <div style="text-align: right; margin-left: 20px;">
@@ -75,20 +76,20 @@
                   <tr>
                      <th>
                         <div class="fileBox">
-                           <input type="text" id="img-file" readonly="readonly" style="width:820px; height: 35px;">
-                           <input type="button" value="파일업로드" onclick="onclick=document.all.file.click()">
-                           <input type="file" name="file" id="fileDocument" onchange="javascript:document.getElementById('img-file').value=this.value" style="display:none">
-                        </div>
-                     </th>
-                  </tr>
-                  <tr>
-                     <th>
-                        <div class="fileBox">
-                           <input type="text" id="img-file2" readonly="readonly" style="width:820px; height: 35px;">
-                           <input type="button" value="파일업로드" onclick="onclick=document.all.file2.click()">
-                           <input type="file" name="file2" id="fileDocument2" onchange="javascript:document.getElementById('img-file2').value=this.value" style="display:none">
-                           
-                        </div>
+                           <input type="file" id="pImg" name="file" />
+							<div class="select_img"><img src="" /></div>
+								<script>
+									$("#pImg").change(function(){
+										if(this.files && this.files[0]) {
+											var reader = new FileReader;
+											reader.onload = function(data) {
+												$(".select_img img").attr("src", data.target.result).width(500);        
+											}
+											reader.readAsDataURL(this.files[0]);
+										}
+									});
+								</script>
+							</div>
                      </th>
                   </tr>
                </table>

@@ -104,6 +104,9 @@ public interface MemberDao {
 	//장바구니 추가3
 	public void addCart5(CartVO cart) throws Exception;
 	
+	//장바구니 삭제
+	public void deleteCart(CartVO cart) throws Exception;
+	
 	// 고객문의 게시판 목록 dto
 	public List<BoardDTO> boardList() throws Exception;
 	
@@ -145,4 +148,7 @@ public interface MemberDao {
 	
 	//결제하기
 	public void cashOk(CashlistDto cldto) throws Exception;
+	
+	//결제시 상품 목록 변경
+	public void productDecrease(ProductDto pudto) throws Exception;
 }

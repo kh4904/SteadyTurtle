@@ -197,6 +197,12 @@ public class TotalDao implements MemberDao{
 	public List<CartListVO> cartList(String mId) throws Exception {
 		return sqlSessionTemplate.selectList(namespace + ".cartList", mId);
 	}
+	
+	//장바구니 삭제
+	@Override
+	public void deleteCart(CartVO cart) throws Exception {
+		sqlSessionTemplate.delete(namespace + ".deleteCart", cart);
+	}
 
 	// 고객문의 게시판 목록 select문
 	@Override
@@ -281,5 +287,11 @@ public class TotalDao implements MemberDao{
 	@Override
 	public void cashOk(CashlistDto cldto) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".cashOk", cldto); 
+	}
+	
+	//결제시 상품 목록 변경
+	@Override
+	public void productDecrease(ProductDto pudto) throws Exception {
+		sqlSessionTemplate.update(namespace + ".productDecrease", pudto);
 	}
 }

@@ -104,6 +104,9 @@ public interface TurtleService {
 	//장바구니 추가5
 	public void addCart5(CartVO cart) throws Exception;
 	
+	//장바구니 삭제
+	public void deleteCart(CartVO cart) throws Exception;
+	
 	// 고객문의 게시판 list BoardDTO를 boardList로 선언
 	public List<BoardDTO> boardList() throws Exception;
 	
@@ -145,5 +148,8 @@ public interface TurtleService {
 	
 	//결제하기
 	public void cashOk(CashlistDto cldto) throws Exception;
+	
+	//결제시 상품 목록 변경
+	public void productDecrease(ProductDto pudto) throws Exception;
 	
 }

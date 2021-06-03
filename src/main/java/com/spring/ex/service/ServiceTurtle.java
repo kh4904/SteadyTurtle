@@ -241,6 +241,12 @@ public class ServiceTurtle implements TurtleService{
 		return dao.cartList(mId);
 	}
 	
+	//장바구니 삭제
+	@Override
+	public void deleteCart(CartVO cart) throws Exception {
+		cdao.deleteCart(cart);
+	}
+	
 	// 고객문의 목록
 	@Inject
 	private MemberDao boardDao;
@@ -348,5 +354,10 @@ public class ServiceTurtle implements TurtleService{
 	@Override
 	public void cashOk(CashlistDto cldto) throws Exception {
 		cdao.cashOk(cldto);
+	}
+	
+	//결제시 상품 목록 변경
+	public void productDecrease(ProductDto pudto) throws Exception {
+		pdao.productDecrease(pudto);
 	}
 }

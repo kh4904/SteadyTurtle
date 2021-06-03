@@ -27,39 +27,7 @@
 <link href="resources/css/styles.css" rel="stylesheet" />
 </head>
 <!-- 아이디 비밀번호 찾기 -->
-<body onload="init();">
-<script language="JavaScript">
-var pPrice;
-var pCount;
-function init () {
-	pPrice = document.form.pPrice.value;
-	pCount = document.form.pCount.value;
-	document.form.sum.value = pPrice;
-	change();
-}
-function add () {
-	hm = document.form.pCount;
-	sum = document.form.sum;
-	hm.value ++ ;
-	sum.value = parseInt(hm.value) * pPrice;
-}
-function del () {
-	hm = document.form.pCount;
-	sum = document.form.sum;
-		if (hm.value > 1) {
-			hm.value -- ;
-			sum.value = parseInt(hm.value) * pPrice;
-		}
-}
-function change () {
-	hm = document.form.pCount;
-	sum = document.form.sum;
-		if (hm.value < 0) {
-			hm.value = 0;
-		}
-	sum.value = parseInt(hm.value) * pPrice;
-}  
-</script>
+<body>
 	<!-- Navigation 맨위 로고-->
 	<%@ include file="/WEB-INF/views/menu.jsp"%>
 	<br>
@@ -133,6 +101,7 @@ function change () {
 									<br>
 									<h2 style="color: black;">${product.getpName() }</h2>
 									<input type="hidden" id="pName" name="pName" value="${product.getpName() }" >
+									<input type="hidden" id="pNum" name="pNum" value="${product.getpNum() }" >
 									<input type="hidden" id="pCate" name="pCate" value="${product.getpCate() }" >
 									<hr>
 									<p>
@@ -149,7 +118,7 @@ function change () {
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<!-- db연동 -->
 										<b style="font-size: 20px; color: black;">${pCountsSell } 개</b>
-										<input type="hidden" id="pCount" name="pCount" onchange="change();" value="${pCountsSell }" >
+										<input type="hidden" id="pCount" name="pCount" value="${pCountsSell }" >
 									</p>
 									<hr>
 									<p>

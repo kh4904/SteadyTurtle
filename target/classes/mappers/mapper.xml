@@ -121,6 +121,11 @@ select
      where c.mId = #{mId}
 </select>
 
+<!-- 장바구니 삭제 -->
+<delete id="deleteCart"> 
+	DELETE from cart where cartNum = #{cartNum}
+</delete>
+
 <!-- 고객문의 게시판 목록 select문 -->
 <select id="board" resultType="BoardDTO">SELECT * from board order by bNum DESC</select>
 
@@ -146,7 +151,7 @@ select
 <select id="refund2" resultType="RefundDto">SELECT * from refundboard where rNum = #{rNum} </select>
 
 <!-- 환불요청 게시판작성 -->
-<insert id="refundWrite">insert into refundboard(rNum,rName ,rId, rEmail, rPhone, rGrade,rNumber ,rProduct, rUrl,  rNote, rJumunDate,rFinishDate,rCheck) values(0,#{rName} ,#{rId}, #{rEmail}, #{rPhone}, #{rGrade},#{rNumber} ,#{rProduct}, #{rUrl}, #{rNote}, #{rJumunDate}, #{rFinishDate}, 0)</insert>
+<insert id="refundWrite">insert into refundboard(rNum,rName ,rId, rEmail, rPhone, rGrade,rNumber ,rProduct, rUrl,  rNote, rJumunDate,rFinishDate,rImg,rCheck) values(0,#{rName} ,#{rId}, #{rEmail}, #{rPhone}, #{rGrade},#{rNumber} ,#{rProduct}, #{rUrl}, #{rNote}, #{rJumunDate}, #{rFinishDate},#{rImg} ,0)</insert>
 
 <!-- 환불요청 승락시 update문 -->
 <update id="RefundUpdate">UPDATE refundboard SET rCheck = 1 WHERE rNum = #{rNum} </update>
@@ -174,5 +179,12 @@ select
 	insert into cashlist(cNum, mId, mName, pPrice, pCount, pCate, pName, mAddr, mEmail, cMailNum, cName, cPhone)
 	values(0, #{mId}, #{mName}, #{pPrice}, #{pCount}, #{pCate}, #{pName}, #{mAddr}, #{mEmail}, #{cMailNum}, #{cName}, #{cPhone} )
 </insert>
+
+<!-- 상품판매량에따른 변화 -->
+<update id="productDecrease">
+	UPDATE product SET pCount = pCount-#{pCount}, pCountSell = pCountSell + #{pCount}, pCumulSell = pCumulSell + pPrice * #{pCount} 
+	WHERE pNum = #{pNum}
+</update>
+
 </mapper>
 

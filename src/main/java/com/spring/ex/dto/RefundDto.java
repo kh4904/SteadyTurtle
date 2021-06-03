@@ -27,6 +27,8 @@ public class RefundDto {
     private String rJumunDate;
     // 환불상품 배송완료일
     private String rFinishDate;
+    // 파일첨부
+    private String rImg;
     // 환불상태여부
     private String rCheck;
     
@@ -108,6 +110,12 @@ public class RefundDto {
 	public void setrFinishDate(String rFinishDate) {
 		this.rFinishDate = rFinishDate;
 	}
+	public String getrImg() {
+		return rImg;
+	}
+	public void setrImg(String rImg) {
+		this.rImg = rImg;
+	}
 	public String getrCheck() {
 		return rCheck;
 	}
@@ -117,7 +125,7 @@ public class RefundDto {
 	
 	@Override
 	public String toString() {
-		return "RefundDto [rNum=" + rNum + ",rId=" + rId + ", rName=" + rName + ",rEmail=" + rEmail + ", rPhone=" + rPhone + ", rGrade=" + rGrade + ", rNumber=" + rNumber + ", rProduct=" + rProduct + ", rUrl=" + rUrl + ", rNote=" + rNote + ", rDate=" + rDate + ", rJumunDate=" + rJumunDate + ", rFinishDate=" + rFinishDate +", rCheck=" + rCheck + "]";
+		return "RefundDto [rNum=" + rNum + ",rId=" + rId + ", rName=" + rName + ",rEmail=" + rEmail + ", rPhone=" + rPhone + ", rGrade=" + rGrade + ", rNumber=" + rNumber + ", rProduct=" + rProduct + ", rUrl=" + rUrl + ", rNote=" + rNote + ", rDate=" + rDate + ", rJumunDate=" + rJumunDate + ", rFinishDate=" + rFinishDate +", rCheck=" + rCheck + ", rImg=" + rImg + "]";
 	}
 }
 

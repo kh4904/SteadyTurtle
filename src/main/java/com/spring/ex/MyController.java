@@ -337,6 +337,40 @@ public class MyController {
 		return result;
 	}
 	
+	// 장바구니에서 상품 삭제
+	@ResponseBody
+	@RequestMapping(value = "/deleteCart", method = RequestMethod.POST)
+	public int deleteCart(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, CartVO cart) throws Exception {
+		 
+		int result = 0;
+		int cartNum = 0;
+		 
+			for(String i : chArr) {   
+				cartNum = Integer.parseInt(i);
+				cart.setCartNum(cartNum);
+				service.deleteCart(cart);
+			}   
+			result = 1;
+		return result;  
+	}
+	
+	// 장바구니에서 결제하기
+	@ResponseBody
+	@RequestMapping(value = "/cartCash", method = RequestMethod.POST)
+	public int cartCash(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, CartVO cart) throws Exception {
+		 
+		int result = 0;
+		int cartNum = 0;
+			 
+			for(String i : chArr) {   
+				cartNum = Integer.parseInt(i);
+				cart.setCartNum(cartNum);
+				service.deleteCart(cart);
+			}   
+			result = 1;
+		return result;  
+	}
+	
 	// 주문조회 페이지
 	@RequestMapping(value = "/JumunSearch", method = RequestMethod.GET)
 	public String JumunSearch(Model model) throws Exception {
@@ -503,7 +537,22 @@ public class MyController {
 	
 	// 환불요청 환불신청 글쓴후 DB보내기
 	@RequestMapping(value = "/refundwrite", method = RequestMethod.POST)
-	public String refundwrite(RefundDto rwDto, JumunDto jrDto) throws Exception {
+	public String refundwrite(RefundDto rwDto, MultipartFile file, HttpServletRequest request, JumunDto jrDto) throws Exception {
+		
+		//파일 업로드
+		String imgUploadPath = request.getSession().getServletContext().getRealPath("/resources/assets/img");
+		
+		String fileName = null;
+		
+		if(file != null) {
+			fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes()); 
+		} else {
+			fileName = File.separator + "images" + File.separator + "none.png";
+		}
+
+
+		rwDto.setrImg(File.separator + File.separator + fileName);
+		
 		
 		service.refundWrite(rwDto);
 		service.refundJumun(jrDto);
