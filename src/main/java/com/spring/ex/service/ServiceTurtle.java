@@ -12,6 +12,8 @@ import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
+import com.spring.ex.dto.OrderDetailVO;
+import com.spring.ex.dto.OrderVO;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
 import com.spring.ex.dto.SellDto;
@@ -351,5 +353,15 @@ public class ServiceTurtle implements TurtleService{
 	//결제시 상품 목록 변경
 	public void productDecrease(ProductDto pudto) throws Exception {
 		pdao.productDecrease(pudto);
+	}
+	
+	@Override
+	public void orderInfo(OrderVO order) throws Exception{
+		dao.orderInfo(order);
+	}
+	
+	@Override
+	public void orderInfo_details(OrderDetailVO orderDetail) throws Exception{
+		dao.orderInfo_details(orderDetail);
 	}
 }

@@ -9,6 +9,8 @@ import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
+import com.spring.ex.dto.OrderDetailVO;
+import com.spring.ex.dto.OrderVO;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
 import com.spring.ex.dto.SellDto;
@@ -147,4 +149,8 @@ public interface MemberDao {
 	
 	//결제시 상품 목록 변경
 	public void productDecrease(ProductDto pudto) throws Exception;
+	
+	public void orderInfo(OrderVO order) throws Exception;
+	
+	public void orderInfo_details(OrderDetailVO orderDetail) throws Exception;
 }

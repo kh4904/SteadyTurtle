@@ -12,6 +12,8 @@ import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
+import com.spring.ex.dto.OrderDetailVO;
+import com.spring.ex.dto.OrderVO;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
 import com.spring.ex.dto.SellDto;
@@ -285,5 +287,15 @@ public class TotalDao implements MemberDao{
 	@Override
 	public void productDecrease(ProductDto pudto) throws Exception {
 		sqlSessionTemplate.update(namespace + ".productDecrease", pudto);
+	}
+	
+	@Override
+	public void orderInfo(OrderVO order) throws Exception{
+		sqlSessionTemplate.insert(namespace + ".orderInfo", order);
+	}
+	
+	@Override
+	public void orderInfo_details(OrderDetailVO orderDetail) throws Exception{
+		sqlSessionTemplate.insert(namespace + ".orderInfo_Details", orderDetail);
 	}
 }

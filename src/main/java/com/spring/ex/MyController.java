@@ -1,6 +1,8 @@
 package com.spring.ex;
 
 import java.io.File;
+import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,6 +25,8 @@ import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
+import com.spring.ex.dto.OrderDetailVO;
+import com.spring.ex.dto.OrderVO;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
 import com.spring.ex.dto.SellDto;
@@ -368,6 +372,36 @@ public class MyController {
 			}   
 			result = 1;
 		return result;  
+	}
+	
+	// 주문
+	@RequestMapping(value = "/cartList", method = RequestMethod.POST)
+	public String order(HttpSession session, OrderVO order, OrderDetailVO orderDetail) throws Exception {
+	 
+		MemberDto member = (MemberDto)session.getAttribute("member");  
+		String mId = member.getmId();
+	 
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+		String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
+		String subNum = "";
+	 
+		for(int i = 1; i <= 6; i ++) {
+			subNum += (int)(Math.random() * 10);
+		}
+	 
+		String orderId = ymd + "_" + subNum;
+	 
+		order.setOrderId(orderId);
+		order.setmId(mId);
+	  
+		service.orderInfo(order);
+	 
+		orderDetail.setOrderId(orderId);   
+		service.orderInfo_details(orderDetail);
+	 
+		return "redirect:/main";  
 	}
 	
 	// 주문조회 페이지
