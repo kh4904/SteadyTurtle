@@ -100,9 +100,6 @@
 <!-- 주문내역 승인 update문 -->
 <update id="jumunState">UPDATE jumun SET jState = '승인', jShip = '배송중' WHERE jNum = #{jNum} </update>
 
-<!-- 장바구니 select문 -->
-<select id="basket" resultType="BasketDto">SELECT * from basket</select>
-
 <!-- 장바구니 추가 -->
 <insert id="addCart">
 	insert into cart(cartNum, mId, pNum, cartStock)

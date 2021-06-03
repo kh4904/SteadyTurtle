@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
@@ -172,12 +171,6 @@ public class TotalDao implements MemberDao{
 	public void jumundelete(JumunDto jddto) throws Exception {
 		sqlSessionTemplate.delete(namespace + ".jumunDelete", jddto);
 		
-	}
-	
-	// 장바구니 select문
-	@Override
-	public List<BasketDto> basketList() throws Exception {
-		return sqlSessionTemplate.selectList(namespace+".basket");
 	}
 	
 	//장바구니 추가2

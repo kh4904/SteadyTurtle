@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
@@ -93,9 +92,7 @@ public interface MemberDao {
 	// 주문내역 승인(update)
 	public void jumunState(JumunDto juDto) throws Exception;
 	
-	// 장바구니 dto
-	public List<BasketDto> basketList() throws Exception;
-	
+	// 장바구니
 	public List<CartListVO> cartList(String mId) throws Exception;
 	
 	//장바구니 추가2

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.spring.ex.dto.BasketDto;
 import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
@@ -93,9 +92,7 @@ public interface TurtleService {
 	// 주문신청 삭제
 	public void jumundelete(JumunDto jddto) throws Exception;
 	
-	/* 장바구니  list BasketDto를 basketList()로 선언*/
-	public List<BasketDto> basketList() throws Exception;
-	
+	// 장바구니
 	public List<CartListVO> cartList(String mId) throws Exception;
 	
 	//장바구니 추가2
