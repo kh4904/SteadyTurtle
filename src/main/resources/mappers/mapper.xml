@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.ex.mapper">
+
+<!-- 검색창 select문 -->
+<select id="productSearch" resultType="ProductDto">SELECT * from product WHERE pName LIKE CONCAT('%',#{keyword},'%') 
+</select>
+
 <!-- 회원정보 select문 -->
 <select id="id" resultType="MemberDto">SELECT * from member</select>
 <!--mybatis-confix.xml에서 긴 링크글 MemberDto 로 id는 id라고 지정  -->

@@ -24,6 +24,11 @@ public class TotalDao implements MemberDao{
 	private SqlSession sqlSessionTemplate;
 	private static final String namespace = "com.spring.ex.mapper";//mapper �� id �� ã�°�
 	
+	// 검색기능
+	public List<ProductDto> productSearch(String keyword) throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".productSearch",keyword);
+	}
+	
 	// 회원정보 select문
 	@Override
 	public List<MemberDto> memberList() throws Exception {

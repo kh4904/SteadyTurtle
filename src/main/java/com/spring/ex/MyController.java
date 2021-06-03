@@ -57,6 +57,24 @@ public class MyController {
 		return "Main/main";
 	}
 	
+	//검색 결과 페이지 
+	@RequestMapping(value = "/Search", method = RequestMethod.GET)
+	public String Search() throws Exception {
+		return "Main/Search";
+	}
+	
+	//검색결과 메소드 
+	@RequestMapping(value = "/productSearch", method = RequestMethod.POST)
+	public String productSearch(Model model, ProductDto dto, HttpServletRequest request) throws Exception {
+		
+		String keyword = request.getParameter("keyword");
+		
+		List<ProductDto> list5 = service.productSearch(keyword);	
+		
+		model.addAttribute("productList",list5);
+		return "Main/Search";
+	}
+	
 	// 회원가입 페이지
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join() throws Exception {

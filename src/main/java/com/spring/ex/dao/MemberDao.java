@@ -17,6 +17,10 @@ import com.spring.ex.dto.SellDto;
 
 @Repository
 public interface MemberDao {
+	
+	//검색기능
+	public List<ProductDto> productSearch(String keyword ) throws Exception;
+	
 	// 회원정보 dto
 	public List<MemberDto> memberList() throws Exception;
 	

@@ -21,6 +21,18 @@ import com.spring.ex.dto.SellDto;
 
 @Service
 public class ServiceTurtle implements TurtleService{
+	
+	//검색기능
+	@Inject
+	private MemberDao TotalDao;
+			
+	@Override
+	public List<ProductDto> productSearch(String keyword) throws Exception{
+		
+		return TotalDao.productSearch(keyword);
+	}
+	
+	
 	// 회원정보
 	@Inject
 	private MemberDao memberDao;
