@@ -37,7 +37,7 @@
 				<table>
 					<tr>
 						<td>
-							<img style="width: 250px; height: 200px;" class="img-fluid" src="resources/assets/img${refund.getrUrl() }" />
+							<img style="width: 250px; height: 200px;" class="img-fluid" src="resources/assets/img${refund.getrUrl() }" alt ="사진없음." />
 						</td>
 						<td rowspan="2" style="width: 650px; height: 250px; text-align: center; background-color: #e0e0e0;">
 							${refund.getrNote() }

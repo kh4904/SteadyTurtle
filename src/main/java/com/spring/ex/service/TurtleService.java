@@ -144,7 +144,7 @@ public interface TurtleService {
 	public List<SellDto> sellOne() throws Exception;
 	
 	//결제하기
-	public void cashOk(CashlistDto cldto) throws Exception;
+	public void cashOk(JumunDto cldto) throws Exception;
 	
 	//결제시 상품 목록 변경
 	public void productDecrease(ProductDto pudto) throws Exception;

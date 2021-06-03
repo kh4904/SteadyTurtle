@@ -5,6 +5,8 @@ public class JumunDto {
 	private String jNum;
 	// 주문상품이름
 	private String jName;
+	// 주문상품 카테고리
+	private String jCate;
 	// 주문상품 배송비
 	private String jShipPrice;
 	// 주문상품에 사용한 마일리지
@@ -17,6 +19,16 @@ public class JumunDto {
 	private String jCustomer;
 	// 상품 구매자 아이디
 	private String jId;
+	// 상품 구매자 이메일
+	private String jEmail;
+	// 받는사람 주소
+	private String jAddr;
+	// 받는사람 우편번호
+	private String jMailNum;
+	// 받는사람 이름
+	private String jCatchName;
+	// 받는사람 전화번호
+	private String jPhone;
 	// 상품 이미지 저장경로
 	private String jUrl;	
 	// 상품 배송여부
@@ -30,6 +42,7 @@ public class JumunDto {
 	// 주문시 메모
 	private String jMemo;
 	
+	
 	public String getjNum() {
 		return jNum;
 	}
@@ -41,6 +54,12 @@ public class JumunDto {
 	}
 	public void setjName(String jName) {
 		this.jName = jName;
+	}
+	public String getjCate() {
+		return jCate;
+	}
+	public void setjCate(String jCate) {
+		this.jCate = jCate;
 	}
 	public String getjShipPrice() {
 		return jShipPrice;
@@ -78,6 +97,36 @@ public class JumunDto {
 	public void setjId(String jId) {
 		this.jId = jId;
 	}
+	public String getjEmail() {
+		return jEmail;
+	}
+	public void setjEmail(String jEmail) {
+		this.jEmail = jEmail;
+	}
+	public String getjAddr() {
+		return jAddr;
+	}
+	public void setjAddr(String jAddr) {
+		this.jAddr = jAddr;
+	}
+	public String getjMailNum() {
+		return jMailNum;
+	}
+	public void setjMailNum(String jMailNum) {
+		this.jMailNum = jMailNum;
+	}
+	public String getjCatchName() {
+		return jCatchName;
+	}
+	public void setjCatchName(String jCatchName) {
+		this.jCatchName = jCatchName;
+	}
+	public String getjPhone() {
+		return jPhone;
+	}
+	public void setjPhone(String jPhone) {
+		this.jPhone = jPhone;
+	}
 	public String getjUrl() {
 		return jUrl;
 	}
@@ -114,12 +163,14 @@ public class JumunDto {
 	public void setjMemo(String jMemo) {
 		this.jMemo = jMemo;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "JumunDto[ jNum=" + jNum + ", jName=" + jName + ", jPrice=" + jPrice + ", jCount=" + jCount + 
 				", jCustomer=" + jCustomer + ", jId=" + jId + ", jUrl=" + jUrl + 
-				", jShip=" + jShip + ", jJumunDate=" + jJumunDate + ", jFinishDate=" + jFinishDate + ", jState=" + jState + " , jMemo=" + jMemo +"]";
+				", jShip=" + jShip + ", jJumunDate=" + jJumunDate + ", jFinishDate=" + jFinishDate + ", jState=" + jState + 
+				", jMemo=" + jMemo +", jCate=" + jCate + ", jEmail=" + jEmail + ", jAddr=" + jAddr + ", jMailNum= " + jMailNum + 
+				", jCatchName=" + jCatchName + ", jPhone=" + jPhone + " ]";
 	}
 	
 	

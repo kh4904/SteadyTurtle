@@ -173,8 +173,8 @@ select
 
 <!-- 결제하기 -->
 <insert id="cashOk">
-	insert into cashlist(cNum, mId, mName, pPrice, pCount, pCate, pName, mAddr, mEmail, cMailNum, cName, cPhone)
-	values(0, #{mId}, #{mName}, #{pPrice}, #{pCount}, #{pCate}, #{pName}, #{mAddr}, #{mEmail}, #{cMailNum}, #{cName}, #{cPhone} )
+	insert into jumun(jNum, jName, jCate, jShipPrice, jMile, jPrice, jCount, jCustomer, jId, jEmail, jAddr, jMailNum, jCatchName, jPhone, jUrl, jShip,jFinishDate ,jState, jMemo)
+	values(0, #{jName}, #{jCate}, #{jShipPrice}, #{jMile}, #{jPrice}, #{jCount}, #{jCustomer}, #{jId}, #{jEmail}, #{jAddr}, #{jMailNum}, #{jCatchName}, #{jPhone},#{jUrl}, '배송준비', #{jFinishDate},'미승인',#{jMemo}  )
 </insert>
 
 <!-- 상품판매량에따른 변화 -->

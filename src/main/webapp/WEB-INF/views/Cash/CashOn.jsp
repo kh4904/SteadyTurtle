@@ -47,20 +47,20 @@
 				<!-- 주문자정보 필드셋 -->
 				<fieldset style="background-color: #e3f2fd;">
 					<c:if test="${member != null }">
-						<input type="hidden" id="mId" name="mId" value="${member.mId }">
+						<input type="hidden" id="jId" name="jId" value="${member.mId }">
 					</c:if>
 					<c:if test="${member == null }">
-						<input type="hidden" id="mId" name="mId" value="비회원주문">
+						<input type="hidden" id="jId" name="jId" value="비회원주문">
 					</c:if>
 					<legend style="color: black;">주문자 정보</legend>
 					<label style="color: black;">이름</label> 
-					<input type="text"id="mName" name="mName" value="${member.mName }"style="position: relative; left: 35px; width: 500px;"><br>
+					<input type="text"id="jCustomer" name="jCustomer" value="${member.mName }"style="position: relative; left: 35px; width: 500px;"><br>
 					<label style="color: black;">휴대전화</label> <input type="tel"
-						id="mPhone" name="" mPhone"" value="${member.mPhone }"
+						id="" name="" value="${member.mPhone }"
 						style="width: 500px;"><br> <small
 						style="color: red; position: relative; left: 80px;">' - '
 						빼고 입력해주세요.</small><br> <label style="color: black;">이메일</label> <input
-						type="email" id="mEmail" name="mEmail" value="${member.mEmail }"
+						type="email" id="jEmail" name="jEmail" value="${member.mEmail }"
 						style="position: relative; left: 20px; width: 500px;">
 				</fieldset>
 
@@ -73,13 +73,13 @@
 				<fieldset style="background-color: #e3f2fd;">
 					<legend style="color: black;">배송지 정보</legend>
 					<label style="color: black;">받는분</label> 
-					<input type="text" id="cName" name="cName" style="position: relative; left: 25px; width: 500px;"><br>
+					<input type="text" id="jCatchName" name="jCatchName" style="position: relative; left: 25px; width: 500px;"><br>
 					<label style="color: black;">주소</label><br> 
-					<input class="text" id="mAddr" name="mAddr" value="${member.mAddr }" style="position: relative; left: 75px; top: -30px; width: 500px;">
+					<input class="text" id="jAddr" name="jAddr" value="${member.mAddr }" style="position: relative; left: 75px; top: -30px; width: 500px;">
 					<br> <label style="color: black;">우편번호</label> 
-					<input type="text" id="cMailNum" name="cMailNum" style="position: relative; left: 5px; width: 500px;"><br>
+					<input type="text" id="jMailNum" name="jMailNum" style="position: relative; left: 5px; width: 500px;"><br>
 					<label style="color: black;">휴대전화</label> 
-					<input type="tel" id="cPhone" name="cPhone" placeholder="01011223344" style="position: relative; left: 5px; width: 500px;"><br>
+					<input type="tel" id="jPhone" name="jPhone" placeholder="01011223344" style="position: relative; left: 5px; width: 500px;"><br>
 					<small style="color: red; position: relative; left: 80px;">'
 						- ' 빼고 입력해주세요.</small><br>
 				</fieldset>
@@ -100,9 +100,10 @@
 						<div class="col-md-6">
 									<br>
 									<h2 style="color: black;">${product.getpName() }</h2>
-									<input type="hidden" id="pName" name="pName" value="${product.getpName() }" >
+									<input type="hidden" id="jName" name="jName" value="${product.getpName() }" >
 									<input type="hidden" id="pNum" name="pNum" value="${product.getpNum() }" >
-									<input type="hidden" id="pCate" name="pCate" value="${product.getpCate() }" >
+									<input type="hidden" id="jCate" name="jCate" value="${product.getpCate() }" >
+									<input type="hidden" id="jUrl" name="jUrl" value="${product.getpImg() }" >
 									<hr>
 									<p>
 										<b style="font-size: 20px; color: black;">주문수량 : </b>
@@ -118,6 +119,7 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<!-- db연동 -->
 										<b style="font-size: 20px; color: black;">${pCountsSell } 개</b>
+										<input type="hidden" id="jCount" name="jCount" value="${pCountsSell }" >
 										<input type="hidden" id="pCount" name="pCount" value="${pCountsSell }" >
 									</p>
 									<hr>
@@ -132,7 +134,7 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<!-- db연동 -->
-										<b style="font-size: 20px; color: black;">${product.getpPrice() } 원</b> 
+										<b style="font-size: 20px; color: black;">${product.getpPrice() } 원</b>
 									</p>
 									<hr>
 									<p>
@@ -168,9 +170,11 @@
 										<!-- db연동 -->
 										<c:if test="${product.getpShip() eq '무료배송' }">
 											<b style="font-size: 20px; color: black;">무료배송</b>
+											<input type="hidden" id="jShipPrice" name="jShipPrice" value= 0 >
 										</c:if>
 										<c:if test="${product.getpShip() eq '일반배송' }">
 											<b style="font-size: 20px; color: black;">3000 원</b>
+											<input type="hidden" id="jShipPrice" name="jShipPrice" value=3000 >
 										</c:if>
 									</p>
 									<hr>
@@ -178,11 +182,11 @@
 									<h4 style="text-align: right; color: black;">
 										<c:if test="${product.getpShip() eq '무료배송' }">
 											총 결제금액 : ${sum }
-											<input type="hidden" id="pPrice" name="pPrice" value="${sum }" >
+											<input type="hidden" id="jPrice" name="jPrice" value="${sum }" >
 										</c:if>
 										<c:if test="${product.getpShip() eq '일반배송' }">
 											총 결제금액 : ${sum + 3000}
-											<input type="hidden" id="pPrice" name="pPrice" value="${sum + 3000 }" >
+											<input type="hidden" id="jPrice" name="jPrice" value="${sum }" >
 										</c:if>
 									</h4>
 									

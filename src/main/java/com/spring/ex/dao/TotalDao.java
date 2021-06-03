@@ -278,7 +278,7 @@ public class TotalDao implements MemberDao{
 	
 	//결제하기
 	@Override
-	public void cashOk(CashlistDto cldto) throws Exception {
+	public void cashOk(JumunDto cldto) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".cashOk", cldto); 
 	}
 	

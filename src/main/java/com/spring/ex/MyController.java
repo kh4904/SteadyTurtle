@@ -453,7 +453,7 @@ public class MyController {
 			
 	//결제하기
 	@RequestMapping(value = "CashOk", method = RequestMethod.POST)
-	public String CashOk(CashlistDto cldto, ProductDto pudto) throws Exception {
+	public String CashOk(JumunDto cldto, ProductDto pudto) throws Exception {
 		
 		ServiceTurtle.cashOk(cldto);
 		ServiceTurtle.productDecrease(pudto);

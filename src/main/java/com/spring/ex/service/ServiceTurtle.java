@@ -345,7 +345,7 @@ public class ServiceTurtle implements TurtleService{
 		
 	//결제하기
 	@Override
-	public void cashOk(CashlistDto cldto) throws Exception {
+	public void cashOk(JumunDto cldto) throws Exception {
 		cdao.cashOk(cldto);
 	}
 	
