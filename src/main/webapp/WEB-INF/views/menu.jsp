@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <nav class="navbar " id="mainNav"
 	style="width: 100%; height: 300px; background-color: #000000;">
 	<div class="container-fluid">
@@ -176,7 +177,7 @@
 						style="position: relative; top: 30px; left: 20px;">
 						<li role="presentation" class="active">
 							<p>
-								사용기능/누적 <br /> 마일리지<br /> <label>${member.mMile }/${member.mCumulmile}
+								사용기능/누적 <br /> 마일리지<br /> <label><fmt:formatNumber pattern="###,###,###" value="${member.getmMile()}" />/<fmt:formatNumber pattern="###,###,###" value="${member.mCumulmile}" />
 									p</label>
 							</p>
 						</li>

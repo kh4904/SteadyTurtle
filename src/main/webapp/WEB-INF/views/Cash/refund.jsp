@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +66,7 @@
                		<th style="width:300px;">${jumun.getjName() }</th>
                     <th style="width:350px;">${jumun.getjJumunDate() }</th>
                     <th style="width:300px;">${jumun.getjNum() }</th>
-                    <th style="width:200px;">${jumun.getjPrice()}원<br>${jumun.getjCount() }개</th>
+                    <th style="width:200px;"><fmt:formatNumber pattern="###,###,###" value="${jumun.getjPrice()}" />원<br>${jumun.getjCount() }개</th>
                     <th style="width:150px;">
                     <c:choose>
                     	<c:when test="${jumun.getjShip() eq '환불완료'}">

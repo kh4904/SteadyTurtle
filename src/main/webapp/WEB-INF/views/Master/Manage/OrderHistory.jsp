@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +58,7 @@
 							<td>${jumun.getjCustomer() }</td>
 							<td>${jumun.getjId() }</td>
 							<td>${jumun.getjCount() }</td>
-							<td>${jumun.getjPrice() }</td>
+							<td><fmt:formatNumber pattern="###,###,###" value="${jumun.getjPrice()}" /></td>
 							<c:choose>
 								<c:when test="${jumun.getjState() eq '승인'}">
        							 <td style="color:blue;">승인</td>

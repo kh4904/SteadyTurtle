@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,8 +84,8 @@
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>마일리지</b></td>
-							<td colspan="2">${member2.getmMile() }/
-								${member.getmCumulmile() } P</td>
+							<td colspan="2"><fmt:formatNumber pattern="###,###,###" value="${member2.getmMile()}" />/
+								<fmt:formatNumber pattern="###,###,###" value="${member2.getmCumulmile()}" /> P</td>
 						</tr>
 					</tbody>
 				</table>
@@ -119,8 +120,8 @@
 									<th style="background-color: #eeeeee;">${jumun.getjName() }</th>
 									<th style="background-color: #eeeeee;">${jumun.getjJumunDate() }</th>
 									<th style="background-color: #eeeeee;">${jumun.getjCount() }</th>
-									<th style="background-color: #eeeeee;">${jumun.getjMile() }</th>
-									<th style="background-color: #eeeeee;">${jumun.getjPrice() }</th>
+									<th style="background-color: #eeeeee;"><fmt:formatNumber pattern="###,###,###" value="${jumun.getjMile()}" /></th>
+									<th style="background-color: #eeeeee;"><fmt:formatNumber pattern="###,###,###" value="${jumun.getjPrice()}" /></th>
 									<th style="background-color: #eeeeee;">${jumun.getjFinishDate() }</th>
 									<c:choose>
 										<c:when test="${jumun.getjShip() eq '배송준비'}">

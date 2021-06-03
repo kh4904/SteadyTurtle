@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,25 +65,25 @@
 						<th colspan="5">
 							<h6 style="text-align: left;">상품금액</h6>
 						</th>
-						<th style="text-align: right;"><h6>${jumun.getjPrice() }원</h6>
+						<th style="text-align: right;"><h6><fmt:formatNumber pattern="###,###,###" value="${jumun.getjPrice()}" />원</h6>
 					</tr>
 					<tr>
 						<th colspan="5">
 							<h6 style="text-align: left;">배송비</h6>
 						</th>
-						<th style="text-align: right;"><h6>${jumun.getjShipPrice() }원</h6>
+						<th style="text-align: right;"><h6><fmt:formatNumber pattern="###,###,###" value="${jumun.getjShipPrice()}" />원</h6>
 					</tr>
 					<tr>
 						<th colspan="5">
 							<h6 style="text-align: left;">사용한 마일리지</h6>
 						</th>
-						<th style="text-align: right;"><h6 style="color: red;">${jumun.getjMile() }원</h6>
+						<th style="text-align: right;"><h6 style="color: red;"><fmt:formatNumber pattern="###,###,###" value="${jumun.getjMile()}" />원</h6>
 					</tr>
 					<tr>
 						<th colspan="5">
 							<h6 style="text-align: left;">결제금액</h6>
 						</th>
-						<th style="text-align: right;"><h4>${jumun.getjPrice() + jumun.getjShipPrice() - jumun.getjMile() }원</h4>
+						<th style="text-align: right;"><h4><fmt:formatNumber pattern="###,###,###" value="${jumun.getjPrice() + jumun.getjShipPrice() - jumun.getjMile() }" />원</h4>
 					</tr>
 				</table>
 				<!-- 밑줄 -->
@@ -102,7 +103,7 @@
 								class="img-fluid" src="resources/assets/img${jumun.getjUrl()}"
 								style="width: 110px; height: 100px;" /></th>
 						<th style="width: 300px;">${jumun.getjName() }</th>
-						<th style="width: 250px;">${jumun.getjPrice() }원</th>
+						<th style="width: 250px;"><fmt:formatNumber pattern="###,###,###" value="${jumun.getjPrice()}" />원</th>
 						<th style="width: 250px;">${jumun.getjCount() } 개</th>
 						<th style="width: 150px;"><h
 								style="color:orange; font-size:20px;">${jumun.getjShip() }</h></th>
