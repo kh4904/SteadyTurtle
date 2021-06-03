@@ -10,7 +10,6 @@ import com.spring.ex.dao.MemberDao;
 import com.spring.ex.dto.BoardDTO;
 import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
-import com.spring.ex.dto.CashlistDto;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
 import com.spring.ex.dto.ProductDto;
