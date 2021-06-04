@@ -187,6 +187,24 @@ public class MyController {
 		return path;
 	}
 	
+	//비회원 주문조회
+	@RequestMapping(value="/jumunLogin", method = RequestMethod.POST)
+	public String jumunLogin(JumunDto jumDto, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+		String path ="";
+		HttpSession sessoinjum = req.getSession();
+		JumunDto jumunLogin = ServiceTurtle.jumunLogin(jumDto);
+		if(jumunLogin == null) {
+			rttr.addFlashAttribute("jumunLogin1", false);
+			path = "redirect:/main";
+		} else {
+			sessoinjum.setAttribute("jumunLogin", jumunLogin);
+			rttr.addFlashAttribute("jumunLogin2", true);
+			path = "Login/JumunSearch";
+		}
+		
+		return path;
+	}
+	
 	// 헬스기구 페이지
 	@RequestMapping(value = "/Health", method = RequestMethod.GET)
 	public String Health(Model model) throws Exception {

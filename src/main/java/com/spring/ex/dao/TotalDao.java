@@ -70,6 +70,11 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectOne(namespace + ".mPw",mPwDto);
 	}
 	
+	//비회원 주문 조회
+	@Override
+	public JumunDto jumunLogin(JumunDto jumDto) throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".jPhone", jumDto);
+	}
 	// 회원상세
 	@Override
 	public MemberDto memberDetail(MemberDto mddto) throws Exception{

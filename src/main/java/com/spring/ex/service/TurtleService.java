@@ -40,6 +40,9 @@ public interface TurtleService {
 	/* 비밀번호찾기 MemberDto를 memberPw()로 선언*/
 	public MemberDto memberPw(MemberDto mPwDto) throws Exception;
 	
+	//비회원 주문 조회
+	public JumunDto jumunLogin(JumunDto jumDto) throws Exception;
+	
 	//회원상세 MemberDto를 mddto로 선언
 	public MemberDto memberDetail(MemberDto mddto) throws Exception;
 	

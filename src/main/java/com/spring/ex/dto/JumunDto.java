@@ -172,6 +172,8 @@ public class JumunDto {
 				", jMemo=" + jMemo +", jCate=" + jCate + ", jEmail=" + jEmail + ", jAddr=" + jAddr + ", jMailNum= " + jMailNum + 
 				", jCatchName=" + jCatchName + ", jPhone=" + jPhone + " ]";
 	}
-	
-	
+
+	public String jumunLogin() {
+		return "jumDto[jPhone=" + jPhone + "]";
+	}
 }

@@ -141,15 +141,10 @@
                   </c:if>
                </c:forEach>
             </div>
-            
-         </c:if>
+            </c:if>
+
          
-         <c:if test="${member.mId == null }">
-            <script>
-               alert("로그인후 사용가능")
-               location.href = "main";
-            </script>
-         </c:if>
+         
       </div>
    </section>
 

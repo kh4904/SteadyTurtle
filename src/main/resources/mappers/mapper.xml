@@ -37,6 +37,11 @@
 <!-- 비밀번호찾기 select문 -->
 <select id="mPw" resultType="MemberDto">SELECT * from member WHERE mId =#{mId} and mName = #{mName} and mEmail=#{mEmail}</select>
 
+<!-- 비회원 주문조회 -->
+<select id = "jumunLogin" resultType="JumunDto">
+	SELECT * from jumun WHERE jPhone = #{jPhone}
+</select>
+
 <!-- 회원상세 select문 -->
 <select id="memberDetail" resultType="MemberDto">SELECT * from member where mId = #{mId} </select>
 
@@ -176,6 +181,7 @@ select
 	UPDATE product SET pCount = pCount-#{pCount}, pCountSell = pCountSell + #{pCount}, pCumulSell = pCumulSell + pPrice * #{pCount} 
 	WHERE pNum = #{pNum}
 </update>
+
 
 </mapper>
 

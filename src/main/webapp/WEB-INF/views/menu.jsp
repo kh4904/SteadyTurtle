@@ -11,17 +11,20 @@
 		</div>
 		<!-- 검색창 -->
 		<div class="col-lg-5">
-			<form method="POST" action="productSearch" id ="search" name="search">
-					<div class="list-group">
-						<input type="text" class="form-control" placeholder="검색창"
-							id="keyword" name="keyword" style="width: 500px; height: 50px; position:relative; left:-30px;">
-					</div>
-					<div class="list-group">
-						<button type="submit" class="btn btn-default" style="position:relative; width:50px; height:30px; left:470px; top:-50px;"> <i
-							class="fas fa-search"
-							style="width: 50px; height: 30px; color: #fff;"></i></button>
-					</div>
-				
+			<form method="POST" action="productSearch" id="search" name="search">
+				<div class="list-group">
+					<input type="text" class="form-control" placeholder="검색창"
+						id="keyword" name="keyword"
+						style="width: 500px; height: 50px; position: relative; left: -30px;">
+				</div>
+				<div class="list-group">
+					<button type="submit" class="btn btn-default"
+						style="position: relative; width: 50px; height: 30px; left: 470px; top: -50px;">
+						<i class="fas fa-search"
+							style="width: 50px; height: 30px; color: #fff;"></i>
+					</button>
+				</div>
+
 			</form>
 
 
@@ -131,7 +134,7 @@
 						<!-- 회원 ,비회원(주문하기) 탭창 클릭시 변화 (비회원 주문조회폼) -->
 						<div class="tab-pane fade" id="nLogin">
 							<!-- 이름, 전화번호 입력후 배송조회버튼 이벤트 -->
-							<form method="post" action="loginAction.jsp">
+							<form method="post">
 								<!-- 이름 입력 -->
 								<div class="form-group" style="position: relative; top: 1px;">
 									이름 <input type="text" class="form-control" placeholder="입력해주세요"
@@ -141,11 +144,11 @@
 								<!-- 전화번호 입력 -->
 								<div class="form-group" style="position: relative; top: -30px;">
 									P.H.<input type="text" class="form-control"
-										placeholder="입력해주세요" name="userNumber" maxlength="20"
+										placeholder="입력해주세요" name="jPhone" maxlength="20"
 										style="width: 200px; height: 40px; position: relative; left: 40px; top: -30px;">
 								</div>
 								<!-- 배송조회 버튼 -->
-								<input type="submit" class="btn" value="배송조회"
+								<input type="submit" class="btn" value="배송조회" id="jumunLogin"
 									style="color: #fff; background-color: #373737; width: 100px; height: 80px; position: relative; top: -160px; left: 250px;">
 							</form>
 							<!-- 회원가입 -->
@@ -157,6 +160,20 @@
 						</div>
 					</div>
 				</c:if>
+
+
+				<c:if test="${jumunLogin1 == false }">
+					<script>
+						alert("이름 또는 전화번호를 확인 후 다시 조회해주시기 바랍니다.")
+					</script>
+				</c:if>
+				<c:if test="${jumunLogin2 == true}">
+					<script>
+						alert("${jumunLogin.jCustomer} 님 환영합니다.")
+					</script>
+				</c:if>
+
+
 
 				<c:if test="${msg3 == false }">
 					<script>
@@ -177,8 +194,9 @@
 						style="position: relative; top: 30px; left: 20px;">
 						<li role="presentation" class="active">
 							<p>
-								사용기능/누적 <br /> 마일리지<br /> <label><fmt:formatNumber pattern="###,###,###" value="${member.getmMile()}" />/<fmt:formatNumber pattern="###,###,###" value="${member.mCumulmile}" />
-									p</label>
+								사용기능/누적 <br /> 마일리지<br /> <label><fmt:formatNumber
+										pattern="###,###,###" value="${member.getmMile()}" />/<fmt:formatNumber
+										pattern="###,###,###" value="${member.mCumulmile}" /> p</label>
 							</p>
 						</li>
 						<li role="presentation" style="position: relative; left: 80px;">

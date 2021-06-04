@@ -40,6 +40,9 @@ public interface MemberDao {
 	// 비밀번호찾기 dto
 	public MemberDto memberPw(MemberDto mPwDto) throws Exception;
 	
+	//비회원 주문 조회 dto
+	public JumunDto jumunLogin(JumunDto jumDto) throws Exception;
+	
 	// 회원상세 dto
 	public MemberDto memberDetail(MemberDto mddto) throws Exception;
 	

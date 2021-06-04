@@ -89,6 +89,13 @@ public class ServiceTurtle implements TurtleService{
 		return memberDaoPw.memberPw(mPwDto);
 	}
 	
+	//비회원 주문 조회
+	@Inject MemberDao jumundao;
+	@Override
+	public JumunDto jumunLogin(JumunDto jumDto) throws Exception {
+		return jumundao.jumun(jumDto);
+	}
+	
 	//회원상세
 	@Inject MemberDao mddao;
 		
