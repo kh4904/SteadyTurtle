@@ -6,6 +6,10 @@
 <select id="productSearch" resultType="ProductDto">SELECT * from product WHERE pName LIKE CONCAT('%',#{keyword},'%') 
 </select>
 
+<!-- 회원 검색창 select문 -->
+<select id="memberSearch" resultType="MemberDto">SELECT * from member WHERE mName LIKE CONCAT('%',#{key},'%')
+</select>
+
 <!-- 회원정보 select문 -->
 <select id="id" resultType="MemberDto">SELECT * from member</select>
 <!--mybatis-confix.xml에서 긴 링크글 MemberDto 로 id는 id라고 지정  -->

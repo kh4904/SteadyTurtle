@@ -32,28 +32,9 @@
 	<%@ include file="/WEB-INF/views/Master/Mastermenu.jsp"%>
 
 	<!-- 회원정보 목록창 -->
-	<section class="page-section portfolio" id="portfolio" style="min-height:700px;">
+	<section class="page-section portfolio" id="portfolio">
 		<div class="container">
 			<!-- 회원정보 검색창(이름,아이디 검색) -->
-			
-			<!-- 검색창 -->
-			<div class="col-lg-5">
-			<form method="POST" action="MemberSearch" id="search" name="search">
-					<div class="list-group">
-						<input type="text" class="form-control" placeholder="회원 검색창"
-							id="key" name="key"
-							style="width: 150px; height: 50px; position: relative; left: 850px; top:20px;">
-					</div>
-					<div class="list-group">
-						<button type="submit" class="btn btn-default"
-							style="position: relative; width: 30px; height: 30px; left: 1000px; top: -25px;">
-							<i class="fas fa-search"
-								style="width: 50px; height: 30px; color: #00000;"></i>
-						</button>
-					</div>
-				</form>
-			</div>
-			
 			
 			
 			
@@ -82,7 +63,7 @@
 					<hr style="background-color: black;">
 				</div>
                  
-				<!-- 회원 정보 출력 -->
+				<!-- 회원 정보 출력 --> 
 				 <table style="width: 100%;">
 					<div class="row justify-content-center">
 					<c:forEach items="${memberList}" var="member">
@@ -109,6 +90,7 @@
 					</c:forEach>
 					</div>
 				</table> 
+				
 				
 				
 			</div>

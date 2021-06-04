@@ -19,6 +19,9 @@ public interface MemberDao {
 	//검색기능
 	public List<ProductDto> productSearch(String keyword ) throws Exception;
 	
+	//멤버 검색 기능
+	public List<MemberDto> memberSearch(String key ) throws Exception;
+	
 	// 회원정보 dto
 	public List<MemberDto> memberList() throws Exception;
 	

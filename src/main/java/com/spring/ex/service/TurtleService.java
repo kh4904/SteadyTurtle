@@ -19,6 +19,9 @@ public interface TurtleService {
 	/*검색 기능 product dto 를 pSDto로 선언*/
 	public List<ProductDto> productSearch(String keyword) throws Exception;
 	
+	/*멤버 검색 기능 */
+	public List<MemberDto> memberSearch(String key) throws Exception;
+	
 	/* 회원정보 list MemberDto를 memberList()로 선언*/
 	public List<MemberDto> memberList() throws Exception;
 	

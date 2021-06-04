@@ -30,6 +30,13 @@ public class ServiceTurtle implements TurtleService{
 		return TotalDao.productSearch(keyword);
 	}
 	
+	//멤버 검색 기능 
+	@Override
+	public List<MemberDto> memberSearch(String key) throws Exception{
+		
+		return TotalDao.memberSearch(key);
+	}
+	
 	
 	// 회원정보
 	@Inject

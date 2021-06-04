@@ -27,6 +27,11 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectList(namespace + ".productSearch",keyword);
 	}
 	
+	// 멤버 검색 기능 
+	public List<MemberDto> memberSearch(String key) throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".memberSearch",key);
+	}
+	
 	// 회원정보 select문
 	@Override
 	public List<MemberDto> memberList() throws Exception {

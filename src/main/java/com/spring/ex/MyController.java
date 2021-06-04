@@ -941,6 +941,19 @@ public class MyController {
 		return "Master/Customer/CustomerManage";
 	}
 	
+	// 검색결과 메소드
+	@RequestMapping(value = "/MemberSearch", method = RequestMethod.POST)
+	public String memberSearch(Model model, MemberDto dto, HttpServletRequest request) throws Exception {
+
+		String key = request.getParameter("key");
+
+		List<MemberDto> list = service.memberSearch(key);
+
+		model.addAttribute("memberList", list);
+		
+		return "Master/Customer/CustomerManage";
+	}
+	
 	//회원상세
 	@RequestMapping(value = "/DetailCustomerManage", method=RequestMethod.POST)
 	public String DCustomerManage(MemberDto mddto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
