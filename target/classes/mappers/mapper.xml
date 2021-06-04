@@ -179,15 +179,14 @@ select
 
 <!-- 주문 정보 -->
 <insert id="orderInfo">
- insert into tbl_order(orderId, mId, orderRec, userAddr1, userAddr2, userAddr3, orderPhon, amount)
-     values(#{orderId}, #{mId}, #{orderRec}, #{userAddr1}, #{userAddr2}, #{userAddr3}, #{orderPhon}, #{amount})
+ insert into tbl_order(orderId, mId, orderRec, userAddr1, userAddr2, userAddr3, orderPhon, total_sum)
+     values(#{orderId}, #{mId}, #{orderRec}, #{userAddr1}, #{userAddr2}, #{userAddr3}, #{orderPhon}, #{total_sum})
 </insert>
    
 <!-- 주문 상세 정보 --> 
 <insert id="orderInfo_Details">
  insert into tbl_order_details(orderDetailsNum, orderId, pNum, cartStock)
-     select nextval(tbl_order_details_seq), #{orderId}, pNum, cartStock
-         from tbl_cart   
+     values(NEXTVAL(tbl_order_details_seq), #{orderId}, #{pNum}, #{cartStock}) 
 </insert> 
 
 </mapper>

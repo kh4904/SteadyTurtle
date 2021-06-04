@@ -72,15 +72,28 @@
 		
 		.orderInfo .inputArea #sample2_address { width:230px; }
 		.orderInfo .inputArea #sample2_detailAddress { width:280px; }
-		.orderInfo .inputArea #sample2_extraAddress { display:none; }
+		.orderInfo .inputArea #sample2_extraAddress { width:280px; }
 		
 	</style>
+	<script language="javascript">
+function itemSum(frm)
+{
+   var sum = 0;
+   var count = frm.chBox.length;
+   for(var i=0; i < count; i++ ){
+       if( frm.chBox[i].checked == true ){
+	    sum += parseInt(frm.chBox[i].value);
+       }
+   }
+   frm.total_sum.value = sum;
+}
+</script>
 <!-- 장바구니 -->
 <body>
 
 	<!-- Navigation 맨위 로고-->
 	<%@ include file="/WEB-INF/views/menu.jsp"%>
-
+<form name="form" role="form" method="post" autocomplete="off">
 	<!-- 장바구니-->
 	<section class="page-section portfolio">
 		<div class="container"
@@ -92,18 +105,22 @@
 				<div class="divider-custom" style="display: block;">
 					<hr style="background-color: black;">
 				</div>
+				
 
 				<table style="width: 100%">
 					<tr>
-						<th style="width: 150px; height: 43px; text-align: center"><input
-							type="checkbox" name="allCheck" id="allCheck"
-							style="width: 25px; height: 25px;" />
+						<th style="width: 150px; height: 43px; text-align: center">
+						
+							<input type="checkbox" name="allCheck" id="allCheck" style="width: 25px; height: 25px;" value="1000"  onClick="itemSum(this.form);"/>
+							
+							
 							<h5>전체선택</h5>
 							<script>
                   				$("#allCheck").click(function(){
                    					var chk = $("#allCheck").prop("checked");
                    					if(chk) {
                     					$(".chBox").prop("checked", true);
+                    					
                    					} else {
                     					$(".chBox").prop("checked", false);
                    					}
@@ -122,16 +139,17 @@
 					<hr style="background-color: black;">
 				</div>
 				<c:if test="${member.mId != null }">
-
 					<!-- 장바구니에 담긴 상품 -->
 					<div class="row">
-					<c:set var = "allSum" value="0" />
+						<c:set var = "total_sum" value="0" />
 						<c:forEach items="${cartList}" var="cartList">
+							
 								<table style="width: 100%">
 									<tr style="height: 100px;">
 										<td style="width: 150px; height: 43px; text-align: center">
 											<div class = "checkBox">
-												<input type = "checkbox" name="chBox" class="chBox" data-cartNum="${cartList.cartNum}"/>
+												<input type = "checkbox" name="chBox" class="chBox" value="${cartList.pPrice * cartList.cartStock}" data-cartNum="${cartList.cartNum}" onClick="itemSum(this.form);"/>
+												
 												<script>
 													$(".chBox").click(function(){
 														$("#allCheck").prop("checked", false);
@@ -170,11 +188,19 @@
 										</td>
 									</tr>
 								</table>
+								
+							
 								<input type="submit" value="결제하기">
-								<c:set var = "allSum" value="${allSum + (cartList.pPrice * cartList.cartStock) }" />
+								
+								<c:set var = "total_sum" value="${total_sum + (cartList.pPrice * cartList.cartStock) }" />
+								
+								
 						</c:forEach>
+						
 					</div>
+					
 				</c:if>
+				
 			</div>
 		</div>
 	</section>
@@ -185,8 +211,8 @@
 			<hr style="background-color: black;">
 		</div>
 			<div class="listResult">
-				<div class="allSum">
-					총 합계 : <fmt:formatNumber pattern="###,###,###" value="${allSum}" />원
+				<div class="allsum">
+					총 합계 : <fmt:formatNumber pattern="###,###,###" value="${total_sum }" />원<input name="total_sum" type="text" size="20" readonly >
 				</div>
 				<div class="orderOpne">
 					<button type="button" class="orderOpne_bnt">주문 정보 입력</button>
@@ -202,9 +228,6 @@
 			</div>
 			
 			<div class="orderInfo">
-				<form role="form" method="post" autocomplete="off" action="cartList">
-							
-					<input type="hidden" name="amount" value="${sum}" />
 							
 					<div class="inputArea">
 						<label for="">수령인</label>
@@ -334,12 +357,10 @@
 						</script>
 						
 					</div>
-					
-				</form>	
 			</div>
 			</div>
 	
-	
+	</form>
 		<p style="text-align: right;">
 		<!-- 밑줄 -->
 		<div class="divider-custom" style="display: block;">

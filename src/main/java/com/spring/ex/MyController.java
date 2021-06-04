@@ -375,7 +375,7 @@ public class MyController {
 	}
 	
 	// 주문
-	@RequestMapping(value = "/cartList", method = RequestMethod.POST)
+	@RequestMapping(value = "/basket", method = RequestMethod.POST)
 	public String order(HttpSession session, OrderVO order, OrderDetailVO orderDetail) throws Exception {
 	 
 		MemberDto member = (MemberDto)session.getAttribute("member");  
@@ -398,7 +398,7 @@ public class MyController {
 	  
 		service.orderInfo(order);
 	 
-		orderDetail.setOrderId(orderId);   
+		orderDetail.setOrderId(orderId);
 		service.orderInfo_details(orderDetail);
 	 
 		return "redirect:/main";  

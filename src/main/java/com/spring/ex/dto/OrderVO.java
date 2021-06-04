@@ -11,7 +11,7 @@ public class OrderVO {
 	private String userAddr2;
 	private String userAddr3;
 	private String orderPhon;
-	private int amount;
+	private int total_sum;
 	private Date orderDate;
 	public String getOrderId() {
 		return orderId;
@@ -55,11 +55,12 @@ public class OrderVO {
 	public void setOrderPhon(String orderPhon) {
 		this.orderPhon = orderPhon;
 	}
-	public int getAmount() {
-		return amount;
+	
+	public int getTotal_sum() {
+		return total_sum;
 	}
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setTotal_sum(int total_sum) {
+		this.total_sum = total_sum;
 	}
 	public Date getOrderDate() {
 		return orderDate;
