@@ -35,7 +35,7 @@
 	<section class="page-section portfolio" style="min-height: 700px;">
 		<div class="container">
 			
-				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+				<table class="table table-striped" style="position:relative; left:-80px; width:1250px; text-align: center; border: 1px solid #dddddd">
 					<tbody>
 						<tr>
 						    <td>주문번호</td>
@@ -46,6 +46,7 @@
 							<td>주문수량</td>
 							<td>결제금액</td>
 							<td>결재상태</td>
+							<td></td>
 							<td></td>
 							
 						</tr>
@@ -66,13 +67,47 @@
     							<c:when test="${jumun.getjState() eq '미승인'}">
         						 <td style="color:red;">미승인</td>
     							</c:when>
+    							<c:when test="${jumun.getjState() eq '배송'}">
+        						 <td style="color:blue;">배송</td>
+    							</c:when>
 							</c:choose>
-							<td >
-							<form action="jumunState" method="POST">
-            				<input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum()}">
-								<input type="submit" class="btn btn-primary pull-right" value="승인" />
-							</form>
+							<c:if test = "${jumun.getjState() eq '미승인' }">
+							<td>
+								<form action="jumunState" method="POST">
+            					<input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum()}">
+									<input type="submit" class="btn btn-primary pull-right" value="승인" />
+								</form>
 							</td>
+							<td >
+								<text class="btn" style="width:92px; height: 40px; background-color:#e0e0e0;" >배송완료</text>
+							</td>
+							</c:if>
+							<c:if test = "${jumun.getjState() eq '승인' }">
+							<td>
+								<text class="btn" style=" background-color:#e0e0e0;" >승인</text>
+							</td>
+							<td >
+								<form action="sellSave" method="POST">
+            						<input type="hidden" id="sProduct" name="sProduct" value="${jumun.getjName()}">
+            						<input type="hidden" id="sId" name="sId" value="${jumun.getjId()}">
+            						<input type="hidden" id="sCate" name="sCate" value="${jumun.getjCate()}">
+            						<input type="hidden" id="sPrice" name="sPrice" value="${jumun.getjPrice() + jumun.getjShipPrice() - jumun.getjMile()}">
+            						<input type="hidden" id="sCount" name="sCount" value="${jumun.getjCount()}">
+            						<input type="hidden" id="sCustomer" name="sCustomer" value="${jumun.getjCustomer()}">
+            						<input type="hidden" id="sGender" name="sGender" value="남성">
+            						<input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum()}">
+										<input type="submit" class="btn btn-primary pull-right" value="배송완료" />
+								</form>
+							</td>
+							</c:if>
+							<c:if test = "${jumun.getjState() eq '배송' }">
+							<td>
+								<text class="btn" style=" background-color:#e0e0e0;" >승인</text>
+							</td>
+							<td >
+								<text class="btn" style="width:92px; height: 40px; background-color:#e0e0e0;" >배송완료</text>
+							</td>
+							</c:if>
 						</tr>
 				    </c:forEach>
 					</tbody>

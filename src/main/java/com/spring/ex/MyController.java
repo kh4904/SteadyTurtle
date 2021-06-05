@@ -744,6 +744,15 @@ public class MyController {
 		
 	}
 	
+	// 주문요청 배송완료 클릭시 sell DB에 데이터저장 및 jumun DB 업데이트
+	@RequestMapping(value = "/sellSave", method = RequestMethod.POST)
+	public String sellSave(SellDto sssdto, JumunDto juDto) throws Exception {
+			
+		service.sellSave(sssdto);
+		ServiceTurtle.jumunState2(juDto);
+		
+		return "redirect:/OrderHistory";
+	}
 	// 상품관리 보기 페이지
 	@RequestMapping(value = "/ProductManagement", method = RequestMethod.GET)
 	public String ProductManagement(Model model) throws Exception {

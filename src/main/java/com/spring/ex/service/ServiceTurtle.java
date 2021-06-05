@@ -208,6 +208,18 @@ public class ServiceTurtle implements TurtleService{
 	public void jumunState(JumunDto juDto) throws Exception {
 		JumunDao.jumunState(juDto);
 	}
+		
+	// 주문내역 배송완료 insert
+	@Override
+	public void sellSave(SellDto sssdto) throws Exception {
+		JumunDao.sellSave(sssdto);
+	}
+	
+	// 주문내역 승인 update 
+	@Override
+	public void jumunState2(JumunDto juDto) throws Exception {
+		JumunDao.jumunState2(juDto);
+	}
 	
 	// 주문신청삭제(취소)
 	@Override

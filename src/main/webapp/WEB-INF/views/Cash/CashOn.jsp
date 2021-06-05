@@ -48,9 +48,21 @@
 				<fieldset style="background-color: #e3f2fd;">
 					<c:if test="${member != null }">
 						<input type="hidden" id="jId" name="jId" value="${member.mId }">
+						<c:choose>
+							<c:when test="${member.getmGender() eq '남성'}">
+								<input type="hidden" id="pMan" name="pMan" value=1 >
+								<input type="hidden" id="pWoman" name="pWoman" value=0 >
+    						</c:when>
+    						<c:when test="${member.getmGender() ne '남성'}">
+    							<input type="hidden" id="pMan" name="pMan" value=0 >
+    							<input type="hidden" id="pWoman" name="pWoman" value=1 >
+    						</c:when>
+						</c:choose>
 					</c:if>
 					<c:if test="${member == null }">
 						<input type="hidden" id="jId" name="jId" value="비회원주문">
+						<input type="hidden" id="pMan" name="pMan" value=0 >
+						<input type="hidden" id="pWoman" name="pWoman" value=0 >
 					</c:if>
 					<legend style="color: black;">주문자 정보</legend>
 					<label style="color: black;">이름</label> 
@@ -147,7 +159,7 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<!-- db연동 -->
 									<c:if test="${member != null }">
-										<input type="text" placeholder="0" name="jMile" id="jMile"
+										<input type="text" value="0" name="jMile" id="jMile"
 											style="position: relative; width: 70px; height: 30px;"></input><b
 											style="font-size: 20px; color: black;">/ ${member.mMile } M</b>
 									</c:if>

@@ -91,8 +91,14 @@ public interface MemberDao {
 	// 주문신청 취소(삭제)
 	public void jumundelete(JumunDto jddto) throws Exception;
 	
+	// 주문내역 배송완료 insert
+	public void sellSave(SellDto sssdto) throws Exception;
+	
 	// 주문내역 승인(update)
 	public void jumunState(JumunDto juDto) throws Exception;
+	
+	// 주문내역 배송완료(update)
+	public void jumunState2(JumunDto juDto) throws Exception;
 	
 	// 장바구니
 	public List<CartListVO> cartList(String mId) throws Exception;
