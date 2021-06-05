@@ -37,38 +37,40 @@
 		<div class="container">
 			<div class="col-lg-12">
 				<div class="row">
-					<%
-						int i = 0;
-					%>
-					<c:forEach items="${productList}" var="product">
+					<c:forEach items="${productList}" var="productList">
 						<div class="col-lg-6 mb-5">
 							<form action="mREproduct" method="post">
-								<input type="hidden" id="pName" name="pName" value="${product.getpName() }">
+								<input type="hidden" id="pName" name="pName"
+									value="${productList.getpName() }">
 								<table style="width: 100%;">
 									<tr>
-										<td rowspan="6" style="width: 200px;"> <img
-												class="img-fluid" src="resources/assets/img${product.getpUrl() }"
-												style="width: 150px; height: 150px;" /></td>
+										<td rowspan="6" style="width: 200px;"><img
+											class="img-fluid"
+											src="resources/assets/img${productList.getpUrl() }"
+											style="width: 150px; height: 150px;" /></td>
 										<th><a style="text-align: center;">상품명:
-												${product.getpName() }</th>
+												${productList.getpName() }</th>
 										<td rowspan="6"><input type="submit" value="수정하기"
 											class="btn btn-primary"
 											style="width: 100px; height: 40px; background-color: #ffdb4d; color: #004d99;">
 										</td>
 									</tr>
 									<tr>
-										<th><a style="text-align: center;">가격:<fmt:formatNumber pattern="###,###,###" value="${product.getpPrice()}" />원</a></th>
+										<th><a style="text-align: center;">가격:<fmt:formatNumber
+													pattern="###,###,###" value="${productList.getpPrice()}" />원
+										</a></th>
 									</tr>
 									<tr>
-										<th><a style="text-align: center;">${product.getpShip() }</a></th>
+										<th><a style="text-align: center;">${productList.getpShip() }</a></th>
 									<tr>
-										<th><a style="text-align: center;">${product.getpMile() }%적립</a></th>
+										<th><a style="text-align: center;">${productList.getpMile() }%적립</a></th>
 									</tr>
 									<tr>
-										<th><a style="text-align: center;">${product.getpCate() }</a></th>
+										<th><a style="text-align: center;">${productList.getpCate() }</a></th>
 									</tr>
 									<tr>
-										<th><a style="text-align: center;">판매량 : ${product.getpCountSell() } 개</a></th>
+										<th><a style="text-align: center;">판매량 :
+												${productList.getpCountSell() } 개</a></th>
 									</tr>
 								</table>
 							</form>
@@ -77,24 +79,49 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div class="col-lg-12" style="text-align: center;">
-				<nav aria-label="Page navigation example"
-					style="position: relative; left: 420px;">
-					<ul class="pagination">
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-		</div>
+		<!-- 게시글 페이징 처리(기준 10개) -->
+		<nav aria-label="Page navigation">
+			<ul class="pagination justify-content-center">
+
+				<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+				<c:choose>
+					<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+						<li class="page-item disabled"><a class="page-link"
+							href="ProductManagement?page=${Paging.prevPageNo}">Previus</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="ProductManagement?page=${Paging.prevPageNo}">Previus</a></li>
+					</c:otherwise>
+				</c:choose>
+				<!-- 페이지 갯수만큼 버튼 생성 -->
+				<c:forEach var="i" begin="${Paging.startPageNo }"
+					end="${Paging.endPageNo }" step="1">
+					<c:choose>
+						<c:when test="${i eq Paging.pageNo }">
+							<li class="page-item disabled"><a class="page-link"
+								href="ProductManagement?page=${i}"><c:out value="${i}" /></a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+								href="ProductManagement?page=${i}"><c:out value="${i}" /></a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+				<c:choose>
+					<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+						<li class="page-item disabled"><a class="page-link"
+							href="ProductManagement?page=${Paging.nextPageNo}">Next</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="ProductManagement?page=${Paging.nextPageNo}">Next</a></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+		</nav>
+
 
 		<!-- 밑줄  -->
 		<div class="container">
@@ -119,10 +146,10 @@
 		</div>
 	</div>
 
-	<c:if test ="${member.mMaster != 1 }">
+	<c:if test="${member.mMaster != 1 }">
 		<script>
 			alert("관리자권한이 없습니다.")
-			location.href="main";
+			location.href = "main";
 		</script>
 	</c:if>
 

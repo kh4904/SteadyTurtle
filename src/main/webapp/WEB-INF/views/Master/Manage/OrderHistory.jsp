@@ -49,7 +49,7 @@
 							<td></td>
 							
 						</tr>
-					<% int i = 0; %>
+					
 					<c:forEach items="${jumunList}" var="jumun">
 						<tr>
 							<td>${jumun.getjNum() }</td>
@@ -78,7 +78,7 @@
 					</tbody>
 				</table>
 				
-			
+		
 				
 				<div class="container">
 					<div class="col-lg-12" style="text-align: center;">

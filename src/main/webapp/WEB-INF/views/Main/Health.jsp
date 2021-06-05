@@ -44,18 +44,16 @@
 			<!-- Portfolio Grid Items-->
 			<div class="row justify-content-center">
 				<!-- 상품목록 -->
-				<%
-					int i = 0;
-				%>
-				<c:forEach items="${productList}" var="product">
+				
+				<c:forEach items="${HealthList}" var="productList">
 					<c:if test="${product.getpCate() eq '헬스기구' }">
 						<div class="col-md-6 col-lg-4 mb-5">
 							<form action="product" method="POST">
-					<input type="hidden" id="pName" name="pName" value="${product.getpName() }">
-						<input type="image" src="resources/assets/img${product.getpImg() }" style="width: 270px; height: 200px;"  > 
+					<input type="hidden" id="pName" name="pName" value="${productList.getpName() }">
+						<input type="image" src="resources/assets/img${productList.getpImg() }" style="width: 270px; height: 200px;"  > 
 						 <br> <br>
-						<h4>상품명 : ${product.getpName() }</h4>
-						<h5>가격 : <fmt:formatNumber pattern="###,###,###" value="${product.getpPrice()}" /> 원</h5>
+						<h4>상품명 : ${productList.getpName() }</h4>
+						<h5>가격 : <fmt:formatNumber pattern="###,###,###" value="${productList.getpPrice()}" /> 원</h5>
 						</form>
 						</div>
 					</c:if>
@@ -63,6 +61,49 @@
 			</div>
 		</div>
 	</section>
+	
+	<!-- 게시글 페이징 처리(기준 10개) -->
+		<nav aria-label="Page navigation">
+			<ul class="pagination justify-content-center">
+
+				<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+				<c:choose>
+					<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+						<li class="page-item disabled"><a class="page-link"
+							href="ProductManagement?page=${Paging.prevPageNo}">Previus</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="ProductManagement?page=${Paging.prevPageNo}">Previus</a></li>
+					</c:otherwise>
+				</c:choose>
+				<!-- 페이지 갯수만큼 버튼 생성 -->
+				<c:forEach var="i" begin="${Paging.startPageNo }"
+					end="${Paging.endPageNo }" step="1">
+					<c:choose>
+						<c:when test="${i eq Paging.pageNo }">
+							<li class="page-item disabled"><a class="page-link"
+								href="ProductManagement?page=${i}"><c:out value="${i}" /></a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+								href="ProductManagement?page=${i}"><c:out value="${i}" /></a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+				<c:choose>
+					<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+						<li class="page-item disabled"><a class="page-link"
+							href="ProductManagement?page=${Paging.nextPageNo}">Next</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="ProductManagement?page=${Paging.nextPageNo}">Next</a></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+		</nav>
 
 	<!-- Copyright Section(맨밑 하단)-->
 	<div class="copyright py-4 text-center text-white">

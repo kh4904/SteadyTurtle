@@ -1,5 +1,6 @@
 package com.spring.ex.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -16,8 +17,23 @@ import com.spring.ex.dto.SellDto;
 @Repository
 public interface MemberDao {
 	
+	//상품 관리자 출력
+	public List<ProductDto> ProductList(HashMap<String, Integer> map) throws Exception;
+	
+	//상품 관리자 출력
+		public List<ProductDto> YogaList(HashMap<String, Integer> map) throws Exception;
+		
+		//상품 관리자 출력
+		public List<ProductDto> FoodList(HashMap<String, Integer> map) throws Exception;
+		
+		//상품 관리자 출력
+		public List<ProductDto> HealthList(HashMap<String, Integer> map) throws Exception;
+		
 	//검색기능
 	public List<ProductDto> productSearch(String keyword ) throws Exception;
+	
+	//회원정보
+	public int productTotalCount() throws Exception;
 	
 	//멤버 검색 기능
 	public List<MemberDto> memberSearch(String key ) throws Exception;
@@ -50,7 +66,7 @@ public interface MemberDao {
 	public void memberdelete(MemberDto ddto) throws Exception;
 	
 	// 상품정보 dto
-	public List<ProductDto> productList() throws Exception;
+	public List<ProductDto> productList(HashMap<String, Integer> map) throws Exception;
 	
 	// 상품상세 dto
 	public ProductDto product(ProductDto pdto) throws Exception;

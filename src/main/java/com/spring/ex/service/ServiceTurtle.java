@@ -1,5 +1,6 @@
 package com.spring.ex.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,6 +21,23 @@ import com.spring.ex.dto.SellDto;
 @Service
 public class ServiceTurtle implements TurtleService{
 	
+	//상품 관리자 출력
+	@Override
+	public List<ProductDto> ProductList(HashMap<String, Integer> map) throws Exception {
+		return memberDao.ProductList(map);
+	}
+	
+	public List<ProductDto> FoodList(HashMap<String, Integer> map) throws Exception{
+		return memberDao.FoodList(map);
+	}
+	public List<ProductDto> YogaList(HashMap<String, Integer> map) throws Exception{
+		return memberDao.YogaList(map);
+	}
+	
+	public List<ProductDto> HealthList(HashMap<String, Integer> map) throws Exception{
+		return memberDao.HealthList(map);
+	}
+	
 	//검색기능
 	@Inject
 	private MemberDao TotalDao;
@@ -29,6 +47,34 @@ public class ServiceTurtle implements TurtleService{
 		
 		return TotalDao.productSearch(keyword);
 	}
+	
+	//페이징 토탈 갯수
+	@Override
+	public int productTotalCount() throws Exception {
+		
+		return TotalDao.productTotalCount();
+	}		
+	
+	//요가갯수
+	@Override
+	public int yogaTotalCount() throws Exception {
+		
+		return TotalDao.productTotalCount();
+	}		
+	
+	//공지사항 게시물 총 갯수
+	@Override
+	public int healthTotalCount() throws Exception {
+		
+		return TotalDao.productTotalCount();
+	}		
+	
+	//공지사항 게시물 총 갯수
+	@Override
+	public int foodTotalCount() throws Exception {
+		
+		return TotalDao.productTotalCount();
+	}		
 	
 	//멤버 검색 기능 
 	@Override
@@ -115,9 +161,9 @@ public class ServiceTurtle implements TurtleService{
 	private MemberDao productDao;
 	
 	@Override
-	public List<ProductDto> productList() throws Exception {
+	public List<ProductDto> productList(HashMap<String, Integer> map) throws Exception {
 	
-		return productDao.productList();
+		return productDao.productList(map);
 	}
 	
 	//상품 상세

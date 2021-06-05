@@ -47,17 +47,33 @@
 <!-- 회원탈퇴 delete -->
 <delete id="memberdelete"> delete from member where mId = #{mId} and mPw = #{mPw} </delete>
 
-<!-- 상품리스트 select문 -->
-<select id="product" resultType="ProductDto">SELECT * from product</select>
+<!-- 관리자토탈 카운트 -->
+<select id="productTotalCount" resultType="int">SELECT COUNT(*) from product</select>
+
+<!-- 요가토탈 카운트-->
+<select id="yogaTotalCount" resultType="int">SELECT COUNT(*) from product where pCate = '요가상품'</select>
+
+<!-- 음식토탈 카운트 -->
+<select id="foodTotalCount" resultType="int">SELECT COUNT(*) from product where pCate = '운동식품'</select>
+
+<!-- 헬스토탈 카운트 -->
+<select id="healthTotalCount" resultType="int">SELECT COUNT(*) from product where pCate = '헬스기구'</select>
+
+<!-- 관리자 상품관리 페이징 목록 -->
+<select id="ProductList" resultType="ProductDto">SELECT * FROM product ORDER BY pNum DESC LIMIT #{Page}, #{PageSize} </select>
+
+<!-- 상품 목록 -->
+<select id="productList" resultType="ProductDto">SELECT * FROM product</select>
+
 
 <!-- 헬스기구랭킹 select문 -->
-<select id="health" resultType="ProductDto">SELECT * from product where pCate = '헬스기구' order by pCountSell DESC</select>
+<select id="HealthList" resultType="ProductDto">SELECT * from product where pCate = '헬스기구' order by pCountSell DESC LIMIT #{Page}, #{PageSize}</select>
 
 <!-- 요가상품랭킹 select문 -->
-<select id="yoga" resultType="ProductDto">SELECT * from product where pCate = '요가상품' order by pCountSell DESC</select>
+<select id="YogaList" resultType="ProductDto">SELECT * from product  order by pCountSell DESC LIMIT #{Page}, #{PageSize}</select>
 
 <!-- 운동식품랭킹 select문 -->
-<select id="food" resultType="ProductDto">SELECT * from product where pCate = '운동식품' order by pCountSell DESC</select>
+<select id="FoodList" resultType="ProductDto">SELECT * from product where pCate = '운동식품' order by pCountSell DESC LIMIT #{Page}, #{PageSize}</select>
 
 <!-- 남성상품랭킹 select문 -->
 <select id="man" resultType="ProductDto">SELECT * from product order by pMan DESC</select>

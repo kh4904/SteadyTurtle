@@ -1,5 +1,6 @@
 package com.spring.ex.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -16,6 +17,18 @@ import com.spring.ex.dto.SellDto;
 @Service
 public interface TurtleService {
 	
+	//상품 관리자 출력
+	public List<ProductDto> ProductList(HashMap<String, Integer> map) throws Exception;
+	
+	//헬스 페이징 출력
+	public List<ProductDto> HealthList(HashMap<String, Integer> map) throws Exception;
+		
+	//요가 페이징 출력
+	public List<ProductDto> YogaList(HashMap<String, Integer> map) throws Exception;
+		
+	//상품 페이징 출력
+	public List<ProductDto> FoodList(HashMap<String, Integer> map) throws Exception;
+			
 	/*검색 기능 product dto 를 pSDto로 선언*/
 	public List<ProductDto> productSearch(String keyword) throws Exception;
 	
@@ -50,8 +63,19 @@ public interface TurtleService {
 	public void memberdelete(MemberDto ddto) throws Exception;
 	
 	/* 상품정보 list ProductDto를 productList()로 선언*/
-	public List<ProductDto> productList() throws Exception;
+	public List<ProductDto> productList(HashMap<String, Integer> map) throws Exception;
 	
+	
+	
+	//상품 게시물 총 갯수
+	public int productTotalCount() throws Exception;
+	
+	//상품 게시물 총 갯수
+	public int yogaTotalCount() throws Exception;
+	//상품 게시물 총 갯수
+	public int healthTotalCount() throws Exception;
+	//상품 게시물 총 갯수
+	public int foodTotalCount() throws Exception;
 	/* 상품정보 상세 ProductDto를 pdto()로 선언*/
 	public ProductDto product(ProductDto pdto) throws Exception;
 	
@@ -150,5 +174,7 @@ public interface TurtleService {
 	
 	//결제시 상품 목록 변경
 	public void productDecrease(ProductDto pudto) throws Exception;
+
+	
 	
 }
