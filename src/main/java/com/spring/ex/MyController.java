@@ -681,6 +681,21 @@ public class MyController {
 		return "Master/mainMaster";
 	}
 	
+	// 판매상품 날짜조회
+	@RequestMapping(value ="/sellDate", method = RequestMethod.POST)
+	public String sellDate(SellDto ssdto,HttpServletRequest req) throws Exception {
+		String path = "";
+		HttpSession session6 = req.getSession();
+		SellDto sellDate = ServiceTurtle.sellDate(ssdto);
+		if (sellDate == null) {
+			path = "redirect:/mainMaster";
+		} else {
+			session6.setAttribute("sell", sellDate);
+			path = "redirect:/mainMaster";
+		}
+		return path;
+	}
+	
 	// 판매현황 상세
 	@RequestMapping(value = "/SalesStatus", method = RequestMethod.GET)
 	public String SalesStatus(Model model) throws Exception {
@@ -692,6 +707,21 @@ public class MyController {
 		model.addAttribute("sellOne",list2);
 		
 		return "Master/SalesStatus";
+	}
+	
+	// 판매현황 판매상품 날짜별 금액조회
+	@RequestMapping(value ="/sellDate2", method = RequestMethod.POST)
+	public String sellDate2(SellDto ssdto,HttpServletRequest req) throws Exception {
+		String path = "";
+		HttpSession session6 = req.getSession();
+		SellDto sellDate = ServiceTurtle.sellDate(ssdto);
+		if (sellDate == null) {
+			path = "redirect:/SalesStatus";
+		} else {
+			session6.setAttribute("sell", sellDate);
+			path = "redirect:/SalesStatus";
+		}
+		return path;
 	}
 	
 	// 주문요청 내역

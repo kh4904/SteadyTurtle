@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,16 +34,21 @@
            
      <!-- 헤더 (실적 문구 및 당일 기간정하기) -->
 	<header class="page-section portfolio">
+	<form action="sellDate2" method="POST" name="form">
 		<div class="container">
             <!-- 고정바(순위,상품명,가격,마일리지,배송) 라벨-->
-               <table style="width:100%">
+               <c:if test="${sell == null }">
+                <table style="width:100%">
                   <tr>
                      <th style="width:200px; height:23px;">
-                     <select style = "width:150px; height:30px; position:relative; top:-5px; left:40px;">
+                     <select name="sDate" id="sDate" style = "width:150px; height:30px; position:relative; top:-5px; left:10px;">
                         <c:forEach items="${sellOne}" var="sellOne">
-                        	<option value = "">${sellOne.getsDate() }</option>
+                        <option>${sellOne.getsDate() }</option>
                         </c:forEach>
                      </select>
+                     <button type="submit" class="btn btn-default" style="position:relative; width:50px; height:30px; top:-10px;"> <i
+							class="fas fa-reply"
+							style="width: 50px; height: 30px; color: #000000;"></i></button>
                      </th>
                      <th style="width:170px; height:23px;"><center><h5>헬스기구</h5></center></th>
                      <th style="width:200px; height:23px;"><center><h5>요가상품</h5></center></th> 
@@ -56,6 +62,7 @@
                 </div>
                 
                 <c:forEach var = "sell" items = "${sellList }">
+                  <c:if test="${sell.getsDate() eq '2021-05-21'}">
                    <!-- 헬스기구끼리만 합계 -->
                    <c:if test = "${sell.getsCate()  eq '헬스기구'}">
                        <c:set var = "health" value = "${health + sell.getsPrice() }" />
@@ -68,18 +75,73 @@
                    <c:if test = "${sell.getsCate()  eq '운동식품'}">
                        <c:set var = "food" value = "${food + sell.getsPrice() }" />
                    </c:if>
+                 </c:if>
                 </c:forEach>
-                
                 <table style="width:100%">
                   <tr>
                      <th style="width:200px; height:23px;"><center><h5>판매금액(원)</h5></center></th>
-                     <th style="width:170px; height:23px;"><center><h5><c:out value="${health}" /></h5></center></th>
-                     <th style="width:200px; height:23px;"><center><h5><c:out value="${yoga}" /></h5></center></th> 
-                     <th style="width:200px; height:23px;"><center><h5><c:out value="${food}" /></h5></center></th>
-                     <th style="width:200px; height:23px;"><center><h5><c:out value="${health + yoga + food}" /></h5></center></th>
+                     <th style="width:170px; height:23px;"><center><h5><fmt:formatNumber pattern="###,###,###" value="${health}" /></h5></center></th>
+                     <th style="width:200px; height:23px;"><center><h5><fmt:formatNumber pattern="###,###,###" value="${yoga}" /></h5></center></th> 
+                     <th style="width:200px; height:23px;"><center><h5><fmt:formatNumber pattern="###,###,###" value="${food}" /></h5></center></th>
+                     <th style="width:200px; height:23px;"><center><h5><fmt:formatNumber pattern="###,###,###" value="${health + yoga + food}" /></h5></center></th>
                    </tr>
                 </table>
+                </c:if>
+                
+                <!-- sell값이 null이아닌경우 -->
+                <c:if test="${sell != null }">
+                <table style="width:100%">
+                  <tr>
+                     <th style="width:200px; height:23px;">
+                     <select name="sDate" id="sDate" style = "width:150px; height:30px; position:relative; top:-5px; left:10px;">
+                        <c:forEach items="${sellOne}" var="sellOne">
+                        <option selected hidden>${sell.getsDate() }</option>
+                        <option>${sellOne.getsDate() }</option>
+                        </c:forEach>
+                     </select>
+                     <button type="submit" class="btn btn-default" style="position:relative; width:50px; height:30px; top:-10px;"> <i
+							class="fas fa-reply"
+							style="width: 50px; height: 30px; color: #000000;"></i></button>
+                     </th>
+                     <th style="width:170px; height:23px;"><center><h5>헬스기구</h5></center></th>
+                     <th style="width:200px; height:23px;"><center><h5>요가상품</h5></center></th> 
+                     <th style="width:200px; height:23px;"><center><h5>운동식품</h5></center></th>
+                     <th style="width:200px; height:23px;"><center><h5>Total</h5></center></th>
+                   </tr>
+                </table>
+                <!-- 밑줄 -->
+                <div class="divider-custom" style="display:block;">
+                    <hr style="background-color:black;">
+                </div>
+                
+                <c:forEach var = "sell" items = "${sellList }">
+                  <c:if test="${sell.getsDate() eq sessionScope.sell.getsDate()}">
+                   <!-- 헬스기구끼리만 합계 -->
+                   <c:if test = "${sell.getsCate()  eq '헬스기구'}">
+                       <c:set var = "health" value = "${health + sell.getsPrice() }" />
+                   </c:if>
+                   <!-- 요가상품끼리만 합계 -->
+                   <c:if test = "${sell.getsCate()  eq '요가상품'}">
+                       <c:set var = "yoga" value = "${yoga + sell.getsPrice() }" />
+                   </c:if>
+                   <!-- 운동식품끼리만 합계 -->
+                   <c:if test = "${sell.getsCate()  eq '운동식품'}">
+                       <c:set var = "food" value = "${food + sell.getsPrice() }" />
+                   </c:if>
+                 </c:if>
+                </c:forEach>
+                <table style="width:100%">
+                  <tr>
+                     <th style="width:200px; height:23px;"><center><h5>판매금액(원)</h5></center></th>
+                     <th style="width:170px; height:23px;"><center><h5><fmt:formatNumber pattern="###,###,###" value="${health}" /></h5></center></th>
+                     <th style="width:200px; height:23px;"><center><h5><fmt:formatNumber pattern="###,###,###" value="${yoga}" /></h5></center></th> 
+                     <th style="width:200px; height:23px;"><center><h5><fmt:formatNumber pattern="###,###,###" value="${food}" /></h5></center></th>
+                     <th style="width:200px; height:23px;"><center><h5><fmt:formatNumber pattern="###,###,###" value="${health + yoga + food}" /></h5></center></th>
+                   </tr>
+                </table>
+                </c:if>
         </div>
+        </form>
         <br>
         
         <!-- 연도 설정 -->

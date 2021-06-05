@@ -147,7 +147,7 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<!-- db연동 -->
 									<c:if test="${member != null }">
-										<input type="text" value="0"
+										<input type="text" placeholder="0" name="jMile" id="jMile"
 											style="position: relative; width: 70px; height: 30px;"></input><b
 											style="font-size: 20px; color: black;">/ ${member.mMile } M</b>
 									</c:if>
@@ -182,7 +182,7 @@
 									<h4 style="text-align: right; color: black;">
 										<c:if test="${product.getpShip() eq '무료배송' }">
 											총 결제금액 : ${sum }
-											<input type="hidden" id="jPrice" name="jPrice" value="${sum }" >
+											<input type="hidden" id="jPrice" name="jPrice" value="${sum}" >
 										</c:if>
 										<c:if test="${product.getpShip() eq '일반배송' }">
 											총 결제금액 : ${sum + 3000}
@@ -198,10 +198,10 @@
 				<!-- 배송 요청사항 필드셋 -->
 				<fieldset style="background-color: #bbdefb;">
 					<p style="font-size: 20px; color: black; text-align: center;">
-						배송 요청사항 <select>
-							<option value="" selected>문앞에 놔주세요.</option>
-							<option value="">부재시 경비실에 맡겨주세요.</option>
-							<option value="">도착전 연락주세요.</option>
+						배송 요청사항 <select name = "jMemo" id="jMemo">
+							<option selected>문앞에 놔주세요.</option>
+							<option>부재시 경비실에 맡겨주세요.</option>
+							<option>도착전 연락주세요.</option>
 						</select>
 					</p>
 				</fieldset>
@@ -276,7 +276,7 @@
 							<!-- db연동 -->
 							<p class="check" style="color: black; text-align: right; font-size: 15px;">
 								<div class="checkT">
-									<input type="checkbox" id="chk"> <span>구매조건 및 이용약관에 동의하며,<br>결제를 진행합니다. </span>
+									<input type="checkbox" id="chk"> <span style="color:black;">구매조건 및 이용약관에 동의하며,<br>결제를 진행합니다. </span>
 								</div>
 							</p>
 							<hr>

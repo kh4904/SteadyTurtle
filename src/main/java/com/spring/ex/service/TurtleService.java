@@ -145,6 +145,9 @@ public interface TurtleService {
 	// 판매목록 중복된 데이터 날짜값 1개만 출력
 	public List<SellDto> sellOne() throws Exception;
 	
+	// 판매상품 날짜별 조회
+	public SellDto sellDate(SellDto ssdto) throws Exception;
+	
 	//결제하기
 	public void cashOk(JumunDto cldto) throws Exception;
 	

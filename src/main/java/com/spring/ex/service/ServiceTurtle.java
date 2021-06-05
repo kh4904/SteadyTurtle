@@ -346,6 +346,12 @@ public class ServiceTurtle implements TurtleService{
 		return SellDao.sellOne();
 	}
 	
+	// 판매상품 날짜별 조회
+	@Override
+	public SellDto sellDate(SellDto ssdto) throws Exception{
+		return SellDao.sellDate(ssdto);
+	}
+	
 	//결제하기
 	@Inject MemberDao cdao;
 		

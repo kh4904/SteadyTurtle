@@ -280,6 +280,12 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectList(namespace+".sellOne");
 	}
 	
+	// 판매상품 날짜별 조회
+	@Override
+	public SellDto sellDate(SellDto ssdto) throws Exception{
+		return sqlSessionTemplate.selectOne(namespace + ".sellDate", ssdto);
+	}
+	
 	//결제하기
 	@Override
 	public void cashOk(JumunDto cldto) throws Exception {

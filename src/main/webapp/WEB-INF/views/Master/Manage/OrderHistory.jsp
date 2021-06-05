@@ -32,7 +32,7 @@
         <%@ include file="/WEB-INF/views/Master/Mastermenu.jsp" %>     
 
 	<!-- 게시판 -->
-	<section class="page-section portfolio" style="height:800px;">
+	<section class="page-section portfolio" style="min-height: 700px;">
 		<div class="container">
 			
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
