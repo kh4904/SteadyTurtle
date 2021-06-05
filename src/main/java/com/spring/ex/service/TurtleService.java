@@ -106,6 +106,9 @@ public interface TurtleService {
 	/* 여성상품랭킹 list ProductDto를 womanRanking()로 선언*/
 	public List<ProductDto> womanRanking() throws Exception;
 	
+	
+	
+	
 	/* 주문내역 상품 list JumunDto를 jumunList()로 선언*/
 	public List<JumunDto> jumunList() throws Exception;
 	

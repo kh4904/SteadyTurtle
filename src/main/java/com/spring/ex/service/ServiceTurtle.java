@@ -59,21 +59,21 @@ public class ServiceTurtle implements TurtleService{
 	@Override
 	public int yogaTotalCount() throws Exception {
 		
-		return TotalDao.productTotalCount();
+		return TotalDao.yogaTotalCount();
 	}		
 	
 	//공지사항 게시물 총 갯수
 	@Override
 	public int healthTotalCount() throws Exception {
 		
-		return TotalDao.productTotalCount();
+		return TotalDao.healthTotalCount();
 	}		
 	
 	//공지사항 게시물 총 갯수
 	@Override
 	public int foodTotalCount() throws Exception {
 		
-		return TotalDao.productTotalCount();
+		return TotalDao.foodTotalCount();
 	}		
 	
 	//멤버 검색 기능 

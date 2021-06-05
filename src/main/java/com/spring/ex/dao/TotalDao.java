@@ -23,22 +23,22 @@ public class TotalDao implements MemberDao {
 	private SqlSession sqlSessionTemplate;
 	private static final String namespace = "com.spring.ex.mapper";// mapper �� id �� ã�°�
 
-	// 상품 관리자 출력
+	// 상품 페이징
 	@Override
 	public List<ProductDto> ProductList(HashMap<String, Integer> map) throws Exception {
 		return sqlSessionTemplate.selectList(namespace + ".ProductList", map);
 	}
-
+	// 헬스 페이징
 	@Override
 	public List<ProductDto> HealthList(HashMap<String, Integer> map) throws Exception {
 		return sqlSessionTemplate.selectList(namespace + ".HealthList", map);
 	}
-
+	// 음식 페이징
 	@Override
 	public List<ProductDto> FoodList(HashMap<String, Integer> map) throws Exception {
 		return sqlSessionTemplate.selectList(namespace + ".FoodList", map);
 	}
-
+	// 요가  페이징
 	@Override
 	public List<ProductDto> YogaList(HashMap<String, Integer> map) throws Exception {
 		return sqlSessionTemplate.selectList(namespace + ".YogaList", map);
@@ -54,17 +54,17 @@ public class TotalDao implements MemberDao {
 		return sqlSessionTemplate.selectOne(namespace + ".productTotalCount");
 	}
 
-	// 관리자 페이징 정보
+	// 요가 페이징 정보
 	public int  yogaTotalCount() throws Exception {
 		return sqlSessionTemplate.selectOne(namespace + ".yogaTotalCount");
 	}
 
-	// 관리자 페이징 정보
+	// 헬스 페이징 정보
 	public int healthTotalCount() throws Exception {
 		return sqlSessionTemplate.selectOne(namespace + ".healthTotalCount");
 	}
 
-	// 관리자 페이징 정보
+	// 건강식품 페이징 정보
 	public int foodTotalCount() throws Exception {
 		return sqlSessionTemplate.selectOne(namespace + ".foodTotalCount");
 	}

@@ -64,11 +64,11 @@
 				<c:choose>
 					<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
 						<li class="page-item disabled"><a class="page-link"
-							href="ProductManagement?page=${Paging.prevPageNo}">Previus</a></li>
+							href="Yoga?page=${Paging.prevPageNo}">Previus</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="ProductManagement?page=${Paging.prevPageNo}">Previus</a></li>
+							href="Yoga?page=${Paging.prevPageNo}">Previus</a></li>
 					</c:otherwise>
 				</c:choose>
 				<!-- 페이지 갯수만큼 버튼 생성 -->
@@ -77,11 +77,11 @@
 					<c:choose>
 						<c:when test="${i eq Paging.pageNo }">
 							<li class="page-item disabled"><a class="page-link"
-								href="ProductManagement?page=${i}"><c:out value="${i}" /></a></li>
+								href="Yoga?page=${i}"><c:out value="${i}" /></a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item"><a class="page-link"
-								href="ProductManagement?page=${i}"><c:out value="${i}" /></a></li>
+								href="Yoga?page=${i}"><c:out value="${i}" /></a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -89,11 +89,11 @@
 				<c:choose>
 					<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
 						<li class="page-item disabled"><a class="page-link"
-							href="ProductManagement?page=${Paging.nextPageNo}">Next</a></li>
+							href="Yoga?page=${Paging.nextPageNo}">Next</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item"><a class="page-link"
-							href="ProductManagement?page=${Paging.nextPageNo}">Next</a></li>
+							href="Yoga?page=${Paging.nextPageNo}">Next</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
