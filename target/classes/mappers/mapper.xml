@@ -185,8 +185,9 @@ select
    
 <!-- 주문 상세 정보 --> 
 <insert id="orderInfo_Details">
- insert into tbl_order_details(orderDetailsNum, orderId, pNum, cartStock)
-     values(NEXTVAL(tbl_order_details_seq), #{orderId}, #{pNum}, #{cartStock}) 
+insert into tbl_order_details(orderDetailsNum, orderId, pNum, cartStock)
+		    select nextval(tbl_order_details_seq), #{orderId}, pNum, cartStock
+		        from cart where mId = #{mId}
 </insert> 
 
 </mapper>

@@ -402,7 +402,7 @@ function itemSum(frm)
 			<button type="button" class="cartCash">선택결제</button>
 							<script>
 								$(".cartCash").click(function(){
-									var confirm_val = confirm("삭제 하시겠습니까?");
+									var confirm_val = confirm("결제 하시겠습니까?");
 					
 									if(confirm_val) {
 										var checkArr = new Array();

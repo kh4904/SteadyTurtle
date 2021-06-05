@@ -1,11 +1,12 @@
 package com.spring.ex.dto;
 
 public class OrderDetailVO {
-
 	private int orderDetailsNum;
 	private String orderId;
 	private int pNum;
 	private int cartStock;
+	private String mId;
+	
 	public int getOrderDetailsNum() {
 		return orderDetailsNum;
 	}
@@ -29,6 +30,12 @@ public class OrderDetailVO {
 	}
 	public void setCartStock(int cartStock) {
 		this.cartStock = cartStock;
+	}
+	public String getmId() {
+		return mId;
+	}
+	public void setmId(String mId) {
+		this.mId = mId;
 	}
 	
 	

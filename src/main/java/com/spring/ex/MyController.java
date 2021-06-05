@@ -399,6 +399,7 @@ public class MyController {
 		service.orderInfo(order);
 	 
 		orderDetail.setOrderId(orderId);
+		orderDetail.setmId(mId);
 		service.orderInfo_details(orderDetail);
 	 
 		return "redirect:/main";  
