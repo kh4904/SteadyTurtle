@@ -180,7 +180,8 @@ select
 <!-- 주문 정보 -->
 <insert id="orderInfo">
  insert into tbl_order(orderId, mId, jCatchName, userAddr1, userAddr2, userAddr3, jPhone, total_sum, jMemo, pNum)
-     values(#{orderId}, #{mId}, #{jCatchName}, #{userAddr1} + #{userAddr2} + #{userAddr3}, #{userAddr2}, #{userAddr3}, 0, 0, 0, #{pNum})
+     select #{orderId}, #{mId}, #{jCatchName}, #{userAddr1}, #{userAddr2}, #{userAddr3}, 0, cartStock, 0, pNum
+     	from cart where pNum = #{pNum}
 </insert>
    
 <!-- 주문 상세 정보 --> 
