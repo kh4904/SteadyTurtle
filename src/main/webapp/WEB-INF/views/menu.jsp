@@ -6,8 +6,8 @@
 	<div class="container-fluid">
 		<div class="col-lg-4">
 			<a class="navbar-brand js-scroll-trigger" href="main"><img
-				src="resources/assets/img/TurtleIcon.png"
-				style="width: 250px; heights: 150px; position: relative; top: 10px; left: 120px;"></a>
+				src="resources/assets/img/turtleIcon.png"
+				style="width: 250px; height: 220px; position: relative; top: 10px; left: 120px;"></a>
 		</div>
 		<!-- 검색창 -->
 		<div class="col-lg-5">

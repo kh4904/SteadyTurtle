@@ -4,7 +4,7 @@
             <div class="container-fluid">
                  <div class="col-lg-4">
                    <a class="navbar-brand js-scroll-trigger" href="mainMaster"><img
-				src="resources/assets/img/TurtleIcon.png"
+				src="resources/assets/img/turtleIcon.png"
 				style="width: 250px; height: 230px; position: relative; top: -20px; left: 120px;"></a>
                 </div> 
                  <!-- 검색창 -->
