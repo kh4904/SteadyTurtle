@@ -87,6 +87,31 @@ function itemSum(frm)
    }
    frm.total_sum.value = sum;
 }
+function itemAllSum(frm)
+{
+   var sum = 0;
+   var count = frm.chBox.length;
+   
+   var chk = $("#allCheck").prop("checked");
+		if(chk) {
+		$(".chBox").prop("checked", true);
+		 for(var i=0; i < count; i++ ){
+		       if( frm.chBox[i].checked == true ){
+			    sum += parseInt(frm.chBox[i].value);
+		       }
+		   }
+		   frm.total_sum.value = sum;
+		} else {
+		$(".chBox").prop("checked", false);
+		 for(var i=0; i < count; i++ ){
+		       if( frm.chBox[i].checked == true ){
+			    sum += parseInt(frm.chBox[i].value);
+		       }
+		   }
+		   frm.total_sum.value = sum;
+		}
+  
+}
 </script>
 <!-- 장바구니 -->
 <body>
@@ -111,7 +136,7 @@ function itemSum(frm)
 					<tr>
 						<th style="width: 150px; height: 43px; text-align: center">
 						
-							<input type="checkbox" name="allCheck" id="allCheck" style="width: 25px; height: 25px;" value="1000"  onClick="itemSum(this.form);"/>
+							<input type="checkbox" name="allCheck" id="allCheck" style="width: 25px; height: 25px;" value="1000"  onClick="itemAllSum(this.form);"/>
 							
 							
 							<h5>전체선택</h5>
@@ -148,7 +173,7 @@ function itemSum(frm)
 									<tr style="height: 100px;">
 										<td style="width: 150px; height: 43px; text-align: center">
 											<div class = "checkBox">
-												<input type = "checkbox" name="chBox" class="chBox" value="${cartList.pPrice * cartList.cartStock}" data-cartNum="${cartList.cartNum}" onClick="itemSum(this.form);"/>
+												<input type = "checkbox" name="chBox" class="chBox" value="${cartList.pPrice * cartList.cartStock}" data-cartNum="${cartList.pNum}" onClick="itemSum(this.form);"/>
 												
 												<script>
 													$(".chBox").click(function(){
@@ -212,7 +237,7 @@ function itemSum(frm)
 		</div>
 			<div class="listResult">
 				<div class="allsum">
-					총 합계 : <fmt:formatNumber pattern="###,###,###" value="${total_sum }" />원<input name="total_sum" type="text" size="20" readonly >
+					총 합계 : <input name="total_sum" type="text" size="20" readonly > 원
 				</div>
 				<div class="orderOpne">
 					<button type="button" class="orderOpne_bnt">주문 정보 입력</button>
@@ -231,12 +256,12 @@ function itemSum(frm)
 							
 					<div class="inputArea">
 						<label for="">수령인</label>
-						<input type="text" name="orderRec" id="orderRec" required="required" />
+						<input type="text" name="jCatchName" id="jCatchName" required="required" />
 					</div>
 					
 					<div class="inputArea">
 						<label for="orderPhon">수령인 연락처</label>
-						<input type="text" name="orderPhon" id="orderPhon" required="required" />
+						<input type="text" name="jPhone" id="jPhone" required="required" />
 					</div>
 					<div class="inputArea">
 					
@@ -344,9 +369,17 @@ function itemSum(frm)
 						    }
 						</script>
 					</div>
-					
+					<fieldset style="background-color: #bbdefb;">
+					<p style="font-size: 20px; color: black; text-align: center;">
+						배송 요청사항 <select name="jMemo" id="jMemo">
+							<option selected>문앞에 놔주세요.</option>
+							<option>부재시 경비실에 맡겨주세요.</option>
+							<option>도착전 연락주세요.</option>
+						</select>
+					</p>
+				</fieldset>
 					<div class="inputArea">
-						<button type="submit" class="order_btn">주문</button>
+						
 						<button type="button" class="cancel_btn">취소</button>
 						
 						<script>
@@ -361,6 +394,33 @@ function itemSum(frm)
 			</div>
 	
 	</form>
+	<button type="button" class="order_btn">주문</button>
+						<script>
+								$(".order_btn").click(function(){
+									var confirm_val = confirm("결제 하시겠습니까?");
+					
+									if(confirm_val) {
+										var checkArr = new Array();
+						
+										$("input[class='chBox']:checked").each(function(){
+											checkArr.push($(this).attr("data-cartNum"));
+										});
+										$.ajax({
+											url:"/ex/basket",
+											type : "post",
+											data : {chbox : checkArr},
+											success : function(result){
+												if(result == 1) {
+													location.href = "/ex/basket";
+												} else {
+													alert("삭제 실패");
+												}
+											}
+										});
+									}
+				
+								});
+							</script>
 		<p style="text-align: right;">
 		<!-- 밑줄 -->
 		<div class="divider-custom" style="display: block;">

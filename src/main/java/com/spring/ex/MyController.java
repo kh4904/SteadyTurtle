@@ -347,62 +347,78 @@ public class MyController {
 		 
 		int result = 0;
 		int cartNum = 0;
-		 
-			for(String i : chArr) {   
-				cartNum = Integer.parseInt(i);
-				cart.setCartNum(cartNum);
-				service.deleteCart(cart);
-			}   
-			result = 1;
-		return result;  
+
+		for (String i : chArr) {
+			cartNum = Integer.parseInt(i);
+			cart.setCartNum(cartNum);
+			service.deleteCart(cart);
+		}
+		result = 1;
+		return result;
 	}
 	
 	// 장바구니에서 결제하기
-	@ResponseBody
-	@RequestMapping(value = "/cartCash", method = RequestMethod.POST)
-	public int cartCash(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, CartVO cart) throws Exception {
-		 
-		int result = 0;
-		int cartNum = 0;
-			 
-			for(String i : chArr) {   
-				cartNum = Integer.parseInt(i);
-				cart.setCartNum(cartNum);
-				service.deleteCart(cart);
-			}   
-			result = 1;
-		return result;  
-	}
+//	@ResponseBody
+//	@RequestMapping(value = "/cartCash", method = RequestMethod.POST)
+//	public int cartCash(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, CartVO cart) throws Exception {
+//		 
+//		int result = 0;
+//		int cartNum = 0;
+//			 
+//			for(String i : chArr) {   
+//				cartNum = Integer.parseInt(i);
+//				cart.setCartNum(cartNum);
+//				service.deleteCart(cart);
+//			}   
+//			result = 1;
+//		return result;  
+//	}
 	
 	// 주문
+	@ResponseBody
 	@RequestMapping(value = "/basket", method = RequestMethod.POST)
-	public String order(HttpSession session, OrderVO order, OrderDetailVO orderDetail) throws Exception {
-	 
-		MemberDto member = (MemberDto)session.getAttribute("member");  
+	public int order(HttpSession session, OrderVO order, OrderDetailVO orderDetail, @RequestParam(value = "chbox[]", required=false) List<String> chArr, CartVO cart) throws Exception {
+		int pNum = 0;
+		int result = 0;
+		
+		MemberDto member = (MemberDto) session.getAttribute("member");
+
 		String mId = member.getmId();
-	 
+		String mName = member.getmName();
+
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
 		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
-		String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
+		String ymd = ym + new DecimalFormat("00").format(cal.get(Calendar.DATE));
 		String subNum = "";
-	 
-		for(int i = 1; i <= 6; i ++) {
-			subNum += (int)(Math.random() * 10);
+
+		for (int j = 1; j <= 6; j++) {
+			subNum += (int) (Math.random() * 10);
 		}
-	 
+
 		String orderId = ymd + "_" + subNum;
-	 
+
 		order.setOrderId(orderId);
 		order.setmId(mId);
-	  
-		service.orderInfo(order);
-	 
-		orderDetail.setOrderId(orderId);
-		orderDetail.setmId(mId);
-		service.orderInfo_details(orderDetail);
-	 
-		return "redirect:/main";  
+		order.setjCatchName(mName);
+		
+		for (String i : chArr) {
+			System.out.println(chArr);
+			pNum = Integer.parseInt(i);
+			System.out.println(pNum);
+			order.setpNum(pNum);
+			
+			
+//
+//
+//			service.orderInfo(order);
+//
+			service.orderInfo(order);
+
+		}
+//		return "redirect:/main";  
+		result = 1;
+		return result;
 	}
 	
 	// 주문조회 페이지

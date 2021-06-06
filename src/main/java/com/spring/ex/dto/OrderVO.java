@@ -3,16 +3,18 @@ package com.spring.ex.dto;
 import java.sql.Date;
 
 public class OrderVO {
-	
 	private String orderId;
 	private String mId;
-	private String orderRec;
+	private String jCatchName;
 	private String userAddr1;
 	private String userAddr2;
 	private String userAddr3;
-	private String orderPhon;
+	private String jPhone;
 	private int total_sum;
 	private Date orderDate;
+	private String jMemo;
+	private int pNum;
+	
 	public String getOrderId() {
 		return orderId;
 	}
@@ -25,11 +27,11 @@ public class OrderVO {
 	public void setmId(String mId) {
 		this.mId = mId;
 	}
-	public String getOrderRec() {
-		return orderRec;
+	public String getjCatchName() {
+		return jCatchName;
 	}
-	public void setOrderRec(String orderRec) {
-		this.orderRec = orderRec;
+	public void setjCatchName(String jCatchName) {
+		this.jCatchName = jCatchName;
 	}
 	public String getUserAddr1() {
 		return userAddr1;
@@ -49,13 +51,12 @@ public class OrderVO {
 	public void setUserAddr3(String userAddr3) {
 		this.userAddr3 = userAddr3;
 	}
-	public String getOrderPhon() {
-		return orderPhon;
+	public String getjPhone() {
+		return jPhone;
 	}
-	public void setOrderPhon(String orderPhon) {
-		this.orderPhon = orderPhon;
+	public void setjPhone(String jPhone) {
+		this.jPhone = jPhone;
 	}
-	
 	public int getTotal_sum() {
 		return total_sum;
 	}
@@ -68,6 +69,19 @@ public class OrderVO {
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
+	public String getjMemo() {
+		return jMemo;
+	}
+	public void setjMemo(String jMemo) {
+		this.jMemo = jMemo;
+	}
+	public int getpNum() {
+		return pNum;
+	}
+	public void setpNum(int pNum) {
+		this.pNum = pNum;
+	}
 	
 	
+
 }
