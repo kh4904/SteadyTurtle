@@ -72,6 +72,12 @@ public class ServiceTurtle implements TurtleService{
 		dao.MemberUpdate(mdto);
 	}
 	
+	//회원수정
+	@Override
+	public void MemberUpdate2(MemberDto mmdto) throws Exception {
+		dao.MemberUpdate2(mmdto);
+	}
+	
 	//로그인
 	@Override
 	public MemberDto login(MemberDto ldto) throws Exception{
@@ -418,6 +424,18 @@ public class ServiceTurtle implements TurtleService{
 	@Override
 	public void cashOk(JumunDto cldto) throws Exception {
 		cdao.cashOk(cldto);
+	}
+	
+	// 결제시 마일리지변화
+	@Override
+	public void cashMile(MemberDto cmdto) throws Exception {
+		cdao.cashMile(cmdto);
+	}
+	
+	// 결제시 마일리지변화(차감)
+	@Override
+	public void cashMile2(MemberDto cmdto) throws Exception {
+		cdao.cashMile2(cmdto);
 	}
 	
 	//결제시 상품 목록 변경

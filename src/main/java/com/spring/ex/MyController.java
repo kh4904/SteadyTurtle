@@ -498,12 +498,14 @@ public class MyController {
 			
 	//결제하기
 	@RequestMapping(value = "CashOk", method = RequestMethod.POST)
-	public String CashOk(JumunDto cldto, ProductDto pudto) throws Exception {
+	public String CashOk(JumunDto cldto, ProductDto pudto, MemberDto cmdto) throws Exception {
 		
 		ServiceTurtle.cashOk(cldto);
 		ServiceTurtle.productDecrease(pudto);
+		service.cashMile(cmdto);
+		/* service.cashMile2(cmdto); */
 		
-		return "redirect:/main";
+		return "redirect:/JumunSearch";
 	}
 	
 	// 환불조회 페이지
@@ -1081,6 +1083,22 @@ public class MyController {
 		model.addAttribute("jumunList", list2);
 		
 		return "Master/Customer/DetailCustomerManage";
+	}
+	
+	// 회원관리 상세보기 수정
+	@RequestMapping("/DetailCustomerManageUpdate")
+	public String DetailCustomerManageUpdate(){
+		
+		return "Master/Customer/DetailCustomerManageUpdate";
+	}
+	
+	// 관리자측 회원정보 수정
+	@RequestMapping(value="/ManageUpdate",method = RequestMethod.POST)
+	public String MyPageUpdate2(MemberDto mmdto) throws Exception{
+			
+		service.MemberUpdate2(mmdto);
+		
+		return "redirect:/DetailCustomerManage";
 	}
 	
 	// 관리자쪽에서 회원탈퇴시키기

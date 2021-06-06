@@ -35,6 +35,9 @@ public interface TurtleService {
 	/* 회원수정 MemberUpdate 회원dto를 mDto로 선언*/ 
 	public void MemberUpdate(MemberDto mDto) throws Exception;
 	
+	/* 관리자 회원수정 MemberUpdate 회원dto를 mDto로 선언*/ 
+	public void MemberUpdate2(MemberDto mmDto) throws Exception;
+	
 	//로그인 MemberDto를 ldto로 선언
 	public MemberDto login(MemberDto ldto) throws Exception;
 	
@@ -169,6 +172,12 @@ public interface TurtleService {
 	
 	//결제하기
 	public void cashOk(JumunDto cldto) throws Exception;
+	
+	/* 결제시 마일리지 변화*/ 
+	public void cashMile(MemberDto cmdto) throws Exception;
+	
+	/* 결제시 마일리지 변화(차감)*/ 
+	public void cashMile2(MemberDto cmdto) throws Exception;
 	
 	//결제시 상품 목록 변경
 	public void productDecrease(ProductDto pudto) throws Exception;

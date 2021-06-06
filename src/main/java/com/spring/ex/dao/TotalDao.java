@@ -58,6 +58,12 @@ public class TotalDao implements MemberDao{
 		sqlSessionTemplate.update(namespace + ".MemberUpdate", Mdto);
 	}
 	
+	// 관리자측 회원 정보 update문 수정 
+	@Override
+	public void MemberUpdate2(MemberDto mmdto) throws Exception {
+		sqlSessionTemplate.update(namespace + ".MemberUpdate2", mmdto);
+	}
+	
 	// 로그인
 	@Override
 	public MemberDto login(MemberDto ldto) throws Exception{
@@ -347,6 +353,18 @@ public class TotalDao implements MemberDao{
 	@Override
 	public void cashOk(JumunDto cldto) throws Exception {
 		sqlSessionTemplate.insert(namespace + ".cashOk", cldto); 
+	}
+	
+	// 결제시 마일리지 변화
+	@Override
+	public void cashMile(MemberDto cmdto) throws Exception {
+		sqlSessionTemplate.update(namespace + ".cashMile", cmdto);
+	}
+	
+	// 결제시 마일리지 변화
+	@Override
+	public void cashMile2(MemberDto cmdto) throws Exception {
+		sqlSessionTemplate.update(namespace + ".cashMile2", cmdto);
 	}
 	
 	//결제시 상품 목록 변경

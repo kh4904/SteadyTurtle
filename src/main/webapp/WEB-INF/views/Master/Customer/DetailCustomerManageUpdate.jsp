@@ -36,8 +36,11 @@
 	<section class="page-section portfolio" id="portfolio">
 		<div class="container">
 			<div class="row">
-				<table class="table table-striped"
+			<table class="table table-striped"
 					style="text-align: center; border: 1px solid #dddddd">
+			<form action="ManageUpdate" method="post">
+						<input type="hidden" id="mId" name="mId" value="${member2.getmId()}">
+				
 					<thead>
 						<tr>
 							<th colspan="3"
@@ -48,7 +51,9 @@
 					<tbody>
 						<tr style="background-color: #e1f5fe;">
 							<td style="width: 20%;"><b>이름</b></td>
-							<td colspan="2">${member2.getmName() }</td>
+							<td colspan="2"><input type="text" id="mName" name="mName"
+										style="margin-left: 6px; text-align: center;"
+										value="${member2.getmName() }" /></td>
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>아이디</b></td>
@@ -56,31 +61,51 @@
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>비밀번호</b></td>
-							<td colspan="2">${member2.getmPw() }</td>
+							<td colspan="2"><input type="text" id="mPw" name="mPw"
+										style="margin-left: 6px; text-align: center;"
+										value="${member2.getmPw() }" /></td>
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>전화번호</b></td>
-							<td colspan="2">${member2.getmPhone() }</td>
+							<td colspan="2"><input type="text" id="mPhone" name="mPhone"
+										style="margin-left: 6px; text-align: center;"
+										value="${member2.getmPhone() }" /></td>
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>성별</b></td>
-							<td colspan="2">${member2.getmGender() }</td>
+							<td colspan="2"><select class="" name="mGender" id="mGender" style="width:60px; height:30px;">
+												<option selected hidden>${member2.getmGender() }</option>
+												<option>남성</option>
+												<option>여성</option></select></td>
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>주소</b></td>
-							<td colspan="2">${member2.getmAddr() }</td>
+							<td colspan="2"><input type="text" id="mAddr" name="mAddr"
+										style="margin-left: 6px; text-align: center;"
+										value="${member2.getmAddr() }" /></td>
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>등급</b></td>
-							<td colspan="2">${member2.getmGrade() }</td>
+							<td colspan="2">
+											<select class="" name="mGrade" id="mGrade" style="width:120px; height:30px;">
+												<option selected hidden>${member2.getmGrade() }</option>
+												<option>브론즈</option>
+												<option>실버</option>
+												<option>골드</option>
+												<option>플래티넘</option>
+											</select></td>
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>생년월일</b></td>
-							<td colspan="2">${member2.getmBirth() }</td>
+							<td colspan="2"><input type="text" id="mBirth" name="mBirth"
+										style="margin-left: 6px; text-align: center;"
+										value="${member2.getmBirth() }" /></td>
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>이메일</b></td>
-							<td colspan="2">${member2.getmEmail() }</td>
+							<td colspan="2"><input type="text" id="mEmail" name="mEmail"
+										style="margin-left: 6px; text-align: center;"
+										value="${member2.getmEmail() }" /></td>
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>마일리지</b></td>
@@ -88,86 +113,37 @@
 								<fmt:formatNumber pattern="###,###,###" value="${member2.getmCumulmile()}" /> P</td>
 						</tr>
 						<tr style="background-color: #e1f5fe;">
+							<td><b>관리자권한</b></td>
+							<td colspan="2"><select class="" name="mMaster" id="mMaster" style="width:120px; height:30px;">
+												<option value = "0">일반</option>
+												<option value = "1">관리자</option>
+											</select></td>
+						</tr>
+						<tr style="background-color: #e1f5fe;">
 							<td><b>특이사항</b></td>
-							<td colspan="2">${member2.getmNote() }</td>
+							<td colspan="2"><input type="text" id="mNote" name="mNote"
+										style="margin-left: 6px; text-align: center; width:600px;" 
+										value="${member2.getmNote() }"/></td>
 						</tr>
 					</tbody>
+					
 				</table>
 
 				<div class="container">
 					<div class="row">
-						<table class="table table-striped"
-							style="text-align: center; border: 1px solid #dddddd">
-							<!-- 글제목,카테고리,작성일,작성자 라벨 -->
-							<thead>
-								<tr>
-									<th colspan="7"
-										style="background-color: #81d4fa; text-align: center;">
-										구매리스트</th>
-								</tr>
-								<tr>
-									<th style="background-color: #b2dfdb;">상품명</th>
-									<th style="background-color: #b2dfdb;">구매일</th>
-									<th style="background-color: #b2dfdb;">수량</th>
-									<th style="background-color: #b2dfdb;">마일리지</th>
-									<th style="background-color: #b2dfdb;">결제금액</th>
-									<th style="background-color: #b2dfdb;">배송완료일</th>
-									<th style="background-color: #b2dfdb;">배송여부</th>
-								</tr>
-							</thead>
-
-							<!-- 고객문의 내용 -->
-							<tbody>
-							<c:forEach items="${jumunList}" var="jumun">
-                  				<c:if test="${jumun.getjId() eq sessionScope.member2.getmId()}">
-								<tr>
-									<th style="background-color: #eeeeee;">${jumun.getjName() }</th>
-									<th style="background-color: #eeeeee;">${jumun.getjJumunDate() }</th>
-									<th style="background-color: #eeeeee;">${jumun.getjCount() }</th>
-									<th style="background-color: #eeeeee;"><fmt:formatNumber pattern="###,###,###" value="${jumun.getjMile()}" /></th>
-									<th style="background-color: #eeeeee;"><fmt:formatNumber pattern="###,###,###" value="${jumun.getjPrice()}" /></th>
-									<th style="background-color: #eeeeee;">${jumun.getjFinishDate() }</th>
-									<c:choose>
-										<c:when test="${jumun.getjShip() eq '배송준비'}">
-       										 <th style="background-color: #eeeeee; color: orange;">배송준비</th>
-    									</c:when>
-    									<c:when test="${jumun.getjShip() eq '배송중'}">
-        						 			<th style="background-color: #eeeeee; color: orange;">배송중</th>
-    									</c:when>
-    									<c:when test="${jumun.getjShip() eq '배송완료'}">
-        						 			<th style="background-color: #eeeeee; color: blue;">배송완료</th>
-    									</c:when>
-    									<c:when test="${jumun.getjShip() eq '환불완료'}">
-        						 			<th style="background-color: #eeeeee; color: red;">환불처리</th>
-    									</c:when>
-    									<c:when test="${jumun.getjShip() eq '환불요청'}">
-        						 			<th style="background-color: #eeeeee; color: orange;">환불요청</th>
-    									</c:when>
-									</c:choose>
-								</tr>
-								</c:if>
-						     </c:forEach>
-							</tbody>
-						</table>
-
-
 						<!-- 밑줄  -->
 						<div class="divider-custom" style="display: block;">
 							<hr style="background-color: black;">
 						</div>
-						<!-- 회원삭제 버튼 -->
-						<form action="CustomerDelete" method="post">
-						<input type="hidden" id="mId" name="mId" value="${member2.getmId()}">
-						<input type="hidden" id="mPw" name="mPw" value="${member2.getmPw()}">
+						<!-- 회원수정 버튼 -->
 						<div class="contanier"
-							style="position: relative; top: -20px; left: 920px;">
-							<a href="CustomerManage" class="btn btn-primary">목록</a> 
-							<a href="DetailCustomerManageUpdate" class="btn btn-primary">수정</a>
-							<input type="submit" class="btn btn-primary" value="회원삭제">
+							style="position: relative; top: -20px; left: 940px;"> 
+							<a href="DetailCustomerManage" class="btn btn-primary">뒤로가기</a>
+							<input type="submit" class="btn btn-primary" value="수정완료">
 						</div>
-						</form>
 					</div>
 				</div>
+				</form>
 			</div>
 
 		</div>

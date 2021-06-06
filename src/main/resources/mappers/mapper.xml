@@ -30,6 +30,13 @@
 		 WHERE mId = #{mId} 
 </update>
 
+<!-- 관리자측 회원수정 update문 -->
+<update id="MemberUpdate2">UPDATE member SET mPw = #{mPw}, mName = #{mName}, mGender = #{mGender}, mPhone = #{mPhone},
+         mBirth = #{mBirth}, mEmail = #{mEmail}, mAddr = #{mAddr}, mGrade = #{mGrade}, mNote = #{mNote},
+         mMaster = #{mMaster}
+		 WHERE mId = #{mId} 
+</update>
+
 <!-- 로그인 select문 -->
 <select id="login" parameterType="MemberDto" resultType="MemberDto">
 	select * from member where mId = #{mId} and mPw = #{mPw}
@@ -214,6 +221,18 @@ select
 	insert into jumun(jNum, jName, jCate, jShipPrice, jMile, jPrice, jCount, jCustomer, jId, jEmail, jAddr, jMailNum, jCatchName, jPhone, jUrl, jShip,jFinishDate ,jState, jMemo)
 	values(0, #{jName}, #{jCate}, #{jShipPrice}, #{jMile}, #{jPrice}, #{jCount}, #{jCustomer}, #{jId}, #{jEmail}, #{jAddr}, #{jMailNum}, #{jCatchName}, #{jPhone},#{jUrl}, '배송준비', #{jFinishDate},'미승인',#{jMemo} )
 </insert>
+
+<!-- 결제시 마일리지 변화 -->
+<update id="cashMile">
+	UPDATE member SET mMile = mMile + #{mMile}, mCumulmile = mCumulmile + #{mCumulmile}
+	WHERE mId = #{mId}
+</update>
+
+<!-- 결제시 마일리지 변화(차감) -->
+<update id="cashMile2">
+	UPDATE member SET mMile = mMile - #{mMile}
+	WHERE mId = #{mId}
+</update>
 
 <!-- 상품판매량에따른 변화 -->
 <update id="productDecrease">

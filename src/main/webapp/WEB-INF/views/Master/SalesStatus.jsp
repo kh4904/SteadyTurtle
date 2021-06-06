@@ -173,7 +173,7 @@
 				<div class="card-header">
 				      <h1>
 					<i class="fas fa-chart-area mr-1"></i>
-					요가기구
+					요가상품
 					  </h1>
 				</div>
 				<div class="card-body">

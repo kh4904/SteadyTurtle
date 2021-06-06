@@ -7,19 +7,19 @@ var ctx = document.getElementById("myBarChart2");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"],
     datasets: [
     
     {
       label: "Man",
       backgroundColor: "rgba(103,153,255,1)",
       borderColor: "rgba(103,153,255,1)",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [1400, 2074, 2187, 971, 1247, 888,647],
     },{
       label: "Female",
       backgroundColor: "rgba(255,94,0, 1)",
       borderColor: "rgba(255,94,0,1)",
-      data: [5215, 6312, 7251, 5841, 7821, 10984],
+      data: [1347, 2014, 1274, 236, 400, 647,991],
     }
     ],
   },
@@ -39,7 +39,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
+          max: 5000,
           maxTicksLimit: 5
         },
         gridLines: {

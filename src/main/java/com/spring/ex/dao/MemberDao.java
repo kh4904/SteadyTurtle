@@ -18,16 +18,19 @@ import com.spring.ex.dto.SellDto;
 public interface MemberDao {
 	
 	//검색기능
-	public List<ProductDto> productSearch(String keyword ) throws Exception;
+	public List<ProductDto> productSearch(String keyword) throws Exception;
 	
 	//멤버 검색 기능
-	public List<MemberDto> memberSearch(String key ) throws Exception;
+	public List<MemberDto> memberSearch(String key) throws Exception;
 	
 	// 회원정보 dto
 	public List<MemberDto> memberList() throws Exception;
 	
 	//회원 수정 dto
 	public void MemberUpdate(MemberDto Mdto) throws Exception;
+	
+	// 관리자측 회원 수정 dto
+	public void MemberUpdate2(MemberDto mmdto) throws Exception;
 	
 	// 회원가입 dto
 	public void register(MemberDto dto) throws Exception;
@@ -168,6 +171,12 @@ public interface MemberDao {
 	
 	//결제하기
 	public void cashOk(JumunDto cldto) throws Exception;
+	
+	// 결제시 마일리지변화
+	public void cashMile(MemberDto cmdto) throws Exception;
+	
+	// 결제시 마일리지변화(차감)
+	public void cashMile2(MemberDto cmdto) throws Exception;
 	
 	//결제시 상품 목록 변경
 	public void productDecrease(ProductDto pudto) throws Exception;

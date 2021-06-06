@@ -292,6 +292,11 @@
 								</div>
 							</p>
 							<hr>
+							<c:if test="${member != null }">
+								<input type="hidden" id="mId" name="mId" value="${member.getmId() }" >
+								<input type="hidden" id="mMile" name="mMile" value="${sum / 100 * product.getpMile() }" >
+								<input type="hidden" id="mCumulmile" name="mCumulmile" value="${sum / 100 * product.getpMile() }" >
+							</c:if>
 							<!-- 결제하기 버튼 -->
 							<div class="btnArea">
 								<button type="submit" class="btn" disabled="disabled" style="margin-bottom: 20px; margin-left: -50px; width: 250px; height: 50px; background-color: #757575; color: white;">결제하기</button> <br>
