@@ -127,50 +127,92 @@ public class ServiceTurtle implements TurtleService{
 		return productDao.productList(map);
 	}
 	
-	//상품 관리자 페이징
+	// 관리자 상품 페이징 출력
 	@Override
 	public List<ProductDto> ProductList(HashMap<String, Integer> map) throws Exception {
 		return memberDao.ProductList(map);
 	}
-		
-	public List<ProductDto> FoodList(HashMap<String, Integer> map) throws Exception{
+
+	// 관리자 환불 페이징 출력
+	public List<RefundDto> RefundList(HashMap<String, Integer> map) throws Exception {
+		return memberDao.RefundList(map);
+	}
+
+	// 관리자 고객문의 페이징 출력
+	public List<BoardDTO> CBoardList(HashMap<String, Integer> map) throws Exception {
+		return memberDao.CBoardList(map);
+	}
+
+	// 관리자 고객주문 페이징 출력
+	public List<JumunDto> jumunList(HashMap<String, Integer> map) throws Exception {
+		return memberDao.jumunList(map);
+	}
+
+	// 음식 상품페이징 출력
+	public List<ProductDto> FoodList(HashMap<String, Integer> map) throws Exception {
 		return memberDao.FoodList(map);
 	}
-	
-	public List<ProductDto> YogaList(HashMap<String, Integer> map) throws Exception{
+
+	// 요가 상품페이징 출력
+	public List<ProductDto> YogaList(HashMap<String, Integer> map) throws Exception {
 		return memberDao.YogaList(map);
 	}
-		
-	public List<ProductDto> HealthList(HashMap<String, Integer> map) throws Exception{
+
+	// 헬스 상품페이징 출력
+	public List<ProductDto> HealthList(HashMap<String, Integer> map) throws Exception {
 		return memberDao.HealthList(map);
 	}
-	
-	//페이징 토탈 갯수
+
+	// 고객관리 페이징 출력
+	public List<BoardDTO> BoardList(HashMap<String, Integer> map) throws Exception {
+		return memberDao.BoardList(map);
+	}
+
+	// 고객 상품관리 토탈
 	@Override
 	public int productTotalCount() throws Exception {
-		
 		return TotalDao.productTotalCount();
-	}		
-		
-	//요가상품 갯수
+	}
+
+	// 관리자 고객 주문관리 토탈
+	@Override
+	public int jumunTotalCount() throws Exception {
+		return TotalDao.jumunTotalCount();
+	}
+
+	// 관리자 환불 토탈
+	@Override
+	public int refundTotalCount() throws Exception {
+		return TotalDao.refundTotalCount();
+	}
+
+	// 관리자 고객문의 토탈
+	@Override
+	public int CBoardTotalCount() throws Exception {
+		return TotalDao.CBoardTotalCount();
+	}
+
+	// 요가 토탈
 	@Override
 	public int yogaTotalCount() throws Exception {
-		
 		return TotalDao.yogaTotalCount();
-	}		
-		
-	// 헬스기구갯수
+	}
+
+	// 헬스 토탈
 	@Override
 	public int healthTotalCount() throws Exception {
-		
 		return TotalDao.healthTotalCount();
-	}		
-		
-	// 운동식품 갯수
+	}
+
+	// 음식 토탈
 	@Override
 	public int foodTotalCount() throws Exception {
-		
 		return TotalDao.foodTotalCount();
+	}
+
+	// 고객 문의 토탈
+	public int boardTotalCount() throws Exception {
+		return TotalDao.boardTotalCount();
 	}
 	
 	//상품 상세

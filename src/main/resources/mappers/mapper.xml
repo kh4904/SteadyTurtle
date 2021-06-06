@@ -146,6 +146,12 @@
 <!-- 주문내역 배송완료클릭시 update문 -->
 <update id="jumunState2">UPDATE jumun SET jFinishDate= NOW() , jShip = '배송완료', jState='배송' WHERE jNum = #{jNum} </update>
 
+<!-- 관리자 주문내역 카운트 -->
+<select id="jumunTotalCount" resultType="int">SELECT COUNT(*) from jumun </select>
+
+<!-- 관리자 주문내역 페이징리스트 -->
+<select id="jumunList" resultType="JumunDto">SELECT * FROM jumun ORDER BY jNum DESC LIMIT #{Page}, #{PageSize}</select>
+
 <!-- 장바구니 추가 -->
 <insert id="addCart">
 	insert into cart(cartNum, mId, pNum, cartStock)
@@ -186,6 +192,24 @@ select
 
 <!-- 고객문의 게시글 삭제 delete문 -->
 <delete id="boardDelete"> delete from board where bNum = #{bNum} </delete>
+
+<!-- 고객문의 토탈 카운트 -->
+<select id="boardTotalCount" resultType="int">SELECT COUNT(*) from board </select>
+
+<!-- 고객문의 토탈 카운트 -->
+<select id="CBoardTotalCount" resultType="int">SELECT COUNT(*) from board </select>
+
+<!-- 고객문의 페이징리스트 -->
+<select id="BoardList" resultType="BoardDTO">SELECT * FROM board ORDER BY bNum DESC LIMIT #{Page}, #{PageSize}</select>
+
+<!-- 관리자고객문의 페이징리스트 -->
+<select id="CBoardList" resultType="BoardDTO">SELECT * FROM board ORDER BY bNum DESC LIMIT #{Page}, #{PageSize}</select>
+
+<!-- 환불요청 토탈 카운트 -->
+<select id="refundTotalCount" resultType="int">SELECT COUNT(*) from refundboard </select>
+
+<!-- 관리자 환불요청 -->
+<select id="RefundList" resultType="RefundDto">SELECT * FROM refundboard ORDER BY rNum DESC LIMIT #{Page}, #{PageSize}</select>
 
 <!-- 환불요청 게시판 목록 select문 -->
 <select id="refund" resultType="RefundDto">SELECT * from refundboard order by rNum DESC</select>

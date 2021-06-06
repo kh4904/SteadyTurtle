@@ -53,20 +53,26 @@ public interface TurtleService {
 	//회원탈퇴
 	public void memberdelete(MemberDto ddto) throws Exception;
 	
-	/* 상품정보 list ProductDto를 productList()로 선언*/
+	/* 페이징 */
 	public List<ProductDto> productList(HashMap<String, Integer> map) throws Exception;
-	
-	//상품 관리자 페이징
 	public List<ProductDto> ProductList(HashMap<String, Integer> map) throws Exception;
 	public List<ProductDto> HealthList(HashMap<String, Integer> map) throws Exception;
 	public List<ProductDto> YogaList(HashMap<String, Integer> map) throws Exception;
 	public List<ProductDto> FoodList(HashMap<String, Integer> map) throws Exception;
+	public List<BoardDTO> BoardList(HashMap<String, Integer> map) throws Exception;
+	public List<BoardDTO> CBoardList(HashMap<String, Integer> map) throws Exception;
+	public List<RefundDto> RefundList(HashMap<String, Integer> map) throws Exception;
+	public List<JumunDto> jumunList(HashMap<String, Integer> map) throws Exception;
 	
-	//상품 게시물 총 갯수
+	// 토탈
 	public int productTotalCount() throws Exception;
 	public int yogaTotalCount() throws Exception;
 	public int healthTotalCount() throws Exception;
 	public int foodTotalCount() throws Exception;
+	public int boardTotalCount() throws Exception;
+	public int refundTotalCount() throws Exception;
+	public int CBoardTotalCount() throws Exception;
+	public int jumunTotalCount() throws Exception;
 	
 	/* 상품정보 상세 ProductDto를 pdto()로 선언*/
 	public ProductDto product(ProductDto pdto) throws Exception;

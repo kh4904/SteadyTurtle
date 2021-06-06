@@ -31,7 +31,7 @@
 	<%@ include file="/WEB-INF/views/menu.jsp"%>
 	
 	<!-- 게시판 -->
-	<section class="page-section portfolio" style="height:800px;">
+	<section class="page-section portfolio" style="min-height:600px;">
 		<div class="container">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
@@ -78,32 +78,52 @@
 				<div style="text-align:right;">
 						<a href="CustomerWrite" class="btn btn-info">글쓰기</a>
 				</div>
-				
-				<div class="container">
-					<div class="col-lg-12" style="text-align: center;">
-						<nav aria-label="Page navigation example"style="position:relative; left:420px;">
-							<ul class="pagination">
-								<li class="page-item">
-									<a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" href="#">1</a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" href="#">2</a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" href="#">3</a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</div>
 			</div>
 	</section>
+	
+	<!-- 게시글 페이징 처리(기준 10개) -->
+		<nav aria-label="Page navigation">
+			<ul class="pagination justify-content-center" style="position:relative; top:-80px;">
+
+				<!-- 첫 페이지면 Disabled 아니라면 Enabled -->
+				<c:choose>
+					<c:when test="${Paging.pageNo eq Paging.firstPageNo }">
+						<li class="page-item disabled"><a class="page-link"
+							href="CustomerWriteView?page=${Paging.prevPageNo}">Previus</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="CustomerWriteView?page=${Paging.prevPageNo}">Previus</a></li>
+					</c:otherwise>
+				</c:choose>
+				<!-- 페이지 갯수만큼 버튼 생성 -->
+				<c:forEach var="i" begin="${Paging.startPageNo }"
+					end="${Paging.endPageNo }" step="1">
+					<c:choose>
+						<c:when test="${i eq Paging.pageNo }">
+							<li class="page-item disabled"><a class="page-link"
+								href="CustomerWriteView?page=${i}"><c:out value="${i}" /></a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link"
+								href="CustomerWriteView?page=${i}"><c:out value="${i}" /></a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				
+				<!-- 마지막 페이지면 Disabled 아니라면 Enabled -->
+				<c:choose>
+					<c:when test="${Paging.pageNo eq Paging.finalPageNo }">
+						<li class="page-item disabled"><a class="page-link"
+							href="CustomerWriteView?page=${Paging.nextPageNo}">Next</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link"
+							href="CustomerWriteView?page=${Paging.nextPageNo}">Next</a></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+		</nav>
 	
 	<!-- Copyright Section(맨밑 하단)-->
 	<div class="copyright py-4 text-center text-white">

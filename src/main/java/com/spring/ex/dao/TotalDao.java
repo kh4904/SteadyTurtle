@@ -95,13 +95,13 @@ public class TotalDao implements MemberDao{
 		
 	}
 	
-	// 상품정보 select문
+	// 상품정보 페이징
 	@Override
 	public List<ProductDto> productList(HashMap<String, Integer> map) throws Exception {
 		return sqlSessionTemplate.selectList(namespace + ".productList", map);
 	}
 	
-	// 상품 페이징
+	// 관리자 페이징 토탈
 	@Override
 	public List<ProductDto> ProductList(HashMap<String, Integer> map) throws Exception {
 		return sqlSessionTemplate.selectList(namespace + ".ProductList", map);
@@ -125,6 +125,31 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectList(namespace + ".YogaList", map);
 	}
 	
+	// 고객문의 페이징 출력
+	@Override
+	public List<BoardDTO> BoardList(HashMap<String, Integer> map) throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".BoardList", map);
+	}
+	
+	// 관리자 주문요청 페이징 출력 
+	@Override
+	public List<JumunDto> jumunList(HashMap<String, Integer> map) throws Exception{
+		
+		return sqlSessionTemplate.selectList(namespace + ".jumunList", map);
+	}
+
+	// 환불요청 페이징 출력
+	@Override
+	public List<RefundDto> RefundList(HashMap<String, Integer> map) throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".RefundList", map);
+	}
+	
+	// 관리자 고객문의 페이징 출력
+	@Override
+	public List<BoardDTO> CBoardList(HashMap<String, Integer> map) throws Exception{
+		return sqlSessionTemplate.selectList(namespace + ".CBoardList",map);
+	}
+	
 	// 관리자 페이징 정보
 	public int productTotalCount() throws Exception {
 		return sqlSessionTemplate.selectOne(namespace + ".productTotalCount");
@@ -143,6 +168,30 @@ public class TotalDao implements MemberDao{
 	// 건강식품 페이징 정보
 	public int foodTotalCount() throws Exception {
 		return sqlSessionTemplate.selectOne(namespace + ".foodTotalCount");
+	}
+	
+	// 고객관리 페이징 토탈
+	@Override
+	public int boardTotalCount() throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".boardTotalCount");
+	}
+	
+	//관리자 주문 관리 페이징 토탈 
+	@Override
+	public int jumunTotalCount() throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".jumunTotalCount");
+	}
+	
+	// 고객환불 페이징 토탈
+	@Override
+	public int refundTotalCount() throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".refundTotalCount");
+	}
+
+	// 관리자 고객문의 페이징 토탈
+	@Override
+	public int CBoardTotalCount() throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".CBoardTotalCount");
 	}
 	
 	// 상품상세 select문

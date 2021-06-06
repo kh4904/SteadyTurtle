@@ -610,11 +610,26 @@ public class MyController {
 	
 	// 고객문의게시판
 	@RequestMapping(value = "/CustomerWriteView", method = RequestMethod.GET)
-	public String CustomerWriteView(Model model) throws Exception {
+	public String CustomerWriteView(Model model,HttpServletRequest request) throws Exception {
+		int totalCount = service.boardTotalCount();
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
-		List<BoardDTO> list = service.boardList();
+		
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		
+		List<BoardDTO> list = service.BoardList(map);
 		
 		model.addAttribute("boardList",list);
+		model.addAttribute("Paging", paging);
 		
 		return "Board/CustomerWriteView";
 	}
@@ -624,7 +639,7 @@ public class MyController {
 	public String CutomerWriteAnswer(){
 		
 		return "Board/CustomerWriteAnswer";
-		
+			
 	}
 	
 	// 고객문의 게시판 글보기(세션값주기)
@@ -774,11 +789,26 @@ public class MyController {
 	
 	// 주문요청 내역
 	@RequestMapping(value = "/OrderHistory", method = RequestMethod.GET)
-	public String OrderHistory(Model model) throws Exception {
+	public String OrderHistory(Model model,HttpServletRequest request) throws Exception {
+		int totalCount = service.jumunTotalCount();
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
-		List<JumunDto> list = service.jumunList();
 		
-		model.addAttribute("jumunList", list);
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
+		
+		page = (page - 1) * 10;
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		
+		List<JumunDto> list = service.jumunList(map);
+		
+		model.addAttribute("jumunList",list);
+		model.addAttribute("Paging", paging);
 		
 		return "Master/Manage/OrderHistory";
 	}
@@ -801,6 +831,7 @@ public class MyController {
 		
 		return "redirect:/OrderHistory";
 	}
+	
 	// 상품관리 보기 페이지
 	@RequestMapping(value = "/ProductManagement", method = RequestMethod.GET)
 	public String ProductView(HttpServletRequest request, Model model) throws Exception {
@@ -927,11 +958,25 @@ public class MyController {
 	
 	// 환불요청 목록
 	@RequestMapping(value = "/MRefund", method = RequestMethod.GET)
-	public String MRefund(Model model) throws Exception {
+	public String MRefund(Model model,HttpServletRequest request) throws Exception {
+		int totalCount = service.refundTotalCount();
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
-		List<RefundDto> list = service.refundList();
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
 		
-		model.addAttribute("refundList", list);
+		page = (page - 1) * 10;
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		
+		List<RefundDto> list = service.RefundList(map);
+		
+		model.addAttribute("RefundList",list);
+		model.addAttribute("Paging", paging);
 		
 		return "Master/Customer/MRefund";
 	}
@@ -974,11 +1019,25 @@ public class MyController {
 	
 	// 관리자 고객문의 목록
 	@RequestMapping(value = "/MCustomerWriteView", method = RequestMethod.GET)
-	public String MCustomerWriteView(Model model) throws Exception {
+	public String MCustomerWriteView(Model model,HttpServletRequest request) throws Exception {
+		int totalCount = service.CBoardTotalCount();
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 		
-		List<BoardDTO> list = service.boardList();
+
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		paging.setTotalCount(totalCount);
 		
-		model.addAttribute("boardList", list);
+		page = (page - 1) * 10;
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		List<BoardDTO> list = service.CBoardList(map);
+		
+		model.addAttribute("CBoardList",list);
+		model.addAttribute("Paging", paging);
 		
 		return "Master/Customer/MCustomerWriteView";
 	}
