@@ -377,7 +377,11 @@ public class MyController {
 	// 주문
 	@ResponseBody
 	@RequestMapping(value = "/basket", method = RequestMethod.POST)
-	public int order(HttpSession session, OrderVO order, OrderDetailVO orderDetail, @RequestParam(value = "chbox[]", required=false) List<String> chArr, CartVO cart) throws Exception {
+	public int order(HttpSession session, OrderVO order, OrderDetailVO orderDetail, 
+			@RequestParam(value = "chbox[]", required=false) List<String> chArr, 
+			@RequestParam(value="userAddr1") String userAddr1,
+			@RequestParam(value="userAddr2") String userAddr2,
+			@RequestParam(value="userAddr3") String userAddr3,CartVO cart) throws Exception {
 		int pNum = 0;
 		int result = 0;
 		
@@ -401,18 +405,15 @@ public class MyController {
 		order.setOrderId(orderId);
 		order.setmId(mId);
 		order.setjCatchName(mName);
-		
+		order.setUserAddr1(userAddr1);
+		order.setUserAddr2(userAddr2);
+		order.setUserAddr3(userAddr3);
 		for (String i : chArr) {
 			System.out.println(chArr);
 			pNum = Integer.parseInt(i);
 			System.out.println(pNum);
 			order.setpNum(pNum);
 			
-			
-//
-//
-//			service.orderInfo(order);
-//
 			service.orderInfo(order);
 
 		}

@@ -173,7 +173,7 @@ function itemAllSum(frm)
 									<tr style="height: 100px;">
 										<td style="width: 150px; height: 43px; text-align: center">
 											<div class = "checkBox">
-												<input type = "checkbox" name="chBox" class="chBox" value="${cartList.pPrice * cartList.cartStock}" data-cartNum="${cartList.pNum}" onClick="itemSum(this.form);"/>
+												<input type = "checkbox" name="chBox" class="chBox" value="${cartList.pPrice * cartList.cartStock}" data-pNum="${cartList.pNum}" data-cartNum="${cartList.cartNum}" onClick="itemSum(this.form);"/>
 												
 												<script>
 													$(".chBox").click(function(){
@@ -394,6 +394,7 @@ function itemAllSum(frm)
 			</div>
 	
 	</form>
+	
 	<button type="button" class="order_btn">주문</button>
 						<script>
 								$(".order_btn").click(function(){
@@ -401,14 +402,16 @@ function itemAllSum(frm)
 					
 									if(confirm_val) {
 										var checkArr = new Array();
-						
+										
 										$("input[class='chBox']:checked").each(function(){
-											checkArr.push($(this).attr("data-cartNum"));
+											checkArr.push($(this).attr("data-pNum"));
 										});
+										sample2_detailAddress
 										$.ajax({
 											url:"/ex/basket",
 											type : "post",
-											data : {chbox : checkArr},
+											data : {chbox : checkArr, userAddr1 : $('#sample2_address').val(), 
+												userAddr2 : $('#sample2_detailAddress').val(), userAddr3 : $('#sample2_extraAddress').val() },
 											success : function(result){
 												if(result == 1) {
 													location.href = "/ex/basket";
