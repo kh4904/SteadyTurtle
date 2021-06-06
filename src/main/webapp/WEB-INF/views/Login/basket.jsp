@@ -404,7 +404,8 @@ function itemAllSum(frm)
 										var checkArr = new Array();
 										
 										$("input[class='chBox']:checked").each(function(){
-											checkArr.push($(this).attr("data-pNum"));
+											checkArr.push($(this).attr("data-cartNum"));
+											
 										});
 										sample2_detailAddress
 										$.ajax({

@@ -182,13 +182,15 @@ function change () {
 								$(".addCart_btn").click(function(){
 									var pNum = $("#pNum").val();
 									var cartStock = $(".numBox").val();
+									var pPrice = $("#pPrice").val();
 									
 									console.log("pNum : " + pNum);
 									console.log("cartStock : " + cartStock);
       
 									var data = {
 											pNum : pNum,
-										cartStock : cartStock
+										cartStock : cartStock,
+										pPrice : pPrice
 									};
    
 									$.ajax({

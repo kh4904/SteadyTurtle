@@ -334,6 +334,7 @@ public class MyController {
 		 if(member != null) {
 		 	cart.setmId(member.getmId());
 		 	cart.setpNum(product.getpNum());
+		 	cart.setpPrice(product.getpPrice());
 		 	service.addCart5(cart);
 		 	result = 1;
 		 }
@@ -382,7 +383,7 @@ public class MyController {
 			@RequestParam(value="userAddr1") String userAddr1,
 			@RequestParam(value="userAddr2") String userAddr2,
 			@RequestParam(value="userAddr3") String userAddr3,CartVO cart) throws Exception {
-		int pNum = 0;
+		int cartNum = 0;
 		int result = 0;
 		
 		MemberDto member = (MemberDto) session.getAttribute("member");
@@ -410,9 +411,9 @@ public class MyController {
 		order.setUserAddr3(userAddr3);
 		for (String i : chArr) {
 			System.out.println(chArr);
-			pNum = Integer.parseInt(i);
-			System.out.println(pNum);
-			order.setpNum(pNum);
+			cartNum = Integer.parseInt(i);
+			System.out.println(cartNum);
+			order.setCartNum(cartNum);
 			
 			service.orderInfo(order);
 

@@ -102,8 +102,8 @@
 
 <!-- 장바구니 추가 -->
 <insert id="addCart">
-	insert into cart(cartNum, mId, pNum, cartStock)
-     VALUES (NEXTVAL(cart_seq), #{mId}, #{pNum}, #{cartStock})
+	insert into cart(cartNum, mId, pNum, cartStock, pPrice)
+     VALUES (NEXTVAL(cart_seq), #{mId}, #{pNum}, #{cartStock}, #{pPrice})
 </insert>
 
 <!-- 장바구니 리스트 -->
@@ -179,9 +179,9 @@ select
 
 <!-- 주문 정보 -->
 <insert id="orderInfo">
- insert into tbl_order(orderId, mId, jCatchName, userAddr1, userAddr2, userAddr3, jPhone, total_sum, jMemo, pNum)
-     select #{orderId}, #{mId}, #{jCatchName}, #{userAddr1}, #{userAddr2}, #{userAddr3}, 0, cartStock, 0, pNum
-     	from cart where pNum = #{pNum}
+ insert into tbl_order(orderId, mId, jCatchName, userAddr1, userAddr2, userAddr3, jPhone, total_sum, jMemo, pNum, jSumPrice)
+     select #{orderId}, #{mId}, #{jCatchName}, #{userAddr1}, #{userAddr2}, #{userAddr3}, 0, cartStock, 0, pNum , cartStock * pPrice
+     	from cart where cartNum = #{cartNum}
 </insert>
    
 <!-- 주문 상세 정보 --> 

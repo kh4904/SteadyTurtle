@@ -14,6 +14,8 @@ public class OrderVO {
 	private Date orderDate;
 	private String jMemo;
 	private int pNum;
+	private int jSumPrice;
+	private int cartNum;
 	
 	public String getOrderId() {
 		return orderId;
@@ -80,6 +82,18 @@ public class OrderVO {
 	}
 	public void setpNum(int pNum) {
 		this.pNum = pNum;
+	}
+	public int getjSumPrice() {
+		return jSumPrice;
+	}
+	public void setjSumPrice(int jSumPrice) {
+		this.jSumPrice = jSumPrice;
+	}
+	public int getCartNum() {
+		return cartNum;
+	}
+	public void setCartNum(int cartNum) {
+		this.cartNum = cartNum;
 	}
 	
 	
