@@ -1,6 +1,7 @@
 package com.spring.ex;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,6 +24,7 @@ import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
+import com.spring.ex.dto.PagingVO;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
 import com.spring.ex.dto.SellDto;
@@ -49,7 +51,8 @@ public class MyController {
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String main(Model model) throws Exception {
 		
-		List<ProductDto> list = service.productList();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		List<ProductDto> list = service.productList(map);
 		
 		model.addAttribute("productList",list);
 		
@@ -111,7 +114,8 @@ public class MyController {
 	@RequestMapping(value = "/LoginSuccess", method = RequestMethod.GET)
 	public String Login(Model model) throws Exception {
 		
-		List<ProductDto> list = service.productList();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		List<ProductDto> list = service.productList(map);
 		
 		model.addAttribute("productList", list);
 		
@@ -187,36 +191,75 @@ public class MyController {
 		return path;
 	}
 	
-	// 헬스기구 페이지
+	// 헬스기구 페이지 Health
 	@RequestMapping(value = "/Health", method = RequestMethod.GET)
-	public String Health(Model model) throws Exception {
-		
-		List<ProductDto> list = service.productList();
-		
-		model.addAttribute("productList",list);
-		
+	public String Health(Model model,HttpServletRequest request) throws Exception {
+			
+		int totalCount = service.healthTotalCount();
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(6);
+		paging.setTotalCount(totalCount);
+			
+		page = (page - 1) * 6;
+			
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		List<ProductDto> list = service.HealthList(map);
+			
+		model.addAttribute("HealthList",list);
+		model.addAttribute("Paging", paging);
 		return "Main/Health";
 	}
-	
-	// 요가상품 페이지
+		
+	// 요가상품 페이지 Yoga
 	@RequestMapping(value = "/Yoga", method = RequestMethod.GET)
-	public String Yoga(Model model) throws Exception {
-		
-		List<ProductDto> list = service.productList();
-		
-		model.addAttribute("productList",list);
-		
-		return "Main/Yoga";	
+	public String Yoga(Model model,HttpServletRequest request) throws Exception {
+			
+		int totalCount = service.yogaTotalCount();
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(6);
+		paging.setTotalCount(totalCount);
+			
+		page = (page - 1) * 6;
+			
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		List<ProductDto> list = service.YogaList(map);
+			
+		model.addAttribute("YogaList",list);
+		model.addAttribute("Paging", paging);
+		return "Main/Yoga";
 	}
-	
-	// 운동식품 페이지
+		 
+	// 운동식품 페이지 Food
 	@RequestMapping(value = "/Food", method = RequestMethod.GET)
-	public String Food(Model model) throws Exception {
-		
-		List<ProductDto> list = service.productList();
-		
-		model.addAttribute("productList",list);
-		
+	public String Food(Model model,HttpServletRequest request) throws Exception {
+			
+		int totalCount = service.foodTotalCount();
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(6);
+		paging.setTotalCount(totalCount);
+			
+		page = (page - 1) * 6;
+			
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+		List<ProductDto> list = service.FoodList(map);
+			
+		model.addAttribute("FoodList",list);
+		model.addAttribute("Paging", paging);
 		return "Main/Food";
 	}
 	
@@ -278,8 +321,8 @@ public class MyController {
 	// 상품정보 상세보기 페이지
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public String product(Model model) throws Exception {
-		
-		List<ProductDto> list = service.productList();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		List<ProductDto> list = service.productList(map);
 		
 		model.addAttribute("productList", list);
 		
@@ -374,7 +417,8 @@ public class MyController {
 	@RequestMapping(value = "/JumunSearch", method = RequestMethod.GET)
 	public String JumunSearch(Model model) throws Exception {
 		
-		List<ProductDto> list = service.productList();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		List<ProductDto> list = service.productList(map);
 		List<MemberDto> list2 = service.memberList();
 		List<JumunDto> list3 = service.jumunList();
 		
@@ -389,7 +433,8 @@ public class MyController {
 	@RequestMapping(value = "/DetailOrder", method = RequestMethod.GET)
 	public String DetailOrder(Model model) throws Exception {
 		
-		List<ProductDto> list = service.productList();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		List<ProductDto> list = service.productList(map);
 		List<MemberDto> list2 = service.memberList();
 		
 		model.addAttribute("productList", list);
@@ -419,8 +464,9 @@ public class MyController {
 	// 결제창 페이지
 	@RequestMapping(value = "/CashOn", method = RequestMethod.GET)
 	public String CashOn(Model model) throws Exception {
-			
-		List<ProductDto> list = service.productList();
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		List<ProductDto> list = service.productList(map);
 			
 		model.addAttribute("productList", list);
 			
@@ -483,10 +529,10 @@ public class MyController {
 	// 환불상품 상세보기 페이지
 	@RequestMapping(value = "/DetailRefund", method = RequestMethod.GET)
 	public String DetailRefund(Model model) throws Exception {
-		
-		List<ProductDto> list = service.productList();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		List<ProductDto> list = service.productList(map);
 		List<MemberDto> list2 = service.memberList();
-		
+			
 		model.addAttribute("productList", list);
 		model.addAttribute("memberList",list2);
 		
@@ -755,12 +801,27 @@ public class MyController {
 	}
 	// 상품관리 보기 페이지
 	@RequestMapping(value = "/ProductManagement", method = RequestMethod.GET)
-	public String ProductManagement(Model model) throws Exception {
-		
-		List<ProductDto> list = service.productList();
-		
-		model.addAttribute("productList", list);
-		
+	public String ProductView(HttpServletRequest request, Model model) throws Exception {
+				
+		int totalCount = service.productTotalCount();
+		int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+				
+		PagingVO paging = new PagingVO();
+		paging.setPageNo(page);
+		paging.setPageSize(8);
+		paging.setTotalCount(totalCount);
+				
+		page = (page - 1) * 8;
+				
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("Page", page);
+		map.put("PageSize", paging.getPageSize());
+				
+		List<ProductDto> List = service.ProductList(map);
+				
+		model.addAttribute("productList", List);
+		model.addAttribute("Paging", paging);
+				
 		return "Master/Manage/ProductManagement";
 	}
 	
@@ -845,8 +906,8 @@ public class MyController {
 	// 재고관리
 	@RequestMapping(value = "/InventoryManage", method = RequestMethod.GET)
 	public String InventoryManage(Model model) throws Exception {
-		
-		List<ProductDto> list = service.productList();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		List<ProductDto> list = service.productList(map);
 		
 		model.addAttribute("productList", list);
 		

@@ -1,5 +1,6 @@
 package com.spring.ex.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -50,7 +51,19 @@ public interface TurtleService {
 	public void memberdelete(MemberDto ddto) throws Exception;
 	
 	/* 상품정보 list ProductDto를 productList()로 선언*/
-	public List<ProductDto> productList() throws Exception;
+	public List<ProductDto> productList(HashMap<String, Integer> map) throws Exception;
+	
+	//상품 관리자 페이징
+	public List<ProductDto> ProductList(HashMap<String, Integer> map) throws Exception;
+	public List<ProductDto> HealthList(HashMap<String, Integer> map) throws Exception;
+	public List<ProductDto> YogaList(HashMap<String, Integer> map) throws Exception;
+	public List<ProductDto> FoodList(HashMap<String, Integer> map) throws Exception;
+	
+	//상품 게시물 총 갯수
+	public int productTotalCount() throws Exception;
+	public int yogaTotalCount() throws Exception;
+	public int healthTotalCount() throws Exception;
+	public int foodTotalCount() throws Exception;
 	
 	/* 상품정보 상세 ProductDto를 pdto()로 선언*/
 	public ProductDto product(ProductDto pdto) throws Exception;

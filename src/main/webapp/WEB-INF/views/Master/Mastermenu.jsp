@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<nav class="navbar " id="mainNav" style="width:100%; height:300px; background-color:#000000;">
+	<nav class="navbar " id="mainNav" style="width:100%; height:300px; background-color:#1A252F;">
             <div class="container-fluid">
                  <div class="col-lg-4">
                    <a class="navbar-brand js-scroll-trigger" href="mainMaster"><img
 				src="resources/assets/img/TurtleIcon.png"
-				style="width: 300px; height: 200px; position: relative; top: -20px; left: 120px;"></a>
+				style="width: 250px; height: 230px; position: relative; top: -20px; left: 120px;"></a>
                 </div> 
                  <!-- 검색창 -->
                 <div class ="col-lg-5">
@@ -19,10 +19,10 @@
                     
                  <!-- 판매현황, 주문내역, 상품관리, 회원관리 문구 -->
                      <ul class="nav nav-pills" style="position:relative; top:30px; left:-50px;">
-                     <li role="presentation" style="position:relative; "><a href="SalesStatus" style="color:#ffff8d; text-decoration:none; font-size:30px;">판매현황</a></li>
-                     <li role="presentation" style="position:relative; left:30px;"><a href="OrderHistory" style="color:#ffff8d; text-decoration:none; font-size:30px;">주문내역</a></li>
-                     <li role="presentation" style="position:relative; left:60px;"><a href="ProductManagement" style="color:#ffff8d; text-decoration:none; font-size:30px;">상품관리</a></li>
-                     <li role="presentation" style="position:relative; left:90px;"><a href="CustomerManage" style="color:#ffff8d; text-decoration:none; font-size:30px;">회원관리</a></li>
+                     <li role="presentation" style="position:relative; "><a href="SalesStatus" style="color:#eef4f2; text-decoration:none; font-size:30px;">판매현황</a></li>
+                     <li role="presentation" style="position:relative; left:30px;"><a href="OrderHistory" style="color:#eef4f2; text-decoration:none; font-size:30px;">주문내역</a></li>
+                     <li role="presentation" style="position:relative; left:60px;"><a href="ProductManagement" style="color:#eef4f2; text-decoration:none; font-size:30px;">상품관리</a></li>
+                     <li role="presentation" style="position:relative; left:90px;"><a href="CustomerManage" style="color:#eef4f2; text-decoration:none; font-size:30px;">회원관리</a></li>
                    </ul>
               </div> 
                 

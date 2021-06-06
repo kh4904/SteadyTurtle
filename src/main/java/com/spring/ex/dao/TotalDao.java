@@ -1,5 +1,6 @@
 package com.spring.ex.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -90,8 +91,52 @@ public class TotalDao implements MemberDao{
 	
 	// 상품정보 select문
 	@Override
-	public List<ProductDto> productList() throws Exception {
-		return sqlSessionTemplate.selectList(namespace+".product");
+	public List<ProductDto> productList(HashMap<String, Integer> map) throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".productList", map);
+	}
+	
+	// 상품 페이징
+	@Override
+	public List<ProductDto> ProductList(HashMap<String, Integer> map) throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".ProductList", map);
+	}
+	
+	// 헬스 페이징
+	@Override
+	public List<ProductDto> HealthList(HashMap<String, Integer> map) throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".HealthList", map);
+	}
+	
+	// 음식 페이징
+	@Override
+	public List<ProductDto> FoodList(HashMap<String, Integer> map) throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".FoodList", map);
+	}
+	
+	// 요가  페이징
+	@Override
+	public List<ProductDto> YogaList(HashMap<String, Integer> map) throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".YogaList", map);
+	}
+	
+	// 관리자 페이징 정보
+	public int productTotalCount() throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".productTotalCount");
+	}
+
+	// 요가 페이징 정보
+	public int yogaTotalCount() throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".yogaTotalCount");
+	}
+
+	// 헬스 페이징 정보
+	public int healthTotalCount() throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".healthTotalCount");
+	}
+
+	// 건강식품 페이징 정보
+	public int foodTotalCount() throws Exception {
+		return sqlSessionTemplate.selectOne(namespace + ".foodTotalCount");
 	}
 	
 	// 상품상세 select문

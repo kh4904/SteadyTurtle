@@ -34,7 +34,7 @@
 
    <!-- 주문조회-->
    <section class="page-section portfolio">
-      <div class="container" style="width: 1431px; height: 1000px;">
+      <div class="container" style="width: 1431px; min-height: 1000px;">
          <c:if test="${member.mId != null }">
             <!-- 주문조회 문구 및 밑줄표시-->
             <h2 class="page-section-heading text-uppercase text-secondary mb-0">주문조회</h2>

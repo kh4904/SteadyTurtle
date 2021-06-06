@@ -2,12 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <nav class="navbar " id="mainNav"
-	style="width: 100%; height: 300px; background-color: #000000;">
+	style="width: 100%; height: 300px; background-color: #1A252F;">
 	<div class="container-fluid">
 		<div class="col-lg-4">
 			<a class="navbar-brand js-scroll-trigger" href="main"><img
 				src="resources/assets/img/TurtleIcon.png"
-				style="width: 300px; height: 200px; position: relative; top: -20px; left: 120px;"></a>
+				style="width: 250px; heights: 150px; position: relative; top: 10px; left: 120px;"></a>
 		</div>
 		<!-- 검색창 -->
 		<div class="col-lg-5">
@@ -31,17 +31,17 @@
 				style="position: relative; top: 30px; left: -50px;">
 				<li role="presentation" style="position: relative;"><a
 					href="Health"
-					style="color: #ffff8d; text-decoration: none; font-size: 30px;">헬스기구</a></li>
+					style="color: #eef4f2; text-decoration: none; font-size: 30px;">헬스기구</a></li>
 				<li role="presentation" style="position: relative; left: 30px;"><a
 					href="Yoga"
-					style="color: #ffff8d; text-decoration: none; font-size: 30px;">요가상품</a></li>
+					style="color: #eef4f2; text-decoration: none; font-size: 30px;">요가상품</a></li>
 				<li role="presentation" style="position: relative; left: 60px;"><a
 					href="Food"
-					style="color: #ffff8d; text-decoration: none; font-size: 30px;">운동식품</a></li>
+					style="color: #eef4f2; text-decoration: none; font-size: 30px;">운동식품</a></li>
 				<li role="presentation" style="position: relative; left: 90px;"><a
 					href="#"
 					style="color: #fff; text-decoration: none; font-size: 30px;"
-					data-toggle="dropdown"> <label style="color: #ffff8d;">상품랭킹</label>
+					data-toggle="dropdown"> <label style="color: #eef4f2;">상품랭킹</label>
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="ManRanking" style="color: #000000;">남여랭킹</a></li>

@@ -32,7 +32,7 @@
 	<%@ include file="/WEB-INF/views/menu.jsp"%>
         
         <!-- 상품환불 조회 --> 
-        <section class="page-section portfolio" style="height:1000px;">
+        <section class="page-section portfolio" style="min-height:1000px;">
             <div class="container">
             <table style="width:100%">
                    <tr style="height:10px;">
