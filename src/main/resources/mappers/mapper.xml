@@ -179,8 +179,8 @@ select
 
 <!-- 주문 정보 -->
 <insert id="orderInfo">
- insert into tbl_order(orderId, mId, jCatchName, userAddr1, userAddr2, userAddr3, jPhone, total_sum, jMemo, pNum, jSumPrice)
-     select #{orderId}, #{mId}, #{jCatchName}, #{userAddr1}, #{userAddr2}, #{userAddr3}, 0, cartStock, 0, pNum , cartStock * pPrice
+ insert into jumun(jNum, jName, jCate, jShipPrice, jMile, jPrice, jCount, jCustomer, jId, jEmail, jAddr, userAddr1, userAddr2, userAddr3, jMailNum, jCatchName, jPhone, jUrl, jShip, jState, jMemo)
+     select #{orderId}, pNum, 0, 0, 0, pPrice, cartStock, #{jCatchName}, mId, 0, 0, #{userAddr1}, #{userAddr2}, #{userAddr3}, 0, 0, 0, 0, "배송준비" , "미승인", 0
      	from cart where cartNum = #{cartNum}
 </insert>
    
