@@ -122,17 +122,35 @@
 
 							<div>
 								<!-- 수정하기 버튼클릭시 -->
-								<input type="submit" class="btn btn-info" value="수정하기" style="position:relative; left:400px;">
+								<input type="submit" class="btn btn-info" value="수정하기" style="position:relative; left:400px;" onclick="test()">
+								<script>
+									function test() {
+										alert("수정이 완료되었습니다..");
+									}	
+								</script>
 							</div>
 						</div>
 					</div>
 				</form>
 				<!-- 삭제하기 버튼클릭시 -->
-				<form action="productDelete" , method="post">
+				<form action="productDelete" name="removefrm" method="post">
 				<input type="hidden" id="pNum" name="pNum" value="${product.getpNum()}">
 				     <!-- 뒤로가기 버튼클릭시 -->
 					 <a href="ProductManagement" class="btn btn-info" style="position:relative; top:-40px; left:750px;">뒤로가기</a>
-					 <input type="submit" class="btn btn-info" value="삭제하기" style="position:relative; top:-40px; left:750px;">
+					 <input type="button" class="btn btn-info" value="삭제하기" style="position:relative; top:-40px; left:750px;" onclick="test2()">
+					 <script>
+									function test2() {
+										 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+
+										     document.removefrm.submit();
+
+										 }else{   //취소
+
+										     return false;
+
+										 }
+									}
+					</script>
 				</form>
 			</div>
 		</div>

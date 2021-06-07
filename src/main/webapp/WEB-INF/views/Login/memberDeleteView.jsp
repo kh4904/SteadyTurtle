@@ -44,12 +44,13 @@
 		<div class="container">
 			<div class="col-lg-12">
 				<h2>회원탈퇴</h2>
+				<form action="memberdelete" name="myDelete" method="post">
 				<table style="width: 100%;">
 					<div class="divider-custom" style="display: block;">
 						<hr style="background-color: black;">
 					</div>
 					<!-- 회원탈퇴 버튼 -->
-					<form action="memberdelete" method="post">
+					
 						<div>
 							<label class="control-Label" for="mId">ID</label> <input
 								class="form-control" type="text" id="mId" name="mId"
@@ -65,14 +66,25 @@
 								class="btn btn-primary form-control" value="취소"
 								style="width: 150px; height: 40px; position: relative; top: 10px; left: 750px; background: #F15F5F">
 
-							<input type="submit" class="btn btn-primary form-control"
-								value="회원탈퇴"
+							<input type="button" class="btn btn-primary form-control"
+								value="회원탈퇴" onclick="test2()"
 								style="width: 150px; height: 40px; position: relative; top: 10px; left: 768px; background: #F15F5F">
+								<script>
+									function test2() {
+										 if (confirm("정말 탈퇴하시겠습니까??") == true){    //확인
+
+										     document.myDelete.submit();
+
+										 }else{   //취소
+
+										     return false;
+
+										 }
+									}
+					</script>
 						</div>
-					</form>
-
-
 				</table>
+				</form>
 				<div class="divider-custom" style="display: block;">
 					<hr style="background-color: black;">
 				</div>
