@@ -84,6 +84,12 @@ public class ServiceTurtle implements TurtleService{
 		return dao.login(ldto);
 	}
 	
+	// 비회원주문조회
+	@Override
+	public JumunDto blogin(JumunDto ldto) throws Exception{
+		return dao.blogin(ldto);
+	}
+	
 	//아이디찾기
 	@Inject
 	private MemberDao memberDaoId;

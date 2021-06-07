@@ -35,55 +35,17 @@
    <!-- 주문조회-->
    <section class="page-section portfolio">
       <div class="container" style="width: 1431px; min-height: 1000px;">
-         <c:if test="${member.mId != null }">
-            <!-- 주문조회 문구 및 밑줄표시-->
-            <h2 class="page-section-heading text-uppercase text-secondary mb-0">주문조회</h2>
-            <!-- 밑줄 -->
-            <div class="divider-custom" style="display: block;">
-               <hr style="background-color: black;">
-            </div>
-            <!-- 1주일 -->
-            <!-- <div class="btn-group" role="group" aria-label="...">
-               <button type="button" class="btn btn-default"
-                  style="background-color: #a5d6a7;">
-                  <a href="#" style="text-decoration: none; color: black;">1주일</a>
-               </button>
-            </div>
-            1개월
-            <div class="btn-group" role="group" aria-label="...">
-               <button type="button" class="btn btn-default"
-                  style="background-color: #a5d6a7;">
-                  <a href="#" style="text-decoration: none; color: black;">1개월</a>
-               </button>
-            </div>
-            3개월
-            <div class="btn-group" role="group" aria-label="...">
-               <button type="button" class="btn btn-default"
-                  style="background-color: #a5d6a7;">
-                  <a href="#" style="text-decoration: none; color: black;">3개월</a>
-               </button>
-            </div>
-            6개월
-            <div class="btn-group" role="group" aria-label="...">
-               <button type="button" class="btn btn-default"
-                  style="background-color: #a5d6a7;">
-                  <a href="#" style="text-decoration: none; color: black;">6개월</a>
-               </button>
-            </div>
-            12개월
-            <div class="btn-group" role="group" aria-label="...">
-               <button type="button" class="btn btn-default"
-                  style="background-color: #a5d6a7;">
-                  <a href="#" style="text-decoration: none; color: black;">12개월</a>
-               </button>
-            </div>
-            <p>
-               <b>기간 2021.04.28 ~ 2021.5.5</b>
-            </p> -->
+         <c:if test="${blogin != null }">
+         		<!-- 주문조회 문구 및 밑줄표시-->
+            	<h2 class="page-section-heading text-uppercase text-secondary mb-0">주문조회</h2>
+            	<!-- 밑줄 -->
+            	<div class="divider-custom" style="display: block;">
+               	<hr style="background-color: black;">
+           		 </div>
             <div class="row">
                <!-- 주문내역 출력 -->
                <c:forEach items="${jumunList}" var="jumun">
-                  <c:if test="${jumun.getjId() eq sessionScope.member.getmId()}">
+                  <c:if test="${jumun.getjCustomer() eq sessionScope.blogin.getjCustomer()}">
                   <form action="DetailOrder" method="POST">
                   <input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum() }">
                
@@ -141,9 +103,7 @@
                   </c:if>
                </c:forEach>
             </div>
-            
          </c:if>
-         
       </div>
    </section>
 

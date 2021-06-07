@@ -125,15 +125,15 @@
 					</tr>
 						<tr>
 							<th colspan="5"><h style="text-align: left;">수령자</h></th>
-							<th style="text-align: right;"><h>${member.getmName() }</h>
+							<th style="text-align: right;"><h>${jumun.getjCatchName() }</h>
 						</tr>
 						<tr>
 							<th colspan="5"><h style="text-align: left;">배송지</h></th>
-							<th style="text-align: right;"><h>${member.getmAddr() }</h>
+							<th style="text-align: right;"><h>${jumun.getjAddr() }</h>
 						</tr>
 						<tr>
 							<th colspan="5"><h style="text-align: left;">연락처</h></th>
-							<th style="text-align: right;"><h>${member.getmPhone() }</h>
+							<th style="text-align: right;"><h>${jumun.getjPhone() }</h>
 						</tr>
 						<tr>
 							<th colspan="5"><h style="text-align: left;">배송메세지</h></th>

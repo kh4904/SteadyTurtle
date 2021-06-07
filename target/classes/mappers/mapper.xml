@@ -42,6 +42,11 @@
 	select * from member where mId = #{mId} and mPw = #{mPw}
 </select>
 
+<!-- 비회원주문조회 select문 -->
+<select id="blogin" parameterType="JumunDto" resultType="JumunDto">
+	select * from jumun where jId = '비회원주문' and jCustomer = #{jCustomer} and jPhone = #{jPhone}
+</select>
+
 <!-- 아이디찾기 select문 -->
 <select id="mId" resultType="MemberDto">SELECT * from member WHERE mName =#{mName} and mPhone = #{mPhone}</select>
 

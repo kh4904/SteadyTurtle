@@ -130,18 +130,23 @@
 
 						<!-- 회원 ,비회원(주문하기) 탭창 클릭시 변화 (비회원 주문조회폼) -->
 						<div class="tab-pane fade" id="nLogin">
+						<c:if test="${msg10 == false }">
+						<script>
+							alert("일치하는 배송정보가 없습니다.")
+						</script>
+						</c:if>
 							<!-- 이름, 전화번호 입력후 배송조회버튼 이벤트 -->
-							<form method="post" action="loginAction.jsp">
+							<form method="post" action="blogin">
 								<!-- 이름 입력 -->
 								<div class="form-group" style="position: relative; top: 1px;">
 									이름 <input type="text" class="form-control" placeholder="입력해주세요"
-										name="userName" maxlength="20"
+										name="jCustomer" id ="jCustomer" maxlength="20"
 										style="width: 200px; height: 40px; position: relative; left: 40px; top: -30px;">
 								</div>
 								<!-- 전화번호 입력 -->
 								<div class="form-group" style="position: relative; top: -30px;">
 									P.H.<input type="text" class="form-control"
-										placeholder="입력해주세요" name="userNumber" maxlength="20"
+										placeholder="입력해주세요" name="jPhone" id="jPhone" maxlength="20"
 										style="width: 200px; height: 40px; position: relative; left: 40px; top: -30px;">
 								</div>
 								<!-- 배송조회 버튼 -->

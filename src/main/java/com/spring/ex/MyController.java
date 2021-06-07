@@ -143,6 +143,41 @@ public class MyController {
 	    return path;
 	}
 	
+	// 비회원 배송조회
+	@RequestMapping(value = "/JumunSearch2", method = RequestMethod.GET)
+	public String JumunSearch2(Model model) throws Exception {
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		List<ProductDto> list = service.productList(map);
+		List<MemberDto> list2 = service.memberList();
+		List<JumunDto> list3 = service.jumunList();
+		
+		model.addAttribute("productList", list);
+		model.addAttribute("memberList", list2);
+		model.addAttribute("jumunList", list3);
+		
+		return "Login/JumunSearch2";
+	}
+	
+	// 비회원 배송조회
+	@RequestMapping(value = "/blogin", method = RequestMethod.POST)
+	public String blogin(JumunDto ldto, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+
+		String path = "";
+		HttpSession session = req.getSession();
+
+		JumunDto blogin = ServiceTurtle.blogin(ldto);
+		if (blogin == null) {
+		   session.setAttribute("blogin", null);
+		   rttr.addFlashAttribute("msg10", false);
+		   path = "redirect:/main";
+		} else {
+		   session.setAttribute("blogin", blogin);
+		   path = "redirect:/JumunSearch2";
+		}
+		return path;
+	}
+	
 	//로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public String logout(HttpSession session, RedirectAttributes rttr) throws Exception {

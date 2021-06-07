@@ -41,6 +41,9 @@ public interface MemberDao {
 	// 로그인 dto
 	public MemberDto login(MemberDto ldto) throws Exception;
 	
+	// 비회원주문조회 dto
+	public JumunDto blogin(JumunDto ldto) throws Exception;
+	
 	// 아이디찾기 dto
 	public MemberDto memberId(MemberDto mIdDto) throws Exception;
 		

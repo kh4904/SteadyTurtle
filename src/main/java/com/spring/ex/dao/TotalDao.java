@@ -70,6 +70,12 @@ public class TotalDao implements MemberDao{
 		return sqlSessionTemplate.selectOne(namespace + ".login", ldto);
 	}
 	
+	// 비회원주문조회
+	@Override
+	public JumunDto blogin(JumunDto ldto) throws Exception{
+		return sqlSessionTemplate.selectOne(namespace + ".blogin", ldto);
+	}
+	
 	// 아이디 찾기 select문
 	@Override
 	public MemberDto memberId(MemberDto mIdDto) throws Exception {
