@@ -335,6 +335,7 @@ public class MyController {
 		 	cart.setmId(member.getmId());
 		 	cart.setpNum(product.getpNum());
 		 	cart.setpPrice(product.getpPrice());
+		 	cart.setpName(product.getpName());
 		 	service.addCart5(cart);
 		 	result = 1;
 		 }

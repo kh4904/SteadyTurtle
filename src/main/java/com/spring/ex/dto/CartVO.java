@@ -10,6 +10,7 @@ public class CartVO {
 	private int cartStock;
 	private Date addDate;
 	private String pPrice;
+	private String pName;
 	public int getCartNum() {
 		return cartNum;
 	}
@@ -48,8 +49,18 @@ public class CartVO {
 	public void setpPrice(String pPrice) {
 		this.pPrice = pPrice;
 	}
+	
+	
+	public String getpName() {
+		return pName;
+	}
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
 	@Override
 	public String toString() {
-		return "CartVO[ cartNum=" + cartNum + ", mId=" + mId + ", pNum=" + pNum + ", cartStock=" + cartStock + ", addDate=" + addDate + ", pPrice=" + pPrice + "]";
+		return "CartVO[ cartNum=" + cartNum + ", mId=" + mId + ", pNum=" + pNum + 
+				", cartStock=" + cartStock + ", addDate=" + addDate + ", pPrice=" + pPrice + 
+				", pName=" + pName + "]";
 	}
 }

@@ -183,6 +183,7 @@ function change () {
 									var pNum = $("#pNum").val();
 									var cartStock = $(".numBox").val();
 									var pPrice = $("#pPrice").val();
+									var pName = $("#pName").val();
 									
 									console.log("pNum : " + pNum);
 									console.log("cartStock : " + cartStock);
@@ -190,7 +191,8 @@ function change () {
 									var data = {
 											pNum : pNum,
 										cartStock : cartStock,
-										pPrice : pPrice
+										pPrice : pPrice,
+										pName : pName
 									};
    
 									$.ajax({
