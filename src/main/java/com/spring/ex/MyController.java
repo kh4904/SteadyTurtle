@@ -1180,10 +1180,32 @@ public class MyController {
 	}
 	
 	// 회원관리 상세보기 수정
-	@RequestMapping("/DetailCustomerManageUpdate")
-	public String DetailCustomerManageUpdate(){
+	@RequestMapping(value = "/DetailCustomerManageUpdate", method = RequestMethod.GET)
+	public String DetailCustomerManageUpdate(Model model) throws Exception{
+		
+		List<MemberDto> list = service.memberList();
+		
+		model.addAttribute("memberList",list);
 		
 		return "Master/Customer/DetailCustomerManageUpdate";
+	}
+	
+	// 회원관리 상세보기 수정
+	@RequestMapping(value="/DetailCustomerManageUpdate", method=RequestMethod.POST)
+	public String DetailCustomerManageUpdate(MemberDto mmdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
+					
+		String path="";
+		HttpSession session2 = req.getSession();
+		MemberDto member2 = ServiceTurtle.memberDetail(mmdto);
+		if(member2 == null) {
+			session2.setAttribute("member2", null);
+			rttr.addFlashAttribute("msg", false);
+			path = "redirect:/mainMaster";
+		} else {
+			session2.setAttribute("member2", member2);
+			path = "redirect:/DetailCustomerManage";
+		}
+		return path;
 	}
 	
 	// 관리자측 회원정보 수정
@@ -1192,7 +1214,7 @@ public class MyController {
 			
 		service.MemberUpdate2(mmdto);
 		
-		return "redirect:/DetailCustomerManage";
+		return "redirect:/CustomerManage";
 	}
 	
 	// 관리자쪽에서 회원탈퇴시키기

@@ -119,7 +119,7 @@ public class MemberDto {
 	@Override
 	public String toString() {
 		return "MemberDto [mId=" + mId + ", mPw=" + mPw + ", mName=" + mName + ", mGender=" + mGender + ", mPhone=" + mPhone + ", mBirth=" + mBirth + ", mEmail="
-				+ mEmail + ", mAddr=" + mAddr + "]";
+				+ mEmail + ", mAddr=" + mAddr + ", mGrade=" + mGrade + ", mNote=" + mNote + ", mMaster=" + mMaster + "]";
 	}
 	
 	public String login() {
