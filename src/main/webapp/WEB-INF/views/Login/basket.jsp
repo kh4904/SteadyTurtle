@@ -112,6 +112,18 @@ function itemAllSum(frm)
 		}
   
 }
+$(function() {
+	$('.checkT input[type="checkbox"]').click(function() {
+		var tmpp = $(this).prop('checked');
+		// this를 사용하여 클릭한 checkbox 가 체크되도록 설정
+		if (tmpp) {
+			$(".btnArea button").css({ "backgroundColor": "#d2201d", "cursor": "pointer", "color": "#fff" }).prop("disabled", false);
+		}
+		else {
+			$(".btnArea button").css({ "backgroundColor": "#cbcbcb", "cursor": "auto", "color": "#303033" }).prop("disabled", true);
+		}
+	});
+});
 </script>
 <!-- 장바구니 -->
 <body>
@@ -196,6 +208,7 @@ function itemAllSum(frm)
 										<td style="width: 250px; height: 43px; text-align: center">
 											<h3>${cartList.getCartStock() }개</h3>
 											<input type="hidden" name="pCountsSell" value="${cartList.getCartStock() }" id="CartStock">
+											<input type="hidden" name="pCount" value="${cartList.getCartStock() }" id="pCount">
 										</td>
 										<td style="width: 250px; height: 43px; text-align: center">
 											<h3>${cartList.getpPrice() }원</h3>
@@ -213,6 +226,7 @@ function itemAllSum(frm)
 										</td>
 									</tr>
 								</table>
+								
 								
 							
 								<input type="submit" value="결제하기">
@@ -274,7 +288,24 @@ function itemAllSum(frm)
 							<input type="text" name="userAddr2" id="sample2_detailAddress" placeholder="상세주소">
 							<input type="text" name="userAddr3" id="sample2_extraAddress" placeholder="참고항목">
 						</p>
-						
+						<p>
+										<b style="font-size: 20px; color: black;">마일리지 : </b>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<!-- db연동 -->
+									<c:if test="${member != null }">
+										<input type="text" value="0"
+											style="position: relative; width: 70px; height: 30px;"></input><b
+											style="font-size: 20px; color: black;">/ ${member.mMile } M</b>
+									</c:if>
+									<c:if test="${member == null }">
+										<b style="font-size: 15px; color: black;">비회원은 사용할 수 없습니다</b>
+									</c:if>
+									</p>
 						<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
 						<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
@@ -369,15 +400,83 @@ function itemAllSum(frm)
 						    }
 						</script>
 					</div>
-					<fieldset style="background-color: #bbdefb;">
-					<p style="font-size: 20px; color: black; text-align: center;">
+					<p style="font-size: 20px; color: black; text-align: left;">
 						배송 요청사항 <select name="jMemo" id="jMemo">
 							<option selected>문앞에 놔주세요.</option>
 							<option>부재시 경비실에 맡겨주세요.</option>
 							<option>도착전 연락주세요.</option>
 						</select>
 					</p>
-				</fieldset>
+					<div class="divider-custom" style="display: block;">
+					<hr style="background-color: black;">
+				</div>
+
+				<!-- 결제방법 문구 -->
+				<h3 style="color: black;">결제방법</h3>
+				<hr>
+	<!-- 결제방법 (신용카드, 휴대폰결제, Toss) -->
+			<div class="container">
+				<table style="width: 100%">
+					<tr style="color: black;">
+						<th style="font-size: 20px;"><a href="#"
+							style="color: black; text-decoration: none;">신용카드</a></th>
+						<th style="font-size: 20px;"><a href="#"
+							style="color: black; text-decoration: none;">휴대폰결제</a></th>
+						<th style="font-size: 20px;"><a href="#"
+							style="color: black; text-decoration: none;">Toss</a></th>
+					</tr>
+				</table>
+				<hr>
+				<br>
+					<div class="col-md-5">
+							<br>
+							<h4 style="color: black;">신용카드 결제</h4>
+						</div>
+						<div class="col-md-6">
+							<br>
+							<p>
+								<b style="font-size: 20px; color: black;">카드선택</b>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<!-- db연동 -->
+								<select style="width: 220px; height: 30px;">
+									<option value="">[필수] 카드사를 선택하세요.</option>
+									<option value="KB">KB국민</option>
+									<option value="IBK">IBK기업</option>
+									<option value="SH">신한</option>
+									<option value="SA">삼성</option>
+									<option value="BC">BC</option>
+									<option value="NH">농협</option>
+								</select>
+							</p>
+							<hr>
+							<p>
+								<b style="font-size: 20px; color: black;">할부선택</b>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<!-- db연동 -->
+								<select style="width: 220px; height: 30px;">
+									<option value="">일시불</option>
+									<option value="">1개월 할부</option>
+									<option value="">3개월 할부</option>
+									<option value="">6개월 할부</option>
+									<option value="">12개월 할부</option>
+								</select>
+							</p>
+							<hr>
+							<!-- db연동 -->
+							<p class="check" style="color: black; text-align: right; font-size: 15px;">
+								<div class="checkT">
+									<input type="checkbox" id="chk"> <span>구매조건 및 이용약관에 동의하며,<br>결제를 진행합니다. </span>
+								</div>
+							</p>
+							<hr>
+			</div>
+
+			
+					
 					<div class="inputArea">
 						
 						<button type="button" class="cancel_btn">취소</button>
@@ -388,14 +487,13 @@ function itemAllSum(frm)
 							$(".orderOpne_bnt").slideDown();  // $(".orderOpne_bnt")를 나타냄
 						});						
 						</script>
-						
 					</div>
 			</div>
 			</div>
 	
 	</form>
-	
-	<button type="button" class="order_btn">주문</button>
+	<div class="btnArea">
+	<button type="button" class="order_btn" disabled="disabled">주문</button>
 						<script>
 								$(".order_btn").click(function(){
 									var confirm_val = confirm("결제 하시겠습니까?");
@@ -407,12 +505,20 @@ function itemAllSum(frm)
 											checkArr.push($(this).attr("data-cartNum"));
 											
 										});
+										var checkArr2 = new Array();
+										
+										$("input[class='chBox']:checked").each(function(){
+											checkArr2.push($(this).attr("data-pNum"));
+											
+										});
 										sample2_detailAddress
 										$.ajax({
 											url:"/ex/basket",
 											type : "post",
-											data : {chbox : checkArr, userAddr1 : $('#sample2_address').val(), 
-												userAddr2 : $('#sample2_detailAddress').val(), userAddr3 : $('#sample2_extraAddress').val() },
+											data : {chbox : checkArr, chbox2 : checkArr2,
+												userAddr1 : $('#sample2_address').val(), 
+												userAddr2 : $('#sample2_detailAddress').val(), userAddr3 : $('#sample2_extraAddress').val() , 
+												jMemo : $('#jMemo').val() , jPhone : $('#jPhone').val() },
 											success : function(result){
 												if(result == 1) {
 													location.href = "/ex/basket";
@@ -425,6 +531,8 @@ function itemAllSum(frm)
 				
 								});
 							</script>
+							
+						</div>
 		<p style="text-align: right;">
 		<!-- 밑줄 -->
 		<div class="divider-custom" style="display: block;">
@@ -448,34 +556,6 @@ function itemAllSum(frm)
 										});
 										$.ajax({
 											url:"/ex/deleteCart",
-											type : "post",
-											data : {chbox : checkArr},
-											success : function(result){
-												if(result == 1) {
-													location.href = "/ex/basket";
-												} else {
-													alert("삭제 실패");
-												}
-											}
-										});
-									}
-				
-								});
-							</script>
-			<!-- 전체 결제하기 -->
-			<button type="button" class="cartCash">선택결제</button>
-							<script>
-								$(".cartCash").click(function(){
-									var confirm_val = confirm("결제 하시겠습니까?");
-					
-									if(confirm_val) {
-										var checkArr = new Array();
-						
-										$("input[class='chBox']:checked").each(function(){
-											checkArr.push($(this).attr("data-cartNum"));
-										});
-										$.ajax({
-											url:"/ex/cartCash",
 											type : "post",
 											data : {chbox : checkArr},
 											success : function(result){

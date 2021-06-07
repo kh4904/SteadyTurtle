@@ -364,4 +364,16 @@ public class ServiceTurtle implements TurtleService{
 	public void orderInfo_details(OrderDetailVO orderDetail) throws Exception{
 		dao.orderInfo_details(orderDetail);
 	}
+	
+	// 카트 비우기 
+	@Override
+	public void cartAllDelete(int cartNum) throws Exception {
+		dao.cartAllDelete(cartNum);
+	}
+	
+	//결제시 상품 목록 변경
+	@Override
+	public void productDecrease2(ProductDto pudto) throws Exception{
+		pdao.productDecrease2(pudto);
+	}
 }

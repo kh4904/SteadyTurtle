@@ -16,6 +16,7 @@ public class OrderVO {
 	private int pNum;
 	private int jSumPrice;
 	private int cartNum;
+	private String jEmail;
 	
 	public String getOrderId() {
 		return orderId;
@@ -94,6 +95,12 @@ public class OrderVO {
 	}
 	public void setCartNum(int cartNum) {
 		this.cartNum = cartNum;
+	}
+	public String getjEmail() {
+		return jEmail;
+	}
+	public void setjEmail(String jEmail) {
+		this.jEmail = jEmail;
 	}
 	
 	

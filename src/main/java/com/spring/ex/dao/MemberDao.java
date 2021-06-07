@@ -153,4 +153,10 @@ public interface MemberDao {
 	public void orderInfo(OrderVO order) throws Exception;
 	
 	public void orderInfo_details(OrderDetailVO orderDetail) throws Exception;
+	
+	// 카트 비우기
+	public void cartAllDelete(int cartNum) throws Exception;
+	
+	//결제시 상품 목록 변경
+	public void productDecrease2(ProductDto pudto) throws Exception;
 }

@@ -336,6 +336,9 @@ public class MyController {
 		 	cart.setpNum(product.getpNum());
 		 	cart.setpPrice(product.getpPrice());
 		 	cart.setpName(product.getpName());
+		 	cart.setpUrl(product.getpUrl());
+		 	cart.setpCate(product.getpCate());
+//		 	cart.setpShip(product.getpShip());
 		 	service.addCart5(cart);
 		 	result = 1;
 		 }
@@ -379,18 +382,23 @@ public class MyController {
 	// 주문
 	@ResponseBody
 	@RequestMapping(value = "/basket", method = RequestMethod.POST)
-	public int order(HttpSession session, OrderVO order, OrderDetailVO orderDetail, 
+	public int order(HttpSession session,JumunDto jdto,  OrderVO order, OrderDetailVO orderDetail, CartVO cart, ProductDto pudto,
 			@RequestParam(value = "chbox[]", required=false) List<String> chArr, 
+			@RequestParam(value = "chbox2[]", required=false) List<String> chArr2,
 			@RequestParam(value="userAddr1") String userAddr1,
 			@RequestParam(value="userAddr2") String userAddr2,
-			@RequestParam(value="userAddr3") String userAddr3,CartVO cart) throws Exception {
+			@RequestParam(value="userAddr3") String userAddr3,
+			@RequestParam(value="jMemo") String jMemo,
+			@RequestParam(value="jPhone") String jPhone ) throws Exception {
 		int cartNum = 0;
+		int pNum = 0;
 		int result = 0;
 		
 		MemberDto member = (MemberDto) session.getAttribute("member");
 
 		String mId = member.getmId();
 		String mName = member.getmName();
+		String mEmail = member.getmEmail();
 
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
@@ -402,24 +410,35 @@ public class MyController {
 			subNum += (int) (Math.random() * 10);
 		}
 
-		String orderId = ymd + "_" + subNum;
+		String orderId = subNum;
 
 		order.setOrderId(orderId);
 		order.setmId(mId);
 		order.setjCatchName(mName);
+		order.setjEmail(mEmail);
 		order.setUserAddr1(userAddr1);
 		order.setUserAddr2(userAddr2);
 		order.setUserAddr3(userAddr3);
+		order.setjMemo(jMemo);
+		order.setjPhone(jPhone);
 		for (String i : chArr) {
-			System.out.println(chArr);
 			cartNum = Integer.parseInt(i);
-			System.out.println(cartNum);
 			order.setCartNum(cartNum);
 			
 			service.orderInfo(order);
-
 		}
-//		return "redirect:/main";  
+		pudto.setmId(mId);
+		for (String i : chArr2) {
+			pNum = Integer.parseInt(i);
+			pudto.setpNum(pNum);
+			service.productDecrease2(pudto);
+		}
+		
+		for (String i : chArr) {
+			cartNum = Integer.parseInt(i);
+			cart.setCartNum(cartNum);
+			service.deleteCart(cart);
+		}
 		result = 1;
 		return result;
 	}
@@ -507,6 +526,15 @@ public class MyController {
 	//결제하기
 	@RequestMapping(value = "CashOk", method = RequestMethod.POST)
 	public String CashOk(JumunDto cldto, ProductDto pudto) throws Exception {
+		
+		String subNum = "";
+
+		for (int j = 1; j <= 6; j++) {
+			subNum += (int) (Math.random() * 10);
+		}
+		String orderId = subNum;
+
+		cldto.setjNum(orderId);;
 		
 		ServiceTurtle.cashOk(cldto);
 		ServiceTurtle.productDecrease(pudto);

@@ -11,6 +11,10 @@ public class CartVO {
 	private Date addDate;
 	private String pPrice;
 	private String pName;
+	private String pUrl;
+	private String pCate;
+	private String pShip;
+	
 	public int getCartNum() {
 		return cartNum;
 	}
@@ -41,26 +45,40 @@ public class CartVO {
 	public void setAddDate(Date addDate) {
 		this.addDate = addDate;
 	}
-	
-	
 	public String getpPrice() {
 		return pPrice;
 	}
 	public void setpPrice(String pPrice) {
 		this.pPrice = pPrice;
 	}
-	
-	
 	public String getpName() {
 		return pName;
 	}
 	public void setpName(String pName) {
 		this.pName = pName;
 	}
+	public String getpUrl() {
+		return pUrl;
+	}
+	public void setpUrl(String pUrl) {
+		this.pUrl = pUrl;
+	}
+	public String getpCate() {
+		return pCate;
+	}
+	public void setpCate(String pCate) {
+		this.pCate = pCate;
+	}
+	public String getpShip() {
+		return pShip;
+	}
+	public void setpShip(String pShip) {
+		this.pShip = pShip;
+	}
 	@Override
 	public String toString() {
 		return "CartVO[ cartNum=" + cartNum + ", mId=" + mId + ", pNum=" + pNum + 
 				", cartStock=" + cartStock + ", addDate=" + addDate + ", pPrice=" + pPrice + 
-				", pName=" + pName + "]";
+				", pName=" + pName + ", pUrl=" + pUrl + ", pCate=" + pCate + ", pShip=" + pShip + "]";
 	}
 }

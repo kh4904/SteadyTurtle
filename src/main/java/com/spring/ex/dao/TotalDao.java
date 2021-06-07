@@ -298,4 +298,16 @@ public class TotalDao implements MemberDao{
 	public void orderInfo_details(OrderDetailVO orderDetail) throws Exception{
 		sqlSessionTemplate.insert(namespace + ".orderInfo_Details", orderDetail);
 	}
+	
+	// 카트 비우기
+	@Override
+	public void cartAllDelete(int cartNum) throws Exception {
+		sqlSessionTemplate.delete(namespace + ".cartAllDelete", cartNum);
+	}
+	
+	//결제시 상품 목록 변경
+	@Override
+	public void productDecrease2(ProductDto pudto) throws Exception{
+		sqlSessionTemplate.update(namespace + ".productDecrease2", pudto);
+	}
 }

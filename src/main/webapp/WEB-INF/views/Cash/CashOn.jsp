@@ -300,7 +300,7 @@
 				<!-- 배송 요청사항 필드셋 -->
 				<fieldset style="background-color: #bbdefb;">
 					<p style="font-size: 20px; color: black; text-align: center;">
-						배송 요청사항 <select>
+						배송 요청사항 <select name="jMemo" id="jMemo">
 							<option value="" selected>문앞에 놔주세요.</option>
 							<option value="">부재시 경비실에 맡겨주세요.</option>
 							<option value="">도착전 연락주세요.</option>
