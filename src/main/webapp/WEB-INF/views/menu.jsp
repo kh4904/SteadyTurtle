@@ -55,15 +55,48 @@
 
 		<!-- 로그인창 -->
 		<div class="col-lg-3">
-			<!-- 장바구니, 상품환불, 고객문의 -->
-			<ul class="nav nav-pills">
-				<li role="presentation" style="position: relative; left: 40px;"><a
-					href="basket" style="color: #fff;">장바구니</a></li>
-				<li role="presentation" style="position: relative; left: 60px;"><a
-					href="refund" style="color: #fff;">상품환불</a></li>
-				<li role="presentation" style="position: relative; left: 80px;"><a
-					href="CustomerWriteView" style="color: #fff;">고객문의</a></li>
-			</ul>
+         <!-- 장바구니, 상품환불, 고객문의 -->
+         <c:if test="${member == null }">
+         <ul class="nav nav-pills">
+            <li role="presentation" style="position: relative; left: 40px;">
+            <a href="#" style="color: #fff;" onclick="test()">장바구니</a>
+               <script>
+                  function test() {
+                     alert("로그인후 이용하실수 있습니다..");
+                  }   
+               </script>
+               </li>
+            <li role="presentation" style="position: relative; left: 60px;">
+               <a href="#" style="color: #fff;" onclick="test()">상품환불</a>
+               <script>
+                  function test() {
+                     alert("로그인후 이용하실수 있습니다..");
+                  }
+               </script>
+            </li>
+            <li role="presentation" style="position: relative; left: 80px;">
+               <a href="#" style="color: #fff;" onclick="test()">고객문의</a>
+               <script>
+                     function test() {
+                        alert("로그인후 이용하실수 있습니다..");
+                     }
+               </script>
+            </li>
+            
+         </ul>
+         </c:if>
+         <c:if test="${member != null }">
+         <ul class="nav nav-pills">
+            <li role="presentation" style="position: relative; left: 40px;">
+            <a href="basket" style="color: #fff;">장바구니</a></li>
+            <li role="presentation" style="position: relative; left: 60px;">
+            <a href="refund" style="color: #fff;">상품환불</a></li>
+            <li role="presentation" style="position: relative; left: 80px;">
+            <a href="CustomerWriteView" style="color: #fff;">고객문의</a></li>
+            
+         </ul>
+         </c:if>
+
 
 			<!-- 회원, 비회원(주문조회) -->
 			<div class="jumbotron"
