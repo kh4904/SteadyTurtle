@@ -221,7 +221,12 @@
 						</li>
 						<li role="presentation" style="position: relative; left: 80px;">
 							<p style="position: relative;">
-								나의 등급: ${member.mGrade} <br />${member.mName } 님
+								나의 등급: ${member.mGrade} <br />${member.mName } 님 <br />
+								<form action="update" method="POST" style="height: 10px; position: relative; margin-left: -80px; top:-15px">
+									<input type="hidden" id="mId" name="mId" value="${member.mId }">
+									<input type="hidden" id="mPw" name="mPw" value="${member.mPw }">
+									<input type="submit" value="갱신">
+								</form>
 							</p>
 						</li>
 					</ul>

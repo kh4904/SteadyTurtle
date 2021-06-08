@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -142,6 +143,26 @@ public class MyController {
 	    }
 
 	    return path;
+	}
+	
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(MemberDto ldto, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+		String path = "";
+		
+		HttpSession session = req.getSession();
+
+	    MemberDto login = ServiceTurtle.login(ldto);
+	    if (login == null) {
+	       session.setAttribute("member", null);
+	       path = "redirect:/main";
+	    } else {
+	       session.setAttribute("member", login);
+	       path = "redirect:/LoginSuccess";
+	    }
+		
+		return path;
+		
 	}
 	
 	// 비회원 배송조회
@@ -598,7 +619,9 @@ public class MyController {
 			
 	//결제하기
 	@RequestMapping(value = "CashOk", method = RequestMethod.POST)
-	public String CashOk(JumunDto cldto, ProductDto pudto, MemberDto cmdto) throws Exception {
+	public String CashOk(JumunDto cldto, ProductDto pudto, MemberDto cmdto, HttpServletRequest request) throws Exception {
+		
+		
 		
 		String subNum = "";
 
@@ -616,6 +639,11 @@ public class MyController {
 		
 		cmdto.setjNum(subNum);
 		service.cashMile3(cmdto);
+		
+//		MemberDto member = service.login(cmdto);
+//		
+//		HttpSession session = request.getSession();
+//	    session.setAttribute("member", member);
 		
 		return "redirect:/JumunSearch";
 	}
