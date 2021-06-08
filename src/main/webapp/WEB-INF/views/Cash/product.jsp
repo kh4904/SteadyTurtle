@@ -173,7 +173,7 @@ function change () {
 						<hr>
 						<!-- 뒤로가기 버튼클릭시 -->
 						<p>
-							<a href="main" class="btn btn-secondary" style="position:relative; ">홈으로</a>
+							<a href="javascript:history.back();" class="btn btn-secondary" style="position:relative; ">뒤로가기</a>
 							<!-- 장바구니 버튼클릭시 -->
 							<p class="addToCart">
 								<button type="button" class="btn addCart_btn btn-info" style="position:relative; left:350px; top:-50px;">장바구니</button>

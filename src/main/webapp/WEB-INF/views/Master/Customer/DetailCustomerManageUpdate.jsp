@@ -80,9 +80,9 @@
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>주소</b></td>
-							<td colspan="2"><input type="text" id="mAddr" name="mAddr"
+							<td colspan="2"><input type="text" id="muserAddr1" name="muserAddr1"
 										style="margin-left: 6px; text-align: center;"
-										value="${member2.getmAddr() }" /></td>
+										value="${member2.getMuserAddr1() }" /></td>
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>등급</b></td>

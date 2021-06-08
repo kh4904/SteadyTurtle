@@ -16,13 +16,15 @@ public class MemberDto {
 	// 이메일
 	private String mEmail;
 	// 주소
-	private String mAddr;
+	private String muserAddr1;
+	// 주소
+	private String muserAddr2;
+	// 주소
+	private String muserAddr3;
 	// 회원등급
 	private String mGrade;
 	// 특이사항
 	private String mNote;
-	// 구매목록
-	private String mList;
 	// 마일리지
 	private String mMile;
 	// 누적마일리지
@@ -31,7 +33,7 @@ public class MemberDto {
 	private String mMaster;
 	
 	private int pNum;
-	
+
 	private String jNum;
 	
 	public String getmId() {
@@ -76,11 +78,23 @@ public class MemberDto {
 	public void setmEmail(String mEmail) {
 		this.mEmail = mEmail;
 	}
-	public String getmAddr() {
-		return mAddr;
+	public String getMuserAddr1() {
+		return muserAddr1;
 	}
-	public void setmAddr(String mAddr) {
-		this.mAddr = mAddr;
+	public void setMuserAddr1(String muserAddr1) {
+		this.muserAddr1 = muserAddr1;
+	}
+	public String getMuserAddr2() {
+		return muserAddr2;
+	}
+	public void setMuserAddr2(String muserAddr2) {
+		this.muserAddr2 = muserAddr2;
+	}
+	public String getMuserAddr3() {
+		return muserAddr3;
+	}
+	public void setMuserAddr3(String muserAddr3) {
+		this.muserAddr3 = muserAddr3;
 	}
 	public String getmGrade() {
 		return mGrade;
@@ -93,12 +107,6 @@ public class MemberDto {
 	}
 	public void setmNote(String mNote) {
 		this.mNote = mNote;
-	}
-	public String getmList() {
-		return mList;
-	}
-	public void setmList(String mList) {
-		this.mList = mList;
 	}
 	public String getmMile() {
 		return mMile;
@@ -134,7 +142,7 @@ public class MemberDto {
 	@Override
 	public String toString() {
 		return "MemberDto [mId=" + mId + ", mPw=" + mPw + ", mName=" + mName + ", mGender=" + mGender + ", mPhone=" + mPhone + ", mBirth=" + mBirth + ", mEmail="
-				+ mEmail + ", mAddr=" + mAddr + ", mGrade=" + mGrade + ", mNote=" + mNote + ", mMaster=" + mMaster + "]";
+				+ mEmail + ", muserAddr1=" + muserAddr1 + ", muserAddr2=" + muserAddr2 + ", muserAddr3=" + muserAddr3 + ", mGrade=" + mGrade + ", mNote=" + mNote + ", mMaster=" + mMaster + "]";
 	}
 	
 	public String login() {

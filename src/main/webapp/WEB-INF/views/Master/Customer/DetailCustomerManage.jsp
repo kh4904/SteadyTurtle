@@ -68,7 +68,7 @@
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>주소</b></td>
-							<td colspan="2">${member2.getmAddr() }</td>
+							<td colspan="2">${member2.getMuserAddr1()} ${member2.getMuserAddr3()} ${member2.getMuserAddr2()}</td>
 						</tr>
 						<tr style="background-color: #e1f5fe;">
 							<td><b>등급</b></td>

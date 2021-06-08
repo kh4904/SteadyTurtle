@@ -15,8 +15,8 @@
 <!--mybatis-confix.xml에서 긴 링크글 MemberDto 로 id는 id라고 지정  -->
 
 <!-- 회원가입 insert문 -->
-<insert id="register">INSERT INTO member( mId , mPw , mName, mGender, mPhone, mBirth, mEmail, mAddr, mGrade, mNote, mList, mMile, mCumulmile, mMaster)
-	                  VALUES(#{mId} , #{mPw}, #{mName}, #{mGender}, #{mPhone}, #{mBirth}, #{mEmail}, #{mAddr}, "브론즈", null, null, 0, 0, 0)</insert>
+<insert id="register">INSERT INTO member( mId , mPw , mName, mGender, mPhone, mBirth, mEmail, muserAddr1,muserAddr2, muserAddr3, mGrade, mNote, mMile, mCumulmile, mMaster)
+	                  VALUES(#{mId} , #{mPw}, #{mName}, #{mGender}, #{mPhone}, #{mBirth}, #{mEmail}, #{muserAddr1}, #{muserAddr2}, #{muserAddr3}, "브론즈", null, 0, 0, 0)</insert>
 
 <!-- 아이디 중복 체크 -->
 <select id="idChk" resultType="int">
@@ -26,13 +26,13 @@
 
 <!--회원수정 update문 -->
 <update id="MemberUpdate">UPDATE member SET mEmail = #{mEmail} ,mName =#{mName},
-		mPhone =#{mPhone},mAddr=#{mAddr},mPw=#{mPw}
+		mPhone =#{mPhone},muserAddr1=#{muserAddr1},mPw=#{mPw}
 		 WHERE mId = #{mId} 
 </update>
 
 <!-- 관리자측 회원수정 update문 -->
 <update id="MemberUpdate2">UPDATE member SET mPw = #{mPw}, mName = #{mName}, mGender = #{mGender}, mPhone = #{mPhone},
-         mBirth = #{mBirth}, mEmail = #{mEmail}, mAddr = #{mAddr}, mGrade = #{mGrade}, mNote = #{mNote},
+         mBirth = #{mBirth}, mEmail = #{mEmail}, muserAddr1=#{muserAddr1}, mGrade = #{mGrade}, mNote = #{mNote},
          mMaster = #{mMaster}
 		 WHERE mId = #{mId} 
 </update>

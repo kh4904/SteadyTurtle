@@ -92,7 +92,7 @@
 						<div class="list-group"
 							style="position: relative; top: -20px; left: 200px;">
 							배송지 <input type="text" class="form-control" placeholder="변경할 배송지"
-								id="mAddr" name="mAddr" maxlength="20" value="${member.mAddr}"
+								id="muserAddr1" name="muserAddr1" maxlength="20" value="${member.muserAddr1}"
 								style="width: 300px; height: 40px; position: relative; left: 130px; top: -30px;">
 
 
