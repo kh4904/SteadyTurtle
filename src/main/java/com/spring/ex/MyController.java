@@ -599,12 +599,25 @@ public class MyController {
 	//결제하기
 	@RequestMapping(value = "CashOk", method = RequestMethod.POST)
 	public String CashOk(JumunDto cldto, ProductDto pudto, MemberDto cmdto) throws Exception {
-		
-		ServiceTurtle.cashOk(cldto);
-		ServiceTurtle.productDecrease(pudto);
-		service.cashMile(cmdto);
-		
-		return "redirect:/JumunSearch";
+	      
+	   String subNum = "";
+
+	   for (int j = 1; j <= 6; j++) {
+	       subNum += (int) (Math.random() * 10);
+	   }
+
+	   String orderId = subNum;
+	   cldto.setjNum(orderId);
+	      
+	   ServiceTurtle.cashOk(cldto);
+	   ServiceTurtle.productDecrease(pudto);
+	   service.cashMile(cmdto);
+	      
+	      
+	   cmdto.setjNum(subNum);
+	   service.cashMile3(cmdto);
+	      
+	    return "redirect:/main";
 	}
 	
 	// 환불조회 페이지

@@ -50,6 +50,7 @@
          <input type="hidden" id = "rJumunDate" name="rJumunDate" value="${jumun.getjJumunDate() }">
          <input type="hidden" id = "rFinishDate" name="rFinishDate" value="${jumun.getjFinishDate() }">
          <input type="hidden" id = "jNum" name="jNum" value="${jumun.getjNum() }">
+         <input type="hidden" id = "jName" name="jName" value="${jumun.getjName() }">
             
             <table>
             

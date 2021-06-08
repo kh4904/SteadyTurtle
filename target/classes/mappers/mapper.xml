@@ -132,16 +132,16 @@
 </update>
 
 <!-- 주문내역 select문 -->
-<select id="jumun" resultType="JumunDto">SELECT * from jumun order by jNum DESC</select>
+<select id="jumun" resultType="JumunDto">SELECT * from jumun order by jJumunDate DESC, jNum ASC</select>
 
 <!-- 주문내역 세션값 select문 -->
-<select id="jumun2" resultType="JumunDto">SELECT * from jumun where jNum = #{jNum} </select>
+<select id="jumun2" resultType="JumunDto">SELECT * from jumun where jNum = #{jNum} and jName = #{jName} </select>
 
 <!-- 주문신청 삭제 delete문 -->
 <delete id="jumunDelete"> delete from jumun where jNum = #{jNum}</delete>
 
 <!-- 주문내역 승인 update문 -->
-<update id="jumunState">UPDATE jumun SET jState = '승인', jShip = '배송중' WHERE jNum = #{jNum} </update>
+<update id="jumunState">UPDATE jumun SET jState = '승인', jShip = '배송중' WHERE jNum = #{jNum} and jName = #{jName} </update>
 
 <!-- 주문내역 배송완료클릭시 sell DB에 판매상품 저장 insert문 -->
 <insert id="sellSave">INSERT INTO sell( sProduct , sId , sCate, sPrice, sCount, sCustomer, sGender)
@@ -149,13 +149,13 @@
 </insert>
 
 <!-- 주문내역 배송완료클릭시 update문 -->
-<update id="jumunState2">UPDATE jumun SET jFinishDate= NOW() , jShip = '배송완료', jState='배송' WHERE jNum = #{jNum} </update>
+<update id="jumunState2">UPDATE jumun SET jFinishDate= NOW() , jShip = '배송완료', jState='배송' WHERE jNum = #{jNum} and jName = #{jName} </update>
 
 <!-- 관리자 주문내역 카운트 -->
 <select id="jumunTotalCount" resultType="int">SELECT COUNT(*) from jumun </select>
 
 <!-- 관리자 주문내역 페이징리스트 -->
-<select id="jumunList" resultType="JumunDto">SELECT * FROM jumun ORDER BY jNum DESC LIMIT #{Page}, #{PageSize}</select>
+<select id="jumunList" resultType="JumunDto">SELECT * FROM jumun ORDER BY jJumunDate DESC LIMIT #{Page}, #{PageSize}</select>
 
 <!-- 장바구니 추가 -->
 <insert id="addCart">
@@ -228,10 +228,10 @@ select
 <update id="RefundUpdate">UPDATE refundboard SET rCheck = 1 WHERE rNum = #{rNum} </update>
 
 <!-- 환불신청 요청시 주문쪽 환불처리로 변경 update문 -->
-<update id="refundJumun">UPDATE jumun SET jShip = '환불요청' WHERE jNum = #{jNum} </update>
+<update id="refundJumun">UPDATE jumun SET jShip = '환불요청' WHERE jNum = #{jNum} and jName = #{jName} </update>
 
 <!-- 환불신청 승락시 주문쪽 환불완료로 변경 update문 -->
-<update id="jumunRefund">UPDATE jumun SET jShip = '환불완료' WHERE jNum = #{jNum} </update>
+<update id="jumunRefund">UPDATE jumun SET jShip = '환불완료' WHERE jNum = #{jNum} and jName = #{jName} </update>
 
 <!-- 판매상품 목록 select문 -->
 <select id="sell" resultType="SellDto">SELECT * from sell</select>
@@ -246,8 +246,8 @@ select
 
 <!-- 결제하기 -->
 <insert id="cashOk">
-	insert into jumun(jNum, jName, jCate, jShipPrice, jMile, jPrice, jCount, jCustomer, jId, jEmail, jAddr, userAddr1, userAddr2, userAddr3, jMailNum, jCatchName, jPhone, jUrl, jShip ,jState, jMemo)
-	values(#{jNum}, #{jName}, #{jCate}, #{jShipPrice}, #{jMile}, #{jPrice}, #{jCount}, #{jCustomer}, #{jId}, #{jEmail}, #{jAddr}, 0,0, 0, #{jMailNum}, #{jCatchName}, #{jPhone},#{jUrl}, '배송준비', '미승인', #{jMemo}  )
+   insert into jumun(jNum, jName, jCate, jShipPrice, jMile, jPrice, jCount, jCustomer, jId, jEmail, userAddr1, userAddr2, userAddr3, jCatchName, jPhone, jUrl, jShip ,jState, jMemo, pNum,jFinishDate)
+   values(#{jNum}, #{jName}, #{jCate}, #{jShipPrice}, #{jMile}, #{jPrice}, #{jCount}, #{jCustomer}, #{jId}, #{jEmail}, #{userAddr1},#{userAddr2}, #{userAddr3}, #{jCatchName}, #{jPhone},#{jUrl}, '배송준비', '미승인', #{jMemo}, #{pNum}, #{jFinishDate}  )
 </insert>
 
 <!-- 카트 비우기 -->
@@ -323,8 +323,8 @@ WHERE MID = #{mId};
 
 <!-- 장바구니 선택결제 -->
 <insert id="orderInfo">
- insert into jumun(jNum, jName, jCate, jShipPrice, jMile, jPrice, jCount, jCustomer, jId, jEmail, jAddr, userAddr1, userAddr2, userAddr3, jMailNum, jCatchName, jPhone, jUrl, jShip, jState, jMemo, pNum)
-     select #{orderId}, pName, pCate, pShip, #{jMile}, pPrice, cartStock, #{jCatchName}, mId, #{jEmail}, 0, #{userAddr1}, #{userAddr2}, #{userAddr3}, 0, #{jCatchName}, #{jPhone}, pUrl, "배송준비" , "미승인", #{jMemo}, pNum
+ insert into jumun(jNum, jName, jCate, jShipPrice, jMile, jPrice, jCount, jCustomer, jId, jEmail, userAddr1, userAddr2, userAddr3, jCatchName, jPhone, jUrl, jShip, jState, jMemo, pNum, jFinishDate)
+     select #{orderId}, pName, pCate, pShip, #{jMile}, pPrice, cartStock, #{jCatchName}, mId, #{jEmail}, #{userAddr1}, #{userAddr2}, #{userAddr3}, #{jCatchName}, #{jPhone}, pUrl, "배송준비" , "미승인", #{jMemo}, pNum, #{jFinishDate}
      	from cart where cartNum = #{cartNum}
 </insert>
 

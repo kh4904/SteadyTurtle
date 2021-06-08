@@ -100,6 +100,7 @@
                     			<!-- 상품환불 버튼 -->
                     			<form action="DetailRefund" method="POST">
                   					<input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum() }">
+                  					<input type="hidden" id="jName" name="jName" value="${jumun.getjName() }">
                     			<input type="submit" class ="btn btn-primary form-control" style="width: 100px; height: 40px;" value="상품환불"  >
                     			</form>
     						</c:when>

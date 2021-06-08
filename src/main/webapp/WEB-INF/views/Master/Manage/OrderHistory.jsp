@@ -59,7 +59,7 @@
 							<td>${jumun.getjCustomer() }</td>
 							<td>${jumun.getjId() }</td>
 							<td>${jumun.getjCount() }</td>
-							<td><fmt:formatNumber pattern="###,###,###" value="${jumun.getjPrice()}" /></td>
+							<td><fmt:formatNumber pattern="###,###,###" value="${jumun.getjPrice() * jumun.getjCount()}" /></td>
 							<c:choose>
 								<c:when test="${jumun.getjState() eq '승인'}">
        							 <td style="color:blue;">승인</td>
@@ -75,6 +75,7 @@
 							<td>
 								<form action="jumunState" method="POST">
             					<input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum()}">
+            					<input type="hidden" id="jName" name="jName" value="${jumun.getjName()}">
 									<input type="submit" class="btn btn-primary pull-right" value="승인" />
 								</form>
 							</td>
@@ -91,11 +92,12 @@
             						<input type="hidden" id="sProduct" name="sProduct" value="${jumun.getjName()}">
             						<input type="hidden" id="sId" name="sId" value="${jumun.getjId()}">
             						<input type="hidden" id="sCate" name="sCate" value="${jumun.getjCate()}">
-            						<input type="hidden" id="sPrice" name="sPrice" value="${jumun.getjPrice() + jumun.getjShipPrice() - jumun.getjMile()}">
+            						<input type="hidden" id="sPrice" name="sPrice" value="${jumun.getjPrice() * jumun.getjCount() - jumun.getjMile()}">
             						<input type="hidden" id="sCount" name="sCount" value="${jumun.getjCount()}">
             						<input type="hidden" id="sCustomer" name="sCustomer" value="${jumun.getjCustomer()}">
             						<input type="hidden" id="sGender" name="sGender" value="남성">
             						<input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum()}">
+            						<input type="hidden" id="jName" name="jName" value="${jumun.getjName()}">
 										<input type="submit" class="btn btn-primary pull-right" value="배송완료" />
 								</form>
 							</td>

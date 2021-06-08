@@ -21,15 +21,12 @@ public class JumunDto {
 	private String jId;
 	// 상품 구매자 이메일
 	private String jEmail;
-	// 받는사람 주소
-	private String jAddr;
 	
+	// 받는사람 주소
 	private String userAddr1;
 	private String userAddr2;
 	private String userAddr3;
 	
-	// 받는사람 우편번호
-	private String jMailNum;
 	// 받는사람 이름
 	private String jCatchName;
 	// 받는사람 전화번호
@@ -109,18 +106,6 @@ public class JumunDto {
 	public void setjEmail(String jEmail) {
 		this.jEmail = jEmail;
 	}
-	public String getjAddr() {
-		return jAddr;
-	}
-	public void setjAddr(String jAddr) {
-		this.jAddr = jAddr;
-	}
-	public String getjMailNum() {
-		return jMailNum;
-	}
-	public void setjMailNum(String jMailNum) {
-		this.jMailNum = jMailNum;
-	}
 	public String getjCatchName() {
 		return jCatchName;
 	}
@@ -199,8 +184,7 @@ public class JumunDto {
 		return "JumunDto[ jNum=" + jNum + ", jName=" + jName + ", jPrice=" + jPrice + ", jCount=" + jCount + 
 				", jCustomer=" + jCustomer + ", jId=" + jId + ", jUrl=" + jUrl + 
 				", jShip=" + jShip + ", jJumunDate=" + jJumunDate + ", jFinishDate=" + jFinishDate + ", jState=" + jState + 
-				", jMemo=" + jMemo +", jCate=" + jCate + ", jEmail=" + jEmail + ", jAddr=" + jAddr + ", jMailNum= " + jMailNum + 
-				", jCatchName=" + jCatchName + ", jPhone=" + jPhone + " ]";
+				", jMemo=" + jMemo +", jCate=" + jCate + ", jEmail=" + jEmail + ", jCatchName=" + jCatchName + ", jPhone=" + jPhone + ", userAddr1=" + userAddr1 + ", userAddr2=" + userAddr2 + ", userAddr3=" + userAddr3 + " ]";
 	}
 	
 	

@@ -219,7 +219,7 @@
 									p</label>
 							</p>
 						</li>
-						<li role="presentation" style="position: relative; left: 80px;">
+						<li role="presentation" style="position: relative; left: 50px;">
 							<p style="position: relative;">
 								나의 등급: ${member.mGrade} <br />${member.mName } 님
 							</p>

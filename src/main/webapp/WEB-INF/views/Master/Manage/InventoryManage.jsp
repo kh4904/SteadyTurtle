@@ -45,7 +45,7 @@
 										<div class="col-md-6 col-lg-11 mb-1 ">
 
 											<table style="width: 100%;">
-												<c:if test="${product.pCount <= 30 }">
+												<c:if test="${product.pCount <= 50 }">
 													<form action="InventoryManage" method="POST">
 														<input type="hidden" id="pName" name="pName"
 															value="${product.pName}">

@@ -18,6 +18,7 @@ public class OrderVO {
 	private int cartNum;
 	private String jEmail;
 	private String jMile;
+	private String jFinishDate;
 	
 	public String getOrderId() {
 		return orderId;
@@ -108,6 +109,12 @@ public class OrderVO {
 	}
 	public void setjMile(String jMile) {
 		this.jMile = jMile;
+	}
+	public String getjFinishDate() {
+		return jFinishDate;
+	}
+	public void setjFinishDate(String jFinishDate) {
+		this.jFinishDate = jFinishDate;
 	}
 	
 }

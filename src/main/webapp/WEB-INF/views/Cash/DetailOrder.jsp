@@ -125,19 +125,19 @@
 					</tr>
 						<tr>
 							<th colspan="5"><h style="text-align: left;">수령자</h></th>
-							<th style="text-align: right;"><h>${jumun.getjCatchName() }</h>
+							<th style="text-align: right;"><h>${jumun.getjCatchName() }</h></th>
 						</tr>
 						<tr>
 							<th colspan="5"><h style="text-align: left;">배송지</h></th>
-							<th style="text-align: right;"><h>${jumun.getjAddr() }</h>
+							<th style="text-align: right;"><h>${jumun.getUserAddr1()}${jumun.getUserAddr3() }${jumun.getUserAddr2() }</h></th>
 						</tr>
 						<tr>
 							<th colspan="5"><h style="text-align: left;">연락처</h></th>
-							<th style="text-align: right;"><h>${jumun.getjPhone() }</h>
+							<th style="text-align: right;"><h>${jumun.getjPhone() }</h></th>
 						</tr>
 						<tr>
 							<th colspan="5"><h style="text-align: left;">배송메세지</h></th>
-							<th style="text-align: right;"><h>${jumun.getjMemo() }</h>
+							<th style="text-align: right;"><h>${jumun.getjMemo() }</h></th>
 						</tr>
 				</table>
 			</div>

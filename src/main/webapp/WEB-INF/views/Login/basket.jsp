@@ -80,10 +80,16 @@ function itemSum(frm)
 {
    var sum = 0;
    var count = frm.chBox.length;
+   if(count > 1){
    for(var i=0; i < count; i++ ){
        if( frm.chBox[i].checked == true ){
-	    sum += parseInt(frm.chBox[i].value);
-       }
+       sum += parseInt(frm.chBox[i].value);
+       } 
+   }
+   } else {
+      if( frm.chBox.checked == true ){
+         sum = parseInt(frm.chBox.value);
+      }
    }
    frm.total_sum.value = sum;
 }
@@ -93,36 +99,48 @@ function itemAllSum(frm)
    var count = frm.chBox.length;
    
    var chk = $("#allCheck").prop("checked");
-		if(chk) {
-		$(".chBox").prop("checked", true);
-		 for(var i=0; i < count; i++ ){
-		       if( frm.chBox[i].checked == true ){
-			    sum += parseInt(frm.chBox[i].value);
-		       }
-		   }
-		   frm.total_sum.value = sum;
-		} else {
-		$(".chBox").prop("checked", false);
-		 for(var i=0; i < count; i++ ){
-		       if( frm.chBox[i].checked == true ){
-			    sum += parseInt(frm.chBox[i].value);
-		       }
-		   }
-		   frm.total_sum.value = sum;
-		}
+      if(chk) {
+      $(".chBox").prop("checked", true);
+      if(count > 1){
+       for(var i=0; i < count; i++ ){
+             if( frm.chBox[i].checked == true ){
+             sum += parseInt(frm.chBox[i].value);
+             }
+         }
+      } else {
+            if( frm.chBox.checked == true ){
+               sum = parseInt(frm.chBox.value);
+            }
+         }
+         frm.total_sum.value = sum;
+      } else {
+      $(".chBox").prop("checked", false);
+      if(count > 1){
+       for(var i=0; i < count; i++ ){
+             if( frm.chBox[i].checked == true ){
+             sum += parseInt(frm.chBox[i].value);
+             }
+         }
+      } else {
+            if( frm.chBox.checked == true ){
+               sum = parseInt(frm.chBox.value);
+            }
+         }
+         frm.total_sum.value = sum;
+      }
   
 }
 $(function() {
-	$('.checkT input[type="checkbox"]').click(function() {
-		var tmpp = $(this).prop('checked');
-		// this를 사용하여 클릭한 checkbox 가 체크되도록 설정
-		if (tmpp) {
-			$(".btnArea button").css({ "backgroundColor": "#d2201d", "cursor": "pointer", "color": "#fff" }).prop("disabled", false);
-		}
-		else {
-			$(".btnArea button").css({ "backgroundColor": "#cbcbcb", "cursor": "auto", "color": "#303033" }).prop("disabled", true);
-		}
-	});
+   $('.checkT input[type="checkbox"]').click(function() {
+      var tmpp = $(this).prop('checked');
+      // this를 사용하여 클릭한 checkbox 가 체크되도록 설정
+      if (tmpp) {
+         $(".btnArea button").css({ "backgroundColor": "#d2201d", "cursor": "pointer", "color": "#fff" }).prop("disabled", false);
+      }
+      else {
+         $(".btnArea button").css({ "backgroundColor": "#cbcbcb", "cursor": "auto", "color": "#303033" }).prop("disabled", true);
+      }
+   });
 });
 </script>
 <!-- 장바구니 -->
@@ -183,7 +201,7 @@ $(function() {
 							
 								<table style="width: 100%">
 									<tr style="height: 100px;">
-										<td style="width: 150px; height: 43px; text-align: center">
+										<td style="width: 150px; height: 43px; position:relative; left:70px;">
 											<div class = "checkBox">
 												<input type = "checkbox" name="chBox" class="chBox" value="${cartList.pPrice * cartList.cartStock}" data-pNum="${cartList.pNum}" data-cartNum="${cartList.cartNum}" onClick="itemSum(this.form);"/>
 												
@@ -211,7 +229,7 @@ $(function() {
 											<input type="hidden" name="pCount" value="${cartList.getCartStock() }" id="pCount">
 										</td>
 										<td style="width: 250px; height: 43px; text-align: center">
-											<h3>${cartList.getpPrice() }원</h3>
+											<h3><fmt:formatNumber pattern="###,###,###" value="${cartList.getpPrice() }" />원</h3>
 											<input type="hidden" name="pPrice" value="${cartList.getpPrice() }" id="pPrice">
 										</td>
 										<td style="width: 250px; height: 43px; text-align: center">
@@ -552,7 +570,7 @@ $(function() {
 			<label class="btn btn-primary pull-right"
 				style="position: relative; top: 4px;" for="allCheck">전체선택</label>
 			<!-- 선택삭제 -->
-				<button type="button" class="cartDelete">선택삭제</button>
+				<button type="button" class="cartDelete btn btn-primary pull-right">선택삭제</button>
 							<script>
 								$(".cartDelete").click(function(){
 									var confirm_val = confirm("삭제 하시겠습니까?");

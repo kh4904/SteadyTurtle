@@ -35,19 +35,21 @@
    <!-- 주문조회-->
    <section class="page-section portfolio">
       <div class="container" style="width: 1431px; min-height: 1000px;">
-         <c:if test="${blogin != null }">
          		<!-- 주문조회 문구 및 밑줄표시-->
             	<h2 class="page-section-heading text-uppercase text-secondary mb-0">주문조회</h2>
             	<!-- 밑줄 -->
             	<div class="divider-custom" style="display: block;">
                	<hr style="background-color: black;">
            		 </div>
+           	<c:if test="${blogin != null }">
             <div class="row">
                <!-- 주문내역 출력 -->
                <c:forEach items="${jumunList}" var="jumun">
                   <c:if test="${jumun.getjCustomer() eq sessionScope.blogin.getjCustomer()}">
+                  <c:if test="${jumun.getjPhone() eq sessionScope.blogin.getjPhone()}">
                   <form action="DetailOrder" method="POST">
                   <input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum() }">
+                  <input type="hidden" id="jName" name="jName" value="${jumun.getjName() }">
                
                   <!-- 주문일자, 주문번호, 주문상세>> 및 밑줄 -->
                <div class="divider-custom"
@@ -100,6 +102,7 @@
                       
                      </table>
                      </form>
+                     </c:if>
                   </c:if>
                </c:forEach>
             </div>
