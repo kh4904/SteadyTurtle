@@ -18,122 +18,123 @@ import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
 import com.spring.ex.dto.SellDto;
 
-
 @Service
-public class ServiceTurtle implements TurtleService{
-	
-	//검색기능
+public class ServiceTurtle implements TurtleService {
+
+	// 검색기능
 	@Inject
 	private MemberDao TotalDao;
-			
+
 	@Override
-	public List<ProductDto> productSearch(String keyword) throws Exception{
-		
+	public List<ProductDto> productSearch(String keyword) throws Exception {
+
 		return TotalDao.productSearch(keyword);
 	}
-	
-	//멤버 검색 기능 
+
+	// 멤버 검색 기능
 	@Override
-	public List<MemberDto> memberSearch(String key) throws Exception{
-		
+	public List<MemberDto> memberSearch(String key) throws Exception {
+
 		return TotalDao.memberSearch(key);
 	}
-	
-	
+
 	// 회원정보
 	@Inject
 	private MemberDao memberDao;
-	
+
 	@Override
 	public List<MemberDto> memberList() throws Exception {
-	
+
 		return memberDao.memberList();
 	}
-	
+
 	// 회원가입
-	@Inject MemberDao dao;
-	
+	@Inject
+	MemberDao dao;
+
 	@Override
 	public void register(MemberDto dto) throws Exception {
-		
+
 		dao.register(dto);
 
 	}
-	
-	//아이디 중복 체크
+
+	// 아이디 중복 체크
 	@Override
 	public int idChk(MemberDto mdto) throws Exception {
 		int result = dao.idChk(mdto);
 		return result;
 	}
-	
-	//회원수정
+
+	// 회원수정
 	@Override
 	public void MemberUpdate(MemberDto mdto) throws Exception {
 		dao.MemberUpdate(mdto);
 	}
-	
-	//회원수정
+
+	// 회원수정
 	@Override
 	public void MemberUpdate2(MemberDto mmdto) throws Exception {
 		dao.MemberUpdate2(mmdto);
 	}
-	
-	//로그인
+
+	// 로그인
 	@Override
-	public MemberDto login(MemberDto ldto) throws Exception{
+	public MemberDto login(MemberDto ldto) throws Exception {
 		return dao.login(ldto);
 	}
-	
+
 	// 비회원주문조회
 	@Override
-	public JumunDto blogin(JumunDto ldto) throws Exception{
+	public JumunDto blogin(JumunDto ldto) throws Exception {
 		return dao.blogin(ldto);
 	}
-	
-	//아이디찾기
+
+	// 아이디찾기
 	@Inject
 	private MemberDao memberDaoId;
-		
+
 	@Override
 	public MemberDto memberId(MemberDto mIdDto) throws Exception {
-	
+
 		return memberDaoId.memberId(mIdDto);
 	}
-		
-	//비밀번호찾기
+
+	// 비밀번호찾기
 	@Inject
 	private MemberDao memberDaoPw;
+
 	@Override
 	public MemberDto memberPw(MemberDto mPwDto) throws Exception {
-	
+
 		return memberDaoPw.memberPw(mPwDto);
 	}
-	
-	//회원상세
-	@Inject MemberDao mddao;
-		
+
+	// 회원상세
+	@Inject
+	MemberDao mddao;
+
 	@Override
-	public MemberDto memberDetail(MemberDto mddto) throws Exception{
+	public MemberDto memberDetail(MemberDto mddto) throws Exception {
 		return mddao.memberDetail(mddto);
 	}
-	
-	//회원탈퇴
+
+	// 회원탈퇴
 	@Override
-	public void memberdelete(MemberDto ddto) throws Exception{
+	public void memberdelete(MemberDto ddto) throws Exception {
 		dao.memberdelete(ddto);
 	}
-	
+
 	// 상품정보
 	@Inject
 	private MemberDao productDao;
-	
+
 	@Override
 	public List<ProductDto> productList(HashMap<String, Integer> map) throws Exception {
-	
+
 		return productDao.productList(map);
 	}
-	
+
 	// 관리자 상품 페이징 출력
 	@Override
 	public List<ProductDto> ProductList(HashMap<String, Integer> map) throws Exception {
@@ -221,272 +222,280 @@ public class ServiceTurtle implements TurtleService{
 	public int boardTotalCount() throws Exception {
 		return TotalDao.boardTotalCount();
 	}
-	
-	//상품 상세
-	@Inject MemberDao pdao;
-		
+
+	// 상품 상세
+	@Inject
+	MemberDao pdao;
+
 	@Override
 	public ProductDto product(ProductDto pdto) throws Exception {
 		return pdao.product(pdto);
 	}
-	
-	//상품추가
+
+	// 상품추가
 	@Override
 	public void addProduct(ProductDto apdto) throws Exception {
 		productDao.addProduct(apdto);
 	}
-	
+
 	// 상품수정
 	@Override
-	public void ProductUpdate(ProductDto pudto) throws Exception{
+	public void ProductUpdate(ProductDto pudto) throws Exception {
 		productDao.ProductUpdate(pudto);
 	}
-	
+
 	// 상품삭제
 	@Override
-	public void productDelete(ProductDto pzdto) throws Exception{
+	public void productDelete(ProductDto pzdto) throws Exception {
 		productDao.productDelete(pzdto);
 	}
-	
-	//재고수정
+
+	// 재고수정
 	@Override
-	public void productAdd(ProductDto pADto) throws Exception{
+	public void productAdd(ProductDto pADto) throws Exception {
 		productDao.productAdd(pADto);
 	}
-	
+
 	// 상품랭킹 MemberDao를 Ranking으로 지정
 	@Inject
 	private MemberDao Ranking;
-		
+
 	// 헬스기구랭킹
 	@Override
 	public List<ProductDto> healthRanking() throws Exception {
-	
+
 		return Ranking.healthRanking();
 	}
+
 	// 요가상품랭킹
 	@Override
 	public List<ProductDto> yogaRanking() throws Exception {
-	
+
 		return Ranking.yogaRanking();
 	}
+
 	// 운동식품랭킹
 	@Override
 	public List<ProductDto> foodRanking() throws Exception {
-	
+
 		return Ranking.foodRanking();
 	}
+
 	// 남성상품랭킹
 	@Override
 	public List<ProductDto> manRanking() throws Exception {
-	
+
 		return Ranking.manRanking();
 	}
+
 	// 여성상품랭킹
 	@Override
 	public List<ProductDto> womanRanking() throws Exception {
-	
+
 		return Ranking.womanRanking();
 	}
-	
+
 	// 주문내역 리스트
 	@Inject
 	private MemberDao JumunDao;
-		
+
 	@Override
 	public List<JumunDto> jumunList() throws Exception {
-	
+
 		return JumunDao.jumunList();
 	}
-	
+
 	// 주문내역
 	@Override
 	public JumunDto jumun(JumunDto jdto) throws Exception {
 		return JumunDao.jumun(jdto);
 	}
-	
-	// 주문내역 승인 update 
+
+	// 주문내역 승인 update
 	@Override
 	public void jumunState(JumunDto juDto) throws Exception {
 		JumunDao.jumunState(juDto);
 	}
-		
+
 	// 주문내역 배송완료 insert
 	@Override
 	public void sellSave(SellDto sssdto) throws Exception {
 		JumunDao.sellSave(sssdto);
 	}
-	
-	// 주문내역 승인 update 
+
+	// 주문내역 승인 update
 	@Override
 	public void jumunState2(JumunDto juDto) throws Exception {
 		JumunDao.jumunState2(juDto);
 	}
-	
+
 	// 주문신청삭제(취소)
 	@Override
-	public void jumundelete(JumunDto jddto) throws Exception{
+	public void jumundelete(JumunDto jddto) throws Exception {
 		JumunDao.jumundelete(jddto);
 	}
-	
+
 	// 장바구니 리스트
 	@Inject
 	private MemberDao BasketDao;
-	
+
 	// 장바구니 추가
-	@Inject MemberDao bidao;
-	
-	//장바구니 추가2
+	@Inject
+	MemberDao bidao;
+
+	// 장바구니 추가2
 	@Override
 	public void addCart(CartListVO cart) throws Exception {
 		bidao.addCart(cart);
 	}
-		
-	//장바구니 추가5
+
+	// 장바구니 추가5
 	@Override
 	public void addCart5(CartVO cart) throws Exception {
 		bidao.addCart5(cart);
 	}
-	
-	//장바구니 추가4
+
+	// 장바구니 추가4
 	@Override
 	public List<CartListVO> cartList(String mId) throws Exception {
 		return dao.cartList(mId);
 	}
-	
-	//장바구니 삭제
+
+	// 장바구니 삭제
 	@Override
 	public void deleteCart(CartVO cart) throws Exception {
 		cdao.deleteCart(cart);
 	}
-	
+
 	// 고객문의 목록
 	@Inject
 	private MemberDao boardDao;
-		
+
 	@Override
 	public List<BoardDTO> boardList() throws Exception {
-		
+
 		return boardDao.boardList();
 	}
-	
-	
+
 	// 고객문의 글쓰기
-	@Inject MemberDao bdao;
-	
+	@Inject
+	MemberDao bdao;
+
 	@Override
 	public void boardWrite(BoardDTO bdto) throws Exception {
-		
+
 		bdao.board(bdto);
-		
+
 	}
-	
-	// 고객문의 게시글 답변 
+
+	// 고객문의 게시글 답변
 	@Override
 	public void boardAnswer(BoardDTO bdto) throws Exception {
 		bdao.boardAnswer(bdto);
 	}
-	
+
 	// 고객문의 세션주기
-	@Inject MemberDao bbdao;
-			
+	@Inject
+	MemberDao bbdao;
+
 	@Override
 	public BoardDTO board2(BoardDTO bbdto) throws Exception {
 		return bbdao.board2(bbdto);
 	}
-	
+
 	// 고객문의 게시글 삭제하기
 	@Override
-	public void boardDelete(BoardDTO bddto) throws Exception{
+	public void boardDelete(BoardDTO bddto) throws Exception {
 		bdao.boardDelete(bddto);
 	}
 
 	// 환불요청 목록
 	@Inject
 	private MemberDao RefundDao;
-			
+
 	@Override
 	public List<RefundDto> refundList() throws Exception {
-			
+
 		return RefundDao.refundList();
 	}
-	
+
 	// 환불요청 글쓰기
 	@Override
 	public void refundWrite(RefundDto rwDto) throws Exception {
-			
+
 		RefundDao.refundWrite(rwDto);
-			
+
 	}
-	
+
 	// 환불요청 게시글 세션주기
 	@Override
 	public RefundDto refund2(RefundDto rdto) throws Exception {
 		return RefundDao.refund2(rdto);
 	}
-	
-	// 환불신청 승락 update 
+
+	// 환불신청 승락 update
 	@Override
 	public void RefundUpdate(RefundDto rrDto) throws Exception {
 		RefundDao.RefundUpdate(rrDto);
 	}
-	
-	// 환불신청시 주문쪽 환불처리로 변경 
+
+	// 환불신청시 주문쪽 환불처리로 변경
 	@Override
 	public void refundJumun(JumunDto jrDto) throws Exception {
 		RefundDao.refundJumun(jrDto);
 	}
-	
-	// 환불신청 승락시 주문쪽 환불처리로 변경 
+
+	// 환불신청 승락시 주문쪽 환불처리로 변경
 	@Override
 	public void jumunRefund(JumunDto rjDto) throws Exception {
 		RefundDao.jumunRefund(rjDto);
 	}
-	
+
 	// 판매상품 목록
 	@Inject
 	private MemberDao SellDao;
-				
+
 	@Override
 	public List<SellDto> sellList() throws Exception {
-			
+
 		return SellDao.sellList();
 	}
-	
+
 	// 판매상품 날짜 데이터 중복값 1개만출력
 	@Override
 	public List<SellDto> sellOne() throws Exception {
-			
+
 		return SellDao.sellOne();
 	}
-	
+
 	// 판매상품 날짜별 조회
 	@Override
-	public SellDto sellDate(SellDto ssdto) throws Exception{
+	public SellDto sellDate(SellDto ssdto) throws Exception {
 		return SellDao.sellDate(ssdto);
 	}
-	
-	//결제하기
-	@Inject MemberDao cdao;
-		
-	//결제하기
+
+	// 결제하기
+	@Inject
+	MemberDao cdao;
+
+	// 결제하기
 	@Override
 	public void cashOk(JumunDto cldto) throws Exception {
 		cdao.cashOk(cldto);
 	}
-	
-	//장바구니 선택결제
+
+	// 장바구니 선택결제
 	@Override
-	public void orderInfo(OrderVO order) throws Exception{
+	public void orderInfo(OrderVO order) throws Exception {
 		dao.orderInfo(order);
 	}
-	
+
 	// 결제시 마일리지변화
 	@Override
 	public void cashMile(MemberDto cmdto) throws Exception {
 		cdao.cashMile(cmdto);
 	}
-	
+
 	// 결제시 마일리지변화(차감)
 	@Override
 	public void cashMile2(MemberDto cmdto) throws Exception {
@@ -497,43 +506,82 @@ public class ServiceTurtle implements TurtleService{
 	@Override
 	public void cashMile3(MemberDto cmdto) throws Exception {
 		cdao.cashMile3(cmdto);
-	}	
-	
-	//결제시 상품 목록 변경
+	}
+
+	// 결제시 상품 목록 변경
 	public void productDecrease(ProductDto pudto) throws Exception {
 		pdao.productDecrease(pudto);
 	}
-	
-	//결제시 상품 목록 변경
+
+	// 결제시 상품 목록 변경
 	@Override
-	public void productDecrease2(ProductDto pudto) throws Exception{
+	public void productDecrease2(ProductDto pudto) throws Exception {
 		pdao.productDecrease2(pudto);
 	}
-	
-	//결제시 상품 목록 변경
+
+	// 결제시 상품 목록 변경
 	@Override
-	public void productDecrease3(ProductDto pudto) throws Exception{
+	public void productDecrease3(ProductDto pudto) throws Exception {
 		pdao.productDecrease3(pudto);
 	}
-	
-	//결제시 상품 목록 변경
+
+	// 결제시 상품 목록 변경
 	@Override
-	public void productDecrease4(MemberDto mdto) throws Exception{
+	public void productDecrease4(MemberDto mdto) throws Exception {
 		pdao.productDecrease4(mdto);
 	}
 
+	// 헬스기구 월별 통계
 	@Override
 	public List<HashMap<String, Object>> healthMonthGraph() throws Exception {
 		return dao.healthMonthGraph();
 	}
 
+	// 요가제품 월별 통계
 	@Override
 	public List<HashMap<String, Object>> yogaMonthGraph() throws Exception {
 		return dao.yogaMonthGraph();
 	}
 
+	// 운동식품 월별 통계
 	@Override
 	public List<HashMap<String, Object>> foodMonthGraph() throws Exception {
 		return dao.foodMonthGraph();
 	}
+
+	// 운동식품 남성 통계
+	@Override
+	public List<HashMap<String, Object>> healthManGraph() throws Exception {
+		return dao.healthManGraph();
+	}
+
+	// 운동식품 여성 통계
+	@Override
+	public List<HashMap<String, Object>> healthGirlGraph() throws Exception {
+		return dao.healthGirlGraph();
+	}
+
+	// 요가제품 남성 통계
+	@Override
+	public List<HashMap<String, Object>> yogaManGraph() throws Exception {
+		return dao.yogaManGraph();
+	}
+	// 요가제품 여성 통계
+	@Override
+	public List<HashMap<String, Object>> yogaGirlGraph() throws Exception {
+		return dao.yogaGirlGraph();
+	}
+
+	// 운동식품 여성 통계
+	@Override
+	public List<HashMap<String, Object>> foodManGraph() throws Exception {
+		return dao.foodManGraph();
+	}
+
+	// 운동식품 여성 통계
+	@Override
+	public List<HashMap<String, Object>> foodGirlGraph() throws Exception {
+		return dao.foodGirlGraph();
+	}
+
 }

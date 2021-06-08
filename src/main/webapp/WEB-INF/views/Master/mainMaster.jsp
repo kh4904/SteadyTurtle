@@ -274,6 +274,7 @@ aside ul li{clear:both;float:left;margin-top:10px}
 	var YogaMonthMonthPrice = new Array();
 	var FoodMonthMonthPrice = new Array();
 
+	
 	<c:forEach items="${HealthGraph }" var="health">
    	 	HealthMonthStat.push('${health.order_date }');
     	HealthMonthPrice.push(${health.Price });

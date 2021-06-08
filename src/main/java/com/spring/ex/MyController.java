@@ -868,12 +868,27 @@ public class MyController {
 		
 		List<SellDto> list = service.sellList();
 		List<SellDto> list2 = service.sellOne();
+		List<SellDto> list3 = service.sellOne();
 		
 		model.addAttribute("sellList", list);
 		model.addAttribute("sellOne",list2);
+		model.addAttribute("sellOne", list3);
+		
+		model.addAttribute("HealthManGraph", service.healthManGraph());
+		model.addAttribute("HealthGirlGraph", service.healthGirlGraph());
+		
+		model.addAttribute("YogaManGraph", service.yogaManGraph());
+		model.addAttribute("YogaGirlGraph", service.yogaGirlGraph());
+		
+		model.addAttribute("FoodManGraph", service.foodManGraph());
+		model.addAttribute("FoodGirlGraph", service.foodGirlGraph());
 		
 		return "Master/SalesStatus";
 	}
+
+	
+	
+	
 	
 	// 판매현황 판매상품 날짜별 금액조회
 	@RequestMapping(value ="/sellDate2", method = RequestMethod.POST)

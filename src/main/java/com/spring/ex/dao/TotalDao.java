@@ -458,19 +458,56 @@ public class TotalDao implements MemberDao{
 	public void productDecrease4(MemberDto mdto) throws Exception{
 		sqlSessionTemplate.update(namespace + ".productDecrease4", mdto);
 	}
-
+	//헬스기구 월별 통계
 	@Override
 	public List<HashMap<String, Object>> healthMonthGraph() throws Exception {
 		return sqlSessionTemplate.selectList(namespace + ".healthMonthGraph");
 	}
-
+	
+	//요가상품 월별 통계 
 	@Override
 	public List<HashMap<String, Object>> yogaMonthGraph() throws Exception {
 		return sqlSessionTemplate.selectList(namespace + ".yogaMonthGraph");
 	}
-
+	//운동식품 월별 통계
 	@Override
 	public List<HashMap<String, Object>> foodMonthGraph() throws Exception {
 		return sqlSessionTemplate.selectList(namespace + ".foodMonthGraph");
+	}
+	
+	//헬스기구 남성 통계
+	@Override
+	public List<HashMap<String, Object>> healthManGraph() throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".healthManGraph");
+	}
+	//헬스기구 여성 통계
+	@Override
+	public List<HashMap<String, Object>> healthGirlGraph() throws Exception {
+		
+		return sqlSessionTemplate.selectList(namespace + ".healthGirlGraph");
+	}
+	//요가상품  남성 통계
+	@Override
+	public List<HashMap<String, Object>> yogaManGraph() throws Exception {
+		
+		return sqlSessionTemplate.selectList(namespace + ".yogaManGraph");
+	}
+	//요가상품  여성 통계
+	@Override
+	public List<HashMap<String, Object>> yogaGirlGraph() throws Exception {
+		
+		return sqlSessionTemplate.selectList(namespace + ".yogaGirlGraph");
+	}
+	//운동식품 남성 통계
+	@Override
+	public List<HashMap<String, Object>> foodManGraph() throws Exception {
+		
+		return sqlSessionTemplate.selectList(namespace + ".foodManGraph");
+	}
+	//운동식품 여성 통계
+	@Override
+	public List<HashMap<String, Object>> foodGirlGraph() throws Exception {
+		
+		return sqlSessionTemplate.selectList(namespace + ".foodGirlGraph");
 	}
 }

@@ -23,16 +23,43 @@
 <select id="healthMonthGraph" resultType="hashmap">
 	SELECT sCate, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sPrice) AS Price FROM sell WHERE sCate='헬스기구' GROUP BY order_date
 </select>
+<!-- 헬스기구 남성 통계 -->
+<select id="healthManGraph" resultType="hashmap">
+	SELECT sCate, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sPrice) AS Price FROM sell WHERE sCate='요가상품'AND sGender ='남성' GROUP BY order_date
+</select>
+<!-- 헬스기구 여성 통계 -->
+<select id="healthGirlGraph" resultType="hashmap">
+	SELECT sCate, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sPrice) AS Price FROM sell WHERE sCate='요가상품'AND sGender ='여성' GROUP BY order_date
+</select>
+
 
 <!-- 요가상품 월별 통계 -->
 <select id="yogaMonthGraph" resultType="hashmap">
 	SELECT sCate, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sPrice) AS Price FROM sell WHERE sCate='요가상품' GROUP BY order_date
 </select>
+<!-- 요가상품 남성 통계 -->
+<select id="yogaManGraph" resultType="hashmap">
+	SELECT sCate, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sPrice) AS Price FROM sell WHERE sCate='요가상품'AND sGender ='남성' GROUP BY order_date
+</select>
+<!-- 요가상품 여성 통계 -->
+<select id="yogaGirlGraph" resultType="hashmap">
+	SELECT sCate, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sPrice) AS Price FROM sell WHERE sCate='요가상품'AND sGender ='여성' GROUP BY order_date
+</select>
+
 
 <!-- 운동식품 월별 통계 -->
 <select id="foodMonthGraph" resultType="hashmap">
 	SELECT sCate, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sPrice) AS Price FROM sell WHERE sCate='운동식품' GROUP BY order_date
 </select>
+<!-- 운동식품 남성 통계 -->
+<select id="foodManGraph" resultType="hashmap">
+SELECT sCate, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sPrice) AS Price FROM sell WHERE sCate='운동식품'AND sGender ='남성' GROUP BY order_date
+</select>
+<!-- 운동식품 여성 통계 -->
+<select id="foodGirlGraph" resultType="hashmap">
+SELECT sCate, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sPrice) AS Price FROM sell WHERE sCate='운동식품'AND sGender ='여성' GROUP BY order_date
+</select>
+
 
 <!-- 아이디 중복 체크 -->
 <select id="idChk" resultType="int">

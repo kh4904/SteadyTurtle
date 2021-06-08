@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,18 +27,27 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="resources/css/styles.css" rel="stylesheet" />
 
+<!-- section aside 크기 설정하는곳 되도록 건들지않는게 페이지망가짐 적음 -->
+<style>
+section,aside{float:left; width:1603px;height:672px;padding:10px}
+section{width:1603px;background:white}
+aside{width:300px;background:white}
+aside ul{list-style:none; padding:0}
+aside ul li{clear:both;float:left;margin-top:10px}
+</style>
 </head>
-<!-- 판매현황 페이지 -->
+   <!-- 관리자모드 메인페이지 -->
 	<body id="page-top">
         <!-- Navigation 맨위 로고-->
-        <%@ include file="/WEB-INF/views/Master/Mastermenu.jsp" %>
-           
+        <%@ include file="/WEB-INF/views/Master/Mastermenu.jsp" %>       
+      
      <!-- 헤더 (실적 문구 및 당일 기간정하기) -->
 	<header class="page-section portfolio">
-	<form action="sellDate2" method="POST" name="form">
+	<form action="sellDate" method="POST" name="form">
 		<div class="container">
             <!-- 고정바(순위,상품명,가격,마일리지,배송) 라벨-->
-               <c:if test="${sell == null }">
+            <!-- sell값이 null인경우 -->
+                <c:if test="${sell == null }">
                 <table style="width:100%">
                   <tr>
                      <th style="width:200px; height:23px;">
@@ -152,74 +162,57 @@
         </div>
 	</header>
 	
-	<!-- 막대그래프 -->
-	<section class="page-section portfolio" id="portfolio" style="height:700px">
-		<div class="col-lg-6">
-			<div class="" style="width:400px; height:200px; position:relative; top:-120px; left:280px; ">
-				<div class="card-header">
-				      <h1>
-					<i class="fas fa-chart-area mr-1"></i>
-					헬스기구
-					  </h1>
-				</div>
-				<div class="card-body">
-					<canvas id="myBarChart1" width="150%" height="110%"></canvas>
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-lg-6">
-			<div class="" style="width:400px; height:200px; position:relative; top:-320px; left:780px; ">
-				<div class="card-header">
-				      <h1>
-					<i class="fas fa-chart-area mr-1"></i>
-					요가상품
-					  </h1>
-				</div>
-				<div class="card-body">
-					<canvas id="myBarChart2" width="150%" height="110%"></canvas>
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-lg-6">
-			<div class="" style="width:400px; height:200px; position:relative; top:-520px; left:1280px; ">
-				<div class="card-header">
-				      <h1>
-					<i class="fas fa-chart-area mr-1"></i>
-					운동식품
-					  </h1>
-
-				</div>
-				<div class="card-body">
-					<canvas id="myBarChart3" width="150%" height="110%"></canvas>
-				</div>
-			</div>
-		</div>
-		
-		<!-- 남성,여성 막대 색 표시 라벨 -->
+	<!-- 선그래프 -->
+	<section class="page-section portfolio" id="portfolio">
 		<div class = "contanier" style="position:relative;">
-			<div class="" style="background-color:#40c4ff; width: 70px; height: 10px; position:relative; left:800px;top:-320px;">
+		<div class="col-lg-6">
+			<div class="" style="width:600px; height:350px; position:relative; top:-150px; left:400px; ">
+				<div class="card-header">
+					<i class="fas fa-chart-area mr-1"></i>
+					상품 판매량
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<a href="SalesStatus" style="text-decoration:none;">더보기 +</a>
+				</div>
+				<div class="card-body">
+					<canvas id="salesGraph" width="50%" height="50%"></canvas>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+		<!-- 헬스,요가,운동 막대 색 표시 라벨 -->
+		<div class = "contanier" style="position:relative;">
+			<div class="" style="background-color:#40c4ff; width: 70px; height: 10px; position:relative; left:700px;">
         	</div>
-        	<b style="position: relative; left:900px; top:-335px;">남성</b>
-        	<div class="" style="background-color:#ff9e80; width: 70px; height: 10px; position: relative; left:1000px; top:-355px; ">
+        	<b style="position:relative; left:780px; top:-15px;">헬스기구</b>
+        	<div class="" style="background-color:#90a4ae; width: 70px; height: 10px; position: relative; left:880px; top:-33px;">
         	</div>
-        	<b style="position: relative; left:1100px; top:-370px;">여성</b>
+        	<b style="position: relative; left:960px; top:-48px;">요가상품</b>
+        	<div class="" style="background-color:#ff9e80; width: 70px; height: 10px; position: relative; left:1060px; top:-66px; ">
+        	</div>
+        	<b style="position: relative; left:1140px; top:-80px;">운동식품</b>
         </div>
-     
+        
+    
 	</section>
-	
-	<c:if test ="${member.mMaster != 1 }">
+   
+    
+    
+    <c:if test ="${member.mMaster != 1 }">
 		<script>
 			alert("관리자권한이 없습니다.")
 			location.href="main";
 		</script>
 	</c:if>
-    
 
     <!-- Copyright Section(맨밑 하단)-->
 	<div class="copyright py-4 text-center text-white">
-		<div class="container">
+		<div class="container" style="position:relative; top:20px;"> 
 			<small><a href="#" style="text-decoration: none;">회사소개</a>｜ <a
 				href="#" style="text-decoration: none;">이용약관</a> ｜ <a href="#"
 				style="text-decoration: none;">개인정보처리방침</a><br> (주)꾸준한거북이 ｜대표 :
@@ -228,7 +221,7 @@
 				Email. steadyturtle@kyungmin.ac.kr</small>
 		</div>
 	</div>
-    
+
 	<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
 	<div class="scroll-to-top d-lg-none position-fixed">
 		<a class="js-scroll-trigger d-block text-center text-white rounded"
@@ -247,20 +240,119 @@
 	<script src="resources/assets/mail/jqBootstrapValidation.js"></script>
 	<script src="resources/assets/mail/contact_me.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+	<script src='<c:url value="/resourecs/js/scripts.js"/>'></script>
 	
 	<!-- 여기서부터 관리자페이지 부트스트랩 추가 -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="resources/js/scripts.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-	<script src="resources/assets/demo/chart-area-demo.js"></script>
-	<script src="resources/assets/demo/chart-bar-demo.js"></script>
 	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-	<script src="resources/assets/demo/datatables-demo.js"></script>
-	<script src="resources/assets/demo/chart-bar-demo1.js"></script>
-	<script src="resources/assets/demo/chart-bar-demo2.js"></script>
-	<script src="resources/assets/demo/chart-bar-demo3.js"></script>
 
+	<script>
+	// Set new default font family and font color to mimic Bootstrap's default styling
+	Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+	Chart.defaults.global.defaultFontColor = '#292b2c';
+
+	// Bar Chart Example 
+	var HealthManMonthGraph = new Array();
+	var HealthManPriceGraph = new Array();
+	var HealthGirlMonthGraph = new Array();
+	var HealthGirlPriceGraph = new Array();
+	
+	var YogaManMonthGraph = new Array();
+	var YogaManPriceGraph = new Array();
+	var YogaGirlMonthGraph = new Array();
+	var YogaGirlPriceGraph = new Array();
+	
+	var FoodManMonthGraph = new Array();
+	var FoodManPriceGraph = new Array();
+	var FoodGirlMonthGraph = new Array();
+	var FoodGirlPriceGraph = new Array();
+	
+	
+	<c:forEach items="${HealthManGraph}" var="healthman">
+	HealthManMonthGraph.push('${healthman.order_date }');
+	HealthManPriceGraph.push(${healthman.Price });
+	</c:forEach>
+	<c:forEach items="${YogaManGraph}" var="yogaman">
+	YogaManMonthGraph.push('${yogaman.order_date }');
+	YogaManPriceGraph.push(${yogaman.Price });
+	</c:forEach>
+	<c:forEach items="${FoodManGraph}" var="foodman">
+	FoodManMonthGraph.push('${foodman.order_date }');
+	FoodManPriceGraph.push(${foodman.Price });
+	</c:forEach>
+	
+	<c:forEach items="${HealthGirlGraph}" var="healthgirl">
+	HealthGirlMonthGraph.push('${healthgirl.order_date }');
+	HealthGirlPriceGraph.push(${healthgirl.Price });
+	</c:forEach>
+	<c:forEach items="${YogaGirlGraph}" var="yogagirl">
+	YogaGirlMonthGraph.push('${yogagirl.order_date }');
+	YogaGirlPriceGraph.push(${yogagirl.Price });
+	</c:forEach>
+	<c:forEach items="${FoodGirlGraph}" var="foodgirl">
+	FoodGirlMonthGraph.push('${foodgirl.order_date }');
+	FoodGirlPriceGraph.push(${foodgirl.Price });
+	</c:forEach>
+	
+	
+	var ctx = document.getElementById("salesGraph");
+	var myLineChart = new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+		    labels:HealthManMonthGraph,
+		    datasets: [
+		    {
+		      label: "헬스기구",
+		      backgroundColor: "rgba(64,196,255,1)",
+		      borderColor: "rgba(64,196,255,1)",
+		      data: HealthManPriceGraph,
+		    },
+		    {
+		      label: "요가상품",
+				backgroundColor: "rgba(144,164,174, 1)",
+				borderColor: "rgba(144,164,174,1)",
+		      data: YogaManPriceGraph,
+		    },
+		    {
+			  label: "운동식품",
+			backgroundColor: "rgba(255,158,128, 1)",
+				borderColor: "rgba(255,158,128,1)",
+			  data: FoodManPriceGraph,
+			}
+		    ],
+		  },
+	  options: {
+	    scales: {
+	      xAxes: [{
+	        time: {
+	          unit: 'date'
+	        },
+	        gridLines: {
+	          display: false
+	        },
+	        ticks: {
+	          maxTicksLimit: 7
+	        }
+	      }],
+	      yAxes: [{
+	        ticks: {
+	          min: 0,
+	          max: 100000,
+	          maxTicksLimit: 5
+	        },
+	        gridLines: {
+	          display: true
+	        }
+	      }],
+	    },
+	    legend: {
+	      display: false
+	    }
+	  }
+	});
+
+	</script>
 </body>
 </html>
