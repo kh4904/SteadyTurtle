@@ -144,6 +144,26 @@ public class MyController {
 	    return path;
 	}
 	
+	// 마일리지 갱신업데이트 버튼
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(MemberDto ldto, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+		String path = "";
+		
+		HttpSession session = req.getSession();
+
+	    MemberDto login = ServiceTurtle.login(ldto);
+	    if (login == null) {
+	       session.setAttribute("member", null);
+	       path = "redirect:/main";
+	    } else {
+	       session.setAttribute("member", login);
+	       path = "redirect:/LoginSuccess";
+	    }
+		
+		return path;
+		
+	}
+	
 	// 비회원 배송조회
 	@RequestMapping(value = "/JumunSearch2", method = RequestMethod.GET)
 	public String JumunSearch2(Model model) throws Exception {

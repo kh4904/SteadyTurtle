@@ -219,9 +219,15 @@
 									p</label>
 							</p>
 						</li>
-						<li role="presentation" style="position: relative; left: 50px;">
+						<li role="presentation" style="position: relative; left: 60px;">
 							<p style="position: relative;">
-								나의 등급: ${member.mGrade} <br />${member.mName } 님
+								나의 등급: ${member.mGrade} <br />${member.mName } 님 <br />
+								<form action="update" method="POST" style="height: 10px; position: relative; margin-left: -80px; top:-15px">
+									<input type="hidden" id="mId" name="mId" value="${member.mId }">
+									<input type="hidden" id="mPw" name="mPw" value="${member.mPw }">
+									<button type="submit" class="btn btn-default" style="position:relative; top:-10px; left:10px;""><i
+										class="fa fa-retweet" style="width: 25px; height: 25px; color: #000000;"></i></button>
+								</form>
 							</p>
 						</li>
 					</ul>
