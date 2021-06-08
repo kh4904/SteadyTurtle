@@ -229,7 +229,7 @@ $(function() {
 											<input type="hidden" name="pCount" value="${cartList.getCartStock() }" id="pCount">
 										</td>
 										<td style="width: 250px; height: 43px; text-align: center">
-											<h3>${cartList.getpPrice() }원</h3>
+											<h3><fmt:formatNumber pattern="###,###,###" value="${cartList.getpPrice() }" /> 원</h3>
 											<input type="hidden" name="pPrice" value="${cartList.getpPrice() }" id="pPrice">
 										</td>
 										<td style="width: 250px; height: 43px; text-align: center">
