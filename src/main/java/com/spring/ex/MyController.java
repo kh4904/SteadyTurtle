@@ -47,7 +47,7 @@ public class MyController {
 	// 로그인시 필요
 	@Autowired
 	private ServiceTurtle ServiceTurtle;
-
+	
 	// 메인페이지
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String main(Model model) throws Exception {
@@ -835,10 +835,14 @@ public class MyController {
 		List<MemberDto> list = service.memberList();
 		List<SellDto> list2 = service.sellList();
 		List<SellDto> list3 = service.sellOne();
-		
+
 		model.addAttribute("memberList", list);
 		model.addAttribute("sellList", list2);
 		model.addAttribute("sellOne", list3);
+		
+		model.addAttribute("HealthGraph", service.healthMonthGraph());
+		model.addAttribute("YogaGraph", service.yogaMonthGraph());
+		model.addAttribute("FoodGraph", service.foodMonthGraph());
 		
 		return "Master/mainMaster";
 	}

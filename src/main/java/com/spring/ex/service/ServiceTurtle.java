@@ -521,4 +521,19 @@ public class ServiceTurtle implements TurtleService{
 	public void productDecrease4(MemberDto mdto) throws Exception{
 		pdao.productDecrease4(mdto);
 	}
+
+	@Override
+	public List<HashMap<String, Object>> healthMonthGraph() throws Exception {
+		return dao.healthMonthGraph();
+	}
+
+	@Override
+	public List<HashMap<String, Object>> yogaMonthGraph() throws Exception {
+		return dao.yogaMonthGraph();
+	}
+
+	@Override
+	public List<HashMap<String, Object>> foodMonthGraph() throws Exception {
+		return dao.foodMonthGraph();
+	}
 }

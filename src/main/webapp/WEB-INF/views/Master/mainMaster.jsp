@@ -164,8 +164,9 @@ aside ul li{clear:both;float:left;margin-top:10px}
 	
 	<!-- 선그래프 -->
 	<section class="page-section portfolio" id="portfolio">
+		<div class = "contanier" style="position:relative;">
 		<div class="col-lg-6">
-			<div class="" style="width:1000px; height:378px; position:relative; top:-150px; left:400px; ">
+			<div class="" style="width:600px; height:350px; position:relative; top:-150px; left:400px; ">
 				<div class="card-header">
 					<i class="fas fa-chart-area mr-1"></i>
 					상품 판매량
@@ -178,9 +179,10 @@ aside ul li{clear:both;float:left;margin-top:10px}
 					<a href="SalesStatus" style="text-decoration:none;">더보기 +</a>
 				</div>
 				<div class="card-body">
-					<canvas id="myBarChart" width="100%" height="40%"></canvas>
+					<canvas id="salesGraph" width="50%" height="50%"></canvas>
 				</div>
 			</div>
+		</div>
 		</div>
 		
 		<!-- 헬스,요가,운동 막대 색 표시 라벨 -->
@@ -220,137 +222,6 @@ aside ul li{clear:both;float:left;margin-top:10px}
 			location.href="main";
 		</script>
 	</c:if>
-	
-	<!-- 기간별 매출 Chart -->
-	<script>
-		Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-		Chart.defaults.global.defaultFontColor = '#858796';
-	
-		function number_format(number, decimals, dec_point, thousands_sep) {
-			// *     example: number_format(1234.56, 2, ',', ' ');
-			// *     return: '1 234,56'
-			number = (number + '').replace(',', '').replace(' ', '');
-			var n = !isFinite(+number) ? 0 : +number,
-				prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-				sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-				dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-				s = '',
-				toFixedFix = function(n, prec) {
-					var k = Math.pow(10, prec);
-					return '' + Math.round(n * k) / k;
-				};
-			// Fix for IE parseFloat(0.55).toFixed(0) = 0;
-			s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-			if (s[0].length > 3) {
-				s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-			}
-			if ((s[1] || '').length < prec) {
-				s[1] = s[1] || '';
-				s[1] += new Array(prec - s[1].length + 1).join('0');
-			}
-			return s.join(dec);
-		}
-		var ctx = document.getElementById("myBarChart");
-	
-		var OrderDate = new Array();
-		var Earnings = new Array();
-	
-		<c:forEach items="${SellList }" var="sell">
-			OrderDate.push("${sell.sDate}");
-			Earnings.push("${sell.sPrice}");
-		</c:forEach>
-		var myLineChart = new Chart(ctx, {
-			type: 'bar',
-			data: {
-				
-				labels: OrderDate,
-				datasets: [
-				    {
-				      label: "Health",
-				      backgroundColor: "rgba(103,153,255,1)",
-				      borderColor: "rgba(103,153,255,1)",
-				      data: [300, 150, 200, 80, 170, 800,661],
-				    },{
-				      label: "Yoga",
-				      backgroundColor: "rgba(140,140,140, 1)",
-				      borderColor: "rgba(140,140,140,1)",
-				      data: [482, 246, 297, 317, 200, 600,972],
-				    },{
-				        label: "Food",
-				        backgroundColor: "rgba(255,94,0, 1)",
-				        borderColor: "rgba(255,94,0,1)",
-				        data: [600, 127, 497, 257, 800, 247,634],
-				      }
-				    ],
-				  },
-			options: {
-				maintainAspectRatio: false,
-				layout: {
-					padding: {
-						left: 10,
-						right: 25,
-						top: 25,
-						bottom: 0
-					}
-				},
-				scales: {
-					xAxes: [{
-						time: {
-							unit: 'date'
-						},
-						gridLines: {
-							display: false,
-							drawBorder: false
-						},
-						ticks: {
-							maxTicksLimit: 7
-						}
-					}],
-					yAxes: [{
-						ticks: {
-							maxTicksLimit: 5,
-							padding: 10,
-							// Include a dollar sign in the ticks
-							callback: function(value, index, values) {
-								return '$' + number_format(value);
-							}
-						},
-						gridLines: {
-							color: "rgb(234, 236, 244)",
-							zeroLineColor: "rgb(234, 236, 244)",
-							drawBorder: false,
-							borderDash: [2],
-							zeroLineBorderDash: [2]
-						}
-					}],
-				},
-				legend: {
-					display: false
-				},
-				tooltips: {
-					backgroundColor: "rgb(255,255,255)",
-					bodyFontColor: "#858796",
-					titleMarginBottom: 10,
-					titleFontColor: '#6e707e',
-					titleFontSize: 14,
-					borderColor: '#dddfeb',
-					borderWidth: 1,
-					xPadding: 15,
-					yPadding: 15,
-					displayColors: false,
-					intersect: false,
-					mode: 'index',
-					caretPadding: 10,
-					callbacks: {
-						label: function(tooltipItem, chart) {
-							var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-							return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-						}
-					}
-				}
-			}
-		});
-	</script>
 
     <!-- Copyright Section(맨밑 하단)-->
 	<div class="copyright py-4 text-center text-white">
@@ -382,17 +253,96 @@ aside ul li{clear:both;float:left;margin-top:10px}
 	<script src="resources/assets/mail/jqBootstrapValidation.js"></script>
 	<script src="resources/assets/mail/contact_me.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+	<script src='<c:url value="/resourecs/js/scripts.js"/>'></script>
 	
 	<!-- 여기서부터 관리자페이지 부트스트랩 추가 -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="resources/js/scripts.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-	<script src="resources/assets/demo/chart-area-demo.js"></script>
-	<script src="resources/assets/demo/chart-bar-demo.js"></script>
 	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-	<script src="resources/assets/demo/datatables-demo.js"></script>
 
+	<script>
+	// Set new default font family and font color to mimic Bootstrap's default styling
+	Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+	Chart.defaults.global.defaultFontColor = '#292b2c';
+
+	// Bar Chart Example
+	var HealthMonthStat = new Array();
+	var YogaMonthMonthStat = new Array();
+	var FoodMonthMonthStat = new Array();
+	var HealthMonthPrice = new Array();
+	var YogaMonthMonthPrice = new Array();
+	var FoodMonthMonthPrice = new Array();
+
+	<c:forEach items="${HealthGraph }" var="health">
+   	 	HealthMonthStat.push('${health.order_date }');
+    	HealthMonthPrice.push(${health.Price });
+	</c:forEach>
+    <c:forEach items="${YogaGraph }" var="yoga">
+    	YogaMonthMonthStat.push('${yoga.order_date }');
+    	YogaMonthMonthPrice.push(${yoga.Price });
+	</c:forEach>
+    <c:forEach items="${FoodGraph }" var="food">
+    	FoodMonthMonthStat.push('${food.order_date }');
+    	FoodMonthMonthPrice.push(${food.Price });
+	</c:forEach>
+	
+	var ctx = document.getElementById("salesGraph");
+	var myLineChart = new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+		    labels: HealthMonthStat,
+		    datasets: [
+		    {
+		      label: "헬스기구",
+		      backgroundColor: "rgba(64,196,255,1)",
+		      borderColor: "rgba(64,196,255,1)",
+		      data: HealthMonthPrice,
+		    },
+		    {
+		      label: "요가상품",
+				backgroundColor: "rgba(144,164,174, 1)",
+				borderColor: "rgba(144,164,174,1)",
+		      data: YogaMonthMonthPrice,
+		    },
+		    {
+			  label: "운동식품",
+			backgroundColor: "rgba(255,158,128, 1)",
+				borderColor: "rgba(255,158,128,1)",
+			  data: FoodMonthMonthPrice,
+			}
+		    ],
+		  },
+	  options: {
+	    scales: {
+	      xAxes: [{
+	        time: {
+	          unit: 'date'
+	        },
+	        gridLines: {
+	          display: false
+	        },
+	        ticks: {
+	          maxTicksLimit: 7
+	        }
+	      }],
+	      yAxes: [{
+	        ticks: {
+	          min: 0,
+	          max: 300000,
+	          maxTicksLimit: 5
+	        },
+	        gridLines: {
+	          display: true
+	        }
+	      }],
+	    },
+	    legend: {
+	      display: false
+	    }
+	  }
+	});
+
+	</script>
 </body>
 </html>

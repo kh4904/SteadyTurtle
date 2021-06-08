@@ -18,6 +18,13 @@ import com.spring.ex.dto.SellDto;
 @Service
 public interface TurtleService {
 	
+	//헬스기구 월별 통계
+	public List<HashMap<String, Object>> healthMonthGraph() throws Exception;
+	//요가상품 월별 통계
+	public List<HashMap<String, Object>> yogaMonthGraph() throws Exception;
+	//운동식품 월별 통계
+	public List<HashMap<String, Object>> foodMonthGraph() throws Exception;
+	
 	/*검색 기능 product dto 를 pSDto로 선언*/
 	public List<ProductDto> productSearch(String keyword) throws Exception;
 	

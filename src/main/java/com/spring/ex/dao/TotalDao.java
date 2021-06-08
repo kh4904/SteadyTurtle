@@ -458,4 +458,19 @@ public class TotalDao implements MemberDao{
 	public void productDecrease4(MemberDto mdto) throws Exception{
 		sqlSessionTemplate.update(namespace + ".productDecrease4", mdto);
 	}
+
+	@Override
+	public List<HashMap<String, Object>> healthMonthGraph() throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".healthMonthGraph");
+	}
+
+	@Override
+	public List<HashMap<String, Object>> yogaMonthGraph() throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".yogaMonthGraph");
+	}
+
+	@Override
+	public List<HashMap<String, Object>> foodMonthGraph() throws Exception {
+		return sqlSessionTemplate.selectList(namespace + ".foodMonthGraph");
+	}
 }
