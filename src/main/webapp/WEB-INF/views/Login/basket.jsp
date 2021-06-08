@@ -80,10 +80,16 @@ function itemSum(frm)
 {
    var sum = 0;
    var count = frm.chBox.length;
+   if(count > 1){
    for(var i=0; i < count; i++ ){
        if( frm.chBox[i].checked == true ){
 	    sum += parseInt(frm.chBox[i].value);
-       }
+       } 
+   }
+   } else {
+	   if( frm.chBox.checked == true ){
+	   	sum = parseInt(frm.chBox.value);
+	   }
    }
    frm.total_sum.value = sum;
 }
@@ -95,18 +101,30 @@ function itemAllSum(frm)
    var chk = $("#allCheck").prop("checked");
 		if(chk) {
 		$(".chBox").prop("checked", true);
+		if(count > 1){
 		 for(var i=0; i < count; i++ ){
 		       if( frm.chBox[i].checked == true ){
 			    sum += parseInt(frm.chBox[i].value);
 		       }
 		   }
+		} else {
+			   if( frm.chBox.checked == true ){
+			   	sum = parseInt(frm.chBox.value);
+			   }
+		   }
 		   frm.total_sum.value = sum;
 		} else {
 		$(".chBox").prop("checked", false);
+		if(count > 1){
 		 for(var i=0; i < count; i++ ){
 		       if( frm.chBox[i].checked == true ){
 			    sum += parseInt(frm.chBox[i].value);
 		       }
+		   }
+		} else {
+			   if( frm.chBox.checked == true ){
+			   	sum = parseInt(frm.chBox.value);
+			   }
 		   }
 		   frm.total_sum.value = sum;
 		}

@@ -249,7 +249,7 @@
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<!-- db연동 -->
 									<c:if test="${member != null }">
-										<input type="text" value="0"
+										<input type="text" value="0" id="jMile" name="jMile"
 											style="position: relative; width: 70px; height: 30px;"></input><b
 											style="font-size: 20px; color: black;">/ ${member.mMile } M</b>
 									</c:if>

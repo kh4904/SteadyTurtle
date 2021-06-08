@@ -48,7 +48,7 @@
                   <c:if test="${jumun.getjCustomer() eq sessionScope.blogin.getjCustomer()}">
                   <form action="DetailOrder" method="POST">
                   <input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum() }">
-               
+               		<input type="hidden" id="jName" name="jName" value="${jumun.getjName() }">
                   <!-- 주문일자, 주문번호, 주문상세>> 및 밑줄 -->
                <div class="divider-custom"
                   style="display: block; width: 1140px; height: 30px;">
