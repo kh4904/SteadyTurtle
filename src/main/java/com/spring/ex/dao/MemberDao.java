@@ -10,6 +10,7 @@ import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
+import com.spring.ex.dto.OrderVO;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
 import com.spring.ex.dto.SellDto;
@@ -182,12 +183,27 @@ public interface MemberDao {
 	//결제하기
 	public void cashOk(JumunDto cldto) throws Exception;
 	
+	//장바구니 선택결제
+	public void orderInfo(OrderVO order) throws Exception;
+	
 	// 결제시 마일리지변화
 	public void cashMile(MemberDto cmdto) throws Exception;
 	
 	// 결제시 마일리지변화(차감)
 	public void cashMile2(MemberDto cmdto) throws Exception;
 	
+	// 결제시 마일리지변화(차감)
+	public void cashMile3(MemberDto cmdto) throws Exception;
+	
 	//결제시 상품 목록 변경
 	public void productDecrease(ProductDto pudto) throws Exception;
+	
+	//결제시 상품 목록 변경
+	public void productDecrease2(ProductDto pudto) throws Exception;
+	
+	//결제시 상품 목록 변경
+	public void productDecrease3(ProductDto pudto) throws Exception;
+	
+	//결제시 상품 목록 변경
+	public void productDecrease4(MemberDto mdto) throws Exception;
 }

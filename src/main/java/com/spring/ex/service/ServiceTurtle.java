@@ -13,6 +13,7 @@ import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
+import com.spring.ex.dto.OrderVO;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
 import com.spring.ex.dto.SellDto;
@@ -474,6 +475,12 @@ public class ServiceTurtle implements TurtleService{
 		cdao.cashOk(cldto);
 	}
 	
+	//장바구니 선택결제
+	@Override
+	public void orderInfo(OrderVO order) throws Exception{
+		dao.orderInfo(order);
+	}
+	
 	// 결제시 마일리지변화
 	@Override
 	public void cashMile(MemberDto cmdto) throws Exception {
@@ -485,9 +492,33 @@ public class ServiceTurtle implements TurtleService{
 	public void cashMile2(MemberDto cmdto) throws Exception {
 		cdao.cashMile2(cmdto);
 	}
+
+	// 결제시 마일리지변화(차감)
+	@Override
+	public void cashMile3(MemberDto cmdto) throws Exception {
+		cdao.cashMile3(cmdto);
+	}	
 	
 	//결제시 상품 목록 변경
 	public void productDecrease(ProductDto pudto) throws Exception {
 		pdao.productDecrease(pudto);
+	}
+	
+	//결제시 상품 목록 변경
+	@Override
+	public void productDecrease2(ProductDto pudto) throws Exception{
+		pdao.productDecrease2(pudto);
+	}
+	
+	//결제시 상품 목록 변경
+	@Override
+	public void productDecrease3(ProductDto pudto) throws Exception{
+		pdao.productDecrease3(pudto);
+	}
+	
+	//결제시 상품 목록 변경
+	@Override
+	public void productDecrease4(MemberDto mdto) throws Exception{
+		pdao.productDecrease4(mdto);
 	}
 }

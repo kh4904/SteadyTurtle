@@ -30,6 +30,10 @@ public class MemberDto {
 	// 관리자권한
 	private String mMaster;
 	
+	private int pNum;
+	
+	private String jNum;
+	
 	public String getmId() {
 		return mId;
 	}
@@ -114,7 +118,18 @@ public class MemberDto {
 	public void setmMaster(String mMaster) {
 		this.mMaster = mMaster;
 	}
-	
+	public int getpNum() {
+		return pNum;
+	}
+	public void setpNum(int pNum2) {
+		this.pNum = pNum2;
+	}
+	public String getjNum() {
+		return jNum;
+	}
+	public void setjNum(String jNum) {
+		this.jNum = jNum;
+	}
 	// 회원가입 dto
 	@Override
 	public String toString() {

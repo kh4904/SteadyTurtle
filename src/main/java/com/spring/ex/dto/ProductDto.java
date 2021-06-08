@@ -29,6 +29,9 @@ public class ProductDto {
 	// 상품 이미지
 	private String pImg;
 	
+	private int cartStock;
+	private String mId;
+	
 	public int getpNum() {
 		return pNum;
 	}
@@ -107,8 +110,18 @@ public class ProductDto {
 	public void setpImg(String pImg) {
 		this.pImg = pImg;
 	}
-	
-	
+	public int getCartStock() {
+		return cartStock;
+	}
+	public void setCartStock(int cartStock) {
+		this.cartStock = cartStock;
+	}
+	public String getmId() {
+		return mId;
+	}
+	public void setmId(String mId) {
+		this.mId = mId;
+	}
 	@Override
 	public String toString() {
 		return "ProductDto[pNum=" + pNum + ", pName=" + pName + ", pCate=" + pCate + ", pPrice=" + pPrice + 

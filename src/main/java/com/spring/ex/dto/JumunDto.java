@@ -23,6 +23,11 @@ public class JumunDto {
 	private String jEmail;
 	// 받는사람 주소
 	private String jAddr;
+	
+	private String userAddr1;
+	private String userAddr2;
+	private String userAddr3;
+	
 	// 받는사람 우편번호
 	private String jMailNum;
 	// 받는사람 이름
@@ -42,6 +47,7 @@ public class JumunDto {
 	// 주문시 메모
 	private String jMemo;
 	
+	private int pNum;
 	
 	public String getjNum() {
 		return jNum;
@@ -164,6 +170,30 @@ public class JumunDto {
 		this.jMemo = jMemo;
 	}
 
+	public String getUserAddr1() {
+		return userAddr1;
+	}
+	public void setUserAddr1(String userAddr1) {
+		this.userAddr1 = userAddr1;
+	}
+	public String getUserAddr2() {
+		return userAddr2;
+	}
+	public void setUserAddr2(String userAddr2) {
+		this.userAddr2 = userAddr2;
+	}
+	public String getUserAddr3() {
+		return userAddr3;
+	}
+	public void setUserAddr3(String userAddr3) {
+		this.userAddr3 = userAddr3;
+	}
+	public int getpNum() {
+		return pNum;
+	}
+	public void setpNum(int pNum) {
+		this.pNum = pNum;
+	}
 	@Override
 	public String toString() {
 		return "JumunDto[ jNum=" + jNum + ", jName=" + jName + ", jPrice=" + jPrice + ", jCount=" + jCount + 

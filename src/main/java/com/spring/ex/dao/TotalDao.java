@@ -13,6 +13,7 @@ import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
+import com.spring.ex.dto.OrderVO;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
 import com.spring.ex.dto.SellDto;
@@ -410,6 +411,12 @@ public class TotalDao implements MemberDao{
 		sqlSessionTemplate.insert(namespace + ".cashOk", cldto); 
 	}
 	
+	//장바구니 선택결제
+	@Override
+	public void orderInfo(OrderVO order) throws Exception{
+		sqlSessionTemplate.insert(namespace + ".orderInfo", order);
+	}
+	
 	// 결제시 마일리지 변화
 	@Override
 	public void cashMile(MemberDto cmdto) throws Exception {
@@ -422,9 +429,33 @@ public class TotalDao implements MemberDao{
 		sqlSessionTemplate.update(namespace + ".cashMile2", cmdto);
 	}
 	
+	// 결제시 마일리지 변화
+	@Override
+	public void cashMile3(MemberDto cmdto) throws Exception {
+		sqlSessionTemplate.update(namespace + ".cashMile3", cmdto);
+	}
+	
 	//결제시 상품 목록 변경
 	@Override
 	public void productDecrease(ProductDto pudto) throws Exception {
 		sqlSessionTemplate.update(namespace + ".productDecrease", pudto);
+	}
+	
+	//결제시 상품 목록 변경
+	@Override
+	public void productDecrease2(ProductDto pudto) throws Exception{
+		sqlSessionTemplate.update(namespace + ".productDecrease2", pudto);
+	}
+	
+	//결제시 상품 목록 변경
+	@Override
+	public void productDecrease3(ProductDto pudto) throws Exception{
+		sqlSessionTemplate.update(namespace + ".productDecrease3", pudto);
+	}
+	
+	//결제시 상품 목록 변경
+	@Override
+	public void productDecrease4(MemberDto mdto) throws Exception{
+		sqlSessionTemplate.update(namespace + ".productDecrease4", mdto);
 	}
 }

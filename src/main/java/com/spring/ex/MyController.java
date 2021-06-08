@@ -24,6 +24,7 @@ import com.spring.ex.dto.CartListVO;
 import com.spring.ex.dto.CartVO;
 import com.spring.ex.dto.JumunDto;
 import com.spring.ex.dto.MemberDto;
+import com.spring.ex.dto.OrderVO;
 import com.spring.ex.dto.PagingVO;
 import com.spring.ex.dto.ProductDto;
 import com.spring.ex.dto.RefundDto;
@@ -397,22 +398,27 @@ public class MyController {
 	}
 	
 	// 카트 담기
-	@ResponseBody
-	@RequestMapping(value = "/addCart", method = RequestMethod.POST)
-	public int addCart(CartVO cart, HttpSession session) throws Exception {
-		 
-		int result = 0;
-		 
-		MemberDto member = (MemberDto)session.getAttribute("member");
-		ProductDto product = (ProductDto)session.getAttribute("product");
-		 if(member != null) {
-		 	cart.setmId(member.getmId());
-		 	cart.setpNum(product.getpNum());
-		 	service.addCart5(cart);
-		 	result = 1;
-		 }
-		return result;
-	}
+		@ResponseBody
+		@RequestMapping(value = "/addCart", method = RequestMethod.POST)
+		public int addCart(CartVO cart, HttpSession session) throws Exception {
+			 
+			int result = 0;
+			 
+			MemberDto member = (MemberDto)session.getAttribute("member");
+			ProductDto product = (ProductDto)session.getAttribute("product");
+			 if(member != null) {
+			 	cart.setmId(member.getmId());
+			 	cart.setpNum(product.getpNum());
+			 	cart.setpPrice(product.getpPrice());
+			 	cart.setpName(product.getpName());
+			 	cart.setpUrl(product.getpUrl());
+			 	cart.setpCate(product.getpCate());
+//			 	cart.setpShip(product.getpShip());
+			 	service.addCart5(cart);
+			 	result = 1;
+			 }
+			return result;
+		}
 	
 	// 장바구니에서 상품 삭제
 	@ResponseBody
@@ -433,19 +439,78 @@ public class MyController {
 	
 	// 장바구니에서 결제하기
 	@ResponseBody
-	@RequestMapping(value = "/cartCash", method = RequestMethod.POST)
-	public int cartCash(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, CartVO cart) throws Exception {
-		 
-		int result = 0;
+	@RequestMapping(value = "/basket", method = RequestMethod.POST)
+	public int order(HttpSession session, MemberDto mdto, JumunDto jdto,  OrderVO order, CartVO cart, ProductDto pudto,
+			@RequestParam(value = "chbox[]", required=false) List<String> chArr, 
+			@RequestParam(value = "chbox2[]", required=false) List<String> chArr2,
+			@RequestParam(value="userAddr1") String userAddr1,
+			@RequestParam(value="userAddr2") String userAddr2,
+			@RequestParam(value="userAddr3") String userAddr3,
+			@RequestParam(value="jMemo") String jMemo,
+			@RequestParam(value="jPhone") String jPhone,
+			@RequestParam(value="pMan") String pMan,
+			@RequestParam(value="pWoman") String pWoman , @RequestParam(value="jMile") String jMile) throws Exception {
 		int cartNum = 0;
-			 
-			for(String i : chArr) {   
-				cartNum = Integer.parseInt(i);
-				cart.setCartNum(cartNum);
-				service.deleteCart(cart);
-			}   
-			result = 1;
-		return result;  
+		int pNum = 0;
+		int result = 0;
+		
+		MemberDto member = (MemberDto) session.getAttribute("member");
+
+		String mId = member.getmId();
+		String mName = member.getmName();
+		String mEmail = member.getmEmail();
+
+		String subNum = "";
+
+		for (int j = 1; j <= 6; j++) {
+			subNum += (int) (Math.random() * 10);
+		}
+
+		String orderId = subNum;
+
+		order.setOrderId(orderId);
+		order.setmId(mId);
+		order.setjCatchName(mName);
+		order.setjEmail(mEmail);
+		order.setUserAddr1(userAddr1);
+		order.setUserAddr2(userAddr2);
+		order.setUserAddr3(userAddr3);
+		order.setjMemo(jMemo);
+		order.setjPhone(jPhone);
+		order.setjMile(jMile);
+		for (String i : chArr) {
+			cartNum = Integer.parseInt(i);
+			order.setCartNum(cartNum);
+			
+			service.orderInfo(order);
+		}
+		pudto.setmId(mId);
+		pudto.setpMan(pMan);
+		pudto.setpWoman(pWoman);
+		mdto.setmId(mId);
+		for (String i : chArr2) {
+			pNum = Integer.parseInt(i);
+			pudto.setpNum(pNum);
+			mdto.setpNum(pNum);
+			service.productDecrease3(pudto);
+			service.productDecrease2(pudto);
+			
+			service.productDecrease4(mdto);
+		}
+		
+		for (String i : chArr) {
+			cartNum = Integer.parseInt(i);
+			cart.setCartNum(cartNum);
+			service.deleteCart(cart);
+		}
+		
+		mdto.setmId(mId);
+		mdto.setpNum(pNum);
+		mdto.setjNum(subNum);
+		service.cashMile3(mdto);
+		
+		result = 1;
+		return result;
 	}
 	
 	// 주문조회 페이지
@@ -538,7 +603,6 @@ public class MyController {
 		ServiceTurtle.cashOk(cldto);
 		ServiceTurtle.productDecrease(pudto);
 		service.cashMile(cmdto);
-		/* service.cashMile2(cmdto); */
 		
 		return "redirect:/JumunSearch";
 	}
