@@ -873,6 +873,10 @@ public class MyController {
 		model.addAttribute("sellList", list2);
 		model.addAttribute("sellOne", list3);
 		
+		model.addAttribute("HealthGraph", service.healthMonthGraph());
+		model.addAttribute("YogaGraph", service.yogaMonthGraph());
+		model.addAttribute("FoodGraph", service.foodMonthGraph());
+		
 		return "Master/mainMaster";
 	}
 	
@@ -900,6 +904,15 @@ public class MyController {
 		
 		model.addAttribute("sellList", list);
 		model.addAttribute("sellOne",list2);
+		
+		model.addAttribute("HealthManGraph", service.healthManGraph());
+		model.addAttribute("HealthGirlGraph", service.healthGirlGraph());
+		
+		model.addAttribute("YogaManGraph", service.yogaManGraph());
+		model.addAttribute("YogaGirlGraph", service.yogaGirlGraph());
+		
+		model.addAttribute("FoodManGraph", service.foodManGraph());
+		model.addAttribute("FoodGirlGraph", service.foodGirlGraph());
 		
 		return "Master/SalesStatus";
 	}

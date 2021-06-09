@@ -521,4 +521,58 @@ public class ServiceTurtle implements TurtleService{
 	public void productDecrease4(MemberDto mdto) throws Exception{
 		pdao.productDecrease4(mdto);
 	}
+	
+	// 헬스기구 월별 통계
+	@Override
+	public List<HashMap<String, Object>> healthMonthGraph() throws Exception {
+		return dao.healthMonthGraph();
+	}
+
+	// 요가제품 월별 통계
+	@Override
+	public List<HashMap<String, Object>> yogaMonthGraph() throws Exception {
+		return dao.yogaMonthGraph();
+	}
+
+	// 운동식품 월별 통계
+	@Override
+	public List<HashMap<String, Object>> foodMonthGraph() throws Exception {
+		return dao.foodMonthGraph();
+	}
+
+	// 운동식품 남성 통계
+	@Override
+	public List<HashMap<String, Object>> healthManGraph() throws Exception {
+		return dao.healthManGraph();
+	}
+
+	// 운동식품 여성 통계
+	@Override
+	public List<HashMap<String, Object>> healthGirlGraph() throws Exception {
+		return dao.healthGirlGraph();
+	}
+
+	// 요가제품 남성 통계
+	@Override
+	public List<HashMap<String, Object>> yogaManGraph() throws Exception {
+		return dao.yogaManGraph();
+	}
+	
+	// 요가제품 여성 통계
+	@Override
+	public List<HashMap<String, Object>> yogaGirlGraph() throws Exception {
+		return dao.yogaGirlGraph();
+	}
+
+	// 운동식품 여성 통계
+	@Override
+	public List<HashMap<String, Object>> foodManGraph() throws Exception {
+		return dao.foodManGraph();
+	}
+
+	// 운동식품 여성 통계
+	@Override
+	public List<HashMap<String, Object>> foodGirlGraph() throws Exception {
+		return dao.foodGirlGraph();
+	}
 }

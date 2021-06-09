@@ -206,4 +206,25 @@ public interface MemberDao {
 	
 	//결제시 상품 목록 변경
 	public void productDecrease4(MemberDto mdto) throws Exception;
+	
+	// 헬스기구 월별 통계
+	public List<HashMap<String, Object>> healthMonthGraph() throws Exception;
+	// 헬스기구 남성 통계
+	public List<HashMap<String, Object>> healthManGraph() throws Exception;
+	// 헬스기구 여성 통계
+	public List<HashMap<String, Object>> healthGirlGraph() throws Exception;
+			
+	// 요가상품 월별 통계
+	public List<HashMap<String, Object>> yogaMonthGraph() throws Exception;
+	// 요가상품 남성 통계
+	public List<HashMap<String, Object>> yogaManGraph() throws Exception;
+	// 요가상품 여성 통계
+	public List<HashMap<String, Object>> yogaGirlGraph() throws Exception;
+			
+	// 운동식품 월별 통계
+	public List<HashMap<String, Object>> foodMonthGraph() throws Exception;
+	// 운동식품 남성 통계
+	public List<HashMap<String, Object>> foodManGraph() throws Exception;
+	// 운동식품 여성 통계
+	public List<HashMap<String, Object>> foodGirlGraph() throws Exception;
 }

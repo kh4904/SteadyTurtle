@@ -144,14 +144,8 @@
         </form>
         <br>
         
-        <!-- 연도 설정 -->
-        <div class = "container" style="height:50px;">
-           <input type="date" class="form-control" name="userDate" maxlength="20" style="width: 200px; height: 40px;">
-           <label style="position:relative; top:-35px; left:220px;"><h3>~</h3></label>
-           <input type="date" class="form-control" name="userDate" maxlength="20" style="width: 200px; height: 40px; position:relative; top:-90px; left:250px;">
-        </div>
 	</header>
-	
+	<br><br>
 	<!-- 막대그래프 -->
 	<section class="page-section portfolio" id="portfolio" style="height:700px">
 		<div class="col-lg-6">
@@ -163,7 +157,7 @@
 					  </h1>
 				</div>
 				<div class="card-body">
-					<canvas id="myBarChart1" width="150%" height="110%"></canvas>
+					<canvas id="salesGraph1" width="150%" height="110%"></canvas>
 				</div>
 			</div>
 		</div>
@@ -177,7 +171,7 @@
 					  </h1>
 				</div>
 				<div class="card-body">
-					<canvas id="myBarChart2" width="150%" height="110%"></canvas>
+					<canvas id="salesGraph2" width="150%" height="110%"></canvas>
 				</div>
 			</div>
 		</div>
@@ -192,7 +186,7 @@
 
 				</div>
 				<div class="card-body">
-					<canvas id="myBarChart3" width="150%" height="110%"></canvas>
+					<canvas id="salesGraph3" width="150%" height="110%"></canvas>
 				</div>
 			</div>
 		</div>
@@ -261,6 +255,219 @@
 	<script src="resources/assets/demo/chart-bar-demo1.js"></script>
 	<script src="resources/assets/demo/chart-bar-demo2.js"></script>
 	<script src="resources/assets/demo/chart-bar-demo3.js"></script>
+	
+	<!-- 매출 차트 -->
+	<script>
+	// Set new default font family and font color to mimic Bootstrap's default styling
+	Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+	Chart.defaults.global.defaultFontColor = '#292b2c';
+	// Bar Chart Example
+	var HealthMonthStat = new Array();
+	var YogaMonthMonthStat = new Array();
+	var HealthMonthPrice = new Array();
+	var YogaMonthMonthPrice = new Array();
+	
+	<c:forEach items="${HealthManGraph }" var="man">
+   	 	HealthMonthStat.push('${man.order_date }');
+    	HealthMonthPrice.push('${man.Price }');
+	</c:forEach>
+    <c:forEach items="${HealthGirlGraph }" var="woman">
+    	YogaMonthMonthStat.push('${woman.order_date }');
+    	YogaMonthMonthPrice.push('${woman.Price }');
+	</c:forEach>
+	
+	var ctx = document.getElementById("salesGraph1");
+	var myLineChart = new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+		    labels: HealthMonthStat,
+		    datasets: [
+		    {
+		      label: "남성",
+		      backgroundColor: "rgba(64,196,255,1)",
+		      borderColor: "rgba(64,196,255,1)",
+		      data: HealthMonthPrice,
+		    },
+		    {
+		      label: "여성",
+				backgroundColor: "rgba(255,158,128, 1)",
+				borderColor: "rgba(255,158,128,1)",
+		      data: YogaMonthMonthPrice,
+		    },
+		    ],
+		  },
+	  options: {
+	    scales: {
+	      xAxes: [{
+	        time: {
+	          unit: 'date'
+	        },
+	        gridLines: {
+	          display: false
+	        },
+	        ticks: {
+	          maxTicksLimit: 7
+	        }
+	      }],
+	      yAxes: [{
+	        ticks: {
+	          min: 0,
+	          max: 3000,
+	          maxTicksLimit: 5
+	        },
+	        gridLines: {
+	          display: true
+	        }
+	      }],
+	    },
+	    legend: {
+	      display: false
+	    }
+	  }
+	});
+	</script>
+	
+	<!-- 매출 차트2 -->
+	<script>
+	// Set new default font family and font color to mimic Bootstrap's default styling
+	Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+	Chart.defaults.global.defaultFontColor = '#292b2c';
+	// Bar Chart Example
+	var HealthMonthStat = new Array();
+	var YogaMonthMonthStat = new Array();
+	var HealthMonthPrice = new Array();
+	var YogaMonthMonthPrice = new Array();
+	
+	<c:forEach items="${YogaManGraph }" var="man">
+   	 	HealthMonthStat.push('${man.order_date }');
+    	HealthMonthPrice.push('${man.Price }');
+	</c:forEach>
+    <c:forEach items="${YogaGirlGraph }" var="woman">
+    	YogaMonthMonthStat.push('${woman.order_date }');
+    	YogaMonthMonthPrice.push('${woman.Price }');
+	</c:forEach>
+	
+	var ctx = document.getElementById("salesGraph2");
+	var myLineChart = new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+		    labels: HealthMonthStat,
+		    datasets: [
+		    {
+		      label: "남성",
+		      backgroundColor: "rgba(64,196,255,1)",
+		      borderColor: "rgba(64,196,255,1)",
+		      data: HealthMonthPrice,
+		    },
+		    {
+		      label: "여성",
+				backgroundColor: "rgba(255,158,128, 1)",
+				borderColor: "rgba(255,158,128,1)",
+		      data: YogaMonthMonthPrice,
+		    },
+		    ],
+		  },
+	  options: {
+	    scales: {
+	      xAxes: [{
+	        time: {
+	          unit: 'date'
+	        },
+	        gridLines: {
+	          display: false
+	        },
+	        ticks: {
+	          maxTicksLimit: 7
+	        }
+	      }],
+	      yAxes: [{
+	        ticks: {
+	          min: 0,
+	          max: 3000,
+	          maxTicksLimit: 5
+	        },
+	        gridLines: {
+	          display: true
+	        }
+	      }],
+	    },
+	    legend: {
+	      display: false
+	    }
+	  }
+	});
+	</script>
+	
+	<!-- 매출 차트3 -->
+	<script>
+	// Set new default font family and font color to mimic Bootstrap's default styling
+	Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+	Chart.defaults.global.defaultFontColor = '#292b2c';
+	// Bar Chart Example
+	var HealthMonthStat = new Array();
+	var YogaMonthMonthStat = new Array();
+	var HealthMonthPrice = new Array();
+	var YogaMonthMonthPrice = new Array();
+	
+	<c:forEach items="${FoodManGraph }" var="man">
+   	 	HealthMonthStat.push('${man.order_date }');
+    	HealthMonthPrice.push('${man.Price }');
+	</c:forEach>
+    <c:forEach items="${FoodGirlGraph }" var="woman">
+    	YogaMonthMonthStat.push('${woman.order_date }');
+    	YogaMonthMonthPrice.push('${woman.Price }');
+	</c:forEach>
+	
+	var ctx = document.getElementById("salesGraph3");
+	var myLineChart = new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+		    labels: HealthMonthStat,
+		    datasets: [
+		    {
+		      label: "남성",
+		      backgroundColor: "rgba(64,196,255,1)",
+		      borderColor: "rgba(64,196,255,1)",
+		      data: HealthMonthPrice,
+		    },
+		    {
+		      label: "여성",
+				backgroundColor: "rgba(255,158,128, 1)",
+				borderColor: "rgba(255,158,128,1)",
+		      data: YogaMonthMonthPrice,
+		    },
+		    ],
+		  },
+	  options: {
+	    scales: {
+	      xAxes: [{
+	        time: {
+	          unit: 'date'
+	        },
+	        gridLines: {
+	          display: false
+	        },
+	        ticks: {
+	          maxTicksLimit: 7
+	        }
+	      }],
+	      yAxes: [{
+	        ticks: {
+	          min: 0,
+	          max: 3000,
+	          maxTicksLimit: 5
+	        },
+	        gridLines: {
+	          display: true
+	        }
+	      }],
+	    },
+	    legend: {
+	      display: false
+	    }
+	  }
+	});
+	</script>
 
 </body>
 </html>

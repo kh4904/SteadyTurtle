@@ -16,7 +16,7 @@
 
 <!-- 회원가입 insert문 -->
 <insert id="register">INSERT INTO member( mId , mPw , mName, mGender, mPhone, mBirth, mEmail, muserAddr1,muserAddr2, muserAddr3, mGrade, mNote, mMile, mCumulmile, mMaster)
-	                  VALUES(#{mId} , #{mPw}, #{mName}, #{mGender}, #{mPhone}, #{mBirth}, #{mEmail}, #{muserAddr1}, #{muserAddr2}, #{muserAddr3}, "브론즈", null, 0, 0, 0)</insert>
+	                  VALUES(#{mId} , #{mPw}, #{mName}, #{mGender}, #{mPhone}, #{mBirth}, #{mEmail}, #{muserAddr1}, #{muserAddr2}, #{muserAddr3}, "브론즈", "없음.", 0, 0, 0)</insert>
 
 <!-- 아이디 중복 체크 -->
 <select id="idChk" resultType="int">
@@ -315,6 +315,7 @@ mCumulmile = mCumulmile + (SELECT  cartStock
 WHERE MID = #{mId};
 </update>
 
+<!-- 상품구매시 성별 증가 -->
 <update id="productDecrease3">
 	UPDATE product SET pMan = pMan + #{pMan} , pWoman = pWoman + #{pWoman}
 	WHERE pNum = #{pNum}
@@ -327,6 +328,47 @@ WHERE MID = #{mId};
      select #{orderId}, pName, pCate, pShip, #{jMile}, pPrice, cartStock, #{jCatchName}, mId, #{jEmail}, #{userAddr1}, #{userAddr2}, #{userAddr3}, #{jCatchName}, #{jPhone}, pUrl, "배송준비" , "미승인", #{jMemo}, pNum, #{jFinishDate}
      	from cart where cartNum = #{cartNum}
 </insert>
+
+<!-- 헬스기구 월별 통계 -->
+<select id="healthMonthGraph" resultType="hashmap">
+	SELECT sCate, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sCount) AS Price FROM sell WHERE sCate='헬스기구' GROUP BY order_date
+</select>
+<!-- 헬스기구 남성 통계 -->
+<select id="healthManGraph" resultType="hashmap">
+	SELECT sCate, sGender,DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sCount) AS Price FROM sell WHERE sCate='헬스기구'AND sGender ='남성' GROUP BY order_date
+</select>
+<!-- 헬스기구 여성 통계 -->
+<select id="healthGirlGraph" resultType="hashmap">
+	SELECT sCate, sGender ,DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sCount) AS Price FROM sell WHERE sCate='헬스기구'AND sGender ='여성' GROUP BY order_date
+</select>
+
+
+<!-- 요가상품 월별 통계 -->
+<select id="yogaMonthGraph" resultType="hashmap">
+	SELECT sCate, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sCount) AS Price FROM sell WHERE sCate='요가상품' GROUP BY order_date
+</select>
+<!-- 요가상품 남성 통계 -->
+<select id="yogaManGraph" resultType="hashmap">
+	SELECT sCate, sGender, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sCount) AS Price FROM sell WHERE sCate='요가상품'AND sGender ='남성' GROUP BY order_date
+</select>
+<!-- 요가상품 여성 통계 -->
+<select id="yogaGirlGraph" resultType="hashmap">
+	SELECT sCate, sGender, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sCount) AS Price FROM sell WHERE sCate='요가상품'AND sGender ='여성' GROUP BY order_date
+</select>
+
+
+<!-- 운동식품 월별 통계 -->
+<select id="foodMonthGraph" resultType="hashmap">
+	SELECT sCate, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sCount) AS Price FROM sell WHERE sCate='운동식품' GROUP BY order_date
+</select>
+<!-- 운동식품 남성 통계 -->
+<select id="foodManGraph" resultType="hashmap">
+SELECT sCate, sGender, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sCount) AS Price FROM sell WHERE sCate='운동식품'AND sGender ='남성' GROUP BY order_date
+</select>
+<!-- 운동식품 여성 통계 -->
+<select id="foodGirlGraph" resultType="hashmap">
+SELECT sCate, sGender, DATE_FORMAT(sDate, '%Y-%m') AS order_date, SUM(sCount) AS Price FROM sell WHERE sCate='운동식품'AND sGender ='여성' GROUP BY order_date
+</select>
 
 </mapper>
 
