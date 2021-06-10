@@ -81,9 +81,22 @@
                         <c:choose>
 							<c:when test="${jumun.getjShip() eq '배송준비'}">
        							<!-- 주문취소 버튼 -->
-       							<form action="jumundelete" method="POST">
+       							<form action="jumundelete" method="POST" name="form">
                   					<input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum() }">
-                    					<input type="submit" class="btn btn-primary form-control" value="주문취소" style=" position:relative; top:-10px; height:40px; width: 100px;"></input>
+                    					<input type="button" class="btn btn-primary form-control" onclick="productRefund()" value="주문취소" style=" position:relative; top:-10px; height:40px; width: 100px;"></input>
+                    					<script>
+									function productRefund() {
+										if (confirm("정말 주문취소 하시겠습니까??") == true) { //확인
+
+											document.form.submit();
+
+										} else { //취소
+
+											return false;
+
+										}
+									}
+								</script>
                     			</form>
                     			<!-- 상품환불 버튼 비활성화 -->
                     			<text class="btn" style="width: 100px; height: 40px; background-color:#e0e0e0;" >상품환불</text>

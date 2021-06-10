@@ -34,7 +34,7 @@
 	<section class="page-section portfolio" style="height: 600px;">
 		<div class="container">
 			<div class="col-lg-12">
-				<form action="productUpdate" , method="post">
+				<form action="productUpdate" name="form2" method="post">
 				<input type="hidden" id="pUrl" name="pUrl" value="${product.getpUrl()}">
 					<div class="row">
 
@@ -122,17 +122,43 @@
 
 							<div>
 								<!-- 수정하기 버튼클릭시 -->
-								<input type="submit" class="btn btn-info" value="수정하기" style="position:relative; left:400px;">
+								<input type="button" onclick="productUpdate()" class="btn btn-info" value="수정하기" style="position:relative; left:400px;">
+								<script>
+									function productUpdate() {
+										if (confirm("정말 수정 하시겠습니까??") == true) { //확인
+
+											document.form2.submit();
+
+										} else { //취소
+
+											return false;
+
+										}
+									}
+								</script>
 							</div>
 						</div>
 					</div>
 				</form>
 				<!-- 삭제하기 버튼클릭시 -->
-				<form action="productDelete" , method="post">
+				<form action="productDelete" name="form" method="post">
 				<input type="hidden" id="pNum" name="pNum" value="${product.getpNum()}">
 				     <!-- 뒤로가기 버튼클릭시 -->
 					 <a href="ProductManagement" class="btn btn-info" style="position:relative; top:-40px; left:750px;">뒤로가기</a>
-					 <input type="submit" class="btn btn-info" value="삭제하기" style="position:relative; top:-40px; left:750px;">
+					 <input type="button" onclick="productDelete()" class="btn btn-info" value="삭제하기" style="position:relative; top:-40px; left:750px;">
+					 <script>
+									function productDelete() {
+										if (confirm("정말 삭제 하시겠습니까??") == true) { //확인
+
+											document.form.submit();
+
+										} else { //취소
+
+											return false;
+
+										}
+									}
+								</script>
 				</form>
 			</div>
 		</div>

@@ -48,7 +48,7 @@
 						<hr style="background-color: black;">
 					</div>
 
-					<form action="MyPage" method="POST">
+					<form action="MyPage" method="POST" name="form" >
 						<input type="hidden" id="mId" name="mId" value="${member.mId}">
 						<h1 style="position: relative; top: -20px; left: 400px;">회원수정</h1>
 						<br />
@@ -100,9 +100,22 @@
 						<br>
 						<!-- 회원수정 버튼 -->
 						<div class="list-group" style="text-align: right;">
-							<input type="submit" class="btn btn-primary form-control"
-								value="회원수정"
+							<input type="button" class="btn btn-primary form-control"
+								value="회원수정" onclick="myUpdate()"
 								style="width: 150px; height: 40px; position: relative; top: -50px; left: 480px;">
+								<script>
+									function myUpdate() {
+										if (confirm("정말 수정 하시겠습니까??") == true) { //확인
+
+											document.form.submit();
+
+										} else { //취소
+
+											return false;
+
+										}
+									}
+								</script>
 						</div>
 					</form>
 					<!-- 회원탈퇴 버튼 -->

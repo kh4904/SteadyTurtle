@@ -38,7 +38,7 @@
       <div class="container">
          <div class="col-lg-12">
          <c:if test ="${member.mId != null }">
-         <form method="post" action="refundwrite" enctype="multipart/form-data">
+         <form method="post" name="form" action="refundwrite" enctype="multipart/form-data">
          <input type="hidden" id = "rNumber" name="rNumber" value="${jumun.getjNum() }">
          <input type="hidden" id = "rProduct" name="rProduct" value="${jumun.getjName() }">
          <input type="hidden" id = "rId" name="rId" value="${member.getmId() }">
@@ -101,7 +101,20 @@
                      <th>
                         <div style="margin-left: 525px; position:relative; left:180px;">
                            <a href="DetailRefund" class="btn btn-info" style="width: 100px; height: 40px;">뒤로가기</a> 
-                           <input type="submit" class="btn btn-info" style="margin-left: 10px; width: 100px; height: 40px;" value="환불신청" />
+                           <input type="button" onclick="productRefund()" class="btn btn-info" style="margin-left: 10px; width: 100px; height: 40px;" value="환불신청" />
+                           <script>
+									function productRefund() {
+										if (confirm("정말 환불 하시겠습니까??") == true) { //확인
+
+											document.form.submit();
+
+										} else { //취소
+
+											return false;
+
+										}
+									}
+								</script>
                         </div>
                      </th>
                   </tr>

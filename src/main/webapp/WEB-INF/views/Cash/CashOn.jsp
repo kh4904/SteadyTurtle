@@ -397,7 +397,20 @@
                      <hr>
                      <!-- 결제하기 버튼 -->
                      <div class="btnArea">
-                        <button type="submit" class="btn" disabled="disabled" style="margin-bottom: 20px; margin-left: -50px; width: 250px; height: 50px; background-color: #757575; color: white;">결제하기</button> <br>
+                        <button type="button" onclick="payment()" class="btn" disabled="disabled" style="margin-bottom: 20px; margin-left: -50px; width: 250px; height: 50px; background-color: #757575; color: white;">결제하기</button> <br>
+                        <script>
+									function payment() {
+										if (confirm("정말 구매 하시겠습니까??") == true) { //확인
+
+											document.form.submit();
+
+										} else { //취소
+
+											return false;
+
+										}
+									}
+								</script>
                      </div>
                   </div>
                </div>

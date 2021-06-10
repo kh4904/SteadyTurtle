@@ -156,14 +156,27 @@
 							<hr style="background-color: black;">
 						</div>
 						<!-- 회원삭제 버튼 -->
-						<form action="CustomerDelete" method="post">
+						<form action="CustomerDelete" method="post" name="form">
 						<input type="hidden" id="mId" name="mId" value="${member2.getmId()}">
 						<input type="hidden" id="mPw" name="mPw" value="${member2.getmPw()}">
 						<div class="contanier"
 							style="position: relative; top: -20px; left: 920px;">
 							<a href="CustomerManage" class="btn btn-primary">목록</a> 
 							<a href="DetailCustomerManageUpdate" class="btn btn-primary">수정</a>
-							<input type="submit" class="btn btn-primary" value="회원삭제">
+							<input type="button" onclick="memberDelete()" class="btn btn-primary" value="회원삭제">
+							<script>
+									function memberDelete() {
+										if (confirm("정말 삭제 하시겠습니까??") == true) { //확인
+
+											document.form.submit();
+
+										} else { //취소
+
+											return false;
+
+										}
+									}
+								</script>
 						</div>
 						</form>
 					</div>
