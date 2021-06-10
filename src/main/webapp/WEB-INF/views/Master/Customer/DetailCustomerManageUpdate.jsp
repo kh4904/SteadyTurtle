@@ -38,7 +38,7 @@
 			<div class="row">
 			<table class="table table-striped"
 					style="text-align: center; border: 1px solid #dddddd">
-			<form action="ManageUpdate" method="post">
+			<form action="ManageUpdate" method="post" name="form">
 						<input type="hidden" id="mId" name="mId" value="${member2.getmId()}">
 				
 					<thead>
@@ -139,7 +139,16 @@
 						<div class="contanier"
 							style="position: relative; top: -20px; left: 940px;"> 
 							<a href="DetailCustomerManage" class="btn btn-primary">뒤로가기</a>
-							<input type="submit" class="btn btn-primary" value="수정완료">
+							<input type="button" onclick="memberUpdate()" class="btn btn-primary" value="수정완료">
+							<script>
+									function memberUpdate() {
+										if (confirm("정말 수정 하시겠습니까??") == true) { //확인
+											document.form.submit();
+										} else { //취소
+											return false;
+										}
+									}
+								</script>
 						</div>
 					</div>
 				</div>

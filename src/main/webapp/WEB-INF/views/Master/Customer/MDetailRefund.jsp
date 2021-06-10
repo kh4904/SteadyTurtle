@@ -109,7 +109,7 @@
 					</tr>
 				</table>
 				<div>
-					<form action="RefundUpdate" method="POST">
+					<form action="RefundUpdate" name="form" method="POST">
 						<input type="hidden" id="rNum" name="rNum"
 							value="${refund.getrNum()}"> <input type="hidden"
 							id="jNum" name="jNum" value="${refund.getrNumber()}">
@@ -121,8 +121,17 @@
 								<td></td>
 							</c:when>
 							<c:when test="${refund.getrCheck() ne '1'}">
-								<td><input type="submit" class="btn btn-primary"
+								<td><input type="button" onclick="RefundOk()" class="btn btn-primary"
 									value="환불처리" style="position: relative; left: 750px;"></td>
+									<script>
+									function RefundOk() {
+										if (confirm("환불 승인 하시겠습니까??") == true) { //확인
+											document.form.submit();
+										} else { //취소
+											return false;
+										}
+									}
+								</script>
 							</c:when>
 						</c:choose>
 					</form>

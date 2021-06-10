@@ -46,7 +46,7 @@ textarea#gdsDes { width:400px; height:180px; }
 	<!-- 상품추가 -->
 	<section class="page-section portfolio">
 		<div class="container" style="background-color: #bbdefb;">
-		<form action="addproduct" method="POST" enctype="multipart/form-data">
+		<form action="addproduct" name="form" method="POST" enctype="multipart/form-data">
 			<div class="row">
 				
 					<div class="inputArea">
@@ -162,7 +162,17 @@ textarea#gdsDes { width:400px; height:180px; }
 							<p style="text-align: right;">
 								<a href="ProductManagement" class="btn btn-info">뒤로가기</a>
 								<!-- 추가하기 버튼클릭시 -->
-								<input type="submit" class="btn btn-info" value="추가하기">
+								<input type="button" onclick="productAdd()" class="btn btn-info" value="추가하기">
+								<script>
+									function productAdd() {
+										if (confirm("상품을 추가 하시겠습니까??") == true) { //확인
+											document.form.submit();
+											alert("추가되었습니다.");
+										} else { //취소
+											return false;
+										}
+									}
+								</script>
 							</p>
 					</div>
 				

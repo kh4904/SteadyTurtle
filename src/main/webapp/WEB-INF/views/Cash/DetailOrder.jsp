@@ -146,6 +146,7 @@
 		<div style="text-align: center;">
 			<a href="main" class="btn btn-info">홈으로</a> <a href="JumunSearch"
 				class="btn btn-info">뒤로가기</a> <a href="refund" class="btn btn-info">주문취소</a>
+				
 		</div>
 	</section>
 
