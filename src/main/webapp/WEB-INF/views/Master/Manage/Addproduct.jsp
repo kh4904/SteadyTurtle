@@ -24,18 +24,18 @@
 	rel="stylesheet" type="text/css" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="resources/css/styles.css" rel="stylesheet" />
+
 <!--  -->
 
-<script src="resources/jquery/jquery-3.3.1.min.js"></script>
 <style>
 .inputArea { margin:10px 0; }
 select { width:100px; }
 label { display:inline-block; width:70px; padding:5px; }
-label[for='gdsDes'] { display:block; }
 input { width:150px; }
 textarea#gdsDes { width:400px; height:180px; }
 .select_img img { margin:20px 0; }
 </style>
+
 </head>
 <!-- 상품관리 추가하기 페이지 -->
 <body id="page-top">
@@ -50,20 +50,11 @@ textarea#gdsDes { width:400px; height:180px; }
 			<div class="row">
 				
 					<div class="inputArea">
-						<div class="col-md-5">
+						<div class="col-md-6">
+							<label for="pImg">이미지</label>
 							<input type="file" id="pImg" name="file" />
 							<div class="select_img"><img src="" /></div>
-								<script>
-									$("#pImg").change(function(){
-										if(this.files && this.files[0]) {
-											var reader = new FileReader;
-											reader.onload = function(data) {
-												$(".select_img img").attr("src", data.target.result).width(500);        
-											}
-											reader.readAsDataURL(this.files[0]);
-										}
-									});
-								</script>
+								
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -223,6 +214,6 @@ textarea#gdsDes { width:400px; height:180px; }
 	<script src="resources/assets/mail/jqBootstrapValidation.js"></script>
 	<script src="resources/assets/mail/contact_me.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+	<script src="resources/js/scripts.js"></script>
 </body>
 </html>

@@ -49,7 +49,7 @@
 						<hr style="background-color: black;">
 					</div>
 					<!-- 회원탈퇴 버튼 -->
-					<form action="memberdelete" method="post" id="form">
+					<form action="memberdelete" method="post" name="form">
 						<div>
 							<label class="control-Label" for="mId">ID</label> <input
 								class="form-control" type="text" id="mId" name="mId"

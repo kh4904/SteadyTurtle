@@ -181,7 +181,7 @@
 					<!-- 전화번호 입력 -->
 					<div class="list-group"
 						style="position: relative; top: -20px; left: 200px;">
-						전화번호 : <input type="text" class="form-control"
+						전화번호 : <input type="number" max="500" class="form-control" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
 							placeholder="입력해주세요" id="mPhone2" name="mPhone" maxlength="20"
 							style="width: 300px; height: 40px; position: relative; left: 130px; top: -30px;">
 					</div>
