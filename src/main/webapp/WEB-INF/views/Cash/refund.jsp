@@ -83,6 +83,7 @@
        							<!-- 주문취소 버튼 -->
        							<form action="jumundelete" method="POST" name="form">
                   					<input type="hidden" id="jNum" name="jNum" value="${jumun.getjNum() }">
+                  					<input type="hidden" id="jName" name="jName" value="${jumun.getjName() }">
                     					<input type="button" class="btn btn-primary form-control" onclick="productRefund()" value="주문취소" style=" position:relative; top:-10px; height:40px; width: 100px;"></input>
                     					<script>
 									function productRefund() {

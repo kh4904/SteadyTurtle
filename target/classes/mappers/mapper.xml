@@ -138,7 +138,7 @@
 <select id="jumun2" resultType="JumunDto">SELECT * from jumun where jNum = #{jNum} and jName = #{jName} </select>
 
 <!-- 주문신청 삭제 delete문 -->
-<delete id="jumunDelete"> delete from jumun where jNum = #{jNum}</delete>
+<delete id="jumunDelete"> delete from jumun where jNum = #{jNum} and jName = #{jName}</delete>
 
 <!-- 주문내역 승인 update문 -->
 <update id="jumunState">UPDATE jumun SET jState = '승인', jShip = '배송중' WHERE jNum = #{jNum} and jName = #{jName} </update>
